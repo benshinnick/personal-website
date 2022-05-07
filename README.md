@@ -1,2 +1,2 @@
 # personal-website
-Personal interactive website and portfolio
+Interactive personal portfolio website
