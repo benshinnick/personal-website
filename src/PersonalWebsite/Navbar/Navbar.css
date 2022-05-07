@@ -1,18 +1,19 @@
 .navbar-wrapper {
     width: 80vw;
-    margin-top: 2.5vh;
+    margin-top: 2vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.55);
 }
 
 .navbar-wrapper .links-wrapper button {
     text-decoration: none;
     padding: 10px;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     opacity: .7;
     transition: all .2s ease-in-out;
-    font-size: 16px;
+    font-size: 14px;
     background-color: transparent;
     outline: none;
     border: 0;
@@ -29,7 +30,7 @@
     font-family: Montserrat;
     opacity: .7;
     transition: all .2s ease-in-out;
-    font-size: 16px;
+    font-size: 14px;
     background-color: transparent;
     outline: none;
     border: 0;
