@@ -1,0 +1,41 @@
+.navbar-wrapper {
+    width: 80vw;
+    margin-top: 2.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-wrapper .links-wrapper button {
+    text-decoration: none;
+    padding: 10px;
+    font-family: Montserrat;
+    opacity: .7;
+    transition: all .2s ease-in-out;
+    font-size: 16px;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.navbar-wrapper .links-wrapper button:hover {
+    opacity: 1;
+}
+
+.navbar-wrapper #name-home-button {
+    text-decoration: none;
+    padding: 10px;
+    font-family: Montserrat;
+    opacity: .7;
+    transition: all .2s ease-in-out;
+    font-size: 16px;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.navbar-wrapper #name-home-button:hover {
+    opacity: 1;
+}
