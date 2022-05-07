@@ -1,13 +1,10 @@
 import './App.css';
+import PersonalWebsite from './PersonalWebsite/PersonalWebsite';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Hello World Personal Website
-        </p>
-      </header>
+      <PersonalWebsite></PersonalWebsite>
     </div>
   );
 }
