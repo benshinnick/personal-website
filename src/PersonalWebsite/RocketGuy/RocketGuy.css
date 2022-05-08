@@ -2,12 +2,14 @@
     image-rendering: auto;
     image-rendering: crisp-edges;
     image-rendering: pixelated;
-    background-image: url(./AnimationSprites/idle.png);
     width: 100px;
     height: 100px;
     margin-top: 100px;
     margin-left: 12vw;
+}
 
+.idle {
+    background-image: url(./AnimationSprites/idle.png);
     animation-name: idle; 
     animation-duration: 600ms;
     animation-timing-function: steps(4);
@@ -24,4 +26,43 @@
         background-position: -400px;
         padding-top: 0px;
     }
+}
+
+.fly-up-build {
+    background-image: url(./AnimationSprites/fly-up-build.png);
+    animation-name: fly-up-build; 
+    animation-duration: 600ms;
+    animation-timing-function: steps(4);
+    animation-iteration-count: 1;
+}
+
+@keyframes fly-up-build {
+    from { background-position: 0px; }
+    to { background-position: -400px; }
+}
+
+.fly-up-sustain {
+    background-image: url(./AnimationSprites/fly-up-sustain.png);
+    animation-name: fly-up-sustain;
+    animation-duration: 600ms;
+    animation-timing-function: steps(4);
+    animation-iteration-count: infinite;
+}
+
+@keyframes fly-up-sustain {
+    from { background-position: 0px; }
+    to { background-position: -400px; }
+}
+
+.fly-up-stop {
+    background-image: url(./AnimationSprites/fly-up-stop.png);
+    animation-name: fly-up-stop; 
+    animation-duration: 600ms;
+    animation-timing-function: steps(4);
+    animation-iteration-count: 1;
+}
+
+@keyframes fly-up-stop {
+    from { background-position: 0px; }
+    to { background-position: -400px; }
 }

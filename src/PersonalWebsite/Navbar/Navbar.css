@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.65);
+    border-bottom: 2px solid rgb(0, 0, 0);
 }
 
 .navbar-wrapper .links-wrapper button {
