@@ -7,7 +7,7 @@ export default class Navbar extends React.Component {
             <div className='section' id='navbar'>
                 <div className='container'>
                     <div className='navbar-wrapper'>
-                        <button id="name-home-button">Ben Shinnick</button>
+                        <button id='name-home-button'>Ben Shinnick</button>
                         <div className='links-wrapper'>
                             <button>About</button>
                             <button>Experience</button>
