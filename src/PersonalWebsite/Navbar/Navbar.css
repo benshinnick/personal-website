@@ -4,16 +4,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.55);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.65);
 }
 
 .navbar-wrapper .links-wrapper button {
     text-decoration: none;
     padding: 10px;
-    font-family: 'Montserrat', sans-serif;
-    opacity: .7;
+    font-family: 'Press Start 2P', cursive;
+    opacity: .65;
     transition: all .2s ease-in-out;
-    font-size: 14px;
+    font-size: 12px;
     background-color: transparent;
     outline: none;
     border: 0;
@@ -27,10 +27,10 @@
 .navbar-wrapper #name-home-button {
     text-decoration: none;
     padding: 10px;
-    font-family: Montserrat;
-    opacity: .7;
+    font-family: 'Press Start 2P', cursive;
+    opacity: .65;
     transition: all .2s ease-in-out;
-    font-size: 14px;
+    font-size: 12px;
     background-color: transparent;
     outline: none;
     border: 0;
