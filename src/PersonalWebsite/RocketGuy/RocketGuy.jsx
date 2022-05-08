@@ -3,26 +3,19 @@ import './RocketGuy.css';
 
 export default class RocketGuy extends React.Component {
     componentDidMount() {
-        this.switchToIdleAnimation();
-        // this.swtichToFlyUpBuildAnimation();
-        // this.swtichToFlyUpSustainAnimation();
-        // this.swtichToFlyUpStopAnimation();
+        this.switchAnimation('idle');
+        // this.switchAnimation('fly-up-build');
+        // this.switchAnimation('fly-up-sustain');
+        // this.switchAnimation('fly-up-stop');
     }
 
-    switchToIdleAnimation() {
-        document.querySelector('#rocket-guy').classList.add('idle');
+    switchAnimation(name) {
+        this.removeCurrentAnimation();
+        document.querySelector('#rocket-guy').classList.add(name);
     }
 
-    swtichToFlyUpBuildAnimation() {
-        document.querySelector('#rocket-guy').classList.add('fly-up-build');
-    }
-
-    swtichToFlyUpSustainAnimation() {
-        document.querySelector('#rocket-guy').classList.add('fly-up-sustain');
-    }
-
-    swtichToFlyUpStopAnimation() {
-        document.querySelector('#rocket-guy').classList.add('fly-up-stop');
+    removeCurrentAnimation() {
+        document.querySelector('#rocket-guy').className = 'sprite';
     }
 
     render() {

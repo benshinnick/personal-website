@@ -4,14 +4,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid rgb(0, 0, 0);
+    border-bottom: 2px solid black;
 }
 
 .navbar-wrapper .links-wrapper button {
     text-decoration: none;
     padding: 10px;
     font-family: 'Press Start 2P', cursive;
-    opacity: .65;
+    opacity: .85;
     transition: all .2s ease-in-out;
     font-size: 12px;
     background-color: transparent;
@@ -28,7 +28,7 @@
     text-decoration: none;
     padding: 10px;
     font-family: 'Press Start 2P', cursive;
-    opacity: .65;
+    opacity: .85;
     transition: all .2s ease-in-out;
     font-size: 12px;
     background-color: transparent;
