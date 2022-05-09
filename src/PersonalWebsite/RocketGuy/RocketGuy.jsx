@@ -3,20 +3,25 @@ import './RocketGuy.css';
 
 export default class RocketGuy extends React.Component {
     componentDidMount() {
-        this.switchAnimation('idle');
-        // this.switchAnimation('fly-up-build');
-        // this.switchAnimation('fly-up-sustain');
-        // this.switchAnimation('fly-up-stop');
+        this.switchAnimation('idle')
+        console.log("Start")
+        // this.switchAnimation('fly-up-build')
+        // this.switchAnimation('fly-up-sustain')
+        // this.switchAnimation('fly-up-stop')
     }
 
     switchAnimation(name) {
-        this.removeCurrentAnimation();
-        document.querySelector('#rocket-guy').classList.add(name);
+        this.removeCurrentAnimation()
+        document.querySelector('#rocket-guy').classList.add(name)
     }
 
     removeCurrentAnimation() {
-        document.querySelector('#rocket-guy').className = 'sprite';
+        document.querySelector('#rocket-guy').className = 'sprite'
     }
+
+    // handleScroll = e => {
+    //     
+    // }
 
     render() {
         return (
@@ -24,3 +29,7 @@ export default class RocketGuy extends React.Component {
         );
     }
 }
+
+window.onscroll = function() {
+    console.log('scrolling');
+};
