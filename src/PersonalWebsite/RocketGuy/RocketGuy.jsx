@@ -1,27 +1,45 @@
 import React from 'react';
 import './RocketGuy.css';
 
+const ANIMATION_SPEED_MS = 125
+const SPRITE_WIDTH_PX = 100
+
 export default class RocketGuy extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.currAnimationInterval = -1
+    }
+
     componentDidMount() {
-        this.switchAnimation('idle')
-        console.log("Start")
-        // this.switchAnimation('fly-up-build')
-        // this.switchAnimation('fly-up-sustain')
-        // this.switchAnimation('fly-up-stop')
+        this.switchAnimation('idle', 4)
+        // this.switchAnimation('fly-up-build', 4)
+        // this.switchAnimation('fly-up-sustain', 4)
+        // this.switchAnimation('fly-up-stop', 4)
     }
 
-    switchAnimation(name) {
-        this.removeCurrentAnimation()
-        document.querySelector('#rocket-guy').classList.add(name)
+    switchAnimation(name, frameCount) {
+        this.switchSpriteImage(name)
+        var spriteSheet = document.querySelector('#rocket-guy');
+        var position = SPRITE_WIDTH_PX;
+
+        this.currAnimationInterval = setInterval(() => {
+            spriteSheet.style.backgroundPosition = `-${position}px 0px`;
+            if (position < SPRITE_WIDTH_PX * frameCount)
+                position += SPRITE_WIDTH_PX;
+            else
+                position = SPRITE_WIDTH_PX;
+        }, ANIMATION_SPEED_MS);
     }
 
-    removeCurrentAnimation() {
-        document.querySelector('#rocket-guy').className = 'sprite'
+    switchSpriteImage(name) {
+        this.stopAnimation();
+        document.querySelector('#rocket-guy').className = `sprite ${name}`
     }
 
-    // handleScroll = e => {
-    //     
-    // }
+    stopAnimation() {
+        clearInterval(this.currAnimationInterval);
+    }
 
     render() {
         return (
