@@ -10,6 +10,7 @@ export default class PersonalWebsite extends React.Component {
                 <Navbar></Navbar>
                 <main>
                     <RocketGuy></RocketGuy>
+                    <div style={{height: 3000 + 'px'}}></div>
                 </main>
             </div>
         );

@@ -1,15 +1,14 @@
 #rocket-guy {
-    image-rendering: auto;
-    image-rendering: crisp-edges;
+    position: fixed;
     image-rendering: pixelated;
-    position:absolute;
+    transform-origin: left;
     transform: scale(1.2);
     top: 0px;
     zoom: 1;
     width: 100px;
     height: 100px;
-    margin-top: 100px;
-    margin-left: 10vw;
+    margin-top: 150px;
+    margin-left: 11.5vw;
 }
 
 .idle {
@@ -38,9 +37,26 @@
     background-image: url(./AnimationSprites/fly-up-stop.png);
 }
 
-/* .paused{
-    -webkit-animation-play-state:paused;
-    -moz-animation-play-state:paused;
-    -o-animation-play-state:paused; 
-    animation-play-state:paused;
-} */
+.fly-down-build {
+    background-image: url(./AnimationSprites/fly-down-build.png);
+}
+
+.fly-down-sustain {
+    background-image: url(./AnimationSprites/fly-down-sustain.png);
+}
+
+.fly-down-stop {
+    background-image: url(./AnimationSprites/fly-down-stop.png);
+}
+
+.hit-ceiling {
+    background-image: url(./AnimationSprites/hit-ceiling.png);
+}
+
+.landing {
+    background-image: url(./AnimationSprites/landing.png);
+}
+
+.take-off {
+    background-image: url(./AnimationSprites/take-off.png);
+}

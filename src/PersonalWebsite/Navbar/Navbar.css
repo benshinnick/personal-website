@@ -1,6 +1,7 @@
 .navbar-wrapper {
+    position: fixed;
     width: 80vw;
-    margin-top: 2vh;
+    top: 2vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -8,6 +9,7 @@
 }
 
 .navbar-wrapper .links-wrapper button {
+    color: #4c4c4c;
     text-decoration: none;
     padding: 10px;
     font-family: 'Press Start 2P', cursive;
@@ -19,7 +21,7 @@
 }
 
 .navbar-wrapper .links-wrapper button:hover {
-    color: #006382;
+    color: #000000;
 }
 
 .navbar-wrapper #name-home-button {
@@ -31,8 +33,4 @@
     outline: none;
     border: 0;
     cursor: pointer;
-}
-
-.navbar-wrapper #name-home-button:hover {
-    color: #006382;
 }
