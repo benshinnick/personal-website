@@ -1,17 +1,105 @@
-.medium-cloud {
-    background-image: url(./CloudSprites/medium-cloud.png);
+#small-clouds {
+    overflow:hidden; 
+    white-space: nowrap;
     position: fixed;
-    margin-left: 500px;
-    margin-top: 600px;
-    width: 276px;
-    height: 81px;
 }
 
-.medium-large-cloud {
-    background-image: url(./CloudSprites/medium-large-cloud.png);
+#medium-clouds {
+    overflow:hidden; 
+    white-space: nowrap;
     position: fixed;
-    margin-left: 500px;
-    margin-top: 400px;
+}
+
+#large-clouds {
+    overflow:hidden; 
+    white-space: nowrap;
+    position: fixed;
+}
+
+.cloud {
+    filter: drop-shadow(0 0 6px rgb(235, 235, 235));
+    position: fixed;
+}
+
+.small {
+    background-image: url(./CloudSprites/medium-cloud.png);
+    width: 276px;
+    height: 78px;
+}
+
+.medium {
+    background-image: url(./CloudSprites/medium-large-cloud.png);
     width: 444px;
-    height: 84px;
+    height: 90px;
+}
+
+.large {
+    background-image: url(./CloudSprites/large-cloud.png);
+    width: 630px;
+    height: 90px;
+}
+
+/* Top Row Clouds */
+
+#small-1{
+    /* border: 1px solid red; */
+    top: 590px;
+    animation: move 50s linear infinite;
+    animation-delay: -40s;
+    /* animation-play-state: paused; */
+}
+
+#medium-1 {
+    /* border: 1px solid red; */
+    top: 578px;
+    animation: move 70s linear infinite;
+    animation-delay: -45s;
+    /* animation-play-state: paused; */
+}
+
+#large-1 {
+    /* border: 1px solid red; */
+    top: 578px;
+    animation: move 85s linear infinite;
+    animation-delay: -40s;
+    /* animation-play-state: paused; */
+}
+
+#small-3 {
+    /* border: 1px solid red; */
+    top: 590px;
+    animation: move 55s linear infinite;
+    animation-delay: -30s;
+    /* animation-play-state: paused; */
+}
+
+/* Blue Row Clouds */
+
+#small-2 {
+    /* border: 1px solid blue; */
+    top: 692px;
+    animation: move 45s linear infinite;
+    animation-delay: -30s;
+    /* animation-play-state: paused; */
+}
+
+#medium-2 {
+    /* border: 1px solid blue; */
+    top: 680px;
+    animation: move 65s linear infinite;
+    animation-delay: -55s;
+    /* animation-play-state: paused; */
+}
+
+#large-2 {
+    /* border: 1px solid red; */
+    top: 680px;
+    animation: move 80s linear infinite;
+    animation-delay: -55s;
+    /* animation-play-state: paused; */
+}
+
+@keyframes move {
+    from {left: -650px; }
+    to { left: 100%; }
 }
