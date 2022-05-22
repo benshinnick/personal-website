@@ -75,3 +75,11 @@
 .take-off {
     background-image: url(./AnimationSprites/take-off.png);
 }
+
+.fly-up-build-switch-mid {
+    background-image: url(./AnimationSprites/fly-up-build-switch-mid.png);
+}
+
+.fly-down-build-switch-mid {
+    background-image: url(./AnimationSprites/fly-down-build.png);
+}
