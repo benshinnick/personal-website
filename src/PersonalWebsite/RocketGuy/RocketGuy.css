@@ -1,0 +1,86 @@
+#rocket-guy {
+    filter: invert(0.05);
+    position: fixed;
+    transform-origin: left;
+    top: 0px;
+    zoom: 1;
+    width: 128px;
+    height: 128px;
+    margin-top: 150px;
+    margin-left: 11.5vw;
+    transition: margin-top 500ms ease-out;
+
+    animation-name: idle;
+    animation-timing-function: steps(5);
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.sprite {
+    image-rendering: optimizeSpeed;     
+    image-rendering: -moz-crisp-edges;          
+    image-rendering: -o-crisp-edges;       
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated; 
+    image-rendering: optimize-contrast;      
+    -ms-interpolation-mode: nearest-neighbor;
+    filter: none;
+}
+
+.idle {
+    background-image: url(./AnimationSprites/idle.png);
+    /* animation-name: idle;
+    animation-timing-function: steps(5);
+    animation-duration: 1s;
+    animation-iteration-count: infinite; */
+}
+
+@keyframes idle {
+    from { top: 0; }
+    50% { top: 5px; }
+    to { top: 0px; }
+}
+
+.fly-up-build {
+    background-image: url(./AnimationSprites/fly-up-build.png);
+}
+
+.fly-up-sustain {
+    background-image: url(./AnimationSprites/fly-up-sustain.png);
+}
+
+.fly-up-stop {
+    background-image: url(./AnimationSprites/fly-up-stop.png);
+}
+
+.fly-down-build {
+    background-image: url(./AnimationSprites/fly-down-build.png);
+}
+
+.fly-down-sustain {
+    background-image: url(./AnimationSprites/fly-down-sustain.png);
+}
+
+.fly-down-stop {
+    background-image: url(./AnimationSprites/fly-down-stop.png);
+}
+
+.hit-ceiling {
+    background-image: url(./AnimationSprites/hit-ceiling.png);
+}
+
+.landing {
+    background-image: url(./AnimationSprites/landing.png);
+}
+
+.take-off {
+    background-image: url(./AnimationSprites/take-off.png);
+}
+
+.fly-up-build-switch-mid {
+    background-image: url(./AnimationSprites/fly-up-build-switch-mid.png);
+}
+
+.fly-down-build-switch-mid {
+    background-image: url(./AnimationSprites/fly-down-build.png);
+}

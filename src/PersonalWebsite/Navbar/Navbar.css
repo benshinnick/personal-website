@@ -1,0 +1,36 @@
+.navbar-wrapper {
+    position: fixed;
+    width: 80vw;
+    top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid black;
+}
+
+.navbar-wrapper .links-wrapper button {
+    color: #4c4c4c;
+    text-decoration: none;
+    padding: 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.navbar-wrapper .links-wrapper button:hover {
+    color: #000000;
+}
+
+.navbar-wrapper #name-home-button {
+    text-decoration: none;
+    padding: 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
