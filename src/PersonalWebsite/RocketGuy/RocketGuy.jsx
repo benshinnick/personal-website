@@ -1,11 +1,12 @@
 import React from 'react';
 import './RocketGuy.css';
 
-const ANIMATION_SPEED_MS = 125
-const SPRITE_WIDTH_PX = 100
-const STARTING_SCROLL_Y_POS = 150
+const ANIMATION_SPEED_MS = 100
+const SPRITE_WIDTH_PX = 128
+const STARTING_SCROLL_Y_POS = 450
 
 var lastScrollYPos = STARTING_SCROLL_Y_POS
+var timer = null
 
 export default class RocketGuy extends React.Component {
 
@@ -48,31 +49,70 @@ export default class RocketGuy extends React.Component {
         clearInterval(this.currAnimationInterval)
     }
 
-    handleScroll() {
-        var currScrollYPos = window.scrollY
-        console.log(currScrollYPos)
-        var spriteYPos = currScrollYPos/3
+    switchToFlyingAnimation(direction) {
+        if(this.isReadyToSwitchAnimation()) {
+            this.switchAnimation(`fly-${direction}-build`, 4)
+            setTimeout(() => {
+                this.switchAnimation(`fly-${direction}-sustain`, 4)
+            }, 4 * ANIMATION_SPEED_MS)
+        }
+        else setTimeout(() => { this.switchToFlyingAnimation(direction) }, ANIMATION_SPEED_MS)
+    }
 
-        if(lastScrollYPos < currScrollYPos) {
-            console.log('scrolling down')
+    switchToStoppingAnimation(direction) {
+        if(this.isReadyToSwitchAnimation()) {
+            this.switchAnimation(`fly-${direction}-stop`, 4)
+            setTimeout(() => {
+                this.switchAnimation(`idle`, 4)
+            }, 4 * ANIMATION_SPEED_MS)
         }
-        else {
-            console.log('scrolling up')
-        }
-        this.stopCurrentAnimation()
-        document.querySelector('#rocket-guy').className = 'sprite fly-down-build'
+        else setTimeout(() => { this.switchToStoppingAnimation(direction) }, ANIMATION_SPEED_MS)
+    }
+
+    isReadyToSwitchAnimation() {
+        return document.querySelector('#rocket-guy').style.backgroundPosition === `-${SPRITE_WIDTH_PX}px 0px`
+    }
+
+    handleScroll() {
+        var rocketGuy = document.querySelector('#rocket-guy')
+        var currScrollYPos = window.scrollY
+        var spriteYPos = currScrollYPos/2.5
+
+        if(lastScrollYPos > currScrollYPos)
+            if(!isFlyingUpAnimated(rocketGuy)) 
+                this.switchToFlyingAnimation('up')
+        if(lastScrollYPos < currScrollYPos)
+            if(!isFlyingDownAnimated(rocketGuy)) 
+                this.switchToFlyingAnimation('down')
+
+        if(timer !== null) clearTimeout(timer);        
+        timer = setTimeout(() => {
+            if(isFlyingUpAnimated(rocketGuy))
+                this.switchToStoppingAnimation('up')
+            if(isFlyingDownAnimated(rocketGuy))
+                this.switchToStoppingAnimation('down')
+        }, 400);
+
         document.querySelector('#rocket-guy').style.marginTop = `${spriteYPos}px`
 
-        console.log('scrolling react')
         lastScrollYPos = currScrollYPos
+
+        console.log(`scrolling currScrollYPos ${currScrollYPos}`)
     }
 
     render() {
         return (
-            <div className='sprite' id='rocket-guy'></div>
+            <canvas width="16" height="16" className='sprite' id='rocket-guy'></canvas>
         );
     }
 }
 
+function isFlyingUpAnimated(rocketGuy) {
+    return rocketGuy.classList.contains('fly-up-build')
+        || rocketGuy.classList.contains('fly-up-sustain')
+}
 
-
+function isFlyingDownAnimated(rocketGuy) {
+    return rocketGuy.classList.contains('fly-down-build')
+        || rocketGuy.classList.contains('fly-down-sustain')
+}

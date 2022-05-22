@@ -1,27 +1,42 @@
 #rocket-guy {
     position: fixed;
-    image-rendering: pixelated;
     transform-origin: left;
-    transform: scale(1.2);
     top: 0px;
     zoom: 1;
-    width: 100px;
-    height: 100px;
+    width: 128px;
+    height: 128px;
     margin-top: 150px;
     margin-left: 11.5vw;
-}
+    transition: margin-top 500ms ease-out;
 
-.idle {
-    background-image: url(./AnimationSprites/idle.png);
     animation-name: idle;
     animation-timing-function: steps(5);
     animation-duration: 1s;
     animation-iteration-count: infinite;
 }
 
+.sprite {
+    image-rendering: optimizeSpeed;     
+    image-rendering: -moz-crisp-edges;          
+    image-rendering: -o-crisp-edges;       
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated; 
+    image-rendering: optimize-contrast;      
+    -ms-interpolation-mode: nearest-neighbor;
+    filter: none;
+}
+
+.idle {
+    background-image: url(./AnimationSprites/idle.png);
+    /* animation-name: idle;
+    animation-timing-function: steps(5);
+    animation-duration: 1s;
+    animation-iteration-count: infinite; */
+}
+
 @keyframes idle {
     from { top: 0; }
-    50% { top: 3px; }
+    50% { top: 5px; }
     to { top: 0px; }
 }
 
