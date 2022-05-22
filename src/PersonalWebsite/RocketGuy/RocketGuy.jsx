@@ -94,10 +94,8 @@ export default class RocketGuy extends React.Component {
         }, 400);
 
         document.querySelector('#rocket-guy').style.marginTop = `${spriteYPos}px`
-
         lastScrollYPos = currScrollYPos
-
-        console.log(`scrolling currScrollYPos ${currScrollYPos}`)
+        // console.log(`scrolling currScrollYPos ${currScrollYPos}`)
     }
 
     render() {
@@ -110,9 +108,11 @@ export default class RocketGuy extends React.Component {
 function isFlyingUpAnimated(rocketGuy) {
     return rocketGuy.classList.contains('fly-up-build')
         || rocketGuy.classList.contains('fly-up-sustain')
+        || rocketGuy.classList.contains('fly-up-stop')
 }
 
 function isFlyingDownAnimated(rocketGuy) {
     return rocketGuy.classList.contains('fly-down-build')
         || rocketGuy.classList.contains('fly-down-sustain')
+        || rocketGuy.classList.contains('fly-down-stop') 
 }
