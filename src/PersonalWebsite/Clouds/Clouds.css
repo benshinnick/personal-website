@@ -1,0 +1,8 @@
+.medium-cloud {
+    background-image: url(./CloudSprites/medium-cloud.png);
+    position: fixed;
+    margin-left: 500px;
+    margin-top: 600px;
+    width: 276px;
+    height: 81px;
+}

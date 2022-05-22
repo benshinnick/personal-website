@@ -1,12 +1,15 @@
 import React from 'react';
 import './RocketGuy.css';
 
-const ANIMATION_SPEED_MS = 100
+const ANIMATION_SPEED_MS = 75
 const SPRITE_WIDTH_PX = 128
 const STARTING_SCROLL_Y_POS = 450
+const NUM_ANIMATION_FRAMES = 4
 
 var lastScrollYPos = STARTING_SCROLL_Y_POS
 var timer = null
+var isSwitchingSwitchingFlyUp = false
+var isSwitchingSwitchingFlyDown = false
 
 export default class RocketGuy extends React.Component {
 
@@ -17,7 +20,7 @@ export default class RocketGuy extends React.Component {
     }
 
     componentDidMount() {
-        this.switchAnimation('idle', 4)
+        this.switchAnimation('idle', NUM_ANIMATION_FRAMES)
         window.addEventListener('scroll', this.handleScroll)
         window.scrollTo(0, STARTING_SCROLL_Y_POS);
     }
@@ -51,12 +54,12 @@ export default class RocketGuy extends React.Component {
 
     switchToFlyingAnimation(direction) {
         if(this.isReadyToSwitchAnimation()) {
-            if(isMidFlying(getRocketGuyElement()))
-                this.switchAnimation(`fly-${direction}-build-switch-mid`, 4)
-            else
-                this.switchAnimation(`fly-${direction}-build`, 4)
+            // if(isMidFlying(getRocketGuyElement()))
+            //     this.switchAnimation(`fly-${direction}-build-switch-mid`, NUM_ANIMATION_FRAMES)
+            // else
+                this.switchAnimation(`fly-${direction}-build`, NUM_ANIMATION_FRAMES)
             setTimeout(() => {
-                this.switchAnimation(`fly-${direction}-sustain`, 4)
+                this.switchAnimation(`fly-${direction}-sustain`, NUM_ANIMATION_FRAMES)
             }, 4 * ANIMATION_SPEED_MS)
         }
         else setTimeout(() => { this.switchToFlyingAnimation(direction) }, ANIMATION_SPEED_MS)
@@ -65,9 +68,9 @@ export default class RocketGuy extends React.Component {
     switchToStoppingAnimation() {
         if(this.isReadyToSwitchAnimation()) {
             const direction = isFlyingUpAnimated(getRocketGuyElement()) ? 'up' : 'down'
-            this.switchAnimation(`fly-${direction}-stop`, 4)
+            this.switchAnimation(`fly-${direction}-stop`, NUM_ANIMATION_FRAMES)
             setTimeout(() => {
-                this.switchAnimation(`idle`, 4)
+                this.switchAnimation(`idle`, NUM_ANIMATION_FRAMES)
             }, 4 * ANIMATION_SPEED_MS)
         }
         else setTimeout(() => { this.switchToStoppingAnimation() }, ANIMATION_SPEED_MS)

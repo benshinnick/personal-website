@@ -2,6 +2,10 @@
     overflow: hidden;
 } */
 
+.personal-website {
+    background-color: white;
+}
+
 .section {
     width: 100vw;
     height: auto;
