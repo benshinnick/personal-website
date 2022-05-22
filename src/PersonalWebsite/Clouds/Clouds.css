@@ -6,3 +6,12 @@
     width: 276px;
     height: 81px;
 }
+
+.medium-large-cloud {
+    background-image: url(./CloudSprites/medium-large-cloud.png);
+    position: fixed;
+    margin-left: 500px;
+    margin-top: 400px;
+    width: 444px;
+    height: 84px;
+}
