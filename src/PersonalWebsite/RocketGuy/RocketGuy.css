@@ -9,6 +9,7 @@
     margin-top: 150px;
     margin-left: 11.5vw;
     transition: margin-top 500ms ease-out;
+    z-index: 2;
 
     animation-name: idle;
     animation-timing-function: steps(5);
