@@ -1,0 +1,10 @@
+#moon {
+    background-image: url(./moon.png);
+    top: 75px;
+    right: 10vw;
+    width: 240px;
+    height: 240px;
+    position: fixed;
+    transform-origin: top right;
+    transform: scale(0.50);
+}
