@@ -2,6 +2,26 @@ import React from 'react';
 import './Navbar.css';
 
 export default class Navbar extends React.Component {
+
+    componentDidMount() {
+        document.querySelector('#about-btn').className = 'selected';
+    }
+
+    aboutButtonOnClick() {
+        document.querySelector('.selected').className = '';
+        document.querySelector('#about-btn').className = 'selected'
+    }
+
+    technicalButtonOnClick() {
+        document.querySelector('.selected').className = '';
+        document.querySelector('#technical-btn').className= 'selected';
+    }
+
+    contactButtonOnClick() {
+        document.querySelector('.selected').className = '';
+        document.querySelector('#contact-btn').className = 'selected';
+    }
+
     render() {
         return (
             <div className='section' id='navbar'>
@@ -9,10 +29,9 @@ export default class Navbar extends React.Component {
                     <div className='navbar-wrapper'>
                         <button id='name-home-button'>Ben Shinnick</button>
                         <div className='links-wrapper'>
-                            <button>About</button>
-                            <button>Experience</button>
-                            <button>Technical</button>
-                            <button>Contact</button>
+                            <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>About</button>
+                            <button id='technical-btn' onClick={() => this.technicalButtonOnClick()}>Technical</button>
+                            <button id='contact-btn'onClick={() => this.contactButtonOnClick()}>Contact</button>
                         </div>
                     </div>
                 </div>

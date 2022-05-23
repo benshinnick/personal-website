@@ -1,8 +1,68 @@
-.medium-cloud {
-    background-image: url(./CloudSprites/medium-cloud.png);
+.cloud {
+    filter: drop-shadow(0 0 3px rgb(235, 235, 235));
     position: fixed;
-    margin-left: 500px;
-    margin-top: 600px;
+}
+
+.small {
+    background-image: url(./CloudSprites/medium-cloud.png);
     width: 276px;
-    height: 81px;
+    height: 78px;
+    animation-name: move-small;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 4;
+}
+
+.medium {
+    background-image: url(./CloudSprites/medium-large-cloud.png);
+    width: 444px;
+    height: 90px;
+    animation-name: move-medium;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 3;
+}
+
+.large {
+    background-image: url(./CloudSprites/large-cloud.png);
+    width: 630px;
+    height: 90px;
+    animation-name: move-large;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 1;
+}
+
+#large-1 { bottom: 54px; animation-duration: 160s; animation-delay: -0s; }
+#large-2 { bottom: 54px; animation-duration: 160s; animation-delay: -40s; }
+#large-3 { bottom: 54px; animation-duration: 160s; animation-delay: -80s; }
+#large-4 { bottom: 54px; animation-duration: 160s; animation-delay: -120s; }
+
+#medium-1 { bottom: 27px; animation-duration: 120s; animation-delay: -24s; }
+#medium-2 { bottom: 27px; animation-duration: 120s; animation-delay: -48s; }
+#medium-3 { bottom: 27px; animation-duration: 120s; animation-delay: -72s; }
+#medium-4 { bottom: 27px; animation-duration: 120s; animation-delay: -96s; }
+#medium-5 { bottom: 27px; animation-duration: 120s; animation-delay: -120s; }
+
+#small-1 { bottom: 0; animation-duration: 84s;  animation-delay: -0s; }
+#small-2 { bottom: 0; animation-duration: 84s; animation-delay: -12s; }
+#small-3 { bottom: 0; animation-duration: 84s; animation-delay: -24s; }
+#small-4 { bottom: 0; animation-duration: 84s; animation-delay: -36s; }
+#small-5 { bottom: 0; animation-duration: 84s; animation-delay: -48s; }
+#small-6 { bottom: 0; animation-duration: 84s; animation-delay: -60s; }
+#small-7 { bottom: 0; animation-duration: 84s; animation-delay: -72s; }
+
+@keyframes move-small {
+    from {left: -279px; }
+    to { left: 100%; }
+}
+
+@keyframes move-medium {
+    from {left: -449px; }
+    to { left: 100%; }
+}
+
+@keyframes move-large {
+    from {left: -635px; }
+    to { left: 100%; }
 }

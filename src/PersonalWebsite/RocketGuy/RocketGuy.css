@@ -1,5 +1,5 @@
 #rocket-guy {
-    filter: invert(0.05);
+    transform: scale(0.85);
     position: fixed;
     transform-origin: left;
     top: 0px;
@@ -7,8 +7,9 @@
     width: 128px;
     height: 128px;
     margin-top: 150px;
-    margin-left: 11.5vw;
+    margin-left: 12vw;
     transition: margin-top 500ms ease-out;
+    z-index: 2;
 
     animation-name: idle;
     animation-timing-function: steps(5);
