@@ -9,7 +9,7 @@
 }
 
 .navbar-wrapper .links-wrapper button {
-    color: #4c4c4c;
+    color: #000000;
     text-decoration: none;
     padding: 10px;
     font-family: 'Press Start 2P', cursive;
@@ -18,11 +18,12 @@
     outline: none;
     border: 0;
     cursor: pointer;
+    margin-bottom: 0;
 }
 
-.navbar-wrapper .links-wrapper button:hover {
+/* .navbar-wrapper .links-wrapper button:hover {
     color: #000000;
-}
+} */
 
 .navbar-wrapper #name-home-button {
     text-decoration: none;
@@ -33,4 +34,10 @@
     outline: none;
     border: 0;
     cursor: pointer;
+}
+
+.navbar-wrapper .links-wrapper .selected {
+    color: white;
+    background-color: black;
+    border-bottom: 2px solid black;
 }
