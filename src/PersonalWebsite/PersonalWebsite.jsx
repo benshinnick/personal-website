@@ -4,6 +4,7 @@ import Navbar from './Navbar/Navbar';
 import RocketGuy from './RocketGuy/RocketGuy';
 import Clouds from './Clouds/Clouds';
 import Moon from './Moon/Moon';
+import AboutPanel from './AboutPanel/AboutPanel';
 
 export default class PersonalWebsite extends React.Component {
     render() {
@@ -11,6 +12,7 @@ export default class PersonalWebsite extends React.Component {
             <div className='personal-website'>
                 <Navbar></Navbar>
                 <main>
+                    <AboutPanel></AboutPanel>
                     <RocketGuy></RocketGuy>
                     <Moon></Moon>
                     <Clouds></Clouds>

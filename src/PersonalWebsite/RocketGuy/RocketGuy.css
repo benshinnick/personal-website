@@ -7,7 +7,7 @@
     width: 128px;
     height: 128px;
     margin-top: 150px;
-    margin-left: 12vw;
+    margin-left: calc(10vw + 35px);
     transition: margin-top 500ms ease-out;
     z-index: 2;
 
