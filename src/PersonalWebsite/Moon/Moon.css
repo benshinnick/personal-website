@@ -6,5 +6,11 @@
     height: 240px;
     position: fixed;
     transform-origin: top right;
-    transform: scale(0.50);
+    transform: scale(0.60);
+    animation: 2s ease-out 0s 1 appear;
+}
+
+@keyframes appear {
+    from {opacity: 0}
+    to { opacity: 1 }
 }
