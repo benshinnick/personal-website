@@ -1,6 +1,8 @@
 .cloud {
     filter: drop-shadow(0 0 3px rgb(235, 235, 235));
     position: fixed;
+    transform: scale(0.666);
+    transform-origin: bottom left;
 }
 
 .small {
@@ -33,24 +35,33 @@
     z-index: 1;
 }
 
-#large-1 { bottom: 54px; animation-duration: 160s; animation-delay: -0s; }
-#large-2 { bottom: 54px; animation-duration: 160s; animation-delay: -40s; }
-#large-3 { bottom: 54px; animation-duration: 160s; animation-delay: -80s; }
-#large-4 { bottom: 54px; animation-duration: 160s; animation-delay: -120s; }
+#large-1 { bottom: 54px; animation-duration: 180s; animation-delay: -0s; }
+#large-2 { bottom: 54px; animation-duration: 180s; animation-delay: -30s; }
+#large-3 { bottom: 54px; animation-duration: 180s; animation-delay: -60s; }
+#large-4 { bottom: 54px; animation-duration: 180s; animation-delay: -90s; }
+#large-5 { bottom: 54px; animation-duration: 180s; animation-delay: -120s; }
+#large-6 { bottom: 54px; animation-duration: 180s; animation-delay: -150s; }
 
-#medium-1 { bottom: 27px; animation-duration: 120s; animation-delay: -24s; }
-#medium-2 { bottom: 27px; animation-duration: 120s; animation-delay: -48s; }
-#medium-3 { bottom: 27px; animation-duration: 120s; animation-delay: -72s; }
-#medium-4 { bottom: 27px; animation-duration: 120s; animation-delay: -96s; }
-#medium-5 { bottom: 27px; animation-duration: 120s; animation-delay: -120s; }
+#medium-1 { bottom: 27px; animation-duration: 160s; animation-delay: -0s; }
+#medium-2 { bottom: 27px; animation-duration: 160s; animation-delay: -20s; }
+#medium-3 { bottom: 27px; animation-duration: 160s; animation-delay: -40s; }
+#medium-4 { bottom: 27px; animation-duration: 160s; animation-delay: -60s; }
+#medium-5 { bottom: 27px; animation-duration: 160s; animation-delay: -80s; }
+#medium-6 { bottom: 27px; animation-duration: 160s; animation-delay: -100s; }
+#medium-7 { bottom: 27px; animation-duration: 160s; animation-delay: -120s; }
+#medium-8 { bottom: 27px; animation-duration: 160s; animation-delay: -140s; }
 
-#small-1 { bottom: 0; animation-duration: 84s;  animation-delay: -0s; }
-#small-2 { bottom: 0; animation-duration: 84s; animation-delay: -12s; }
-#small-3 { bottom: 0; animation-duration: 84s; animation-delay: -24s; }
-#small-4 { bottom: 0; animation-duration: 84s; animation-delay: -36s; }
-#small-5 { bottom: 0; animation-duration: 84s; animation-delay: -48s; }
-#small-6 { bottom: 0; animation-duration: 84s; animation-delay: -60s; }
-#small-7 { bottom: 0; animation-duration: 84s; animation-delay: -72s; }
+#small-1 { bottom: 0; animation-duration: 110s;  animation-delay: -0s; }
+#small-2 { bottom: 0; animation-duration: 110s; animation-delay: -10s; }
+#small-3 { bottom: 0; animation-duration: 110s; animation-delay: -20s; }
+#small-4 { bottom: 0; animation-duration: 110s; animation-delay: -30s; }
+#small-5 { bottom: 0; animation-duration: 110s; animation-delay: -40s; }
+#small-6 { bottom: 0; animation-duration: 110s; animation-delay: -50s; }
+#small-7 { bottom: 0; animation-duration: 110s; animation-delay: -60s; }
+#small-8 { bottom: 0; animation-duration: 110s; animation-delay: -70s; }
+#small-9 { bottom: 0; animation-duration: 110s; animation-delay: -80s; }
+#small-10 { bottom: 0; animation-duration: 110s; animation-delay: -90s; }
+#small-11 { bottom: 0; animation-duration: 110s; animation-delay: -100s; }
 
 @keyframes move-small {
     from {left: -279px; }
