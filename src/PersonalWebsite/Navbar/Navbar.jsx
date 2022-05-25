@@ -27,6 +27,10 @@ export default class Navbar extends React.Component {
             <div className='section' id='navbar'>
                 <div className='container'>
                     <div className='navbar-wrapper'>
+                        <div id='left-corner'></div>
+                        <div id='nb-left-side'></div>
+                        <div id='right-corner'></div>
+                        <div id='nb-right-side'></div>
                         <button id='name-home-button'>Ben Shinnick</button>
                         <div className='links-wrapper'>
                             <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>About</button>
