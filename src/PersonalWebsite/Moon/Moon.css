@@ -8,6 +8,11 @@
     transform-origin: top right;
     transform: scale(0.40);
     animation: 1s ease-out 0s 1 appear;
+    z-index: 2;
+}
+
+#moon:hover {
+    filter: invert(1);
 }
 
 @keyframes appear {

@@ -1,13 +1,30 @@
-#star {
+.star {
     position: fixed;
-    top: 0px;
-    width: 128px;
-    height: 128px;
-    margin-top: 150px;
-    margin-left: calc(10vw + 35px);
     transition: margin-top 500ms ease-out;
+    filter: invert(1);
+    z-index: 1;
 }
 
-.fly-up-build {
-    background-image: url(./AnimationSprites/fly-up-build.png);
+#star-1 {
+    height: 75px;
+    width:75px;
+    right: 14vw;
+    top: 25vh;
+    background-image: url(./StarSprites/star-1.png);
+}
+
+#star-2 {
+    height: 71px;
+    width:67px;
+    right: 18vw;
+    top: 60vh;
+    background-image: url(./StarSprites/star-2.png);
+}
+
+#star-3 {
+    height: 55px;
+    width:51px;
+    right: 10vw;
+    top: 40vh;
+    background-image: url(./StarSprites/star-3.png);
 }
