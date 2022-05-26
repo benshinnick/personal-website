@@ -7,7 +7,7 @@
     position: fixed;
     transform-origin: top right;
     transform: scale(0.40);
-    animation: 2s ease-out 0s 1 appear;
+    animation: 1s ease-out 0s 1 appear;
 }
 
 @keyframes appear {

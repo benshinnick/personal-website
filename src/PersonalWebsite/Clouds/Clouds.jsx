@@ -5,8 +5,6 @@ export default class Clouds extends React.Component {
     render() {
         return (
             <div id='clouds'>
-                <div id="left-barrier"></div>
-                <div id="right-barrier"></div>
                 <canvas className='sprite cloud large' id='large-1'></canvas>
                 <canvas className='sprite cloud large' id='large-2'></canvas>
                 <canvas className='sprite cloud large' id='large-3'></canvas>

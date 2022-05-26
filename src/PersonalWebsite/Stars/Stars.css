@@ -1,0 +1,13 @@
+#star {
+    position: fixed;
+    top: 0px;
+    width: 128px;
+    height: 128px;
+    margin-top: 150px;
+    margin-left: calc(10vw + 35px);
+    transition: margin-top 500ms ease-out;
+}
+
+.fly-up-build {
+    background-image: url(./AnimationSprites/fly-up-build.png);
+}
