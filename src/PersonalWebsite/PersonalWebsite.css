@@ -3,8 +3,10 @@
 } */
 
 .personal-website {
-    /* background-color: #e8e8e8; */
-    background-color: #d8d8d8;
+    /* background-color: #d8d8d8; */
+    /* background-color: #6997db; */
+    background-image: linear-gradient(180deg, rgb(22, 65, 125), rgb(94, 127, 210));
+    background-attachment: fixed;
 }
 
 .section {

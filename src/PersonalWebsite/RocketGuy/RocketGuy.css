@@ -1,5 +1,5 @@
 #rocket-guy {
-    transform: scale(0.7);
+    transform: scale(0.65);
     position: fixed;
     transform-origin: left;
     top: 0px;
@@ -7,7 +7,7 @@
     width: 128px;
     height: 128px;
     margin-top: 150px;
-    margin-left: calc(10vw + 35px);
+    margin-left: calc(10vw + 50px);
     transition: margin-top 500ms ease-out;
     z-index: 2;
 

@@ -9,7 +9,7 @@
     height: 75px;
     width:75px;
     right: 14vw;
-    top: 25vh;
+    top: 10vh;
     background-image: url(./StarSprites/star-1.png);
 }
 
@@ -17,7 +17,7 @@
     height: 71px;
     width:67px;
     right: 18vw;
-    top: 60vh;
+    top: 50vh;
     background-image: url(./StarSprites/star-2.png);
 }
 
@@ -25,6 +25,6 @@
     height: 55px;
     width:51px;
     right: 10vw;
-    top: 40vh;
+    top: 30vh;
     background-image: url(./StarSprites/star-3.png);
 }
