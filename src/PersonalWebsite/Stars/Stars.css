@@ -2,13 +2,13 @@
     position: fixed;
     transition: margin-top 500ms ease-out;
     filter: invert(1);
-    z-index: 1;
+    z-index: 0;
 }
 
 #star-1 {
     height: 75px;
     width:75px;
-    right: 14vw;
+    right: 16vw;
     top: 10vh;
     background-image: url(./StarSprites/star-1.png);
 }
@@ -16,15 +16,47 @@
 #star-2 {
     height: 71px;
     width:67px;
-    right: 18vw;
-    top: 50vh;
+    left: calc(70vw + 15px);
+    top: 55vh;
     background-image: url(./StarSprites/star-2.png);
 }
 
 #star-3 {
-    height: 55px;
+    /* height: 55px;
     width:51px;
-    right: 10vw;
+    right: 20vw;
+    bottom: 60vh;
+    background-image: url(./StarSprites/star-3.png); */
+}
+
+#star-4 {
+    /* height: 20px;
+    width: 20px;
+    left: 2vw;
+    top: 15vh;
+    background-image: url(./StarSprites/star-4.png); */
+}
+
+#star-5 {
+    /* height: 80px;
+    width: 76px;
+    right: 3vw;
+    bottom: 200px;
+    background-image: url(./StarSprites/star-5.png); */
+}
+
+#star-6 {
+    height: 88px;
+    width: 89px;
+    right: 6vw;
     top: 30vh;
-    background-image: url(./StarSprites/star-3.png);
+    background-image: url(./StarSprites/star-6.png);
+}
+
+#star-7 {
+    /* height: 36px;
+    width: 36px;
+    right: 12vw;
+    bottom: 46vh;
+    background-image: url(./StarSprites/star-7.png); */
 }
