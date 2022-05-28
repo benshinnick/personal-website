@@ -6,7 +6,7 @@
     height: 96px;
     position: fixed;
     transform-origin: top right;
-    animation: 2s ease-out 0s 1 appear;
+    animation: 1.5s ease-out 0s 1 appear;
     z-index: 2;
 }
 
