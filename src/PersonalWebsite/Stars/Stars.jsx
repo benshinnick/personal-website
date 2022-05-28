@@ -3,17 +3,14 @@ import './Stars.css';
 
 const NUM_FRAMES = 12;
 const ANIMATION_SPEED_MS = 500
+const NUM_STARS = 3
 
 export default class Stars extends React.Component {
 
     componentDidMount() {
-        this.startAnimation(1)
-        this.startAnimation(2)
-        this.startAnimation(3)
-        this.startAnimation(4)
-        this.startAnimation(5)
-        this.startAnimation(6)
-        this.startAnimation(7)
+        for(var i = 0; i < NUM_STARS; ++i) {
+            this.startAnimation(i+1)
+        }
     }
 
     startAnimation(starNum) {
@@ -34,11 +31,7 @@ export default class Stars extends React.Component {
     getSpriteSheetWidth(starNum) {
         if(starNum === 1) return 900
         else if (starNum === 2) return 804
-        else if (starNum === 3) return 612
-        else if (starNum === 4) return 240
-        else if (starNum === 5) return 912
-        else if (starNum === 6) return 1068
-        else if (starNum === 7) return 432
+        else if (starNum === 3) return 1068
     }
 
     render() {
@@ -47,10 +40,6 @@ export default class Stars extends React.Component {
                 <div className='sprite star' id='star-1'></div>
                 <div className='sprite star' id='star-2'></div>
                 <div className='sprite star' id='star-3'></div>
-                <div className='sprite star' id='star-4'></div>
-                <div className='sprite star' id='star-5'></div>
-                <div className='sprite star' id='star-6'></div>
-                <div className='sprite star' id='star-7'></div>
             </div>
         );
     }

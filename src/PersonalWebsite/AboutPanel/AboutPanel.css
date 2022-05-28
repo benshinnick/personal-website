@@ -1,6 +1,6 @@
 #greeting-text {
     top: calc(20vh - 40px);
-    left: calc(30vw - 25px);
+    left: calc(30vw - 10px);
     color: white;
     font-size: 18px;
     position: fixed;
