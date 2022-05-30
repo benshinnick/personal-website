@@ -1,0 +1,30 @@
+.star {
+    position: fixed;
+    transition: margin-top 500ms ease-out;
+    filter: invert(1);
+    z-index: 0;
+}
+
+#star-1 {
+    height: 75px;
+    width:75px;
+    right: 16vw;
+    top: 10vh;
+    background-image: url(./StarSprites/star-1.png);
+}
+
+#star-2 {
+    height: 71px;
+    width:67px;
+    left: calc(70vw + 40px);
+    top: 55vh;
+    background-image: url(./StarSprites/star-2.png);
+}
+
+#star-3 {
+    height: 88px;
+    width: 89px;
+    right: 6vw;
+    top: 30vh;
+    background-image: url(./StarSprites/star-3.png);
+}

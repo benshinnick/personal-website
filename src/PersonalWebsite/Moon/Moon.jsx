@@ -4,7 +4,7 @@ import './Moon.css';
 export default class Moon extends React.Component {
     render() {
         return (
-            <div id='moon'></div>
+            <div id='moon' className='sprite'></div>
         );
     }
 }

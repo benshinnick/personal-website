@@ -1,10 +1,16 @@
 #moon {
     background-image: url(./moon.png);
-    top: 75px;
+    bottom: 145px;
     right: 10vw;
-    width: 240px;
-    height: 240px;
+    width: 96px;
+    height: 96px;
     position: fixed;
     transform-origin: top right;
-    transform: scale(0.50);
+    animation: 1.5s ease-out 0s 1 appear;
+    z-index: 2;
+}
+
+@keyframes appear {
+    from {bottom: 0}
+    to { bottom: 145px; }
 }
