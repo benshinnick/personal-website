@@ -5,7 +5,9 @@
 .personal-website {
     /* background-color: #d8d8d8; */
     /* background-color: #6997db; */
-    background-image: linear-gradient(180deg, #16417d, #5e7fd2);
+    /* background-image: linear-gradient(180deg, #16417d, #5e7fd2); */
+    /* background-image: linear-gradient(180deg, #16417d, #755ed2); */
+    background-image: linear-gradient(180deg, #235191, #755ed2);
     background-attachment: fixed;
 }
 

@@ -1,14 +1,14 @@
 #greeting-text {
-    top: calc(20vh - 40px);
+    top: calc(20vh - 50px);
     left: calc(30vw - 10px);
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     position: fixed;
     letter-spacing: 1px;
     font-family: 'Press Start 2P', cursive;
     white-space: nowrap;
     overflow: hidden;
-    width: 12.5em;
+    width: 12.4em;
     animation: type 2s steps(12, end);
 }
 
@@ -71,7 +71,7 @@
 
 #right-side {
     position: fixed;
-    border-left: 4px solid black;
+    border-left: 4px solid white;
     width: 12px;
     margin-top: 16px;
     margin-bottom: 16px;
@@ -84,7 +84,7 @@
 
 #left-side {
     position: fixed;
-    border-right: 4px solid black;
+    border-right: 4px solid white;
     width: 16px;
     margin-top: 16px;
     margin-bottom: 16px;
@@ -104,6 +104,6 @@
     width: 40vw;
     height: 60vh;
     background-color: white;
-    box-shadow: inset 0px 4px 0px 0px black, inset 0px -4px 0px 0px black;
+    box-shadow: inset 0px 4px 0px 0px white, inset 0px -4px 0px 0px white;
     z-index: 6;
 }
