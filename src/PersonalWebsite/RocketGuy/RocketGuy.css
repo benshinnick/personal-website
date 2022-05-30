@@ -1,5 +1,5 @@
 #rocket-guy {
-    transform: scale(0.65);
+    transform: scale(0.625);
     transform-origin: top left;
     position: fixed;
     transform-origin: left;
@@ -12,7 +12,7 @@
     transition: margin-top 500ms ease-out;
     z-index: 2;
 
-    animation-name: idle;
+    animation-name: float;
     animation-timing-function: steps(5);
     animation-duration: 1s;
     animation-iteration-count: infinite;
@@ -31,13 +31,9 @@
 
 .idle {
     background-image: url(./AnimationSprites/idle.png);
-    /* animation-name: idle;
-    animation-timing-function: steps(5);
-    animation-duration: 1s;
-    animation-iteration-count: infinite; */
 }
 
-@keyframes idle {
+@keyframes float {
     from { top: 0; }
     50% { top: 5px; }
     to { top: 0px; }
