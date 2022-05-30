@@ -8,9 +8,11 @@
     width: 128px;
     height: 128px;
     margin-top: 150px;
-    margin-left: calc(15vw - 56px);
+    margin-left: calc(20vw - 64px);
     transition: margin-top 500ms ease-out;
     z-index: 2;
+    /* filter: invert(0.05); */
+    filter: drop-shadow(10px 10x 10px white);
 
     animation-name: float;
     animation-timing-function: steps(5);
