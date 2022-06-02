@@ -2,14 +2,14 @@ import React from 'react';
 import './RocketGuy.css';
 
 const ANIMATION_SPEED_MS = 75
-const SPRITE_WIDTH_PX = 128
+const SPRITE_WIDTH_PX = 80
 const STARTING_SCROLL_Y_POS = 450
 const NUM_ANIMATION_FRAMES = 4
 
 var lastScrollYPos = STARTING_SCROLL_Y_POS
 var timer = null
-var isSwitchingSwitchingFlyUp = false
-var isSwitchingSwitchingFlyDown = false
+// var isSwitchingSwitchingFlyUp = false
+// var isSwitchingSwitchingFlyDown = false
 
 export default class RocketGuy extends React.Component {
 
@@ -126,9 +126,9 @@ function isFlyingDownAnimated(rocketGuy) {
         || rocketGuy.classList.contains('fly-down-stop') 
 }
 
-function isMidFlying(rocketGuy) {
-    return rocketGuy.classList.contains('fly-down-build')
-        || rocketGuy.classList.contains('fly-down-sustain')
-        // || rocketGuy.classList.contains('fly-up-build')
-        // || rocketGuy.classList.contains('fly-up-sustain')
-}
+// function isMidFlying(rocketGuy) {
+//     return rocketGuy.classList.contains('fly-down-build')
+//         || rocketGuy.classList.contains('fly-down-sustain')
+//         // || rocketGuy.classList.contains('fly-up-build')
+//         // || rocketGuy.classList.contains('fly-up-sustain')
+// }

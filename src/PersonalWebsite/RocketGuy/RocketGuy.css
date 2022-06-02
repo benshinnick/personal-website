@@ -1,14 +1,13 @@
 #rocket-guy {
-    transform: scale(0.625);
     transform-origin: top left;
     position: fixed;
     transform-origin: left;
     top: 0px;
     zoom: 1;
-    width: 128px;
-    height: 128px;
+    width: 80px;
+    height: 80px;
     margin-top: 150px;
-    margin-left: calc(20vw - 64px);
+    margin-left: calc(15vw - 40px);
     transition: margin-top 500ms ease-out;
     z-index: 2;
     /* filter: invert(0.05); */
