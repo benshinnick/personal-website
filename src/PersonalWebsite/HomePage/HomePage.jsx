@@ -15,8 +15,14 @@ export default class HomePage extends React.Component {
                 <Moon></Moon>
                 <Clouds></Clouds>
                 <Stars></Stars>
-                <div style={{height: 3000 + 'px'}}></div>
+                <div id='filler' style={{height: window.innerHeight*4 + 'px'}}></div>
             </main>
         );
     }
+}
+
+window.onresize = adjust_filler_size;
+
+function adjust_filler_size() {
+    document.getElementById('filler').style.height = `${window.innerHeight*3.3}px`
 }
