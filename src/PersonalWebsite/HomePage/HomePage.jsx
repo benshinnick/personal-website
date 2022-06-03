@@ -5,6 +5,7 @@ import RocketGuy from './RocketGuy/RocketGuy';
 import Clouds from './Clouds/Clouds';
 import Moon from './Moon/Moon';
 import Stars from './Stars/Stars';
+import UFO from './UFO/UFO';
 
 export default class HomePage extends React.Component {
     render() {
@@ -12,9 +13,10 @@ export default class HomePage extends React.Component {
             <main className='home-page'>
                 <AboutPanel></AboutPanel>
                 <RocketGuy></RocketGuy>
-                <Moon></Moon>
                 <Clouds></Clouds>
                 <Stars></Stars>
+                <Moon></Moon>
+                <UFO></UFO>
                 <div id='filler' style={{height: window.innerHeight*4 + 'px'}}></div>
             </main>
         );
