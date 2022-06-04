@@ -1,5 +1,5 @@
 #greeting-text {
-    top: calc(20vh - 38px);
+    top: 100px;
     left: calc(30vw - 26px);
     color: white;
     font-size: 16px;
@@ -46,26 +46,26 @@
     transform: rotate(0deg);
     right: -16px;
     margin-right: 30vw;
-    top: 20vh;
+    top: 140px;
 }
 
 .about-panel #bottom-right-corner {
     transform: rotate(90deg);
     right: -16px;
     margin-right: 30vw;
-    bottom: 45vh;
+    bottom: 285px;
 }
 
 .about-panel #bottom-left-corner {
     transform: rotate(180deg);
     right: 70vw;
-    bottom: 45vh;
+    bottom: 285px;
 }
 
 .about-panel #top-left-corner {
     transform: rotate(270deg);
     right: 70vw;
-    top: 20vh;
+    top: 140px;
 }
 
 .about-panel #right-side {
@@ -74,9 +74,9 @@
     width: 12px;
     margin-top: 16px;
     margin-bottom: 16px;
-    height: calc(35vh - 31px);
+    height: calc(100vh - 457px);
     right: 70vw;
-    top: 20vh;
+    top: 140px;
     background-color: white;
     z-index: 6;
 }
@@ -87,8 +87,8 @@
     width: 16px;
     margin-top: 16px;
     margin-bottom: 16px;
-    height: calc(35vh - 31px);
-    top: 20vh;
+    height: calc(100vh - 457px);
+    top: 140px;
     padding: -32px;
     right: -16px;
     margin-right: 30vw;
@@ -99,9 +99,9 @@
 .about-panel #info-panel {
     position: fixed;
     right: 30vw;
-    top: 20vh;
+    top: 140px;;
     width: 40vw;
-    height: 35vh;
+    height: calc(100vh - 425px);
     background-color: white;
     box-shadow: inset 0px 4px 0px 0px #e5e5e5, inset 0px -4px 0px 0px #e5e5e5;
     z-index: 6;
@@ -123,26 +123,26 @@
     transform: rotate(0deg);
     right: -16px;
     margin-right: 30vw;
-    top: 60vh;
+    bottom: 234px;
 }
 
 .connect-panel #bottom-right-corner {
     transform: rotate(90deg);
     right: -16px;
     margin-right: 30vw;
-    bottom: 25vh;
+    bottom: 150px;
 }
 
 .connect-panel #bottom-left-corner {
     transform: rotate(180deg);
     right: 70vw;
-    bottom: 25vh;
+    bottom: 150px;
 }
 
 .connect-panel #top-left-corner {
     transform: rotate(270deg);
     right: 70vw;
-    top: 60vh;
+    bottom: 234px;
 }
 
 .connect-panel #right-side {
@@ -151,9 +151,9 @@
     width: 12px;
     margin-top: 16px;
     margin-bottom: 16px;
-    height: calc(15vh - 31px);
+    height: 68px;
     right: 70vw;
-    bottom: 25vh;
+    bottom: 150px;
     background-color: white;
     z-index: 6;
 }
@@ -164,8 +164,8 @@
     width: 16px;
     margin-top: 16px;
     margin-bottom: 16px;
-    height: calc(15vh - 31px);
-    bottom: 25vh;
+    height: 68px;
+    bottom: 150px;
     padding: -32px;
     right: -16px;
     margin-right: 30vw;
@@ -176,9 +176,9 @@
 .connect-panel #info-panel {
     position: fixed;
     right: 30vw;
-    bottom: 25vh;
+    bottom: 150px;
     width: 40vw;
-    height: 15vh;
+    height: 100px;
     background-color: white;
     box-shadow: inset 0px 4px 0px 0px black, inset 0px -4px 0px 0px black;
     z-index: 6;
