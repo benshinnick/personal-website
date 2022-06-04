@@ -11,6 +11,6 @@
 }
 
 @keyframes appear {
-    from {bottom: 0}
+    from {bottom: -96px}
     to { bottom: 145px; }
 }

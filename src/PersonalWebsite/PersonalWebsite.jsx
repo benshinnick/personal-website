@@ -6,7 +6,7 @@ import HomePage from './HomePage/HomePage';
 export default class PersonalWebsite extends React.Component {
     render() {
         return (
-            <div className='personal-website'>
+            <div>
                 <Navbar></Navbar>
                 <HomePage></HomePage>
             </div>
