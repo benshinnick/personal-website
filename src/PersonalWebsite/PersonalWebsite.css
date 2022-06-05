@@ -1,6 +1,10 @@
 /* .personal-website {
     overflow: hidden;
 } */
+@font-face {
+    font-family: pixel;
+    src: url(./Fonts/04B_03__.TTF);
+}
 
 .section {
     width: 100vw;

@@ -11,6 +11,7 @@ export default class HomePage extends React.Component {
     render() {
         return (
             <main className='home-page'>
+                <div id="background-gradient"></div>
                 <AboutPanel></AboutPanel>
                 <RocketGuy></RocketGuy>
                 <Clouds></Clouds>

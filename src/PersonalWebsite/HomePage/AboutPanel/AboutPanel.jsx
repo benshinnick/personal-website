@@ -6,7 +6,7 @@ export default class AboutPanel extends React.Component {
         return (
             <div className='section'>
                 <div className='container'>
-                    <h2 id='greeting-text'>Hi, I'm Ben!</h2>
+                    <h2 id='greeting-text'>HI, I'M BEN!</h2>
                     <div className='about-panel'>
                         <div className='corner' id='top-right-corner'></div>
                         <div className='corner' id='bottom-right-corner'></div>
