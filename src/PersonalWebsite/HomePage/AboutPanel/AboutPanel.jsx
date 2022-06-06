@@ -15,7 +15,7 @@ export default class AboutPanel extends React.Component {
                         <div id='right-side'></div>
                         <div id='left-side'></div>
                         <div id='info-panel'></div>
-                        {/* <h2 id='about-text'>a
+                        {/* <h2 id='about-text'>
                         QUICK INTRODUCTION:<br></br>
                         - STUDENT<br></br>
                         - DEVELOPER<br></br>
