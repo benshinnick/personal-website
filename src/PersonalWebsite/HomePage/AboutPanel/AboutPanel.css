@@ -1,6 +1,6 @@
 #greeting-text {
     top: 80px;
-    left: calc(30vw - 26px);
+    left: calc(30vw - 12px);
     color: white;
     font-size: 22pt;
     position: fixed;
@@ -99,7 +99,7 @@
 .about-panel #info-panel {
     position: fixed;
     right: 30vw;
-    top: 140px;;
+    top: 140px;
     width: 40vw;
     height: calc(100vh - 465px);
     background-color: white;

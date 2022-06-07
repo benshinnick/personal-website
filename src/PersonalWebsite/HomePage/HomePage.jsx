@@ -4,6 +4,7 @@ import AboutPanel from './AboutPanel/AboutPanel';
 import RocketGuy from './RocketGuy/RocketGuy';
 import Clouds from './Clouds/Clouds';
 import Moon from './Moon/Moon';
+import Saturn from './Saturn/Saturn';
 import Stars from './Stars/Stars';
 import UFO from './UFO/UFO';
 
@@ -17,6 +18,7 @@ export default class HomePage extends React.Component {
                 <Clouds></Clouds>
                 <Stars></Stars>
                 <Moon></Moon>
+                <Saturn></Saturn>
                 <UFO></UFO>
                 <div id='filler' style={{height: window.innerHeight*4 + 'px'}}></div>
             </main>
