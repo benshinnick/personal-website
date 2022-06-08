@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePage.css';
-import AboutPanel from './AboutPanel/AboutPanel';
+import InfoPanels from './InfoPanels/InfoPanels';
 import RocketGuy from './RocketGuy/RocketGuy';
 import Clouds from './Clouds/Clouds';
 import Moon from './Moon/Moon';
@@ -9,11 +9,15 @@ import Stars from './Stars/Stars';
 import UFO from './UFO/UFO';
 
 export default class HomePage extends React.Component {
+    componentDidMount() {
+        window.scrollTo(0, 700);
+    }
+
     render() {
         return (
             <main className='home-page'>
                 <div id="background-gradient"></div>
-                <AboutPanel></AboutPanel>
+                <InfoPanels></InfoPanels>
                 <RocketGuy></RocketGuy>
                 <Clouds></Clouds>
                 <Stars></Stars>

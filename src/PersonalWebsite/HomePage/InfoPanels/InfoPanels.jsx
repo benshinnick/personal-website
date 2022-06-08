@@ -1,7 +1,8 @@
 import React from 'react';
 import './AboutPanel.css';
+import './ConnectPanel.css';
 
-export default class AboutPanel extends React.Component {
+export default class InfoPanels extends React.Component {
     render() {
         return (
             <div className='section'>
