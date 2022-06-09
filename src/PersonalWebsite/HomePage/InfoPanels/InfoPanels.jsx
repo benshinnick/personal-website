@@ -35,6 +35,10 @@ export default class InfoPanels extends React.Component {
                         <div id='right-side'></div>
                         <div id='left-side'></div>
                         <div id='info-panel'></div>
+                        <a id='github-link'>
+                            <div id='github-icon-base'></div>
+                            <img id='github-icon'></img>
+                        </a>
                     </div>
                 </div>
             </div>

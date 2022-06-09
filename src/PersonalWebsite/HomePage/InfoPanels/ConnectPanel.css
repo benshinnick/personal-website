@@ -1,3 +1,29 @@
+.connect-panel #github-link {
+    width: 70px;
+    height: 70px;
+}
+
+.connect-panel #github-icon-base {
+    position: fixed;
+    background-image: url(./Sprites/github-icon-base.png);
+    width: 70px;
+    height: 70px;
+    image-rendering: pixelated;
+    z-index: 4;
+    left: calc(30vw + 10px);
+    bottom: 205px;
+}
+
+.connect-panel #github-icon {
+    position: fixed;
+    background-image: url(./Icons/github-icon.png);
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+    left: calc(30vw + 20px);
+    bottom: 215px;
+}
+
 .connect-panel .corner {
     position: fixed;
     background-image: url(./Sprites/corner-dark.png);
