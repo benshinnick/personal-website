@@ -10,17 +10,40 @@
     height: 70px;
     image-rendering: pixelated;
     z-index: 4;
-    left: calc(30vw + 10px);
+    right: calc(70vw - 80px);
     bottom: 205px;
 }
 
 .connect-panel #github-icon {
     position: fixed;
-    background-image: url(./Icons/github-icon.png);
+    background: url(./Icons/github-icon.svg);
+    background-size: 50px 50px;
     width: 50px;
     height: 50px;
     z-index: 5;
-    left: calc(30vw + 20px);
+    right: calc(70vw - 70px);
+    bottom: 215px;
+}
+
+.connect-panel #linked-in-icon-base {
+    position: fixed;
+    background-image: url(./Sprites/linked-in-icon-base.png);
+    width: 70px;
+    height: 70px;
+    image-rendering: pixelated;
+    z-index: 4;
+    right: calc(30vw + 10px);
+    bottom: 205px;
+}
+
+.connect-panel #linked-in-icon {
+    position: fixed;
+    background: url(./Icons/linked-in-icon.svg);
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+    right: calc(30vw + 20px);
     bottom: 215px;
 }
 
