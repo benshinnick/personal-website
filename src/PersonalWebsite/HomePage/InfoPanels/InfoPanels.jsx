@@ -36,12 +36,20 @@ export default class InfoPanels extends React.Component {
                         <div id='left-side'></div>
                         <div id='info-panel'></div>
                         <a id='github-link'>
-                            <div id='github-icon-base'></div>
-                            <svg id='github-icon'></svg>
+                            <div id='github-icon-base' className='icon-base'></div>
+                            <svg id='github-icon' className='icon'></svg>
                         </a>
                         <a id='linked-in-link'>
-                            <div id='linked-in-icon-base'></div>
-                            <svg id='linked-in-icon'></svg>
+                            <div id='linked-in-icon-base' className='icon-base'></div>
+                            <svg id='linked-in-icon' className='icon'></svg>
+                        </a>
+                        <a id='youtube-link'>
+                            <div id='youtube-icon-base' className='icon-base'></div>
+                            <svg id='youtube-icon' className='icon'></svg>
+                        </a>
+                        <a id='email-link'>
+                            <div id='email-icon-base' className='icon-base'></div>
+                            <svg id='email-icon' className='icon'></svg>
                         </a>
                     </div>
                 </div>

@@ -3,47 +3,94 @@
     height: 70px;
 }
 
-.connect-panel #github-icon-base {
+.connect-panel .icon-base {
     position: fixed;
-    background-image: url(./Sprites/github-icon-base.png);
     width: 70px;
     height: 70px;
     image-rendering: pixelated;
     z-index: 4;
+}
+
+.connect-panel .icon {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+}
+
+.connect-panel #github-icon-base {
+    background-image: url(./Sprites/github-icon-base.png);
     right: calc(70vw - 80px);
     bottom: 205px;
 }
 
 .connect-panel #github-icon {
-    position: fixed;
     background: url(./Icons/github-icon.svg);
     background-size: 50px 50px;
-    width: 50px;
-    height: 50px;
-    z-index: 5;
     right: calc(70vw - 70px);
     bottom: 215px;
 }
 
 .connect-panel #linked-in-icon-base {
-    position: fixed;
-    background-image: url(./Sprites/linked-in-icon-base.png);
-    width: 70px;
-    height: 70px;
-    image-rendering: pixelated;
-    z-index: 4;
-    right: calc(30vw + 10px);
+    background-image: url(./Sprites/black-center-base.png);
+    right: calc(70vw - 170px);
     bottom: 205px;
 }
 
 .connect-panel #linked-in-icon {
-    position: fixed;
     background: url(./Icons/linked-in-icon.svg);
+    filter: brightness(0) invert(1);
+    background-size: 50px 50px;
+    right: calc(70vw - 160px);
+    bottom: 215px;
+}
+
+.connect-panel #youtube-icon-base {
+    background-image: url(./Sprites/black-center-base.png);
+    right: calc(70vw - 260px);
+    bottom: 205px;
+}
+
+.connect-panel #youtube-icon {
+    background: url(./Icons/youtube-icon.svg);
+    filter: brightness(0) invert(1);
+    background-size: 50px 50px;
+    right: calc(70vw - 250px);
+    bottom: 215px;
+}
+
+.connect-panel #email-icon-base {
+    background-image: url(./Sprites/black-center-base.png);
+    right: calc(70vw - 350px);
+    bottom: 205px;
+}
+
+.connect-panel #email-icon {
+    background: url(./Icons/email-icon.svg);
+    filter: brightness(0) invert(1);
+    background-size: 50px 50px;
+    right: calc(70vw - 340px);
+    bottom: 215px;
+}
+
+.connect-panel .corner {
+    position: fixed;
+    background-image: url(./Sprites/corner-dark.png);
+    width: 16px;
+    height: 16px;
+    image-rendering: pixelated;
+    z-index: 1;
+}
+
+.connect-panel #youtube-icon {
+    position: fixed;
+    background: url(./Icons/youtube-icon.svg);
+    filter: brightness(0) invert(1);
     background-size: 50px 50px;
     width: 50px;
     height: 50px;
     z-index: 5;
-    right: calc(30vw + 20px);
+    right: calc(70vw - 250px);
     bottom: 215px;
 }
 
