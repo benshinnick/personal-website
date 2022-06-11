@@ -22,13 +22,25 @@
     background-image: url(./Sprites/github-icon-base.png);
     right: calc(70vw - 80px);
     bottom: 205px;
+    transition: 1s;
+}
+
+.connect-panel #github-link:hover #github-icon-base {
+    background-image: url(./Sprites/github-icon-base-color.png);
+    transition: 1s;
 }
 
 .connect-panel #github-icon {
     background: url(./Icons/github-icon.svg);
+    filter: brightness(0) invert(0);
     background-size: 50px 50px;
     right: calc(70vw - 70px);
     bottom: 215px;
+    transition: 1s;
+}
+.connect-panel #github-link:hover #github-icon {
+    filter: brightness(0) invert(1);
+    transition: 1s;
 }
 
 .connect-panel #linked-in-icon-base {
@@ -61,7 +73,8 @@
 
 .connect-panel #email-icon-base {
     background-image: url(./Sprites/black-center-base.png);
-    right: calc(70vw - 350px);
+    /* right: calc(70vw - 350px); */
+    right: calc(70vw - 260px);
     bottom: 205px;
 }
 
@@ -69,7 +82,8 @@
     background: url(./Icons/email-icon.svg);
     filter: brightness(0) invert(1);
     background-size: 50px 50px;
-    right: calc(70vw - 340px);
+    /* right: calc(70vw - 340px); */
+    right: calc(70vw - 250px);
     bottom: 215px;
 }
 

@@ -43,10 +43,10 @@ export default class InfoPanels extends React.Component {
                             <div id='linked-in-icon-base' className='icon-base'></div>
                             <svg id='linked-in-icon' className='icon'></svg>
                         </a>
-                        <a id='youtube-link'>
+                        {/* <a id='youtube-link'>
                             <div id='youtube-icon-base' className='icon-base'></div>
                             <svg id='youtube-icon' className='icon'></svg>
-                        </a>
+                        </a> */}
                         <a id='email-link'>
                             <div id='email-icon-base' className='icon-base'></div>
                             <svg id='email-icon' className='icon'></svg>
