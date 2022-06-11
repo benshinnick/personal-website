@@ -1,6 +1,6 @@
 #greeting-text {
     top: 80px;
-    left: calc(30vw - 12px);
+    right: calc(70vw - 225px);
     color: white;
     font-size: 22pt;
     position: fixed;

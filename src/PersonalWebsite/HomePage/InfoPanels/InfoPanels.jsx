@@ -34,7 +34,7 @@ export default class InfoPanels extends React.Component {
                         <div className='corner' id='top-left-corner'></div>
                         <div id='right-side'></div>
                         <div id='left-side'></div>
-                        <div id='divider'></div>
+                        <div id='connect-info'></div>
                         <div id='info-panel'></div>
                         <a id='github-link' href='https://github.com/benshinnick'>
                             <div id='github-icon-base' className='icon-base'></div>
@@ -44,10 +44,6 @@ export default class InfoPanels extends React.Component {
                             <div id='linked-in-icon-base' className='icon-base'></div>
                             <svg id='linked-in-icon' className='icon'></svg>
                         </a>
-                        {/* <a id='youtube-link'>
-                            <div id='youtube-icon-base' className='icon-base'></div>
-                            <svg id='youtube-icon' className='icon'></svg>
-                        </a> */}
                         <a id='email-link' href="mailto:shinnickbenjamin@gmail.com">
                             <div id='email-icon-base' className='icon-base'></div>
                             <svg id='email-icon' className='icon'></svg>

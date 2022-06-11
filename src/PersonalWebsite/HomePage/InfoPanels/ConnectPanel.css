@@ -19,75 +19,36 @@
 }
 
 .connect-panel #github-icon-base {
-    background-image: url(./Sprites/github-icon-color.png);
+    background-image: url(./Sprites/github-icon.png);
     right: calc(70vw - 80px);
     bottom: 205px;
     transition: background-image 0.25s linear;
 }
 
 .connect-panel #github-link:hover #github-icon-base {
-    background-image: url(./Sprites/github-icon-base.png);
+    background-image: url(./Sprites/github-icon-hover.png);
 }
-
-/* .connect-panel #github-icon {
-    background: url(./Icons/github-icon.svg);
-    filter: brightness(0) invert(0);
-    background-size: 50px 50px;
-    right: calc(70vw - 70px);
-    bottom: 215px;
-    transition: filter 0.4s linear;
-}
-.connect-panel #github-link:hover #github-icon {
-    filter: brightness(0) invert(1);
-} */
 
 .connect-panel #linked-in-icon-base {
-    background-image: url(./Sprites/linked-in-icon-hover.png);
+    background-image: url(./Sprites/linked-in-icon.png);
     right: calc(70vw - 170px);
     bottom: 205px;
     transition: background-image 0.25s linear;
 }
 
 .connect-panel #linked-in-link:hover #linked-in-icon-base {
-    background-image: url(./Sprites/linked-in-no-color.png);
-}
-
-/* .connect-panel #linked-in-icon {
-    background: url(./Icons/linked-in-icon.svg);
-    filter: brightness(0) invert(1);
-    background-size: 50px 50px;
-    right: calc(70vw - 160px);
-    bottom: 215px;
-    transition: filter 0.4s linear;
-}
-
-.connect-panel #linked-in-link:hover #linked-in-icon {
-    filter:  brightness(0) invert(0);
-} */
-
-.connect-panel #youtube-icon-base {
-    background-image: url(./Sprites/black-center-base.png);
-    right: calc(70vw - 260px);
-    bottom: 205px;
-}
-
-.connect-panel #youtube-icon {
-    background: url(./Icons/youtube-icon.svg);
-    filter: brightness(0) invert(1);
-    background-size: 50px 50px;
-    right: calc(70vw - 250px);
-    bottom: 215px;
+    background-image: url(./Sprites/linked-in-hover.png);
 }
 
 .connect-panel #email-icon-base {
-    background-image: url(./Sprites/email-icon-color.png);
+    background-image: url(./Sprites/email-icon.png);
     right: calc(70vw - 260px);
     bottom: 205px;
     transition: background-image 0.25s linear;
 }
 
 .connect-panel #email-link:hover #email-icon-base {
-    background-image: url(./Sprites/email-icon.png);
+    background-image: url(./Sprites/email-icon-hover.png);
 }
 
 /* .connect-panel #email-icon {
@@ -107,18 +68,6 @@
     z-index: 1;
 }
 
-.connect-panel #youtube-icon {
-    position: fixed;
-    background: url(./Icons/youtube-icon.svg);
-    filter: brightness(0) invert(1);
-    background-size: 50px 50px;
-    width: 50px;
-    height: 50px;
-    z-index: 5;
-    right: calc(70vw - 250px);
-    bottom: 215px;
-}
-
 .connect-panel .corner {
     position: fixed;
     background-image: url(./Sprites/corner-dark.png);
@@ -133,6 +82,8 @@
     right: -16px;
     margin-right: 30vw;
     bottom: 274px;
+    z-index: 3;
+    background-image: url(./Sprites/corner-dark-transparent.png);
 }
 
 .connect-panel #bottom-right-corner {
@@ -140,6 +91,8 @@
     right: -16px;
     margin-right: 30vw;
     bottom: 190px;
+    z-index: 3;
+    background-image: url(./Sprites/corner-dark-transparent.png);
 }
 
 .connect-panel #bottom-left-corner {
@@ -182,17 +135,16 @@
     z-index: 1;
 }
 
-.connect-panel #divider {
+.connect-panel #connect-info {
     position: fixed;
-    /* left: 10px;
-    top: 10px; */
-    width: 10px;
-    height: 100px;
-    /* position: fixed;
-    border: 1px solid red;
-    background-image: url(./Sprites/divider.png);
-    image-rendering: pixelated; */
-    z-index: 1;
+    right: calc(30vw - 12px);
+    bottom: 194px;
+    width: calc(70vw - 30vw - 270px);
+    height: 92px;
+    background-color: white;
+    box-shadow: inset 4px 0px 0px 0px black;
+    image-rendering: pixelated;
+    z-index: 2;
 }
 
 .connect-panel #info-panel {
