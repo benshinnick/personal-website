@@ -1,13 +1,12 @@
 .cloud {
     position: fixed;
-    transform: scale(0.666);
     transform-origin: bottom left;
 }
 
 .small {
-    background-image: url(./CloudSprites/medium-cloud.png);
-    width: 276px;
-    height: 78px;
+    background-image: url(./CloudSprites/small-cloud.png);
+    width: 184px;
+    height: 52px;
     bottom: 0; 
     filter: drop-shadow(0 0 2px rgb(235, 235, 235));
     animation-name: move-small;
@@ -17,9 +16,9 @@
 }
 
 .medium {
-    background-image: url(./CloudSprites/medium-large-cloud.png);
-    width: 444px;
-    height: 90px;
+    background-image: url(./CloudSprites/medium-cloud.png);
+    width: 296px;
+    height: 60px;
     bottom: 20px;
     filter: drop-shadow(0 0 2px rgb(235, 235, 235));
     animation-name: move-medium;
@@ -30,8 +29,8 @@
 
 .large {
     background-image: url(./CloudSprites/large-cloud.png);
-    width: 630px;
-    height: 90px;
+    width: 420px;
+    height: 60px;
     bottom: 45px;
     animation-name: move-large;
     animation-timing-function: linear;
