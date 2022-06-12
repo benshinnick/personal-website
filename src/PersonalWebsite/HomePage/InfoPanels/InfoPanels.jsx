@@ -35,20 +35,21 @@ export default class InfoPanels extends React.Component {
                         <div id='right-side'></div>
                         <div id='left-side'></div>
                         <div id='divider'></div>
-                        <div id='connect-info'></div>
+                        <div id='connect-info'>
+                            <h2 id='connect-text'>CONNECT WITH ME</h2>
+                        </div>
                         <div id='info-panel'></div>
-                        <a id='github-link' href='https://github.com/benshinnick'>
-                            <div id='github-icon-base' className='icon-base'></div>
-                            <svg id='github-icon' className='icon'></svg>
-                        </a>
-                        <a id='linked-in-link' href='https://www.linkedin.com/'>
-                            <div id='linked-in-icon-base' className='icon-base'></div>
-                            <svg id='linked-in-icon' className='icon'></svg>
-                        </a>
-                        <a id='email-link' href="mailto:shinnickbenjamin@gmail.com">
-                            <div id='email-icon-base' className='icon-base'></div>
-                            <svg id='email-icon' className='icon'></svg>
-                        </a>
+                        <div id='link-icons'>
+                            <a id='github-icon' className='icon' href='https://github.com/benshinnick'>
+                                <span>Personal GitHub Page</span>
+                            </a>
+                            <a id='linked-in-icon' className='icon' href='https://www.linkedin.com/'>
+                                <span>Personal LinkedIn Page</span>
+                            </a>
+                            <a id='email-icon' className='icon' href="mailto:shinnickbenjamin@gmail.com">
+                                <span>Personal Email Link</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
