@@ -1,0 +1,21 @@
+#ufo {
+    background-image: url(./ufo.png);
+    bottom: 125px;
+    left: calc(30vw - 32px);
+    width: 116px;
+    height: 44px;
+    position: fixed;
+    transform-origin: top right;
+    animation: 1s linear 0s 1 alternate slide-in, 25s linear 1s infinite alternate shift;
+    z-index: 1;
+}
+
+@keyframes slide-in {
+    from { left: 100vw; }
+    to { left: calc(30vw - 32px); }
+}
+
+@keyframes shift {
+    from { left: calc(30vw - 32px); }
+    to { left: calc(70vw - 116px); }
+}

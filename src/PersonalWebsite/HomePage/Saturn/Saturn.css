@@ -1,0 +1,17 @@
+#saturn {
+    background-image: url(./Saturn-no-outline.png);
+    top: 140px;
+    left: 6vw;
+    width: 126px;
+    height: 126px;
+    position: fixed;
+    filter: drop-shadow(0px 0px 10px #2d3879);
+    transform-origin: top right;
+    animation: 2s ease-out 0s infinite saturn-bounce;
+    z-index: 0;
+}
+
+@keyframes saturn-bounce {
+    from { top: 140px; }
+    to { top: 141px; }
+}

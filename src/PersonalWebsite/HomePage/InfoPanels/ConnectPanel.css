@@ -1,0 +1,170 @@
+.connect-panel #github-link {
+    width: 70px;
+    height: 70px;
+}
+
+.connect-panel .icon-base {
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    image-rendering: pixelated;
+    z-index: 4;
+}
+
+.connect-panel .icon {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+}
+
+.connect-panel #github-icon-base {
+    background-image: url(./Sprites/github-icon-hover.png);
+    right: calc(70vw - 260px);
+    bottom: 221px;
+    transition: background-image 0.25s linear;
+}
+
+.connect-panel #github-link:hover #github-icon-base {
+    background-image: url(./Sprites/github-icon.png);
+}
+
+.connect-panel #linked-in-icon-base {
+    background-image: url(./Sprites/linked-in-icon-hover.png);
+    right: calc(70vw - 170px);
+    bottom: 221px;
+    transition: background-image 0.25s linear;
+}
+
+.connect-panel #linked-in-link:hover #linked-in-icon-base {
+    background-image: url(./Sprites/linked-in-icon.png);
+}
+
+.connect-panel #email-icon-base {
+    background-image: url(./Sprites/email-icon-hover.png);
+    right: calc(70vw - 80px);
+    bottom: 221px;
+    transition: background-image 0.25s linear;
+}
+
+.connect-panel #email-link:hover #email-icon-base {
+    background-image: url(./Sprites/email-icon.png);
+}
+
+/* .connect-panel #email-icon {
+    background: url(./Icons/email-icon.svg);
+    filter: brightness(0) invert(1);
+    background-size: 50px 50px;
+    right: calc(70vw - 250px);
+    bottom: 215px;
+} */
+
+.connect-panel .corner {
+    position: fixed;
+    background-image: url(./Sprites/corner-dark.png);
+    width: 16px;
+    height: 16px;
+    image-rendering: pixelated;
+    z-index: 1;
+}
+
+.connect-panel .corner {
+    position: fixed;
+    background-image: url(./Sprites/corner-dark.png);
+    width: 16px;
+    height: 16px;
+    image-rendering: pixelated;
+    z-index: 1;
+}
+
+.connect-panel #top-right-corner {
+    transform: rotate(0deg);
+    right: -16px;
+    margin-right: 30vw;
+    bottom: 274px;
+    z-index: 3;
+    background-image: url(./Sprites/corner-dark-transparent.png);
+}
+
+.connect-panel #bottom-right-corner {
+    transform: rotate(90deg);
+    right: -16px;
+    margin-right: 30vw;
+    bottom: 210px;
+    z-index: 3;
+    background-image: url(./Sprites/corner-dark-transparent.png);
+}
+
+.connect-panel #bottom-left-corner {
+    transform: rotate(180deg);
+    right: 70vw;
+    bottom: 210px;
+}
+
+.connect-panel #top-left-corner {
+    transform: rotate(270deg);
+    right: 70vw;
+    bottom: 274px;
+}
+
+.connect-panel #right-side {
+    position: fixed;
+    border-left: 4px solid black;
+    width: 12px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    height: 48px;
+    right: 70vw;
+    bottom: 210px;
+    background-color: white;
+    z-index: 1;
+}
+
+.connect-panel #left-side {
+    position: fixed;
+    border-right: 4px solid black;
+    width: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    height: 48px;
+    bottom: 210px;
+    padding: -32px;
+    right: -16px;
+    margin-right: 30vw;
+    background-color: white;
+    z-index: 1;
+}
+
+/* .connect-panel #divider {
+    background-image: url(./Sprites/divider.png);
+    width: 12px;
+    height: 72px;
+    position: fixed;
+    bottom: 214px;
+    right: calc(50vw - 16px);
+    z-index: 3;
+    image-rendering: pixelated;
+} */
+
+.connect-panel #connect-info {
+    position: fixed;
+    right: calc(30vw - 12px);
+    bottom: 214px;
+    width: calc(20vw + 4px);
+    height: 72px;
+    background-color: white;
+    image-rendering: pixelated;
+    z-index: 2;
+    box-shadow: inset 4px 0px 0px 0px;
+}
+
+.connect-panel #info-panel {
+    position: fixed;
+    right: 30vw;
+    bottom: 210px;
+    width: 40vw;
+    height: 80px;
+    background-color: white;
+    box-shadow: inset 0px 4px 0px 0px black, inset 0px -4px 0px 0px black;
+    z-index: 1;
+}
