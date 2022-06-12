@@ -31,7 +31,7 @@ export default class Navbar extends React.Component {
                         <div className='links-wrapper'>
                             <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>ABOUT</button>
                             <button id='technical-btn' onClick={() => this.technicalButtonOnClick()}>TECHNICAL</button>
-                            <button id='contact-btn'onClick={() => this.contactButtonOnClick()}>CONTACT</button>
+                            <button id='game-btn'onClick={() => this.contactButtonOnClick()}>GAME</button>
                         </div>
                     </div>
                 </div>
