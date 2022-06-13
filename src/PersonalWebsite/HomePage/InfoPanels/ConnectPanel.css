@@ -143,9 +143,10 @@
     image-rendering: pixelated;
     z-index: 2;
     border-left: 4px solid black;
+    word-break: keep-all;
 
     background-size: 200% 100%;
-    transition:  background-position .4s linear;
+    transition:  background-position .3s linear;
 }
 
 .connect-panel .default {
@@ -185,8 +186,26 @@
 
 .connect-panel #connect-info #connect-text {
     font-family: 'pixel';
-    font-size: 20pt;
-    margin-top: 27px;
+    margin-top: 25px;
+    text-align: center;
+    /* color: black; */
+    overflow: hidden;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-size: 200% 100%;
+    transition:  background-position .3s linear;
+}
+
+.connect-panel #connect-info .black-text {
+    background: linear-gradient(to left, black 50%, white 50%);
+    background-position: right bottom;
+}
+
+.connect-panel #connect-info .white-text {
+    background: linear-gradient(to left, black 50%, white 50%);
+    background-position: left bottom;
 }
 
 a span {

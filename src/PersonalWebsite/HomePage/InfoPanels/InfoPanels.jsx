@@ -10,22 +10,22 @@ export default class InfoPanels extends React.Component {
         else if(applied === 'linked-in') { document.getElementById('connect-info').className = 'default-linked-in' }
         else if(applied === 'email') { document.getElementById('connect-info').className = 'default-email' }
         else { document.getElementById('connect-info').className = 'default' }
-        document.getElementById('connect-text').style.color = 'black'
+        document.getElementById('connect-text').className = 'black-text'
     }
 
     changeConnectInfoToGithub() {
         document.getElementById('connect-info').className = 'github'
-        document.getElementById('connect-text').style.color = 'white'
+        document.getElementById('connect-text').className = 'white-text'
     }
 
     changeConnectInfoToLinkedIn() {
         document.getElementById('connect-info').className = 'linked-in'
-        document.getElementById('connect-text').style.color = 'white'
+        document.getElementById('connect-text').className = 'white-text'
     }
 
     changeConnectInfoToEmail() {
         document.getElementById('connect-info').className = 'email'
-        document.getElementById('connect-text').style.color = 'white'
+        document.getElementById('connect-text').className = 'white-text'
     }
 
     render() {
@@ -61,7 +61,7 @@ export default class InfoPanels extends React.Component {
                         <div id='left-side'></div>
                         <div id='divider'></div>
                         <div id='connect-info' className='default'>
-                            <h2 id='connect-text'>CONNECT WITH ME</h2>
+                            <h2 id='connect-text' className='black-text'>CONNECT WITH ME</h2>
                         </div>
                         <div id='info-panel'></div>
                         <div id='link-icons'>
