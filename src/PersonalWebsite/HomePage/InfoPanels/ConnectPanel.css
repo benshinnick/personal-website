@@ -120,6 +120,17 @@
     z-index: 1;
 }
 
+.connect-panel #info-panel {
+    position: fixed;
+    right: 30vw;
+    bottom: 230px;
+    width: 40vw;
+    height: 80px;
+    background-color: white;
+    box-shadow: inset 0px 4px 0px 0px black, inset 0px -4px 0px 0px black;
+    z-index: 1;
+}
+
 .connect-panel #connect-info {
     position: fixed;
     display: flex;
@@ -132,21 +143,49 @@
     image-rendering: pixelated;
     z-index: 2;
     border-left: 4px solid black;
+
+    background-size: 200% 100%;
+    transition:  background-position .4s linear;
 }
 
-.connect-panel #info-panel {
-    position: fixed;
-    right: 30vw;
-    bottom: 230px;
-    width: 40vw;
-    height: 80px;
-    background-color: white;
-    box-shadow: inset 0px 4px 0px 0px black, inset 0px -4px 0px 0px black;
-    z-index: 1;
+.connect-panel .default {
+    background: linear-gradient(to left, white 50%, white 50%);
+    background-position: right bottom;
+}
+
+.connect-panel .default-github {
+    background: linear-gradient(to left, white 50%, #333333 50%);
+    background-position: right bottom;
+}
+
+.connect-panel .default-linked-in{
+    background: linear-gradient(to left, white 50%, #0e76a8 50%);
+    background-position: right bottom;
+}
+
+.connect-panel .default-email{
+    background: linear-gradient(to left, white 50%, #f4b400 50%);
+    background-position: right bottom;
+}
+
+.connect-panel .github {
+    background: linear-gradient(to left, white 50%, #333333 50%);
+    background-position: left bottom;
+}
+
+.connect-panel .linked-in {
+    background: linear-gradient(to left, white 50%, #0e76a8 50%);
+    background-position: left bottom;
+}
+
+.connect-panel .email {
+    background: linear-gradient(to left, white 50%, #f4b400 50%);
+    background-position: left bottom;
 }
 
 .connect-panel #connect-info #connect-text {
     font-family: 'pixel';
+    font-size: 20pt;
     margin-top: 27px;
 }
 
