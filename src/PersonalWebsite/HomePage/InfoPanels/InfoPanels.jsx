@@ -3,6 +3,35 @@ import './AboutPanel.css';
 import './ConnectPanel.css';
 
 export default class InfoPanels extends React.Component {
+
+    changeConnectInfoToDefault() {
+        let applied = document.getElementById('connect-info').className
+        if(applied === 'github') { document.getElementById('connect-info').className = 'default-github' }
+        else if(applied === 'linked-in') { document.getElementById('connect-info').className = 'default-linked-in' }
+        else if(applied === 'email') { document.getElementById('connect-info').className = 'default-email' }
+        else { document.getElementById('connect-info').className = 'default' }
+        document.getElementById('connect-text').className = 'black-text'
+        document.getElementById('connect-text').textContent = 'CONNECT WITH ME'
+    }
+
+    changeConnectInfoToGithub() {
+        document.getElementById('connect-info').className = 'github'
+        document.getElementById('connect-text').className = 'white-text'
+        document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nON GITHUB'
+    }
+
+    changeConnectInfoToLinkedIn() {
+        document.getElementById('connect-info').className = 'linked-in'
+        document.getElementById('connect-text').className = 'white-text'
+        document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nON LINKED IN'
+    }
+
+    changeConnectInfoToEmail() {
+        document.getElementById('connect-info').className = 'email'
+        document.getElementById('connect-text').className = 'white-text'
+        document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nBY EMAIL'
+    }
+
     render() {
         return (
             <div className='section'>
@@ -35,20 +64,21 @@ export default class InfoPanels extends React.Component {
                         <div id='right-side'></div>
                         <div id='left-side'></div>
                         <div id='divider'></div>
-                        <div id='connect-info'></div>
+                        <div id='connect-info' className='default'>
+                            <div id='connect-text' className='black-text'>CONNECT WITH ME</div>
+                        </div>
                         <div id='info-panel'></div>
-                        <a id='github-link' href='https://github.com/benshinnick'>
-                            <div id='github-icon-base' className='icon-base'></div>
-                            <svg id='github-icon' className='icon'></svg>
-                        </a>
-                        <a id='linked-in-link' href='https://www.linkedin.com/'>
-                            <div id='linked-in-icon-base' className='icon-base'></div>
-                            <svg id='linked-in-icon' className='icon'></svg>
-                        </a>
-                        <a id='email-link' href="mailto:shinnickbenjamin@gmail.com">
-                            <div id='email-icon-base' className='icon-base'></div>
-                            <svg id='email-icon' className='icon'></svg>
-                        </a>
+                        <div id='link-icons'>
+                            <a id='github-icon' className='icon' onMouseOver={this.changeConnectInfoToGithub} onMouseLeave={this.changeConnectInfoToDefault} href='https://github.com/benshinnick'>
+                                <span>Personal GitHub Page</span>
+                            </a>
+                            <a id='linked-in-icon' className='icon' onMouseOver={this.changeConnectInfoToLinkedIn} onMouseLeave={this.changeConnectInfoToDefault} href='https://www.linkedin.com/'>
+                                <span>Personal LinkedIn Page</span>
+                            </a>
+                            <a id='email-icon' className='icon' onMouseOver={this.changeConnectInfoToEmail} onMouseLeave={this.changeConnectInfoToDefault} href="mailto:shinnickbenjamin@gmail.com">
+                                <span>Personal Email Link</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

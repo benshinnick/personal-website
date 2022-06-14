@@ -1,7 +1,6 @@
 .star {
     position: fixed;
     transition: margin-top 500ms ease-out;
-    filter: invert(1);
     z-index: 0;
 }
 

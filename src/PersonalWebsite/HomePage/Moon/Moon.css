@@ -1,6 +1,6 @@
 #moon {
     background-image: url(./moon.png);
-    bottom: 145px;
+    bottom: 135px;
     right: 10vw;
     width: 96px;
     height: 96px;
@@ -12,5 +12,5 @@
 
 @keyframes appear {
     from {bottom: -96px}
-    to { bottom: 145px; }
+    to { bottom: 135px; }
 }
