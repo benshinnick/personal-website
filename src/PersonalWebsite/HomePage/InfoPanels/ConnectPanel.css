@@ -146,7 +146,7 @@
     word-break: keep-all;
 
     background-size: 200% 100%;
-    transition:  background-position .3s linear;
+    transition:  background-position 0.5s linear;
 }
 
 .connect-panel .default {
@@ -185,25 +185,31 @@
 }
 
 .connect-panel #connect-info #connect-text {
-    font-family: 'pixel';
-    margin-top: 25px;
+    font-family: 'pixel', cursive;
+    /* margin-top: 25px; */
     text-align: center;
     /* color: black; */
+    font-size: 22pt;
+    width: 100%;
     overflow: hidden;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    white-space: pre;
+    height: 55px;
 
     background-size: 200% 100%;
-    transition:  background-position .3s linear;
+    transition:  background-position 0.5s linear, margin-top 0.5s linear;
 }
 
 .connect-panel #connect-info .black-text {
+    margin-top: 25px;
     background: linear-gradient(to left, black 50%, white 50%);
     background-position: right bottom;
 }
 
 .connect-panel #connect-info .white-text {
+    margin-top: 10px;
     background: linear-gradient(to left, black 50%, white 50%);
     background-position: left bottom;
 }
