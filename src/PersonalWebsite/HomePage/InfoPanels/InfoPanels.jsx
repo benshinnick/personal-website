@@ -11,25 +11,32 @@ export default class InfoPanels extends React.Component {
         else if(applied === 'email') { document.getElementById('connect-info').className = 'default-email' }
         else { document.getElementById('connect-info').className = 'default' }
         document.getElementById('connect-text').className = 'black-text'
-        document.getElementById('connect-text').textContent = 'CONNECT WITH ME'
+        document.getElementById('underline').className = 'down'
+        document.getElementById('underline').style.bottom = '15px'
+        // document.getElementById('connect-text').textContent = 'CONNECT WITH ME'
     }
 
     changeConnectInfoToGithub() {
         document.getElementById('connect-info').className = 'github'
         document.getElementById('connect-text').className = 'white-text'
-        document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nON GITHUB'
+        document.getElementById('underline').style.bottom = '20px'
+        // document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nON GITHUB'
     }
 
     changeConnectInfoToLinkedIn() {
         document.getElementById('connect-info').className = 'linked-in'
         document.getElementById('connect-text').className = 'white-text'
-        document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nON LINKED IN'
+        document.getElementById('underline').style.bottom = '20px'
+        // document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nON LINKED IN'
     }
 
     changeConnectInfoToEmail() {
         document.getElementById('connect-info').className = 'email'
         document.getElementById('connect-text').className = 'white-text'
-        document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nBY EMAIL'
+        document.getElementById('underline').style.bottom = '20px'
+        document.getElementById('underline').style.opacity = '1';
+        document.getElementById('underline').style.transform = 'translate3d(0, 0.2em, 0)';
+        // document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nBY EMAIL'
     }
 
     render() {
@@ -65,7 +72,8 @@ export default class InfoPanels extends React.Component {
                         <div id='left-side'></div>
                         <div id='divider'></div>
                         <div id='connect-info' className='default'>
-                            <div id='connect-text' className='black-text'>CONNECT WITH ME</div>
+                            <h2 id='connect-text' className='black-text'>CONNECT WITH ME</h2>
+                            <div id='underline'></div>
                         </div>
                         <div id='info-panel'></div>
                         <div id='link-icons'>
