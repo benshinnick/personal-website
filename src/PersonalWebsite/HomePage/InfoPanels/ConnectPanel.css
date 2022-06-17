@@ -205,14 +205,15 @@
 .connect-panel #connect-info #underline {
     content: '';
     position: absolute;
-    bottom: 15px;
+    bottom: 13px;
     left: 0;
     margin-left: calc((100% - 250px) / 2);
     width: 250px;
     height: 4px;
     background-color: white;
     /* opacity: 0; */
-    transition: bottom 0.5s linear, opacity 300ms, transform 300ms;
+    transform-origin: center;
+    transition: bottom 0.5s linear, opacity 0.5s, transform 0.5s;
 }
 
 .connect-panel #connect-info .black-text {
