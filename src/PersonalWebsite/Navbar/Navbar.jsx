@@ -17,9 +17,9 @@ export default class Navbar extends React.Component {
         document.querySelector('#technical-btn').className= 'selected';
     }
 
-    contactButtonOnClick() {
+    gameButtonOnClick() {
         document.querySelector('.selected').className = '';
-        document.querySelector('#contact-btn').className = 'selected';
+        document.querySelector('#game-btn').className = 'selected';
     }
 
     render() {
@@ -31,7 +31,7 @@ export default class Navbar extends React.Component {
                         <div className='links-wrapper'>
                             <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>ABOUT</button>
                             <button id='technical-btn' onClick={() => this.technicalButtonOnClick()}>TECHNICAL</button>
-                            <button id='game-btn'onClick={() => this.contactButtonOnClick()}>GAME</button>
+                            <button id='game-btn'onClick={() => this.gameButtonOnClick()}>GAME</button>
                         </div>
                     </div>
                 </div>
