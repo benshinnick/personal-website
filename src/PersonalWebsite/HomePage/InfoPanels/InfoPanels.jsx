@@ -4,6 +4,10 @@ import './ConnectPanel.css';
 
 export default class InfoPanels extends React.Component {
 
+    componentDidMount() {
+        this.changeConnectInfoToDefault()
+    }
+
     changeConnectInfoToDefault() {
         let applied = document.getElementById('connect-info').className
         if(applied === 'github') { document.getElementById('connect-info').className = 'default-github' }
