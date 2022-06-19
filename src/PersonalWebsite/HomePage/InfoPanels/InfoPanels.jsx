@@ -4,6 +4,10 @@ import './ConnectPanel.css';
 
 export default class InfoPanels extends React.Component {
 
+    componentDidMount() {
+        this.changeConnectInfoToDefault()
+    }
+
     changeConnectInfoToDefault() {
         let applied = document.getElementById('connect-info').className
         if(applied === 'github') { document.getElementById('connect-info').className = 'default-github' }
@@ -11,25 +15,30 @@ export default class InfoPanels extends React.Component {
         else if(applied === 'email') { document.getElementById('connect-info').className = 'default-email' }
         else { document.getElementById('connect-info').className = 'default' }
         document.getElementById('connect-text').className = 'black-text'
-        document.getElementById('connect-text').textContent = 'CONNECT WITH ME'
+        document.getElementById('underline').className = 'down'
+        document.getElementById('underline').style.bottom = '13px'
+        document.getElementById('underline').style.transform = 'scale(0, 1)';
     }
 
     changeConnectInfoToGithub() {
         document.getElementById('connect-info').className = 'github'
         document.getElementById('connect-text').className = 'white-text'
-        document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nON GITHUB'
+        document.getElementById('underline').style.bottom = '18px'
+        document.getElementById('underline').style.transform = 'scale(1, 1)';
     }
 
     changeConnectInfoToLinkedIn() {
         document.getElementById('connect-info').className = 'linked-in'
         document.getElementById('connect-text').className = 'white-text'
-        document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nON LINKED IN'
+        document.getElementById('underline').style.bottom = '18px'
+        document.getElementById('underline').style.transform = 'scale(1, 1)';
     }
 
     changeConnectInfoToEmail() {
         document.getElementById('connect-info').className = 'email'
         document.getElementById('connect-text').className = 'white-text'
-        document.getElementById('connect-text').textContent = 'CONNECT WITH ME\r\nBY EMAIL'
+        document.getElementById('underline').style.bottom = '18px'
+        document.getElementById('underline').style.transform = 'scale(1, 1)';
     }
 
     render() {
@@ -65,7 +74,8 @@ export default class InfoPanels extends React.Component {
                         <div id='left-side'></div>
                         <div id='divider'></div>
                         <div id='connect-info' className='default'>
-                            <div id='connect-text' className='black-text'>CONNECT WITH ME</div>
+                            <h2 id='connect-text' className='black-text'>CONNECT WITH ME</h2>
+                            <div id='underline'></div>
                         </div>
                         <div id='info-panel'></div>
                         <div id='link-icons'>
