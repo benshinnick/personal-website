@@ -19,7 +19,7 @@
 }
 .connect-panel #github-icon {
     background-image: url(./Sprites/github-icon-hover.png);
-    transition: background-image 0.25s linear;
+    /* transition: background-image 0.25s linear; */
 }
 
 .connect-panel #github-icon:hover {
@@ -28,7 +28,7 @@
 
 .connect-panel #linked-in-icon {
     background-image: url(./Sprites/linked-in-icon-hover.png);
-    transition: background-image 0.25s linear;
+    /* transition: background-image 0.25s linear; */
 }
 
 .connect-panel #linked-in-icon:hover {
@@ -37,7 +37,7 @@
 
 .connect-panel #email-icon {
     background-image: url(./Sprites/email-icon-hover.png);
-    transition: background-image 0.25s linear;
+    /* transition: background-image 0.25s linear; */
 }
 
 .connect-panel #email-icon:hover {
