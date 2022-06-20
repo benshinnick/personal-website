@@ -15,7 +15,6 @@ export default class Clouds extends React.Component {
     handlePageResize = () => {
         if(numSmall !== getFullPageWidthClouds('small')) {
             numSmall = getFullPageWidthClouds('small')
-            console.log(numSmall)
             let smallClouds = document.getElementById('small-clouds')
             while (smallClouds.firstChild) { smallClouds.removeChild(smallClouds.firstChild) }
             for(let i = 0; i < numSmall; ++i) {
@@ -33,8 +32,8 @@ export default class Clouds extends React.Component {
             for(let i = 0; i < numMedium; ++i) {
                 let mediumCloud = document.createElement('div')
                 mediumCloud.className = 'sprite cloud medium' 
-                mediumCloud.style.animationDuration = `${numMedium * 20}s`
-                mediumCloud.style.animationDelay = `${-i * 20}s`
+                mediumCloud.style.animationDuration = `${numMedium * 15}s`
+                mediumCloud.style.animationDelay = `${-i * 15}s`
                 mediumClouds.appendChild(mediumCloud)
             }
         }
@@ -65,17 +64,17 @@ export default class Clouds extends React.Component {
 
 function getFullPageWidthClouds(cloudSize) {
     if(cloudSize === 'small') {
-        let numClouds = Math.floor(window.innerWidth / 120)
+        let numClouds = Math.floor(window.innerWidth / 130)
         if(numClouds < 7) return 7
         else return numClouds
     }
     else if(cloudSize === 'medium') {
-        let numClouds = Math.floor(window.innerWidth / 150)
+        let numClouds = Math.floor(window.innerWidth / 160)
         if(numClouds < 5) return 5
         else return numClouds
     }
     else if(cloudSize === 'large'){
-        let numClouds = Math.floor(window.innerWidth / 220)
+        let numClouds = Math.floor(window.innerWidth / 230)
         if(numClouds < 4) return 4
         else return numClouds
     }
