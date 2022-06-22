@@ -47,8 +47,8 @@ export default class InfoPanels extends React.Component {
                 <div className='container'>
                     <h2 id='greeting-text'>HI, I'M BEN!</h2>
                     <div className='about-panel'>
-                        <div className='corner' id='top-right-corner'></div>
-                        <div className='corner' id='bottom-right-corner'></div>
+                        <div className='corner-scroll' id='top-right-corner'></div>
+                        <div className='corner-scroll' id='bottom-right-corner'></div>
                         <div className='corner' id='bottom-left-corner'></div>
                         <div className='corner' id='top-left-corner'></div>
                         <div id='right-side'></div>
