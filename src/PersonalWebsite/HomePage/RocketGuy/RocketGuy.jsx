@@ -8,8 +8,6 @@ const NUM_ANIMATION_FRAMES = 4
 
 var lastScrollYPos = STARTING_SCROLL_Y_POS
 var timer = null
-// var isSwitchingSwitchingFlyUp = false
-// var isSwitchingSwitchingFlyDown = false
 
 export default class RocketGuy extends React.Component {
 
@@ -54,9 +52,6 @@ export default class RocketGuy extends React.Component {
 
     switchToFlyingAnimation(direction) {
         if(this.isReadyToSwitchAnimation()) {
-            // if(isMidFlying(getRocketGuyElement()))
-            //     this.switchAnimation(`fly-${direction}-build-switch-mid`, NUM_ANIMATION_FRAMES)
-            // else
                 this.switchAnimation(`fly-${direction}-build`, NUM_ANIMATION_FRAMES)
             setTimeout(() => {
                 this.switchAnimation(`fly-${direction}-sustain`, NUM_ANIMATION_FRAMES)
@@ -85,7 +80,6 @@ export default class RocketGuy extends React.Component {
         var currScrollYPos = window.scrollY
         var spriteYPos = currScrollYPos/2.5
 
-        // Todo: switch flying direction mid flight
         if(lastScrollYPos > currScrollYPos)
             if(!isFlyingUpAnimated(rocketGuy))
                     this.switchToFlyingAnimation('up')
@@ -100,7 +94,6 @@ export default class RocketGuy extends React.Component {
 
         rocketGuy.style.marginTop = `${spriteYPos}px`
         lastScrollYPos = currScrollYPos
-        // console.log(`scrolling currScrollYPos ${currScrollYPos}`)
     }
 
     render() {
@@ -125,10 +118,3 @@ function isFlyingDownAnimated(rocketGuy) {
         || rocketGuy.classList.contains('fly-down-sustain')
         || rocketGuy.classList.contains('fly-down-stop') 
 }
-
-// function isMidFlying(rocketGuy) {
-//     return rocketGuy.classList.contains('fly-down-build')
-//         || rocketGuy.classList.contains('fly-down-sustain')
-//         // || rocketGuy.classList.contains('fly-up-build')
-//         // || rocketGuy.classList.contains('fly-up-sustain')
-// }

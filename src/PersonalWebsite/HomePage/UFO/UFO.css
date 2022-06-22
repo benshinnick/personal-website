@@ -1,7 +1,7 @@
 #ufo {
     background-image: url(./ufo.png);
     bottom: 165px;
-    left: calc(30vw - 32px);
+    right: calc(70vw - 63px);
     width: 95px;
     height: 35px;
     position: fixed;
@@ -16,6 +16,6 @@
 }
 
 @keyframes shift {
-    from { left: calc(30vw - 32px); }
-    to { left: calc(70vw - 95px); }
+    from { right: calc(70vw - 79px); }
+    to { right: calc(30vw - 16px); }
 }
