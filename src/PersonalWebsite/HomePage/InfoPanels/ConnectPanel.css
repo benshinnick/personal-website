@@ -197,7 +197,9 @@
     -webkit-text-fill-color: transparent;
     white-space: pre;
     height: 55px;
-
+    font-weight: 1000;
+    -webkit-font-smoothing: subpixel-antialiased;
+    
     background-size: 200% 100%;
     transition:  background-position 0.5s linear, margin-top 0.5s linear;
 }

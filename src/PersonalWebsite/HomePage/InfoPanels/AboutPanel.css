@@ -1,5 +1,6 @@
 #greeting-text {
-    top: 80px;
+    top: 75px;
+    font-weight: bold;
     right: calc(70vw - 225px);
     color: white;
     font-size: 22pt;
@@ -9,7 +10,8 @@
     white-space: nowrap;
     overflow: hidden;
     width: 8em;
-    /* animation: type 5s steps(12, end); */
+    font-weight: 1000;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 @keyframes type {
@@ -34,18 +36,22 @@
     /* border: 1px solid red; */
     background-color: white;
     overflow-y: scroll;
-    
 }
 
 .about-panel #about-text {
+    margin: 0;
     line-height: 1.4;
     overflow-wrap: break-word;
     color: black;
-    font-size: 16px;
+    font-size: 20pt;
+    padding: 10px;
     /* position: fixed; */
+    /* font-family: 'Press Start 2P', cursive; */
+    -webkit-font-smoothing: subpixel-antialiased;
     font-family: 'pixel';
     letter-spacing: 1px;
     z-index: 1;
+    font-weight: 1000;
 }
 
 /* Scrollbar styles */

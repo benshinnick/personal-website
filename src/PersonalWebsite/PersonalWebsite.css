@@ -2,8 +2,28 @@
     overflow: hidden;
 } */
 @font-face {
+    font-family: eightbit;
+    src: url(./Fonts/8-bit-pusab.ttf);
+}
+
+@font-face {
     font-family: pixel;
     src: url(./Fonts/04B_03__.TTF);
+}
+
+@font-face {
+    font-family: alagard;
+    src: url(./Fonts/alagard.ttf);
+}
+
+@font-face {
+    font-family: minecraft;
+    src: url(./Fonts/Minecraft.ttf);
+}
+
+@font-face {
+    font-family: retro;
+    src: url(./Fonts/retro.ttf);
 }
 
 .section {

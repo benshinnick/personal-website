@@ -45,7 +45,7 @@ export default class InfoPanels extends React.Component {
         return (
             <div className='section'>
                 <div className='container'>
-                    <h2 id='greeting-text'>HI, I'M BEN!</h2>
+                    <p id='greeting-text'>HI, I'M BEN!</p>
                     <div className='about-panel'>
                         <div className='corner-scroll' id='top-right-corner'></div>
                         <div className='corner-scroll' id='bottom-right-corner'></div>
@@ -55,26 +55,14 @@ export default class InfoPanels extends React.Component {
                         <div id='left-side'></div>
                         <div id='info-panel'></div>
                         <div id='content'>
-                            <h2 id='about-text'>
-                            QUICK INTRODUCTION:<br></br>
-                            - STUDENT<br></br>
-                            - DEVELOPER<br></br>
-                            - GOALS<br></br>
-                            - INTERESTS<br></br>
+                            <p id='about-text'>
+                            I LIKE TO WORK ON PROJECTS THAT WILL IMPROVE THE LIVES OF OTHERS.<br></br>
                             <br></br>
-                            EDUCATION:<br></br>
-                            - CS @ UWF<br></br>
+                            IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
                             <br></br>
-                            QUICK INTRODUCTION:<br></br>
-                            - STUDENT<br></br>
-                            - DEVELOPER<br></br>
-                            - GOALS<br></br>
-                            - INTERESTS<br></br>
-                            <br></br>
-                            EDUCATION:<br></br>
-                            - CS @ UWF<br></br>
-                            <br></br>
-                            </h2>
+                            EDUCATION<br></br>
+                            CS - UWF<br></br>
+                            </p>
                         </div>
                     </div>
                     <div className='connect-panel'>
@@ -86,7 +74,7 @@ export default class InfoPanels extends React.Component {
                         <div id='left-side'></div>
                         <div id='divider'></div>
                         <div id='connect-info' className='default'>
-                            <h2 id='connect-text' className='black-text'>CONNECT WITH ME</h2>
+                            <p id='connect-text' className='black-text'>CONNECT WITH ME</p>
                             <div id='underline'></div>
                         </div>
                         <div id='info-panel'></div>
