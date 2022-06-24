@@ -56,9 +56,16 @@ export default class InfoPanels extends React.Component {
                         <div id='info-panel'></div>
                         <div id='content'>
                             <p id='about-text'>
-                            I LIKE TO WORK ON PROJECTS THAT WILL IMPROVE THE LIVES OF OTHERS.<br></br>
+                            {/* I like to work on projects that will improve the lives of others<br></br> */}
+                            <hr></hr>
+                            I LIKE TO WORK ON COOL PROJECTS.<br></br>
+                            <hr></hr>
                             <br></br>
+                            <br></br>
+                            {/* If you want to chat, don't hesitate to reach out!<br></br> */}
+                            <hr></hr>
                             IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
+                            <hr></hr>
                             <br></br>
                             EDUCATION<br></br>
                             CS - UWF<br></br>

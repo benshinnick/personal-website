@@ -209,8 +209,8 @@
     position: absolute;
     bottom: 13px;
     left: 0;
-    margin-left: calc((100% - 250px) / 2);
-    width: 250px;
+    margin-left: calc((100% - 260px) / 2);
+    width: 260px;
     height: 4px;
     background-color: white;
     /* opacity: 0; */
