@@ -16,28 +16,28 @@ export default class InfoPanels extends React.Component {
         else { document.getElementById('connect-info').className = 'default' }
         document.getElementById('connect-text').className = 'black-text'
         document.getElementById('underline').className = 'down'
-        document.getElementById('underline').style.bottom = '13px'
+        document.getElementById('underline').style.bottom = '17px'
         document.getElementById('underline').style.transform = 'scale(0, 1)';
     }
 
     changeConnectInfoToGithub() {
         document.getElementById('connect-info').className = 'github'
         document.getElementById('connect-text').className = 'white-text'
-        document.getElementById('underline').style.bottom = '18px'
+        document.getElementById('underline').style.bottom = '20px'
         document.getElementById('underline').style.transform = 'scale(1, 1)';
     }
 
     changeConnectInfoToLinkedIn() {
         document.getElementById('connect-info').className = 'linked-in'
         document.getElementById('connect-text').className = 'white-text'
-        document.getElementById('underline').style.bottom = '18px'
+        document.getElementById('underline').style.bottom = '20px'
         document.getElementById('underline').style.transform = 'scale(1, 1)';
     }
 
     changeConnectInfoToEmail() {
         document.getElementById('connect-info').className = 'email'
         document.getElementById('connect-text').className = 'white-text'
-        document.getElementById('underline').style.bottom = '18px'
+        document.getElementById('underline').style.bottom = '20px'
         document.getElementById('underline').style.transform = 'scale(1, 1)';
     }
 
@@ -58,9 +58,10 @@ export default class InfoPanels extends React.Component {
                             <p id='about-text'>
                             {/* I like to work on projects that will improve the lives of others<br></br> */}
                             <hr></hr>
-                            I LIKE TO WORK ON COOL PROJECTS.<br></br>
+                            SOMETIMES I WORK ON COOL PROJECTS.<br></br>
+                            {/* SOMETIMES I TRY TO WORK ON COOL PROJECTS.<br></br> */}
+                            {/* I LIKE TO WORK ON COOL PROJECTS.<br></br> */}
                             <hr></hr>
-                            <br></br>
                             <br></br>
                             {/* If you want to chat, don't hesitate to reach out!<br></br> */}
                             <hr></hr>

@@ -1,6 +1,5 @@
 #greeting-text {
     top: 75px;
-    font-weight: bold;
     right: calc(70vw - 225px);
     color: white;
     font-size: 22pt;
@@ -10,8 +9,8 @@
     white-space: nowrap;
     overflow: hidden;
     width: 8em;
-    font-weight: 1000;
-    -webkit-font-smoothing: subpixel-antialiased;
+    font-weight: 900;
+    -webkit-font-smoothing: none;
 }
 
 hr {
@@ -49,16 +48,17 @@ hr {
     line-height: 1.4;
     overflow-wrap: break-word;
     color: black;
-    font-size: 16pt;
+    font-size: 17pt;
     padding: 20px;
     padding-top: 0px;
-    /* position: fixed; */
-    /* font-family: 'Press Start 2P', cursive; */
-    -webkit-font-smoothing: subpixel-antialiased;
+    text-align: center;
+    -webkit-font-smoothing: none;
+    transform: translateZ(0.1px);
+    -moz-osx-font-smoothing: grayscale;
     font-family: 'pixel';
     letter-spacing: 1px;
     z-index: 1;
-    font-weight: 1000;
+    font-weight: 900;
 }
 
 /* Scrollbar styles */
@@ -116,7 +116,7 @@ hr {
 
 .about-panel #bottom-left-corner {
     transform: rotate(180deg);
-    right: calc(70vw - 4px);;
+    right: calc(70vw - 4px);
     bottom: 325px;
 }
 

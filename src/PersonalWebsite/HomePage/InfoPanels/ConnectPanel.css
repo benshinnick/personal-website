@@ -165,7 +165,7 @@
 }
 
 .connect-panel .default-email{
-    background: linear-gradient(to left, white 50%, #f4b400 50%);
+    background: linear-gradient(to left, white 50%, #F28C28 50%);
     background-position: right bottom;
 }
 
@@ -180,7 +180,7 @@
 }
 
 .connect-panel .email {
-    background: linear-gradient(to left, white 50%, #f4b400 50%);
+    background: linear-gradient(to left, white 50%, #F28C28 50%);
     background-position: left bottom;
 }
 
@@ -189,7 +189,7 @@
     /* margin-top: 25px; */
     text-align: center;
     /* color: black; */
-    font-size: 22pt;
+    font-size: 18pt;
     width: 100%;
     overflow: hidden;
     background-clip: text;
@@ -198,7 +198,9 @@
     white-space: pre;
     height: 55px;
     font-weight: 1000;
-    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    image-rendering: pixelated;
     
     background-size: 200% 100%;
     transition:  background-position 0.5s linear, margin-top 0.5s linear;
@@ -208,14 +210,12 @@
     content: '';
     position: absolute;
     bottom: 13px;
-    left: 0;
-    margin-left: calc((100% - 260px) / 2);
-    width: 260px;
-    height: 4px;
+    left: calc((100% - 220.5px) / 2);
+    width: 220px;
+    height: 1mm;
     background-color: white;
-    /* opacity: 0; */
     transform-origin: center;
-    transition: bottom 0.5s linear, opacity 0.5s, transform 0.5s;
+    transition: bottom 0.5s linear, transform 0.5s linear;
 }
 
 .connect-panel #connect-info .black-text {
@@ -225,7 +225,7 @@
 }
 
 .connect-panel #connect-info .white-text {
-    margin-top: 20px;
+    margin-top: 22px;
     background: linear-gradient(to left, black 50%, white 50%);
     background-position: left bottom;
 }
