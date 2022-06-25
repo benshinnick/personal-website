@@ -27,7 +27,7 @@ hr {
 
 .about-panel #content {
     top: 144px;
-    left: calc(30vw - 27px);
+    right: calc(30vw - 12px);
     width: calc(40vw + 24px);
     height: calc(100vh - 473px);
     line-height: 1.4;
@@ -51,6 +51,7 @@ hr {
     font-size: 17pt;
     padding: 20px;
     padding-top: 0px;
+    padding-bottom: 0px;
     text-align: center;
     -webkit-font-smoothing: none;
     transform: translateZ(0.1px);
@@ -63,7 +64,7 @@ hr {
 
 /* Scrollbar styles */
 .about-panel #content::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
     height: 10px;
 }
     

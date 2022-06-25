@@ -58,18 +58,30 @@ export default class InfoPanels extends React.Component {
                             <p id='about-text'>
                             {/* I like to work on projects that will improve the lives of others<br></br> */}
                             <hr></hr>
-                            SOMETIMES I WORK ON COOL PROJECTS.<br></br>
+                            ONE SENTENCE INTORODUCTION<br></br>
                             {/* SOMETIMES I TRY TO WORK ON COOL PROJECTS.<br></br> */}
                             {/* I LIKE TO WORK ON COOL PROJECTS.<br></br> */}
                             <hr></hr>
-                            <br></br>
-                            {/* If you want to chat, don't hesitate to reach out!<br></br> */}
                             <hr></hr>
                             IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
                             <hr></hr>
                             <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            {/* If you want to chat, don't hesitate to reach out!<br></br> */}
+                            {/* <hr></hr>
                             EDUCATION<br></br>
                             CS - UWF<br></br>
+                            <hr></hr> */}
                             </p>
                         </div>
                     </div>
