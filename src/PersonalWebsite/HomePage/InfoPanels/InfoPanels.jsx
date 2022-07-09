@@ -47,15 +47,15 @@ export default class InfoPanels extends React.Component {
                 <div className='container'>
                     <p id='greeting-text'>HI, I'M BEN!</p>
                     <div className='about-panel'>
-                        <div className='corner-scroll' id='top-right-corner'></div>
-                        <div className='corner-scroll' id='bottom-right-corner'></div>
+                        <div className='corner' id='top-right-corner'></div>
+                        <div className='corner' id='bottom-right-corner'></div>
                         <div className='corner' id='bottom-left-corner'></div>
                         <div className='corner' id='top-left-corner'></div>
                         <div id='right-side'></div>
                         <div id='left-side'></div>
                         <div id='info-panel'></div>
                         <div id='content'>
-                            <p id='about-text'>
+                            <div id='about-text'>
                             {/* I like to work on projects that will improve the lives of others<br></br> */}
                             <hr></hr>
                             ONE SENTENCE INTORODUCTION<br></br>
@@ -65,24 +65,12 @@ export default class InfoPanels extends React.Component {
                             <hr></hr>
                             IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
                             <hr></hr>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
                             {/* If you want to chat, don't hesitate to reach out!<br></br> */}
                             {/* <hr></hr>
                             EDUCATION<br></br>
                             CS - UWF<br></br>
                             <hr></hr> */}
-                            </p>
+                            </div>
                         </div>
                     </div>
                     <div className='connect-panel'>

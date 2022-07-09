@@ -40,7 +40,6 @@ hr {
     z-index: 1;
     /* border: 1px solid red; */
     background-color: white;
-    overflow-y: scroll;
 }
 
 .about-panel #about-text {
@@ -90,15 +89,6 @@ hr {
     z-index: 2;
 }
 
-.about-panel .corner-scroll {
-    position: fixed;
-    background-image: url(./Sprites/corner-scroll-bar.png);
-    width: 18px;
-    height: 16px;
-    image-rendering: pixelated;
-    z-index: 2;
-}
-
 .about-panel #top-right-corner {
     transform: rotate(0deg);
     right: -16px;
@@ -108,7 +98,7 @@ hr {
 }
 
 .about-panel #bottom-right-corner {
-    transform: rotateX(180deg);
+    transform: rotate(90deg);
     right: -16px;
     margin-right: 30vw;
     bottom: 325px;
@@ -127,7 +117,7 @@ hr {
     top: 140px;
 }
 
-.about-panel #right-side {
+.about-panel #left-side {
     position: fixed;
     border-left: 4px solid #e5e5e5;
     width: 12px;
@@ -136,24 +126,23 @@ hr {
     height: calc(100vh - 497px);
     right: 70vw;
     top: 140px;
-    background-color: white;
+    background-color: transparent;
     z-index: 1;
 }
 
-.about-panel #left-side {
+.about-panel #right-side {
     position: fixed;
     border-right: 4px solid #e5e5e5;
-    border-left: 4px solid #e5e5e5;
-    width: 10px;
+    width: 12px;
     margin-top: 16px;
     margin-bottom: 16px;
     height: calc(100vh - 497px);
     top: 140px;
-    padding: -32px;
+    padding:0;
     right: -16px;
     margin-right: 30vw;
     background-color: transparent;
-    z-index: 2;
+    z-index: 1;
     pointer-events: none;
 }
 
