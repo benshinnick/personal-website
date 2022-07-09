@@ -38,31 +38,57 @@ hr {
     letter-spacing: 1px;
     overflow: hidden;
     z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
     /* border: 1px solid red; */
     background-color: white;
 }
 
-.about-panel #about-text {
+.about-panel #about-text-top {
     margin: 0;
-    line-height: 1.4;
+    width: 100%;
     overflow-wrap: break-word;
     color: black;
-    font-size: 17pt;
+    font-size: 18pt;
     padding: 20px;
     padding-top: 0px;
     padding-bottom: 0px;
     text-align: center;
     -webkit-font-smoothing: none;
-    transform: translateZ(0.1px);
     -moz-osx-font-smoothing: grayscale;
     font-family: 'pixel';
     letter-spacing: 1px;
     z-index: 1;
     font-weight: 900;
+    display: inline-block;
+    align-self: flex-start;
+}
+
+.about-panel #about-text-bottom {
+    margin: 0;
+    width: 100%;
+    overflow-wrap: break-word;
+    color: black;
+    font-size: 18pt;
+    padding: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    text-align: center;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'pixel';
+    letter-spacing: 1px;
+    z-index: 1;
+    font-weight: 900;
+    /* position: absolute;
+    bottom: 0px; */
+    display: inline-block;
+    align-self: flex-end;
 }
 
 /* Scrollbar styles */
-.about-panel #content::-webkit-scrollbar {
+/* .about-panel #content::-webkit-scrollbar {
     width: 12px;
     height: 10px;
 }
@@ -78,7 +104,7 @@ hr {
     
 .about-panel #content::-webkit-scrollbar-thumb:hover {
     background: #5a6268;  
-}
+} */
 
 .about-panel .corner {
     position: fixed;
