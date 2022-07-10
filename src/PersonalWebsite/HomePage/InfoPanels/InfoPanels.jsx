@@ -79,8 +79,7 @@ export default class InfoPanels extends React.Component {
                             <div className='corner' id='bottom-right-corner'></div>
                             <div className='corner' id='bottom-left-corner'></div>
                             <div className='corner' id='top-left-corner'></div>
-                            <div id='right-side'></div>
-                            <div id='left-side'></div>
+                            <div className='sides'></div>
                             <div id='divider'></div>
                             <div id='connect-info' className='default'>
                                 <p id='connect-text' className='black-text'>CONNECT WITH ME</p>
