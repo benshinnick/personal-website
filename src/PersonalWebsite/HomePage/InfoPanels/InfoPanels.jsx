@@ -1,4 +1,5 @@
 import React from 'react';
+import './InfoPanels.css';
 import './AboutPanel.css';
 import './ConnectPanel.css';
 
@@ -45,59 +46,67 @@ export default class InfoPanels extends React.Component {
         return (
             <div className='section'>
                 <div className='container'>
-                    <p id='greeting-text'>HI, I'M BEN!</p>
-                    <div className='about-panel'>
-                        <div className='corner' id='top-right-corner'></div>
-                        <div className='corner' id='bottom-right-corner'></div>
-                        <div className='corner' id='bottom-left-corner'></div>
-                        <div className='corner' id='top-left-corner'></div>
-                        <div id='right-side'></div>
-                        <div id='left-side'></div>
-                        <div id='info-panel'></div>
-                        <div id='content'>
-                            <div id='about-text-top'>
-                                {/* I like to work on projects that will improve the lives of others<br></br> */}
-                                <hr></hr>
-                                ONE SENTENCE INTORODUCTION<br></br>
-                                {/* SOMETIMES I TRY TO WORK ON COOL PROJECTS.<br></br> */}
-                                {/* I LIKE TO WORK ON COOL PROJECTS.<br></br> */}
-                                <hr></hr>
-                            </div>
-                            <div id='about-text-bottom'>
-                                <hr></hr>
-                                IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
-                                <hr></hr>
-                                {/* If you want to chat, don't hesitate to reach out!<br></br> */}
-                                {/* <hr></hr>
-                                EDUCATION<br></br>
-                                CS - UWF<br></br>
-                                <hr></hr> */}
+                    <div id='info-panels'>
+
+                        <p id='greeting-text'>HI, I'M BEN!</p>
+
+                        <div className='text-panel' id='about-panel'>
+                            <div className='corner' id='top-right-corner'></div>
+                            <div className='corner' id='bottom-right-corner'></div>
+                            <div className='corner' id='bottom-left-corner'></div>
+                            <div className='corner' id='top-left-corner'></div>
+                            <div className='sides'></div>
+                            <hr></hr>
+                                <div className='info-text'>
+                                I WILL ADD A ONE SENTENCE INTRODUCTION HERE LATER<br></br>
+                                </div>
+                            <hr></hr>
+                        </div>
+
+                        <div className='text-panel' id='reach-out-panel'>
+                            <div className='corner' id='top-right-corner'></div>
+                            <div className='corner' id='bottom-right-corner'></div>
+                            <div className='corner' id='bottom-left-corner'></div>
+                            <div className='corner' id='top-left-corner'></div>
+                            <div className='sides'></div>
+                            <div className='info-text' id='reach-out-text'>
+                            IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
                             </div>
                         </div>
-                    </div>
-                    <div className='connect-panel'>
-                        <div className='corner' id='top-right-corner'></div>
-                        <div className='corner' id='bottom-right-corner'></div>
-                        <div className='corner' id='bottom-left-corner'></div>
-                        <div className='corner' id='top-left-corner'></div>
-                        <div id='right-side'></div>
-                        <div id='left-side'></div>
-                        <div id='divider'></div>
-                        <div id='connect-info' className='default'>
-                            <p id='connect-text' className='black-text'>CONNECT WITH ME</p>
-                            <div id='underline'></div>
-                        </div>
-                        <div id='info-panel'></div>
-                        <div id='link-icons'>
-                            <a id='github-icon' className='icon' onMouseOver={this.changeConnectInfoToGithub} onMouseLeave={this.changeConnectInfoToDefault} href='https://github.com/benshinnick'>
-                                <span>Personal GitHub Page</span>
-                            </a>
-                            <a id='linked-in-icon' className='icon' onMouseOver={this.changeConnectInfoToLinkedIn} onMouseLeave={this.changeConnectInfoToDefault} href='https://www.linkedin.com/'>
-                                <span>Personal LinkedIn Page</span>
-                            </a>
-                            <a id='email-icon' className='icon' onMouseOver={this.changeConnectInfoToEmail} onMouseLeave={this.changeConnectInfoToDefault} href="mailto:shinnickbenjamin@gmail.com">
-                                <span>Personal Email Link</span>
-                            </a>
+
+                        <div className='connect-panel'>
+                            <div className='corner' id='top-right-corner'></div>
+                            <div className='corner' id='bottom-right-corner'></div>
+                            <div className='corner' id='bottom-left-corner'></div>
+                            <div className='corner' id='top-left-corner'></div>
+                            <div id='right-side'></div>
+                            <div id='left-side'></div>
+                            <div id='divider'></div>
+                            <div id='connect-info' className='default'>
+                                <p id='connect-text' className='black-text'>CONNECT WITH ME</p>
+                                <div id='underline'></div>
+                            </div>
+                            <div id='info-panel'></div>
+                            <div id='link-icons'>
+                                <a id='github-icon' className='icon'
+                                    onMouseOver={this.changeConnectInfoToGithub}
+                                    onMouseLeave={this.changeConnectInfoToDefault}
+                                    href='https://github.com/benshinnick'>
+                                    <span>Personal GitHub Page</span>
+                                </a>
+                                <a id='linked-in-icon' className='icon'
+                                    onMouseOver={this.changeConnectInfoToLinkedIn}
+                                    onMouseLeave={this.changeConnectInfoToDefault}
+                                    href='https://www.linkedin.com/'>
+                                    <span>Personal LinkedIn Page</span>
+                                </a>
+                                <a id='email-icon' className='icon'
+                                    onMouseOver={this.changeConnectInfoToEmail}
+                                    onMouseLeave={this.changeConnectInfoToDefault}
+                                    href="mailto:shinnickbenjamin@gmail.com">
+                                    <span>Personal Email Link</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

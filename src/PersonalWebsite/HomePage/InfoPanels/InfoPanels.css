@@ -1,0 +1,10 @@
+#info-panels {
+    position: fixed;
+    top: 75px;
+    height: fit-content;
+    /* border: 1px solid red; */
+
+    top: 144px;
+    right: calc(30vw - 8px);
+    width: calc(40vw + 16px);
+}

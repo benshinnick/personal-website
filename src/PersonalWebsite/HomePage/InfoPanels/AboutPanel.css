@@ -1,9 +1,7 @@
 #greeting-text {
-    top: 75px;
-    right: calc(70vw - 225px);
+    margin: 0;
     color: white;
     font-size: 22pt;
-    position: fixed;
     letter-spacing: 3px;
     font-family: 'pixel';
     white-space: nowrap;
@@ -11,13 +9,17 @@
     width: 8em;
     font-weight: 900;
     -webkit-font-smoothing: none;
+    position: relative;
 }
 
 hr {
+    width: 100%;
+    margin: 8px;
+    margin-right: 16px;
+    margin-left: 16px;
     height: 4px;
-    background: #e3e3e3;
+    background: #e5e5e5;
     border: none;
-    /* border: 2px solid #e3e3e3; */
 }
 
 @keyframes type {
@@ -25,160 +27,92 @@ hr {
     /* to { opacity: 1; top: calc(20vh - 40px); } */
 }
 
-.about-panel #content {
-    top: 144px;
-    right: calc(30vw - 12px);
-    width: calc(40vw + 24px);
-    height: calc(100vh - 473px);
-    line-height: 1.4;
+.text-panel {
+    width: calc(40vw + 16px);
+    position: relative;
+
+    border: 4px solid #e5e5e5;
+    border-width: 4px 0px;
+
     overflow-wrap: break-word;
     color: black;
-    position: fixed;
-    font-family: 'pixel';
-    letter-spacing: 1px;
-    overflow: hidden;
     z-index: 1;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
-    /* border: 1px solid red; */
     background-color: white;
 }
 
-.about-panel #about-text-top {
-    margin: 0;
+#about-panel {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+#reach-out-panel {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+#reach-out-text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sides {
+    top: 0;
+    right: -4px;
     width: 100%;
-    overflow-wrap: break-word;
-    color: black;
+    height: 100%;
+
+    position: absolute;
+    z-index: 0;
+
+    border: 4px solid #e5e5e5;
+    border-width: 0px 4px;
+}
+
+.info-text {
     font-size: 18pt;
-    padding: 20px;
-    padding-top: 0px;
-    padding-bottom: 0px;
     text-align: center;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: 'pixel';
-    letter-spacing: 1px;
-    z-index: 1;
     font-weight: 900;
-    display: inline-block;
-    align-self: flex-start;
-}
-
-.about-panel #about-text-bottom {
-    margin: 0;
-    width: 100%;
-    overflow-wrap: break-word;
-    color: black;
-    font-size: 18pt;
-    padding: 20px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    text-align: center;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
     font-family: 'pixel';
+    line-height: 1.4;
     letter-spacing: 1px;
-    z-index: 1;
-    font-weight: 900;
-    /* position: absolute;
-    bottom: 0px; */
-    display: inline-block;
-    align-self: flex-end;
+    margin-left: 12%;
+    margin-right: 12%;
 }
 
-/* Scrollbar styles */
-/* .about-panel #content::-webkit-scrollbar {
-    width: 12px;
-    height: 10px;
-}
-    
-.about-panel #content::-webkit-scrollbar-track {
-    border-radius: 0px;
-}
-    
-.about-panel #content::-webkit-scrollbar-thumb {
-    background: #6c757d;  
-    border-radius: 0px;
-}
-    
-.about-panel #content::-webkit-scrollbar-thumb:hover {
-    background: #5a6268;  
-} */
-
-.about-panel .corner {
-    position: fixed;
+.text-panel .corner {
+    position: absolute;
     background-image: url(./Sprites/corner-light.png);
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
     image-rendering: pixelated;
     z-index: 2;
 }
 
-.about-panel #top-right-corner {
+.text-panel #top-right-corner {
     transform: rotate(0deg);
-    right: -16px;
-    margin-right: 30vw;
-    top: 140px;
+    right: 0px;
+    top: 0px;
     pointer-events: none;
 }
 
-.about-panel #bottom-right-corner {
+.text-panel #bottom-right-corner {
     transform: rotate(90deg);
-    right: -16px;
-    margin-right: 30vw;
-    bottom: 325px;
+    right: 0px;
+    bottom: 0px;
     pointer-events: none;
 }
 
-.about-panel #bottom-left-corner {
+.text-panel #bottom-left-corner {
     transform: rotate(180deg);
-    right: calc(70vw - 4px);
-    bottom: 325px;
+    left: 0;
+    bottom: 0;
 }
 
-.about-panel #top-left-corner {
+.text-panel #top-left-corner {
     transform: rotate(270deg);
-    right: calc(70vw - 4px);
-    top: 140px;
-}
-
-.about-panel #left-side {
-    position: fixed;
-    border-left: 4px solid #e5e5e5;
-    width: 12px;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    height: calc(100vh - 497px);
-    right: 70vw;
-    top: 140px;
-    background-color: transparent;
-    z-index: 1;
-}
-
-.about-panel #right-side {
-    position: fixed;
-    border-right: 4px solid #e5e5e5;
-    width: 12px;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    height: calc(100vh - 497px);
-    top: 140px;
-    padding:0;
-    right: -16px;
-    margin-right: 30vw;
-    background-color: transparent;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.about-panel #info-panel {
-    position: fixed;
-    right: 30vw;
-    top: 140px;
-    width: 40vw;
-    height: calc(100vh - 465px);
-    background-color: white;
-    box-shadow: inset 0px 4px 0px 0px #e5e5e5, inset 0px -4px 0px 0px #e5e5e5;
-    z-index: 1;
+    left: 0;
+    top: 0;
 }
