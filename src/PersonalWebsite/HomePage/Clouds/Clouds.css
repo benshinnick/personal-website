@@ -39,16 +39,16 @@
 }
 
 @keyframes move-small {
-    from {left: -279px; }
+    from {left: -184px; }
     to { left: 100%; }
 }
 
 @keyframes move-medium {
-    from {left: -449px; }
+    from {left: -296px; }
     to { left: 100%; }
 }
 
 @keyframes move-large {
-    from {left: -635px; }
+    from {left: -420px; }
     to { left: 100%; }
 }
