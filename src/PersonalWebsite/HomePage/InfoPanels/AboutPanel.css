@@ -1,7 +1,7 @@
 #greeting-text {
     margin: 0;
     color: white;
-    font-size: 22pt;
+    font-size: 24pt;
     letter-spacing: 3px;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     white-space: nowrap;
@@ -10,6 +10,11 @@
     font-weight: 600;
     -webkit-font-smoothing: none;
     position: relative;
+}
+
+_::-webkit-full-page-media, _:future, :root #greeting-text {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 hr {
@@ -75,12 +80,17 @@ hr {
 .info-text {
     font-size: 18pt;
     text-align: center;
-    font-weight: 600;
+    font-weight: 900;
     font-family: 'pixel';
     line-height: 1.4;
     letter-spacing: 1px;
     margin-left: 12%;
     margin-right: 12%;
+}
+
+_::-webkit-full-page-media, _:future, :root .info-text {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .text-panel .corner {

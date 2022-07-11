@@ -1,14 +1,11 @@
 #info-panels {
     position: fixed;
     height: fit-content;
-    /* border: 1px solid red; */
-
-    /* margin: auto; */
+    
     position: fixed;
     top: 50%;
     transform: translate(0, -50%);
     
-    /* top: 25vh; */
     right: calc(30vw - 8px);
     width: calc(40vw + 16px);
 }
