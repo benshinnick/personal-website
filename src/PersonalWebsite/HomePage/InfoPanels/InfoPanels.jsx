@@ -7,6 +7,7 @@ export default class InfoPanels extends React.Component {
 
     componentDidMount() {
         this.changeConnectInfoToDefault()
+        this.updateTextRendering()
     }
 
     changeConnectInfoToDefault() {
@@ -40,6 +41,23 @@ export default class InfoPanels extends React.Component {
         document.getElementById('connect-text').className = 'white-text'
         document.getElementById('underline').style.bottom = '20px'
         document.getElementById('underline').style.transform = 'scale(1, 1)';
+    }
+
+    updateTextRendering() {
+        let greetingText = document.getElementById('greeting-text')
+        let aboutPanel = document.getElementById('about-panel')
+        let reachOutPanel = document.getElementById('reach-out-panel')
+        let connectText = document.getElementById('connect-text')
+
+        var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
+        const textCss =  '-webkit-font-smoothing: subpixel-antialiased;-moz-osx-font-smoothing: grayscale;'
+
+        if (isSafari) {
+            greetingText.style.cssText = textCss
+            aboutPanel.style.cssText = textCss
+            reachOutPanel.style.cssText = textCss
+            connectText.style.cssText = textCss
+        }
     }
 
     render() {
