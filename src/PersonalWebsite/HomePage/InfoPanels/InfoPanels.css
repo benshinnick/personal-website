@@ -3,8 +3,8 @@
     height: fit-content;
     
     position: fixed;
-    top: 50%;
-    transform: translate(0, -50%);
+    top: 45%;
+    transform: translate(0, -45%);
     
     right: calc(30vw - 8px);
     width: calc(40vw + 16px);
