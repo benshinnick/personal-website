@@ -8,7 +8,6 @@ export default class InfoPanels extends React.Component {
     componentDidMount() {
         this.changeConnectInfoToDefault()
         this.typeGreetingText()
-        this.typeIntroText()
     }
 
     typeGreetingText() {
@@ -17,25 +16,11 @@ export default class InfoPanels extends React.Component {
             if(greetingText.charAt(i) === ' ') {
                 setTimeout(() => {
                     document.getElementById('greeting-text').innerHTML = document.getElementById('greeting-text').innerHTML + greetingText.charAt(i)
-                }, (i-1) * 100)
+                }, (i) * 150)
             }
             setTimeout(() => {
                 document.getElementById('greeting-text').innerHTML = document.getElementById('greeting-text').innerHTML + greetingText.charAt(i)
-            }, i * 100)
-        }
-    }
-
-    typeIntroText() {
-        let greetingText = 'I WILL ADD A ONE SENTENCE INTRODUCTION HERE LATER'
-        for(let i = 0; i < greetingText.length; ++i) {
-            if(greetingText.charAt(i) === ' ') {
-                setTimeout(() => {
-                    document.getElementById('intro-text').innerHTML = document.getElementById('intro-text').innerHTML + greetingText.charAt(i)
-                }, (i-1) * 75)
-            }
-            setTimeout(() => {
-                document.getElementById('intro-text').innerHTML = document.getElementById('intro-text').innerHTML + greetingText.charAt(i)
-            }, i * 75)
+            }, (i+1) * 150)
         }
     }
 
@@ -88,6 +73,7 @@ export default class InfoPanels extends React.Component {
                             <div className='sides'></div>
                             <hr></hr>
                                 <div className='info-text' id='intro-text'>
+                                I WILL ADD A ONE SENTENCE INTRODUCTION HERE LATER
                                 </div>
                             <hr></hr>
                         </div>
@@ -99,7 +85,7 @@ export default class InfoPanels extends React.Component {
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
                             <div className='info-text' id='reach-out-text'>
-                            IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
+                                IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
                             </div>
                         </div>
 
