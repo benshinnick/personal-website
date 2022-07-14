@@ -27,11 +27,6 @@ hr {
     border: none;
 }
 
-@keyframes type {
-    from { width: 0; }
-    /* to { opacity: 1; top: calc(20vh - 40px); } */
-}
-
 .text-panel {
     width: calc(40vw + 16px);
     position: relative;

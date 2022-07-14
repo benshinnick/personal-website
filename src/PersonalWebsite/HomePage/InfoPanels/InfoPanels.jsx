@@ -7,6 +7,36 @@ export default class InfoPanels extends React.Component {
 
     componentDidMount() {
         this.changeConnectInfoToDefault()
+        this.typeGreetingText()
+        this.typeIntroText()
+    }
+
+    typeGreetingText() {
+        let greetingText = 'HI, I\'M BEN!'
+        for(let i = 0; i < greetingText.length; ++i) {
+            if(greetingText.charAt(i) === ' ') {
+                setTimeout(() => {
+                    document.getElementById('greeting-text').innerHTML = document.getElementById('greeting-text').innerHTML + greetingText.charAt(i)
+                }, (i-1) * 100)
+            }
+            setTimeout(() => {
+                document.getElementById('greeting-text').innerHTML = document.getElementById('greeting-text').innerHTML + greetingText.charAt(i)
+            }, i * 100)
+        }
+    }
+
+    typeIntroText() {
+        let greetingText = 'I WILL ADD A ONE SENTENCE INTRODUCTION HERE LATER'
+        for(let i = 0; i < greetingText.length; ++i) {
+            if(greetingText.charAt(i) === ' ') {
+                setTimeout(() => {
+                    document.getElementById('intro-text').innerHTML = document.getElementById('intro-text').innerHTML + greetingText.charAt(i)
+                }, (i-1) * 75)
+            }
+            setTimeout(() => {
+                document.getElementById('intro-text').innerHTML = document.getElementById('intro-text').innerHTML + greetingText.charAt(i)
+            }, i * 75)
+        }
     }
 
     changeConnectInfoToDefault() {
@@ -48,7 +78,7 @@ export default class InfoPanels extends React.Component {
                 <div className='container'>
                     <div id='info-panels'>
 
-                        <p id='greeting-text'>HI, I'M BEN!</p>
+                        <p id='greeting-text'></p>
 
                         <div className='text-panel' id='about-panel'>
                             <div className='corner' id='top-right-corner'></div>
@@ -57,8 +87,7 @@ export default class InfoPanels extends React.Component {
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
                             <hr></hr>
-                                <div className='info-text'>
-                                I WILL ADD A ONE SENTENCE INTRODUCTION HERE LATER<br></br>
+                                <div className='info-text' id='intro-text'>
                                 </div>
                             <hr></hr>
                         </div>
