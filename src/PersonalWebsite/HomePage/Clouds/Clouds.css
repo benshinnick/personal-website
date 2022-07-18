@@ -19,7 +19,7 @@
     background-image: url(./CloudSprites/medium-cloud.png);
     width: 296px;
     height: 60px;
-    bottom: 20px;
+    bottom: 18px;
     filter: drop-shadow(0 0 2px rgb(235, 235, 235));
     animation-name: move-medium;
     animation-timing-function: linear;
