@@ -7,6 +7,21 @@ export default class InfoPanels extends React.Component {
 
     componentDidMount() {
         this.changeConnectInfoToDefault()
+        this.typeGreetingText()
+    }
+
+    typeGreetingText() {
+        let greetingText = 'HI, I\'M BEN!'
+        for(let i = 0; i < greetingText.length; ++i) {
+            if(greetingText.charAt(i) === ' ') {
+                setTimeout(() => {
+                    document.getElementById('greeting-text').innerHTML = document.getElementById('greeting-text').innerHTML + greetingText.charAt(i)
+                }, (i) * 150)
+            }
+            setTimeout(() => {
+                document.getElementById('greeting-text').innerHTML = document.getElementById('greeting-text').innerHTML + greetingText.charAt(i)
+            }, (i+1) * 150)
+        }
     }
 
     changeConnectInfoToDefault() {
@@ -48,7 +63,7 @@ export default class InfoPanels extends React.Component {
                 <div className='container'>
                     <div id='info-panels'>
 
-                        <p id='greeting-text'>HI, I'M BEN!</p>
+                        <p id='greeting-text'></p>
 
                         <div className='text-panel' id='about-panel'>
                             <div className='corner' id='top-right-corner'></div>
@@ -57,8 +72,8 @@ export default class InfoPanels extends React.Component {
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
                             <hr></hr>
-                                <div className='info-text'>
-                                I WILL ADD A ONE SENTENCE INTRODUCTION HERE LATER<br></br>
+                                <div className='info-text' id='intro-text'>
+                                I WILL ADD A ONE SENTENCE INTRODUCTION HERE LATER
                                 </div>
                             <hr></hr>
                         </div>
@@ -70,7 +85,7 @@ export default class InfoPanels extends React.Component {
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
                             <div className='info-text' id='reach-out-text'>
-                            IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
+                                IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
                             </div>
                         </div>
 

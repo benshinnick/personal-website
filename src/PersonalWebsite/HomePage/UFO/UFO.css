@@ -1,7 +1,7 @@
 #ufo {
     background-image: url(./ufo.png);
     bottom: 135px;
-    right: calc(70vw - 63px);
+    right: calc(70vw - 79px);
     width: 95px;
     height: 35px;
     position: fixed;

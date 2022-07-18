@@ -38,5 +38,8 @@ function adjust_filler_size() {
     document.getElementById('filler').style.height = `${window.innerHeight*3.3}px`
     var ufo = document.getElementById('ufo');
     ufo.style.animation = 'none';
-    ufo.style.animation = '25s linear 1s infinite alternate shift'
+    setTimeout(() => {
+        ufo.style.animation = '25s linear 1s infinite alternate shift'
+    }, 25)
+
 }

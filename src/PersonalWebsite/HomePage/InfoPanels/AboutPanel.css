@@ -7,6 +7,7 @@
     white-space: nowrap;
     overflow: hidden;
     width: 8em;
+    height:  35px;
     font-weight: 600;
     -webkit-font-smoothing: none;
     position: relative;
@@ -25,11 +26,6 @@ hr {
     height: 4px;
     background: #e5e5e5;
     border: none;
-}
-
-@keyframes type {
-    from { width: 0; }
-    /* to { opacity: 1; top: calc(20vh - 40px); } */
 }
 
 .text-panel {

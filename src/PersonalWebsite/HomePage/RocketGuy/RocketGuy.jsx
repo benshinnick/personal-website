@@ -78,7 +78,11 @@ export default class RocketGuy extends React.Component {
     handleScroll() {
         var rocketGuy = getRocketGuyElement()
         var currScrollYPos = window.scrollY
-        var spriteYPos = currScrollYPos/2.5
+        var spriteYPos = currScrollYPos/2.5 + 50
+
+        if (currScrollYPos <= 0) {
+            console.log('top')
+        }
 
         if(lastScrollYPos > currScrollYPos)
             if(!isFlyingUpAnimated(rocketGuy))

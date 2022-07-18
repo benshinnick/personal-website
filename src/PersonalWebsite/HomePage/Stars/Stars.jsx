@@ -2,8 +2,8 @@ import React from 'react';
 import './Stars.css';
 
 const NUM_FRAMES = 12;
-const ANIMATION_SPEED_MS = 500
-const NUM_STARS = 3
+const ANIMATION_SPEED_MS = 750
+const NUM_STARS = 6
 
 export default class Stars extends React.Component {
 
@@ -32,6 +32,9 @@ export default class Stars extends React.Component {
         if(starNum === 1) return 900
         else if (starNum === 2) return 804
         else if (starNum === 3) return 1068
+        else if (starNum === 4) return 528
+        else if (starNum === 5) return 816
+        else if (starNum === 6) return 720
     }
 
     render() {
@@ -40,6 +43,9 @@ export default class Stars extends React.Component {
                 <div className='sprite star' id='star-1'></div>
                 <div className='sprite star' id='star-2'></div>
                 <div className='sprite star' id='star-3'></div>
+                <div className='sprite star' id='star-4'></div>
+                <div className='sprite star' id='star-5'></div>
+                <div className='sprite star' id='star-6'></div>
             </div>
         );
     }

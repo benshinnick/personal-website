@@ -22,8 +22,32 @@
 
 #star-3 {
     height: 88px;
-    width: 89px;
+    width: 88px;
     right: 6vw;
     top: 30vh;
     background-image: url(./StarSprites/star-3.png);
+}
+
+#star-4 {
+    height: 44px;
+    width: 44px;
+    left: 3vw;
+    top: 35vh;
+    background-image: url(./StarSprites/star-4.png);
+}
+
+#star-5 {
+    height: 67px;
+    width: 68px;
+    right: calc(70vw + 68px);
+    bottom: 30vh;
+    background-image: url(./StarSprites/star-5.png);
+}
+
+#star-6 {
+    height: 60px;
+    width: 60px;
+    left: 20vw;
+    top: 10vh;
+    background-image: url(./StarSprites/star-6.png);
 }
