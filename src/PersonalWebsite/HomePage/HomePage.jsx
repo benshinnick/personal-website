@@ -10,8 +10,19 @@ import Stars from './Stars/Stars';
 import UFO from './UFO/UFO';
 
 export default class HomePage extends React.Component {
+
     componentDidMount() {
-        window.scrollTo(0, 700);
+        window.addEventListener('scroll', this.handleScroll)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll)
+    }
+
+    handleScroll() {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            console.log('arrived at bottom')
+        }
     }
 
     render() {

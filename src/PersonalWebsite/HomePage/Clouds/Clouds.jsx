@@ -19,7 +19,8 @@ export default class Clouds extends React.Component {
             while (smallClouds.firstChild) { smallClouds.removeChild(smallClouds.firstChild) }
             for(let i = 0; i < numSmall; ++i) {
                 let smallCloud = document.createElement('div')
-                smallCloud.className = 'sprite cloud small' 
+                if (i % 2 === 0) {smallCloud.className = 'sprite cloud small even'}
+                else {smallCloud.className = 'sprite cloud small'}
                 smallCloud.style.animationDuration = `${numSmall * 10}s`
                 smallCloud.style.animationDelay = `${-i * 10}s`
                 smallClouds.appendChild(smallCloud)
@@ -31,7 +32,8 @@ export default class Clouds extends React.Component {
             while (mediumClouds.firstChild) { mediumClouds.removeChild(mediumClouds.firstChild); }
             for(let i = 0; i < numMedium; ++i) {
                 let mediumCloud = document.createElement('div')
-                mediumCloud.className = 'sprite cloud medium' 
+                if (i % 2 === 0) {mediumCloud.className = 'sprite cloud medium even'}
+                else {mediumCloud.className = 'sprite cloud medium'}
                 mediumCloud.style.animationDuration = `${numMedium * 15}s`
                 mediumCloud.style.animationDelay = `${-i * 15}s`
                 mediumClouds.appendChild(mediumCloud)
@@ -43,7 +45,8 @@ export default class Clouds extends React.Component {
             while (largeClouds.firstChild) { largeClouds.removeChild(largeClouds.firstChild); }
             for(let i = 0; i < numLarge; ++i) {
                 let largeCloud = document.createElement('div')
-                largeCloud.className = 'sprite cloud large' 
+                if (i % 2 === 0) {largeCloud.className = 'sprite cloud large even'}
+                else {largeCloud.className = 'sprite cloud large'}
                 largeCloud.style.animationDuration = `${numLarge * 30}s`
                 largeCloud.style.animationDelay = `${-i * 30}s`
                 largeClouds.appendChild(largeCloud)

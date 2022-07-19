@@ -7,7 +7,7 @@
     background-image: url(./CloudSprites/small-cloud.png);
     width: 184px;
     height: 52px;
-    bottom: 0; 
+    bottom: -4px; 
     filter: drop-shadow(0 0 2px rgb(235, 235, 235));
     animation-name: move-small;
     animation-timing-function: linear;
@@ -19,7 +19,7 @@
     background-image: url(./CloudSprites/medium-cloud.png);
     width: 296px;
     height: 60px;
-    bottom: 18px;
+    bottom: 12px;
     filter: drop-shadow(0 0 2px rgb(235, 235, 235));
     animation-name: move-medium;
     animation-timing-function: linear;
@@ -31,11 +31,15 @@
     background-image: url(./CloudSprites/large-cloud.png);
     width: 420px;
     height: 60px;
-    bottom: 45px;
+    bottom: 37px;
     animation-name: move-large;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     z-index: 1;
+}
+
+.even {
+    margin-bottom: 4px;
 }
 
 @keyframes move-small {
