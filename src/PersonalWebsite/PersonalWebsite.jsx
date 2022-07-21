@@ -12,6 +12,7 @@ export default class PersonalWebsite extends React.Component {
         this.navBarRef = React.createRef();
         this.cloudsRef = React.createRef();
         this.mainContentRef = React.createRef();
+   
         this.state = {
             currentPage: ''
         };
@@ -26,9 +27,10 @@ export default class PersonalWebsite extends React.Component {
         window.removeEventListener('scroll', this.handleScroll)
     }
 
-    handleScroll() {
+    handleScroll = () => {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             console.log('arrived at bottom')
+            this.changeToTechnicalPage()
         }
 
         if (window.scrollY <= 0) {
@@ -44,6 +46,7 @@ export default class PersonalWebsite extends React.Component {
     }
 
     changeToTechnicalPage() {
+        this.cloudsRef.current.transitionCloudsToTop()
         this.setState({ currentPage: 'technical' });
     }
 

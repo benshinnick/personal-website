@@ -6,6 +6,13 @@ var numMedium = 0
 var numLarge = 0
 
 export default class Clouds extends React.Component {
+    constructor(props) {
+        super(props);
+   
+        this.state = {
+            cloudPosition: 'bottom'
+        };
+    }
 
     componentDidMount() {
         this.handlePageResize()
@@ -13,45 +20,55 @@ export default class Clouds extends React.Component {
     }
 
     handlePageResize = () => {
-        if(numSmall !== getFullPageWidthClouds('small')) {
-            numSmall = getFullPageWidthClouds('small')
-            let smallClouds = document.getElementById('small-clouds')
-            while (smallClouds.firstChild) { smallClouds.removeChild(smallClouds.firstChild) }
-            for(let i = 0; i < numSmall; ++i) {
-                let smallCloud = document.createElement('div')
-                if (i % 2 === 0) {smallCloud.className = 'sprite cloud small even'}
-                else {smallCloud.className = 'sprite cloud small'}
-                smallCloud.style.animationDuration = `${numSmall * 10}s`
-                smallCloud.style.animationDelay = `${-i * 10}s`
-                smallClouds.appendChild(smallCloud)
+        this.updateNumClouds('small', 10)
+        this.updateNumClouds('medium', 15)
+        this.updateNumClouds('large', 30)
+        if(this.state.cloudPosition === 'top') {
+            adjustBottomClouds(document.getElementsByClassName('small'), 52, 21)
+            adjustBottomClouds(document.getElementsByClassName('medium'), 60, -6)
+            adjustBottomClouds(document.getElementsByClassName('large'), 60, -32)
+        }
+    }
+
+    updateNumClouds(size, animationDuration) {
+        let numClouds = 0
+        if(size === 'small') { numClouds = numSmall }
+        if(size === 'medium') { numClouds = numMedium }
+        if(size === 'large') { numClouds = numLarge }
+
+        if(numClouds !== getFullPageWidthClouds(size)) {
+            numClouds = getFullPageWidthClouds(size)
+            if(size === 'small') { numSmall = numClouds }
+            if(size === 'medium') { numMedium = numClouds }
+            if(size === 'large') { numLarge = numClouds }
+
+            let clouds = document.getElementById(`${size}-clouds`)
+            while (clouds.firstChild) { clouds.removeChild(clouds.firstChild); }
+            for(let i = 0; i < numClouds; ++i) {
+                let cloud = document.createElement('div')
+                if (i % 2 === 0) {cloud.className = `sprite cloud ${size} even`}
+                else {cloud.className = `sprite cloud ${size}`}
+                cloud.style.animationDuration = `${numClouds * animationDuration}s`
+                cloud.style.animationDelay = `${-i * animationDuration}s`
+                if(size === 'small' || size === 'medium') {
+                    cloud.style.filter = 'drop-shadow(0 0 2px rgb(235, 235, 235))'
+                }
+                clouds.appendChild(cloud)
             }
         }
-        if(numMedium !== getFullPageWidthClouds('medium')) {
-            numMedium = getFullPageWidthClouds('medium')
-            let mediumClouds = document.getElementById('medium-clouds')
-            while (mediumClouds.firstChild) { mediumClouds.removeChild(mediumClouds.firstChild); }
-            for(let i = 0; i < numMedium; ++i) {
-                let mediumCloud = document.createElement('div')
-                if (i % 2 === 0) {mediumCloud.className = 'sprite cloud medium even'}
-                else {mediumCloud.className = 'sprite cloud medium'}
-                mediumCloud.style.animationDuration = `${numMedium * 15}s`
-                mediumCloud.style.animationDelay = `${-i * 15}s`
-                mediumClouds.appendChild(mediumCloud)
-            }
-        }
-        if(numLarge !== getFullPageWidthClouds('large')) {
-            numLarge = getFullPageWidthClouds('large')
-            let largeClouds = document.getElementById('large-clouds')
-            while (largeClouds.firstChild) { largeClouds.removeChild(largeClouds.firstChild); }
-            for(let i = 0; i < numLarge; ++i) {
-                let largeCloud = document.createElement('div')
-                if (i % 2 === 0) {largeCloud.className = 'sprite cloud large even'}
-                else {largeCloud.className = 'sprite cloud large'}
-                largeCloud.style.animationDuration = `${numLarge * 30}s`
-                largeCloud.style.animationDelay = `${-i * 30}s`
-                largeClouds.appendChild(largeCloud)
-            }
-        }
+    }
+
+    transitionCloudsToTop() {
+        console.log('transition to top')
+        this.setState({ cloudPosition: 'top' }, () => {
+            moveCloudsToTop(document.getElementsByClassName('small'), 52, 21, 0.1)
+            moveCloudsToTop(document.getElementsByClassName('medium'), 60, -6, 0.15)
+            moveCloudsToTop(document.getElementsByClassName('large'), 60, -32, 0.30)
+        })
+    }
+
+    transitionCloudsToBottom() {
+        
     }
 
     render() {
@@ -63,6 +80,28 @@ export default class Clouds extends React.Component {
             </div>
         );
     }
+}
+
+function adjustBottomClouds(clouds, cloudHeight, cloudOffset) {
+    for(var i = 0; i < clouds.length; ++i) {
+        clouds[i].style.bottom = `${window.innerHeight-cloudHeight-cloudOffset}px`
+    }
+}
+
+function moveCloudsToTop(clouds, cloudHeight, cloudOffset, speed) {
+    for(var i = 0; i < clouds.length; ++i) {
+        clouds[i].style.transition = 'bottom 750ms ease-in-out'
+        clouds[i].style.bottom = `${window.innerHeight-cloudHeight-cloudOffset}px`
+        clouds[i].style.animationDuration = `${clouds.length * speed}s`
+        clouds[i].style.animationDelay = `${-i * speed}s`
+    }
+    setTimeout(() => {
+        for(var i = 0; i < clouds.length; ++i) {
+            clouds[i].style.transition = ''
+            clouds[i].style.animationDuration = `${clouds.length * speed * 100}s`
+            clouds[i].style.animationDelay = `${-i * speed * 100}s`
+        }
+    }, 1500)
 }
 
 function getFullPageWidthClouds(cloudSize) {
