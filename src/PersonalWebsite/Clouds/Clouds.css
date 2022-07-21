@@ -38,6 +38,43 @@
     z-index: 1;
 }
 
+.small-top {
+    background-image: url(./CloudSprites/small-cloud.png);
+    width: 184px;
+    height: 52px;
+
+    top: 21px;
+    filter: drop-shadow(0 -1px 2px rgb(235, 235, 235));
+    animation-name: move-small;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 4;
+}
+
+.medium-top {
+    background-image: url(./CloudSprites/medium-cloud.png);
+    width: 296px;
+    height: 60px;
+    top: -6px;
+    filter: drop-shadow(0 0 2px rgb(235, 235, 235));
+    animation-name: move-medium;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 3;
+}
+
+.large-top {
+    background-image: url(./CloudSprites/large-cloud.png);
+    width: 420px;
+    height: 60px;
+    top: -32px;
+    filter: drop-shadow(0 0 2px rgb(235, 235, 235)); 
+    animation-name: move-large;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 1;
+}
+
 .even {
     margin-bottom: 4px;
 }
