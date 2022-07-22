@@ -63,7 +63,25 @@ export default class PersonalWebsite extends React.Component {
                 <Navbar ref={this.navBarRef} />
                 <Clouds ref={this.cloudsRef} />
                 <RocketGuy ref={this.rocketGuyRef} />
-                <div id="background-gradient" className='home-sky'/>
+                <div id="background-gradient" className='home-sky'>
+                    <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'>
+                        {/* linear-gradient(180deg, #04234f, #2d3879,#6a5aac); */}
+                        <defs>
+                            <linearGradient id="myGradient" gradientTransform="rotate(90)">
+                            <stop offset="5%" stop-color="#04234f">
+                                <animate attributeName="stop-color" values="#04234f;#041b3b;#04234f" dur="10s" repeatCount="indefinite" />
+                            </stop>
+                            <stop offset="50%"  stop-color="#2d3879">
+                                <animate attributeName="stop-color" values="#2d3879;#1f285c;#2d3879" dur="10s" repeatCount="indefinite" />
+                            </stop>
+                            <stop offset="95%" stop-color="#6a5aac">
+                                <animate attributeName="stop-color" values="#6a5aac;#4a3c85;#6a5aac" dur="10s" repeatCount="indefinite" />
+                            </stop>
+                            </linearGradient>
+                        </defs>
+                        <rect fill="url('#myGradient')" width='100%' height='100%'/>
+                    </svg>
+                </div>
                 <div id='main-content' />
             </div>
         )
