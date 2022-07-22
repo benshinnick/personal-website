@@ -14,17 +14,15 @@ export default class RocketGuy extends React.Component {
     constructor(props) {
         super(props);
         this.currAnimationInterval = -1
-        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount() {
         this.switchAnimation('idle', NUM_ANIMATION_FRAMES)
-        window.addEventListener('scroll', this.handleScroll)
-        window.scrollTo(0, STARTING_SCROLL_Y_POS);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll)
+        
+        setTimeout(() => {
+            window.scrollTo(0, STARTING_SCROLL_Y_POS)
+             this.moveOnScroll()
+        }, 5)
     }
 
     switchAnimation(name, frameCount) {
@@ -75,7 +73,7 @@ export default class RocketGuy extends React.Component {
         return document.querySelector('#rocket-guy').style.backgroundPosition === `-${SPRITE_WIDTH_PX}px 0px`
     }
 
-    handleScroll() {
+    moveOnScroll() {
         var rocketGuy = getRocketGuyElement()
         var currScrollYPos = window.scrollY
         var spriteYPos = currScrollYPos/2.5 + 50

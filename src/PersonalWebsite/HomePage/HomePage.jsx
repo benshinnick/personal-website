@@ -1,7 +1,6 @@
 import React from 'react';
 import './HomePage.css';
 import InfoPanels from './InfoPanels/InfoPanels';
-import RocketGuy from './RocketGuy/RocketGuy';
 import Moon from './Moon/Moon';
 import Stars from './Stars/Stars';
 import UFO from './UFO/UFO';
@@ -10,13 +9,11 @@ export default class HomePage extends React.Component {
     render() {
         return (
             <main className='home-page'>
-                <div id="background-gradient" />
                 <InfoPanels />
-                <RocketGuy />
                 <Stars />
                 <Moon />
                 <UFO />
-                <div id='filler' style={{height: window.innerHeight*4 + 'px'}} />
+                <div id='filler' style={{height: window.innerHeight*3.3 + 'px'}} />
             </main>
         );
     }
@@ -25,7 +22,7 @@ export default class HomePage extends React.Component {
 window.onresize = adjust_filler_size;
 
 function adjust_filler_size() {
-    document.getElementById('filler').style.height = `${window.innerHeight*3.215 + 15}px`
+    document.getElementById('filler').style.height = `${Math.floor(window.innerHeight*3.3)}px`
     var ufo = document.getElementById('ufo');
     ufo.style.animation = 'none';
     setTimeout(() => {

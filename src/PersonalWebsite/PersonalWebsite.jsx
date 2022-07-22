@@ -5,22 +5,23 @@ import './PersonalWebsite.css';
 import Navbar from './Navbar/Navbar';
 import Clouds from './Clouds/Clouds';
 import HomePage from './HomePage/HomePage';
+import RocketGuy from './RocketGuy/RocketGuy';
 
 export default class PersonalWebsite extends React.Component {
     constructor(props) {
-        super(props);
-        this.navBarRef = React.createRef();
-        this.cloudsRef = React.createRef();
-        this.mainContentRef = React.createRef();
+        super(props)
+        this.navBarRef = React.createRef()
+        this.cloudsRef = React.createRef()
+        this.rocketGuyRef = React.createRef()
    
         this.state = {
             currentPage: ''
-        };
+        }
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll)
-        this.changeToHomePage();
+        window.addEventListener('scroll', this.handleScroll)  
+        this.changeToHomePage()
     }
 
     componentWillUnmount() {
@@ -28,9 +29,13 @@ export default class PersonalWebsite extends React.Component {
     }
 
     handleScroll = () => {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        this.rocketGuyRef.current.moveOnScroll()
+
+        if ((window.innerHeight + window.scrollY + 1) >= document.body.offsetHeight) {
             console.log('arrived at bottom')
-            this.changeToTechnicalPage()
+            if(this.state.currentPage === 'home') {
+                this.changeToTechnicalPage()
+            }
         }
 
         if (window.scrollY <= 0) {
@@ -39,15 +44,17 @@ export default class PersonalWebsite extends React.Component {
     }
 
     changeToHomePage() {
-        const mainContent = document.getElementById('main-content');
-        const root = createRoot(mainContent);
-        root.render(<HomePage />);
-        this.setState({ currentPage: 'home' });
+        const mainContent = document.getElementById('main-content')
+        const root = createRoot(mainContent)
+        root.render(<HomePage />)
+        this.setState({ currentPage: 'home' })
     }
 
     changeToTechnicalPage() {
         this.cloudsRef.current.transitionCloudsToTop()
-        this.setState({ currentPage: 'technical' });
+        this.setState({ currentPage: 'technical' })
+        const mainContent = document.getElementById('main-content')
+        mainContent.style.animation = '750ms disappear forwards'
     }
 
     render() {
@@ -55,8 +62,10 @@ export default class PersonalWebsite extends React.Component {
             <div>
                 <Navbar ref={this.navBarRef} />
                 <Clouds ref={this.cloudsRef} />
-                <div ref={this.mainContentRef} id='main-content'></div>
+                <RocketGuy ref={this.rocketGuyRef} />
+                <div id="background-gradient" className='home-sky'/>
+                <div id='main-content' />
             </div>
-        );
+        )
     }
 }
