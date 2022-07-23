@@ -55,6 +55,14 @@ export default class PersonalWebsite extends React.Component {
         this.setState({ currentPage: 'technical' })
         const mainContent = document.getElementById('main-content')
         mainContent.style.animation = '750ms disappear forwards'
+        this.go()
+    }
+
+    go() {
+        var elements = document.getElementsByTagName("animate");
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].beginElement();
+        }
     }
 
     render() {
@@ -65,17 +73,16 @@ export default class PersonalWebsite extends React.Component {
                 <RocketGuy ref={this.rocketGuyRef} />
                 <div id="background-gradient" className='home-sky'>
                     <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'>
-                        {/* linear-gradient(180deg, #04234f, #2d3879,#6a5aac); */}
                         <defs>
                             <linearGradient id="myGradient" gradientTransform="rotate(90)">
-                            <stop offset="5%" stop-color="#04234f">
-                                <animate attributeName="stop-color" values="#04234f;#041b3b;#04234f" dur="10s" repeatCount="indefinite" />
+                            <stop id='a' offset="5%" stop-color="#04234f">
+                                <animate attributeName="stop-color" begin="indefinite" values="#04234f;#eddea1;gold;red;" dur="750ms" repeatCount="1" fill="freeze"/>
                             </stop>
-                            <stop offset="50%"  stop-color="#2d3879">
-                                <animate attributeName="stop-color" values="#2d3879;#1f285c;#2d3879" dur="10s" repeatCount="indefinite" />
+                            <stop offset="55%" stop-color="#2d3879">
+                                <animate attributeName="stop-color" begin="indefinite" values="#2d3879;red;#eddea1;gold" dur="750ms" repeatCount="1" fill="freeze"/>
                             </stop>
                             <stop offset="95%" stop-color="#6a5aac">
-                                <animate attributeName="stop-color" values="#6a5aac;#4a3c85;#6a5aac" dur="10s" repeatCount="indefinite" />
+                                <animate attributeName="stop-color" begin="indefinite" values="#6a5aac;gold;" dur="750ms" repeatCount="1" fill="freeze"/>
                             </stop>
                             </linearGradient>
                         </defs>

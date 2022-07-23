@@ -67,10 +67,6 @@ export default class Clouds extends React.Component {
         })
     }
 
-    transitionCloudsToBottom() {
-        
-    }
-
     render() {
         return (
             <div id='clouds'>
@@ -101,7 +97,7 @@ function moveCloudsToTop(clouds, cloudHeight, cloudOffset, speed) {
             clouds[i].style.animationDuration = `${clouds.length * speed * 100}s`
             clouds[i].style.animationDelay = `${-i * speed * 100}s`
         }
-    }, 1500)
+    }, 1000)
 }
 
 function getFullPageWidthClouds(cloudSize) {
