@@ -26,7 +26,7 @@ export default class PersonalWebsite extends React.Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll)
-        this.changeToHomePage()
+        this.switchToHomeOnStart()
     }
 
     componentWillUnmount() {
@@ -43,19 +43,41 @@ export default class PersonalWebsite extends React.Component {
         }
         else if (window.scrollY <= 0) {
             scrollPos = 'top'
+            if(this.state.currentPage === 'technical') {
+                this.changeToHomePage()
+            }
         }
         else {
             scrollPos = 'middle'
         }
     }
 
-    changeToHomePage() {
+    switchToHomeOnStart() {
         const mainContent = document.getElementById('main-content')
         if(root === null) {
             root = createRoot(mainContent)
         }
         root.render(<HomePage ref={this.homePageRef} />)
         this.setState({ currentPage: 'home' })
+    }
+
+    changeToHomePage() {
+        setTimeout(() => {
+            if(scrollPos === 'top') {
+                console.log('switching to home')
+                this.setState({ currentPage: 'home' })
+                this.cloudsRef.current.transitionCloudsToBottom()
+                // this.navBarRef.current.technicalButtonOnClick()
+                // const mainContent = document.getElementById('main-content')
+                // mainContent.style.animation = '750ms disappear forwards'
+                // setTimeout(() => {
+                //     this.navBarRef.current.transitionToOverCloud()
+                //     root.render(<TechnicalPage />)
+                //     this.setState({ currentPage: 'technical' })
+                // }, 750)
+                // this.rocketGuyRef.current.flyInFromTop()
+            }
+        }, 600)
     }
 
     changeToTechnicalPage() {
@@ -65,7 +87,7 @@ export default class PersonalWebsite extends React.Component {
                 this.cloudsRef.current.transitionCloudsToTop()
                 this.navBarRef.current.technicalButtonOnClick()
                 const mainContent = document.getElementById('main-content')
-                mainContent.style.animation = '750ms disappear forwards'
+                mainContent.style.animation = '750ms home-disappear forwards'
                 setTimeout(() => {
                     this.navBarRef.current.transitionToOverCloud()
                     root.render(<TechnicalPage />)
@@ -93,15 +115,10 @@ export default class PersonalWebsite extends React.Component {
                     <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'>
                         <defs>
                             <linearGradient id="myGradient" gradientTransform="rotate(90)">
-                            <stop id='a' offset="5%" stopColor="#04234f">
-                                {/* <animate attributeName="stop-color" begin="indefinite" values="#04234f;orange;red;" dur="1s" repeatCount="1" fill="freeze"/> */}
-                            </stop>
-                            <stop offset="55%" stopColor="#2d3879">
-                                {/* <animate attributeName="stop-color" begin="indefinite" values="#2d3879;red;orange;" dur="1s" repeatCount="1" fill="freeze"/> */}
-                            </stop>
-                            <stop offset="95%" stopColor="#6a5aac">
-                                {/* <animate attributeName="stop-color" begin="indefinite" values="#6a5aac;gold;" dur="1s" repeatCount="1" fill="freeze"/> */}
-                            </stop>
+                            {/* <animate attributeName="stop-color" begin="indefinite" values="#04234f;orange;red;" dur="1s" repeatCount="1" fill="freeze"/> */}
+                            <stop id='a' offset="5%" stopColor="#021b3d" />
+                            <stop offset="60%" stopColor="#2d3879" />
+                            <stop offset="95%" stopColor="#6a5aac" />
                             </linearGradient>
                         </defs>
                         <rect fill="url('#myGradient')" width='100%' height='100%'/>

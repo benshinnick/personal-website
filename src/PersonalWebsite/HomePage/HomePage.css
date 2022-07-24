@@ -1,4 +1,9 @@
-@keyframes disappear {
+@keyframes home-disappear {
     from { opacity: 1; }
     to { opacity: 0; }
+}
+
+@keyframes home-appear {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

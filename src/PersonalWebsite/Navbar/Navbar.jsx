@@ -23,7 +23,6 @@ export default class Navbar extends React.Component {
     }
 
     transitionToOverCloud() {
-        console.log('Transition to over cloud')
         const navbar = document.getElementById('navbar')
         navbar.className = 'navbar-wrapper-cloud'
         navbar.style.animation = '500ms nav-appear forwards'
