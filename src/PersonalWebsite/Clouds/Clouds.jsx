@@ -19,6 +19,10 @@ export default class Clouds extends React.Component {
         window.addEventListener('resize', this.handlePageResize)
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handlePageResize)
+    }
+
     handlePageResize = () => {
         this.updateNumClouds('small', 10)
         this.updateNumClouds('medium', 15)

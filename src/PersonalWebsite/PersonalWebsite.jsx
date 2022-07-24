@@ -63,6 +63,7 @@ export default class PersonalWebsite extends React.Component {
             if(scrollPos === 'bottom') {
                 this.setState({ currentPage: 'technical' })
                 this.cloudsRef.current.transitionCloudsToTop()
+                this.navBarRef.current.technicalButtonOnClick()
                 const mainContent = document.getElementById('main-content')
                 mainContent.style.animation = '750ms disappear forwards'
                 setTimeout(() => {

@@ -35,22 +35,9 @@
     background-attachment: scroll;
 }
 
-/* .home-sky {
-    background-image: linear-gradient(180deg, #04234f, #2d3879,#6a5aac);
-} */
-
 #main-content {
     opacity: 1;
 }
-
-@keyframes disappear {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
 
 .section {
     width: 100vw;
@@ -70,7 +57,3 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
-
-/* font-family: 'Montserrat', sans-serif;
-font-family: 'Press Start 2P', cursive;
-font-family: 'VT323', monospace; */

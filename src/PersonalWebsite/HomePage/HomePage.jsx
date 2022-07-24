@@ -8,14 +8,14 @@ import UFO from './UFO/UFO';
 export default class HomePage extends React.Component {
 
     componentDidMount() {
-        window.addEventListener('resize', this.adjustFillerSize)
+        window.addEventListener('resize', this.handleResize)
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize', this.adjustFillerSize)
+        window.removeEventListener('resize', this.handleResize)
     }
 
-    adjustFillerSize() {
+    handleResize() {
         document.getElementById('filler').style.height = `${Math.floor(window.innerHeight*3.3)}px`
         var ufo = document.getElementById('ufo');
         ufo.style.animation = 'none';
