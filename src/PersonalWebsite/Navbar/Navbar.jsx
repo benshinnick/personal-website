@@ -26,6 +26,14 @@ export default class Navbar extends React.Component {
         const navbar = document.getElementById('navbar')
         navbar.className = 'navbar-wrapper-cloud'
         navbar.style.animation = '500ms nav-appear forwards'
+        setTimeout(() => { navbar.style.animation = 'none'}, 500)
+    }
+
+    transitionToHome() {
+        const navbar = document.getElementById('navbar')
+        navbar.className = 'navbar-wrapper-home'
+        navbar.style.animation = '500ms nav-appear forwards'
+        setTimeout(() => { navbar.style.animation = 'none'}, 500)
     }
 
     render() {

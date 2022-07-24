@@ -67,14 +67,15 @@ export default class PersonalWebsite extends React.Component {
                 console.log('switching to home')
                 this.setState({ currentPage: 'home' })
                 this.cloudsRef.current.transitionCloudsToBottom()
-                // this.navBarRef.current.technicalButtonOnClick()
-                // const mainContent = document.getElementById('main-content')
-                // mainContent.style.animation = '750ms disappear forwards'
-                // setTimeout(() => {
-                //     this.navBarRef.current.transitionToOverCloud()
-                //     root.render(<TechnicalPage />)
-                //     this.setState({ currentPage: 'technical' })
-                // }, 750)
+                this.navBarRef.current.aboutButtonOnClick()
+                const mainContent = document.getElementById('main-content')
+                mainContent.style.animation = '750ms home-disappear forwards'
+                this.navBarRef.current.transitionToHome()
+                setTimeout(() => {
+                    root.render(<HomePage />)
+                    this.setState({ currentPage: 'home' })
+                    mainContent.style.animation = '750ms home-appear forwards'
+                }, 750)
                 // this.rocketGuyRef.current.flyInFromTop()
             }
         }, 600)
