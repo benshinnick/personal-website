@@ -6,6 +6,24 @@ import Stars from './Stars/Stars';
 import UFO from './UFO/UFO';
 
 export default class HomePage extends React.Component {
+
+    componentDidMount() {
+        window.addEventListener('resize', this.adjustFillerSize)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.adjustFillerSize)
+    }
+
+    adjustFillerSize() {
+        document.getElementById('filler').style.height = `${Math.floor(window.innerHeight*3.3)}px`
+        var ufo = document.getElementById('ufo');
+        ufo.style.animation = 'none';
+        setTimeout(() => {
+            ufo.style.animation = '25s linear 1s infinite alternate shift'
+        }, 25)
+    }
+
     render() {
         return (
             <main className='home-page'>
@@ -17,15 +35,4 @@ export default class HomePage extends React.Component {
             </main>
         );
     }
-}
-
-window.onresize = adjust_filler_size;
-
-function adjust_filler_size() {
-    document.getElementById('filler').style.height = `${Math.floor(window.innerHeight*3.3)}px`
-    var ufo = document.getElementById('ufo');
-    ufo.style.animation = 'none';
-    setTimeout(() => {
-        ufo.style.animation = '25s linear 1s infinite alternate shift'
-    }, 25)
 }

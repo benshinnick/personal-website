@@ -9,12 +9,14 @@ import HomePage from './HomePage/HomePage';
 import TechnicalPage from './TechnicalPage/TechnicalPage';
 
 var scrollPos = 'mid'
+var root = null
 
 export default class PersonalWebsite extends React.Component {
     constructor(props) {
         super(props)
         this.navBarRef = React.createRef()
         this.cloudsRef = React.createRef()
+        this.homePageRef = React.createRef()
         this.rocketGuyRef = React.createRef()
    
         this.state = {
@@ -23,7 +25,7 @@ export default class PersonalWebsite extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll)  
+        window.addEventListener('scroll', this.handleScroll)
         this.changeToHomePage()
     }
 
@@ -49,8 +51,10 @@ export default class PersonalWebsite extends React.Component {
 
     changeToHomePage() {
         const mainContent = document.getElementById('main-content')
-        const root = createRoot(mainContent)
-        root.render(<HomePage />)
+        if(root === null) {
+            root = createRoot(mainContent)
+        }
+        root.render(<HomePage ref={this.homePageRef} />)
         this.setState({ currentPage: 'home' })
     }
 
@@ -62,7 +66,7 @@ export default class PersonalWebsite extends React.Component {
                 const mainContent = document.getElementById('main-content')
                 mainContent.style.animation = '750ms disappear forwards'
                 setTimeout(() => {
-                    const root = createRoot(mainContent)
+                    this.navBarRef.current.transitionToOverCloud()
                     root.render(<TechnicalPage />)
                     this.setState({ currentPage: 'technical' })
                 }, 750)

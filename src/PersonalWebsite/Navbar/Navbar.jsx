@@ -22,6 +22,10 @@ export default class Navbar extends React.Component {
         document.querySelector('#game-btn').className = 'selected';
     }
 
+    transitionToOverCloud() {
+        console.log('Transition to over cloud')
+    }
+
     render() {
         return (
             <div className='section' id='navbar'>
