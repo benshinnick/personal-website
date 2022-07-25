@@ -8,23 +8,22 @@ const NUM_ANIMATION_FRAMES = 4
 
 var lastScrollYPos = STARTING_SCROLL_Y_POS
 var timer = null
+var topOffset = 50
 
 export default class RocketGuy extends React.Component {
 
     constructor(props) {
         super(props);
         this.currAnimationInterval = -1
-        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount() {
         this.switchAnimation('idle', NUM_ANIMATION_FRAMES)
-        window.addEventListener('scroll', this.handleScroll)
-        window.scrollTo(0, STARTING_SCROLL_Y_POS);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll)
+        
+        setTimeout(() => {
+            window.scrollTo(0, STARTING_SCROLL_Y_POS)
+             this.moveOnScroll()
+        }, 5)
     }
 
     switchAnimation(name, frameCount) {
@@ -75,14 +74,10 @@ export default class RocketGuy extends React.Component {
         return document.querySelector('#rocket-guy').style.backgroundPosition === `-${SPRITE_WIDTH_PX}px 0px`
     }
 
-    handleScroll() {
+    moveOnScroll() {
         var rocketGuy = getRocketGuyElement()
         var currScrollYPos = window.scrollY
-        var spriteYPos = currScrollYPos/2.5 + 50
-
-        if (currScrollYPos <= 0) {
-            console.log('top')
-        }
+        var spriteYPos = currScrollYPos/2.5 + topOffset
 
         if(lastScrollYPos > currScrollYPos)
             if(!isFlyingUpAnimated(rocketGuy))
@@ -98,6 +93,33 @@ export default class RocketGuy extends React.Component {
 
         rocketGuy.style.marginTop = `${spriteYPos}px`
         lastScrollYPos = currScrollYPos
+    }
+
+    flyInFromTop() {
+        const rocketGuy = getRocketGuyElement()
+        topOffset = 0
+        rocketGuy.style.opacity = '0'
+        rocketGuy.style.marginTop = '0'
+        disableScroll()
+        setTimeout(() => {
+            window.scrollTo(0, 300)
+            enableScroll()
+            rocketGuy.style.opacity = '1'
+        }, 750)
+    }
+
+    flyInFromBottom() {
+        const rocketGuy = getRocketGuyElement()
+        const scrollHeight = getMaxScrollYPos()
+        topOffset = 50
+        rocketGuy.style.opacity = '0'
+        rocketGuy.style.marginTop = `${scrollHeight/2.5 + topOffset}px`
+        disableScroll()
+        setTimeout(() => {
+            window.scrollTo(0, scrollHeight - 500)
+            enableScroll()
+            rocketGuy.style.opacity = '1'
+        }, 750)
     }
 
     render() {
@@ -121,4 +143,58 @@ function isFlyingDownAnimated(rocketGuy) {
     return rocketGuy.classList.contains('fly-down-build')
         || rocketGuy.classList.contains('fly-down-sustain')
         || rocketGuy.classList.contains('fly-down-stop') 
+}
+
+function getMaxScrollYPos() {
+    return Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight, 
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+    ) - window.innerHeight
+}
+
+// from: https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
+
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+// modern Chrome requires { passive: false } when adding event
+var supportsPassive = false;
+try {
+  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+    get: function () { supportsPassive = true; return null }
+  }));
+} catch(e) {}
+
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+// call this to Disable
+function disableScroll() {
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+// call this to Enable
+function enableScroll() {
+  window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+  window.removeEventListener('touchmove', preventDefault, wheelOpt);
+  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }

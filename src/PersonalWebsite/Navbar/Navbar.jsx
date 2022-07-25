@@ -22,11 +22,25 @@ export default class Navbar extends React.Component {
         document.querySelector('#game-btn').className = 'selected';
     }
 
+    transitionToOverCloud() {
+        const navbar = document.getElementById('navbar')
+        navbar.className = 'navbar-wrapper-cloud'
+        navbar.style.animation = '500ms nav-appear forwards'
+        setTimeout(() => { navbar.style.animation = 'none'}, 500)
+    }
+
+    transitionToHome() {
+        const navbar = document.getElementById('navbar')
+        navbar.className = 'navbar-wrapper-home'
+        navbar.style.animation = '500ms nav-appear forwards'
+        setTimeout(() => { navbar.style.animation = 'none'}, 500)
+    }
+
     render() {
         return (
-            <div className='section' id='navbar'>
+            <div className='section'>
                 <div className='container'>
-                    <div className='navbar-wrapper'>
+                    <div id='navbar' className='navbar-wrapper-home'>
                         <button id='name-home-button'>BEN SHINNICK</button>
                         <div className='links-wrapper'>
                             <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>ABOUT</button>
