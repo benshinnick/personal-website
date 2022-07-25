@@ -64,10 +64,9 @@ export default class PersonalWebsite extends React.Component {
     changeToHomePage() {
         setTimeout(() => {
             if(scrollPos === 'top') {
-                console.log('switching to home')
                 this.setState({ currentPage: 'home' })
                 this.cloudsRef.current.transitionCloudsToBottom()
-                this.navBarRef.current.aboutButtonOnClick()
+                this.navBarRef.current.switchToAbout()
                 const mainContent = document.getElementById('main-content')
                 mainContent.style.animation = '750ms home-disappear forwards'
                 this.navBarRef.current.transitionToHome()
@@ -87,7 +86,7 @@ export default class PersonalWebsite extends React.Component {
             if(scrollPos === 'bottom') {
                 this.setState({ currentPage: 'technical' })
                 this.cloudsRef.current.transitionCloudsToTop()
-                this.navBarRef.current.technicalButtonOnClick()
+                this.navBarRef.current.switchToTechnical()
                 const mainContent = document.getElementById('main-content')
                 mainContent.style.animation = '750ms home-disappear forwards'
                 setTimeout(() => {

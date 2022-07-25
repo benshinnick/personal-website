@@ -1,3 +1,7 @@
+#filler {
+    pointer-events: none;
+}
+
 @keyframes home-disappear {
     from { opacity: 1; }
     to { opacity: 0; }
