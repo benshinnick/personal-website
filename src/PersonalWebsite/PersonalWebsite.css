@@ -23,6 +23,10 @@
     src: url(./Fonts/retro.ttf);
 }
 
+body {
+    overscroll-behavior-y: none;
+}
+
 #background-gradient {
     z-index: -1;
     position: fixed;

@@ -74,9 +74,10 @@ export default class PersonalWebsite extends React.Component {
                 setTimeout(() => {
                     root.render(<HomePage />)
                     this.setState({ currentPage: 'home' })
-                    mainContent.style.animation = '750ms home-appear forwards'
+                    mainContent.style.animationDelay = '500ms'
+                    mainContent.style.animation = '1000ms home-appear forwards'
                 }, 750)
-                // this.rocketGuyRef.current.flyInFromTop()
+                this.rocketGuyRef.current.flyInFromBottom()
             }
         }, 600)
     }

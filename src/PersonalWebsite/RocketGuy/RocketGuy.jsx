@@ -96,15 +96,27 @@ export default class RocketGuy extends React.Component {
     }
 
     flyInFromTop() {
-        var rocketGuy = getRocketGuyElement()
+        const rocketGuy = getRocketGuyElement()
         topOffset = 0
         rocketGuy.style.opacity = '0'
         rocketGuy.style.marginTop = '0'
-        // rocketGuy.style.transitionProperty = 'none'
         disableScroll()
         setTimeout(() => {
-            rocketGuy.style.transitionProperty =  'margin-top 600ms ease-out'
             window.scrollTo(0, 300)
+            enableScroll()
+            rocketGuy.style.opacity = '1'
+        }, 750)
+    }
+
+    flyInFromBottom() {
+        const rocketGuy = getRocketGuyElement()
+        const scrollHeight = getMaxScrollYPos()
+        topOffset = 50
+        rocketGuy.style.opacity = '0'
+        rocketGuy.style.marginTop = `${scrollHeight/2.5 + topOffset}px`
+        disableScroll()
+        setTimeout(() => {
+            window.scrollTo(0, scrollHeight - 500)
             enableScroll()
             rocketGuy.style.opacity = '1'
         }, 750)
@@ -131,6 +143,16 @@ function isFlyingDownAnimated(rocketGuy) {
     return rocketGuy.classList.contains('fly-down-build')
         || rocketGuy.classList.contains('fly-down-sustain')
         || rocketGuy.classList.contains('fly-down-stop') 
+}
+
+function getMaxScrollYPos() {
+    return Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight, 
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+    ) - window.innerHeight
 }
 
 // from: https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
