@@ -93,6 +93,7 @@ export default class PersonalWebsite extends React.Component {
                     this.navBarRef.current.transitionToOverCloud()
                     root.render(<TechnicalPage />)
                     this.setState({ currentPage: 'technical' })
+                    mainContent.style.animation = '1000ms home-appear forwards'
                 }, 750)
                 this.rocketGuyRef.current.flyInFromTop()
             }

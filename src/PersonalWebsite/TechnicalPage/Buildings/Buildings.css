@@ -1,0 +1,10 @@
+#building-1 {
+    background-image: url(./BuildingSprites/building1.png);
+    top: 200px;
+    right: 12px;
+    width:156px;
+    height: 764px;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 1;
+}
