@@ -1,9 +1,20 @@
 #building-1 {
     background-image: url(./BuildingSprites/building1.png);
-    top: 200px;
-    right: 12px;
-    width:156px;
-    height: 764px;
+    top: 250px;
+    right: 50px;
+    width: 156px;
+    height: 772px;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#building-2 {
+    background-image: url(./BuildingSprites/building2.png);
+    top:   150px;
+    right: 250px;
+    width:152px;
+    height: 780px;
     position: fixed;
     transform-origin: top right;
     z-index: 1;
