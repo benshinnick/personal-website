@@ -1,27 +1,43 @@
+#right-buildings {
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    width: 60vw;
+    right: 0;
+}
+
 #building-1 {
     background-image: url(./BuildingSprites/building1.png);
-    top: 350px;
-    right: 2vw;
+    position: relative;
+    margin-top: 150px;
     width: 156px;
     height: 772px;
-    position: fixed;
     transform-origin: top right;
     z-index: 1;
 }
 
 #building-2 {
     background-image: url(./BuildingSprites/building2.png);
-    top:   200px;
-    right: calc(2vw + 180px);
-    width: 152px;
-    height: 780px;
-    position: fixed;
+    margin-top: 350px;
+    width: 392px;
+    height: 896px;
+    position: relative;
     transform-origin: top right;
     z-index: 1;
 }
 
 #building-3 {
     background-image: url(./BuildingSprites/building3.png);
+    margin-top: 250px;
+    width: 152px;
+    height: 780px;
+    position: relative;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#building-4 {
+    background-image: url(./BuildingSprites/building4.png);
     top: 100px;
     left: calc(15vw - 260px);
     width: 208px;
@@ -29,4 +45,5 @@
     position: fixed;
     transform-origin: top right;
     z-index: 1;
+    border: 1px
 }
