@@ -1,8 +1,8 @@
 #building-1 {
     background-image: url(./BuildingSprites/building1.png);
     top: 250px;
-    right: 50px;
-    width: 156px;
+    right: 35px;
+    width: 176px;
     height: 772px;
     position: fixed;
     transform-origin: top right;
@@ -13,7 +13,7 @@
     background-image: url(./BuildingSprites/building2.png);
     top:   150px;
     right: 250px;
-    width:152px;
+    width: 152px;
     height: 780px;
     position: fixed;
     transform-origin: top right;
