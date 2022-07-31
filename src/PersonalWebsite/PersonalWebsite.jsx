@@ -35,13 +35,13 @@ export default class PersonalWebsite extends React.Component {
 
     handleScroll = () => {
         this.rocketGuyRef.current.moveOnScroll()
-        if ((window.innerHeight + window.scrollY + 25) >= document.body.offsetHeight) {
+        if ((window.innerHeight + window.scrollY + 50) >= document.body.offsetHeight) {
             scrollPos = 'bottom'
             if(this.state.currentPage === 'home') {
                 this.changeToTechnicalPage()
             }
         }
-        else if (window.scrollY <= 25) {
+        else if (window.scrollY <= 50) {
             scrollPos = 'top'
             if(this.state.currentPage === 'technical') {
                 this.changeToHomePage()
