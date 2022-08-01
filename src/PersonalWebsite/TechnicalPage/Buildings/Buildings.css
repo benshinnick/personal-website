@@ -6,7 +6,7 @@
     right: 0;
 }
 
-#building-1 {
+/* #building-1 {
     background-image: url(./BuildingSprites/building1.png);
     position: relative;
     margin-top: 150px;
@@ -14,9 +14,29 @@
     height: 772px;
     transform-origin: top right;
     z-index: 1;
+} */
+
+#building-1-top {
+    background-image: url(./BuildingSprites/building1-top.png);
+    position: relative;
+    margin-top: 150px;
+    width: 156px;
+    height: 36px;
+    transform-origin: top right;
+    z-index: 1;
 }
 
-#building-2 {
+#building-1-floors {
+    background-image: url(./BuildingSprites/building1-floors.png);
+    position: relative;
+    margin: 0;
+    width: 156px;
+    height: 300vh;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+/* #building-2 {
     background-image: url(./BuildingSprites/building2.png);
     margin-top: 350px;
     width: 392px;
@@ -24,9 +44,28 @@
     position: relative;
     transform-origin: top right;
     z-index: 1;
+} */
+
+#building-2-top {
+    background-image: url(./BuildingSprites/building2-top.png);
+    margin-top: 350px;
+    width: 392px;
+    height: 188px;
+    position: relative;
+    transform-origin: top right;
+    z-index: 1;
+}
+#building-2-floors {
+    background-image: url(./BuildingSprites/building2-floors.png);
+    margin: 0;
+    width: 392px;
+    height: 300vh;
+    position: relative;
+    transform-origin: top right;
+    z-index: 1;
 }
 
-#building-3 {
+/* #building-3 {
     background-image: url(./BuildingSprites/building3.png);
     margin-top: 250px;
     width: 152px;
@@ -34,16 +73,52 @@
     position: relative;
     transform-origin: top right;
     z-index: 1;
+} */
+
+#building-3-top {
+    background-image: url(./BuildingSprites/building3-top.png);
+    margin-top: 250px;
+    width: 148px;
+    height: 92px;
+    position: relative;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#building-3-floors {
+    background-image: url(./BuildingSprites/building3-floors.png);
+    margin: 0;
+    width: 148px;
+    height: 300vh;
+    position: relative;
+    transform-origin: top right;
+    z-index: 1;
 }
 
 #building-4 {
-    background-image: url(./BuildingSprites/building4.png);
     top: 100px;
     left: calc(15vw - 260px);
     width: 208px;
-    height: 896px;
+    height: 300%;
     position: fixed;
     transform-origin: top right;
     z-index: 1;
-    border: 1px
+}
+
+#building-4-top {
+    background-image: url(./BuildingSprites/building4-top.png);
+    width: 208px;
+    height: 252px;
+    position: relative;
+    z-index: 1;
+}
+
+#building-4-floors {
+    background-image: url(./BuildingSprites/building4-floors.png);
+    margin: 0;
+    width: 208px;
+    height: 300%;
+    position: relative;
+    transform-origin: top right;
+    z-index: 1;
 }
