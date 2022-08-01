@@ -6,16 +6,6 @@
     right: 0;
 }
 
-/* #building-1 {
-    background-image: url(./BuildingSprites/building1.png);
-    position: relative;
-    margin-top: 150px;
-    width: 156px;
-    height: 772px;
-    transform-origin: top right;
-    z-index: 1;
-} */
-
 #building-1-top {
     background-image: url(./BuildingSprites/building1-top.png);
     position: relative;
@@ -36,16 +26,6 @@
     z-index: 1;
 }
 
-/* #building-2 {
-    background-image: url(./BuildingSprites/building2.png);
-    margin-top: 350px;
-    width: 392px;
-    height: 896px;
-    position: relative;
-    transform-origin: top right;
-    z-index: 1;
-} */
-
 #building-2-top {
     background-image: url(./BuildingSprites/building2-top.png);
     margin-top: 350px;
@@ -64,16 +44,6 @@
     transform-origin: top right;
     z-index: 1;
 }
-
-/* #building-3 {
-    background-image: url(./BuildingSprites/building3.png);
-    margin-top: 250px;
-    width: 152px;
-    height: 780px;
-    position: relative;
-    transform-origin: top right;
-    z-index: 1;
-} */
 
 #building-3-top {
     background-image: url(./BuildingSprites/building3-top.png);
