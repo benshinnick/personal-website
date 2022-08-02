@@ -9,11 +9,12 @@
 #building-1-top {
     background-image: url(./BuildingSprites/building1-top.png);
     position: relative;
-    margin-top: 150px;
+    /* margin-top: 150px; */
     width: 156px;
     height: 36px;
     transform-origin: top right;
     z-index: 1;
+    transition: margin-top 25ms ease-out;
 }
 
 #building-1-floors {
@@ -28,12 +29,13 @@
 
 #building-2-top {
     background-image: url(./BuildingSprites/building2-top.png);
-    margin-top: 350px;
+    /* margin-top: 350px; */
     width: 392px;
     height: 188px;
     position: relative;
     transform-origin: top right;
     z-index: 1;
+    transition: margin-top 25ms ease-out;
 }
 #building-2-floors {
     background-image: url(./BuildingSprites/building2-floors.png);
@@ -42,17 +44,19 @@
     height: 300vh;
     position: relative;
     transform-origin: top right;
+    image-rendering: crisp-edges;
     z-index: 1;
 }
 
 #building-3-top {
     background-image: url(./BuildingSprites/building3-top.png);
-    margin-top: 250px;
+    /* margin-top: 250px; */
     width: 148px;
     height: 92px;
     position: relative;
     transform-origin: top right;
     z-index: 1;
+    transition: margin-top 25ms ease-out;
 }
 
 #building-3-floors {

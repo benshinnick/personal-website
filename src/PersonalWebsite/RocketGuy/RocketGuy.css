@@ -24,6 +24,9 @@
     image-rendering: pixelated; 
     image-rendering: optimize-contrast;      
     -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
     filter: none;
 }
 

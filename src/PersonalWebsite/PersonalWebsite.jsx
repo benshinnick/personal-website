@@ -16,7 +16,6 @@ export default class PersonalWebsite extends React.Component {
         super(props)
         this.navBarRef = React.createRef()
         this.cloudsRef = React.createRef()
-        this.homePageRef = React.createRef()
         this.rocketGuyRef = React.createRef()
    
         this.state = {
@@ -57,7 +56,7 @@ export default class PersonalWebsite extends React.Component {
         if(root === null) {
             root = createRoot(mainContent)
         }
-        root.render(<HomePage ref={this.homePageRef} />)
+        root.render(<HomePage />)
         this.setState({ currentPage: 'home' })
     }
 
@@ -73,8 +72,10 @@ export default class PersonalWebsite extends React.Component {
                 setTimeout(() => {
                     root.render(<HomePage />)
                     this.setState({ currentPage: 'home' })
-                    mainContent.style.animationDelay = '500ms'
-                    mainContent.style.animation = '1000ms home-appear forwards'
+                    // mainContent.style.animationDelay = '500ms'
+                    setTimeout(() => {
+                        mainContent.style.animation = '1000ms home-appear forwards'
+                    }, 100)
                 }, 750)
                 this.rocketGuyRef.current.flyInFromBottom()
             }
@@ -93,7 +94,9 @@ export default class PersonalWebsite extends React.Component {
                     this.navBarRef.current.transitionToOverCloud()
                     root.render(<TechnicalPage />)
                     this.setState({ currentPage: 'technical' })
-                    mainContent.style.animation = '1000ms home-appear forwards'
+                    setTimeout(() => {
+                        mainContent.style.animation = '1000ms home-appear forwards'
+                    }, 100)
                 }, 750)
                 this.rocketGuyRef.current.flyInFromTop()
             }
