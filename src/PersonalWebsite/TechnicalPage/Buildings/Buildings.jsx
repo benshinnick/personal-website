@@ -5,6 +5,7 @@ var building1margin
 var building2margin
 var building3margin
 var building4margin
+var building5margin
 
 export default class Buildings extends React.Component {
 
@@ -28,6 +29,10 @@ export default class Buildings extends React.Component {
         const building4 = document.getElementById('building-4')
         building4margin = -window.scrollY/8 + 250
         building4.style.top = `${building4margin}px`
+
+        const building5 = document.getElementById('building-5-top')
+        building5margin = -window.scrollY/16 + 550
+        building5.style.marginTop = `${building5margin}px`
     }
 
     render() {
@@ -45,6 +50,10 @@ export default class Buildings extends React.Component {
                     <div id='building-3'>
                         <div id='building-3-top' className='sprite'></div>
                         <div id='building-3-floors' className='sprite'></div>
+                    </div>
+                    <div id='building-5'>
+                        <div id='building-5-top' className='sprite'></div>
+                        <div id='building-5-floors' className='sprite'></div>
                     </div>
                 </div>
                 <div id='building-4'>
