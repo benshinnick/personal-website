@@ -6,9 +6,9 @@
 
 #star-1 {
     height: 75px;
-    width:75px;
+    width: 75px;
     right: 16vw;
-    top: 10vh;
+    top: calc(100px + 5vh);
     background-image: url(./StarSprites/star-1.png);
 }
 
@@ -16,7 +16,7 @@
     height: 71px;
     width:67px;
     left: calc(70vw + 40px);
-    top: 55vh;
+    top: calc(100px + 45vh);
     background-image: url(./StarSprites/star-2.png);
 }
 
@@ -24,7 +24,7 @@
     height: 88px;
     width: 88px;
     right: 6vw;
-    top: 30vh;
+    top: calc(100px + 25vh);
     background-image: url(./StarSprites/star-3.png);
 }
 
@@ -32,15 +32,15 @@
     height: 44px;
     width: 44px;
     left: 3vw;
-    top: 35vh;
+    top: calc(100px + 30vh);
     background-image: url(./StarSprites/star-4.png);
 }
 
 #star-5 {
     height: 67px;
     width: 68px;
-    right: calc(70vw + 68px);
-    bottom: 30vh;
+    left: 20vw;
+    top: calc(100px + 50vh);
     background-image: url(./StarSprites/star-5.png);
 }
 
@@ -48,6 +48,6 @@
     height: 60px;
     width: 60px;
     left: 20vw;
-    top: 10vh;
+    top: calc(100px + 10vh);
     background-image: url(./StarSprites/star-6.png);
 }

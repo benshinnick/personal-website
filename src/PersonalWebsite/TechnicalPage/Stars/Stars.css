@@ -1,0 +1,59 @@
+.star {
+    position: fixed;
+    transition: margin-top 500ms ease-out;
+    z-index: -1;
+}
+
+#star-1-tech {
+    /* border: 1px solid green; */
+    height: 75px;
+    width: 75px;
+    right: 25vw;
+    top: 200px;
+    background-image: url(./StarSprites/star-1.png);
+}
+
+#star-2-tech {
+    /* border: 1px solid red; */
+    height: 71px;
+    width:67px;
+    right: 2vw;
+    top: 100px;
+    background-image: url(./StarSprites/star-2.png);
+}
+
+#star-4-tech {
+    /* border: 1px solid orange; */
+    height: 44px;
+    width: 44px;
+    right: 40vw;
+    top: 15vh;
+    background-image: url(./StarSprites/star-4.png);
+}
+
+#star-3-tech {
+    /* border: 1px solid blue; */
+    height: 88px;
+    width: 88px;
+    right: 60vw;
+    top: 90px;
+    background-image: url(./StarSprites/star-3.png);
+}
+
+#star-5-tech {
+    /* border: 1px solid cyan; */
+    height: 67px;
+    width: 68px;
+    right: 75vw;
+    top: 150px;
+    background-image: url(./StarSprites/star-5.png);
+}
+
+#star-6-tech {
+    /* border: 1px solid white; */
+    height: 60px;
+    width: 60px;
+    left: 5vw;
+    top: 100px;
+    background-image: url(./StarSprites/star-6.png);
+}
