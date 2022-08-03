@@ -1,4 +1,4 @@
-#moon {
+#moon-home {
     background-image: url(./moon.png);
     bottom: 135px;
     right: 10vw;
@@ -6,11 +6,11 @@
     height: 96px;
     position: fixed;
     transform-origin: top right;
-    animation: 1.5s ease-out 0s 1 appear;
+    animation: 1.5s ease-out 0s 1 moon-appear-from-bottom;
     z-index: 1;
 }
 
-@keyframes appear {
+@keyframes moon-appear-from-bottom {
     from {bottom: -96px}
     to { bottom: 135px; }
 }

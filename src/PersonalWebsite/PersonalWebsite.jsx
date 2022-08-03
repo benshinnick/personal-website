@@ -16,7 +16,6 @@ export default class PersonalWebsite extends React.Component {
         super(props)
         this.navBarRef = React.createRef()
         this.cloudsRef = React.createRef()
-        this.homePageRef = React.createRef()
         this.rocketGuyRef = React.createRef()
    
         this.state = {
@@ -35,13 +34,13 @@ export default class PersonalWebsite extends React.Component {
 
     handleScroll = () => {
         this.rocketGuyRef.current.moveOnScroll()
-        if ((window.innerHeight + window.scrollY + 25) >= document.body.offsetHeight) {
+        if ((window.innerHeight + window.scrollY + 50) >= document.body.offsetHeight) {
             scrollPos = 'bottom'
             if(this.state.currentPage === 'home') {
                 this.changeToTechnicalPage()
             }
         }
-        else if (window.scrollY <= 25) {
+        else if (window.scrollY <= 50) {
             scrollPos = 'top'
             if(this.state.currentPage === 'technical') {
                 this.changeToHomePage()
@@ -57,25 +56,25 @@ export default class PersonalWebsite extends React.Component {
         if(root === null) {
             root = createRoot(mainContent)
         }
-        root.render(<HomePage ref={this.homePageRef} />)
+        root.render(<HomePage />)
         this.setState({ currentPage: 'home' })
     }
 
     changeToHomePage() {
         setTimeout(() => {
             if(scrollPos === 'top') {
-                console.log('switching to home')
                 this.setState({ currentPage: 'home' })
                 this.cloudsRef.current.transitionCloudsToBottom()
-                this.navBarRef.current.aboutButtonOnClick()
+                this.navBarRef.current.switchToAbout()
                 const mainContent = document.getElementById('main-content')
                 mainContent.style.animation = '750ms home-disappear forwards'
                 this.navBarRef.current.transitionToHome()
                 setTimeout(() => {
                     root.render(<HomePage />)
                     this.setState({ currentPage: 'home' })
-                    mainContent.style.animationDelay = '500ms'
-                    mainContent.style.animation = '1000ms home-appear forwards'
+                    setTimeout(() => {
+                        mainContent.style.animation = '1000ms home-appear forwards'
+                    }, 100)
                 }, 750)
                 this.rocketGuyRef.current.flyInFromBottom()
             }
@@ -87,13 +86,16 @@ export default class PersonalWebsite extends React.Component {
             if(scrollPos === 'bottom') {
                 this.setState({ currentPage: 'technical' })
                 this.cloudsRef.current.transitionCloudsToTop()
-                this.navBarRef.current.technicalButtonOnClick()
+                this.navBarRef.current.switchToTechnical()
                 const mainContent = document.getElementById('main-content')
                 mainContent.style.animation = '750ms home-disappear forwards'
                 setTimeout(() => {
                     this.navBarRef.current.transitionToOverCloud()
                     root.render(<TechnicalPage />)
                     this.setState({ currentPage: 'technical' })
+                    setTimeout(() => {
+                        mainContent.style.animation = '1000ms home-appear forwards'
+                    }, 100)
                 }, 750)
                 this.rocketGuyRef.current.flyInFromTop()
             }

@@ -9,6 +9,7 @@ const NUM_ANIMATION_FRAMES = 4
 var lastScrollYPos = STARTING_SCROLL_Y_POS
 var timer = null
 var topOffset = 50
+var speedFactor = 1.5
 
 export default class RocketGuy extends React.Component {
 
@@ -77,7 +78,7 @@ export default class RocketGuy extends React.Component {
     moveOnScroll() {
         var rocketGuy = getRocketGuyElement()
         var currScrollYPos = window.scrollY
-        var spriteYPos = currScrollYPos/2.5 + topOffset
+        var spriteYPos = currScrollYPos/(2.5 * speedFactor) + topOffset
 
         if(lastScrollYPos > currScrollYPos)
             if(!isFlyingUpAnimated(rocketGuy))
@@ -98,11 +99,12 @@ export default class RocketGuy extends React.Component {
     flyInFromTop() {
         const rocketGuy = getRocketGuyElement()
         topOffset = 0
+        speedFactor = 3
         rocketGuy.style.opacity = '0'
         rocketGuy.style.marginTop = '0'
         disableScroll()
         setTimeout(() => {
-            window.scrollTo(0, 300)
+            window.scrollTo(0, 700)
             enableScroll()
             rocketGuy.style.opacity = '1'
         }, 750)
@@ -110,13 +112,14 @@ export default class RocketGuy extends React.Component {
 
     flyInFromBottom() {
         const rocketGuy = getRocketGuyElement()
-        const scrollHeight = getMaxScrollYPos()
+        const scrollHeight = Math.floor(window.innerHeight*4.4) - window.innerHeight
         topOffset = 50
+        speedFactor = 1.5
         rocketGuy.style.opacity = '0'
-        rocketGuy.style.marginTop = `${scrollHeight/2.5 + topOffset}px`
+        rocketGuy.style.marginTop = `${scrollHeight/(2.5 * 1.5) + topOffset}px`
         disableScroll()
         setTimeout(() => {
-            window.scrollTo(0, scrollHeight - 500)
+            window.scrollTo(0, scrollHeight - 650)
             enableScroll()
             rocketGuy.style.opacity = '1'
         }, 750)
@@ -143,16 +146,6 @@ function isFlyingDownAnimated(rocketGuy) {
     return rocketGuy.classList.contains('fly-down-build')
         || rocketGuy.classList.contains('fly-down-sustain')
         || rocketGuy.classList.contains('fly-down-stop') 
-}
-
-function getMaxScrollYPos() {
-    return Math.max(
-        document.body.scrollHeight,
-        document.body.offsetHeight, 
-        document.documentElement.clientHeight,
-        document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
-    ) - window.innerHeight
 }
 
 // from: https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily

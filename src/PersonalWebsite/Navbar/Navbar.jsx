@@ -2,24 +2,52 @@ import React from 'react';
 import './Navbar.css';
 
 export default class Navbar extends React.Component {
+    constructor(props) {
+        super(props)
 
-    componentDidMount() {
-        document.querySelector('#about-btn').className = 'selected';
+        this.state = {
+            currentPage: 'about',
+        }
     }
 
-    aboutButtonOnClick() {
-        document.querySelector('.selected').className = '';
+    componentDidMount() {
         document.querySelector('#about-btn').className = 'selected'
     }
 
+    aboutButtonOnClick() {
+        document.querySelector('.selected').className = ''
+        document.querySelector('#about-btn').className = 'selected'
+        if(this.state.currentPage === 'technical') {
+            window.scrollTo(0, 0)
+            this.setState({ currentPage: 'about' })
+        }
+    }
+
+    switchToAbout() {
+        document.querySelector('.selected').className = ''
+        document.querySelector('#about-btn').className = 'selected'
+        this.setState({ currentPage: 'about' })
+    }
+
     technicalButtonOnClick() {
-        document.querySelector('.selected').className = '';
-        document.querySelector('#technical-btn').className= 'selected';
+        document.querySelector('.selected').className = ''
+        document.querySelector('#technical-btn').className= 'selected'
+        if(this.state.currentPage === 'about') {
+            const scrollHeight = getMaxScrollYPos()
+            window.scrollTo(0, scrollHeight)
+            this.setState({ currentPage: 'technical' })
+        }
+    }
+
+    switchToTechnical() {
+        document.querySelector('.selected').className = ''
+        document.querySelector('#technical-btn').className= 'selected'
+        this.setState({ currentPage: 'technical' })
     }
 
     gameButtonOnClick() {
-        document.querySelector('.selected').className = '';
-        document.querySelector('#game-btn').className = 'selected';
+        document.querySelector('.selected').className = ''
+        document.querySelector('#game-btn').className= 'selected'
     }
 
     transitionToOverCloud() {
@@ -52,4 +80,14 @@ export default class Navbar extends React.Component {
             </div>
         );
     }
+}
+
+function getMaxScrollYPos() {
+    return Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight, 
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+    ) - window.innerHeight
 }
