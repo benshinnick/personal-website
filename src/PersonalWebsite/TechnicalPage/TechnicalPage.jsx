@@ -1,5 +1,6 @@
 import React from 'react';
 import './TechnicalPage.css';
+import Moon from './Moon/Moon';
 import Buildings from './Buildings/Buildings';
 
 export default class TechnicalPage extends React.Component {
@@ -30,6 +31,7 @@ export default class TechnicalPage extends React.Component {
         return (
             <main className='technical-page'>
                 <Buildings ref={this.buildingsRef} />
+                <Moon />
                 <div id='filler-tech' style={{height: window.innerHeight*8.5 + 'px'}} />
             </main>
         );

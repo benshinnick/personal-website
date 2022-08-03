@@ -72,7 +72,6 @@ export default class PersonalWebsite extends React.Component {
                 setTimeout(() => {
                     root.render(<HomePage />)
                     this.setState({ currentPage: 'home' })
-                    // mainContent.style.animationDelay = '500ms'
                     setTimeout(() => {
                         mainContent.style.animation = '1000ms home-appear forwards'
                     }, 100)

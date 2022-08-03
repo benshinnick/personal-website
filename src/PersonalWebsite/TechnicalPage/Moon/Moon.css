@@ -1,0 +1,16 @@
+#moon-tech {
+    background-image: url(./moon.png);
+    top: 115px;
+    right: 10vw;
+    width: 96px;
+    height: 96px;
+    position: fixed;
+    transform-origin: top right;
+    animation: 1.5s ease-out 0s 1 moon-appear-from-top;
+    z-index: -1;
+}
+
+@keyframes moon-appear-from-top {
+    from {top: -96px}
+    to { top: 115px; }
+}
