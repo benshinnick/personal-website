@@ -3,7 +3,7 @@ import './TechnicalPage.css';
 import Moon from './Moon/Moon';
 import Buildings from './Buildings/Buildings';
 import TechInfoPanels from './InfoPanels/TechInfoPanels';
-// import Stars from './Stars/Stars'
+import Stars from './Stars/Stars'
 
 export default class TechnicalPage extends React.Component {
     constructor(props) {
@@ -35,7 +35,7 @@ export default class TechnicalPage extends React.Component {
                 <Buildings ref={this.buildingsRef} />
                 <Moon />
                 <TechInfoPanels />
-                {/* <Stars /> */}
+                <Stars />
                 <div id='filler-tech' style={{height: window.innerHeight*8.5 + 'px'}} />
             </main>
         );

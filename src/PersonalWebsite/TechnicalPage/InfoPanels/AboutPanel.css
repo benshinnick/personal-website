@@ -3,8 +3,7 @@
     height: fit-content;
     
     position: fixed;
-    top: 60%;
-    transform: translate(0, -60%);
+    top: 180px;
     
     width: 60vw;
     right: 0;
@@ -55,7 +54,7 @@ hr {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: rgba(255, 255, 255, 0.975);
+    background-color: rgba(255, 255, 255, 0.98);
 }
 
 #about-panel {
@@ -95,9 +94,9 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 
 .tech-text-panel .corner {
     position: absolute;
-    background-image: url(./Sprites/corner-light.png);
-    width: 12px;
-    height: 12px;
+    background-image: url(./Sprites/corner-light-compact.png);
+    width: 4px;
+    height: 4px;
     image-rendering: pixelated;
     z-index: 2;
 }

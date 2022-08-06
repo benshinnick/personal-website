@@ -71,7 +71,7 @@ export default class Navbar extends React.Component {
                     <div id='navbar' className='navbar-wrapper-home'>
                         <button id='name-home-button'>BEN SHINNICK</button>
                         <div className='links-wrapper'>
-                            <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>ABOUT</button>
+                            <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>HOME</button>
                             <button id='technical-btn' onClick={() => this.technicalButtonOnClick()}>TECHNICAL</button>
                             <button id='game-btn'onClick={() => this.gameButtonOnClick()}>GAME</button>
                         </div>
