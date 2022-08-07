@@ -1,6 +1,6 @@
 #technical-panels {
     position: fixed;
-    top: 120px;
+    top: 165px;
 
     height: fit-content;
     width: 60vw;
@@ -47,7 +47,7 @@ hr {
     margin-bottom: 20px;
     width: 60vw;
     position: relative;
-    animation: identifier 1.5s linear;
+    animation: fade-in 1.5s linear;
     transform-origin: bottom left;
 
     border: 4px solid #e5e5e5;
@@ -58,10 +58,10 @@ hr {
     z-index: 1;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: rgba(255, 255, 255, 0.97);
+    background-color: rgba(255, 255, 255, 0.965);
 }
 
-@keyframes identifier {
+@keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
 }
@@ -80,7 +80,7 @@ hr {
     border-width: 0px 4px;
 }
 
-.tech-info-text {
+.info-panel-content-container {
     margin-left: 2%;
     margin-right: 2%;
     position: relative;
@@ -89,17 +89,9 @@ hr {
     margin-top: 0px;
 }
 
-#projects-text {
-    height: 120px;
-}
-
-#about-text {
-    height: 90px;
-}
-
 .info-panel-content {
     font-size: 18pt;
-    text-align: center;
+    text-align: left;
     font-weight: 900;
     font-family: 'pixel';
     line-height: 1.4;

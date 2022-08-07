@@ -9,6 +9,7 @@ export default class TechnicalPage extends React.Component {
     constructor(props) {
         super(props)
         this.buildingsRef = React.createRef()
+        this.infoPanelsRef = React.createRef()
     }
 
     componentDidMount() {
@@ -27,15 +28,16 @@ export default class TechnicalPage extends React.Component {
 
     handleScroll = () => {
         this.buildingsRef.current.onScroll()
+        this.infoPanelsRef.current.onScroll()
     }
 
     render() {
         return (
             <main className='technical-page'>
-                <Buildings ref={this.buildingsRef} />
                 <Moon />
-                <TechInfoPanels />
                 <Stars />
+                <Buildings ref={this.buildingsRef} />
+                <TechInfoPanels ref={this.infoPanelsRef} />
                 <div id='filler-tech' style={{height: window.innerHeight*8.5 + 'px'}} />
             </main>
         );
