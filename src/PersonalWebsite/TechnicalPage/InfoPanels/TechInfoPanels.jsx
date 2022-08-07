@@ -45,7 +45,7 @@ export default class TechInfoPanels extends React.Component {
         else if (panelCurrHeights[currPanelIdx] <= 0 && currPanelIdx < PANELS.length - 1) {
             panelCurrHeights[currPanelIdx] = 0
             panelTopMargins[currPanelIdx+1] -= scrollDiff
-            panelCurrOpacities[currPanelIdx] -= scrollDiff / 50
+            panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
             if (Math.abs(panelTopMargins[currPanelIdx+1]) >= panelCoverHeights[currPanelIdx] && panelCurrHeights[currPanelIdx] === 0) {
                 panelTopMargins[currPanelIdx+1] = -1 * panelCoverHeights[currPanelIdx]
                 panelCurrOpacities[currPanelIdx] = 0
@@ -60,11 +60,13 @@ export default class TechInfoPanels extends React.Component {
         }
         else if (panelTopMargins[currPanelIdx+1] < 0 || panelCurrOpacities[currPanelIdx] < 1) {
             panelTopMargins[currPanelIdx+1] -= scrollDiff
-            panelCurrOpacities[currPanelIdx] -= scrollDiff / 50
+            panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
             if (panelTopMargins[currPanelIdx+1] >= 0)
                 panelTopMargins[currPanelIdx+1] = 0
             if (panelCurrOpacities[currPanelIdx] >= 1)
                 panelCurrOpacities[currPanelIdx] = 1
+            else
+                panelCurrHeights[currPanelIdx] = 0
             if(currPanelIdx < PANELS.length - 1)
                 document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
             document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
