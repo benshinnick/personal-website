@@ -22,8 +22,10 @@ export default class TechnicalPage extends React.Component {
         window.removeEventListener('scroll', this.handleScroll)
     }
 
-    handleResize() {
+    handleResize = () => {
         document.getElementById('filler-tech').style.height = `${Math.floor(window.innerHeight*8.5)}px`
+        this.infoPanelsRef.current.onResize()
+        window.scroll(0, 700)
     }
 
     handleScroll = () => {
