@@ -2,7 +2,7 @@ import React from 'react';
 import './TechInfoPanels.css';
 
 const OFFSET_Y_PX = 700
-const PANELS = ['about', 'projects']
+const PANELS = ['about', 'projects', 'experience']
 var currPanelIdx = 0
 var lastScrollPos = 0
 
@@ -19,10 +19,12 @@ export default class TechInfoPanels extends React.Component {
     }
 
     inititializePanelValues() {
+        currPanelIdx = 0
         for(var i = 0; i < PANELS.length; i++) {
             panelMaxHeights[i] = document.getElementById(`${PANELS[i]}-panel-content`).offsetHeight + 6
             document.getElementById(`${PANELS[i]}-panel-content-container`).style.height = `${panelMaxHeights[i]}px`
-            panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 28
+            panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 24
+            // console.log(panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight)
             document.getElementById(`tech-${PANELS[i]}-panel`).style.opacity = 1
             document.getElementById(`tech-${PANELS[i]}-panel`).style.marginTop = '0px'
             panelCurrHeights[i] = panelMaxHeights[i]
@@ -33,21 +35,24 @@ export default class TechInfoPanels extends React.Component {
 
     updatePanelsOnScroll(scrollPos, scrollDiff) {
         panelCurrHeights[currPanelIdx] -= scrollDiff
-
         if (panelCurrHeights[currPanelIdx] >= panelMaxHeights[currPanelIdx] || scrollPos === 0) {
             panelCurrHeights[currPanelIdx] = panelMaxHeights[currPanelIdx]
-            document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
-            if(currPanelIdx > 0) {currPanelIdx -= 1 }
+            if(currPanelIdx > 0) {
+                document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
+                currPanelIdx -= 1
+            }
         }
-        else if (panelCurrHeights[currPanelIdx] < 0) {
+        else if (panelCurrHeights[currPanelIdx] <= 0 && currPanelIdx < PANELS.length - 1) {
             panelCurrHeights[currPanelIdx] = 0
             panelTopMargins[currPanelIdx+1] -= scrollDiff
             panelCurrOpacities[currPanelIdx] -= scrollDiff / 50
-            if (Math.abs(panelTopMargins[currPanelIdx+1]) >= panelCoverHeights[currPanelIdx]) {
+            if (Math.abs(panelTopMargins[currPanelIdx+1]) >= panelCoverHeights[currPanelIdx] && panelCurrHeights[currPanelIdx] === 0) {
                 panelTopMargins[currPanelIdx+1] = -1 * panelCoverHeights[currPanelIdx]
+                panelCurrOpacities[currPanelIdx] = 0
                 document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
+                document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
                 document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
-                if(currPanelIdx < PANELS.length - 1) { currPanelIdx += 1 }
+                if(currPanelIdx < PANELS.length - 1) { currPanelIdx += 1; return }
             }
             if (panelCurrOpacities[currPanelIdx] <= 0) { panelCurrOpacities[currPanelIdx] = 0 }
             document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
@@ -56,11 +61,12 @@ export default class TechInfoPanels extends React.Component {
         else if (panelTopMargins[currPanelIdx+1] < 0 || panelCurrOpacities[currPanelIdx] < 1) {
             panelTopMargins[currPanelIdx+1] -= scrollDiff
             panelCurrOpacities[currPanelIdx] -= scrollDiff / 50
-            if (panelTopMargins[currPanelIdx+1] >= 0) {
+            if (panelTopMargins[currPanelIdx+1] >= 0)
                 panelTopMargins[currPanelIdx+1] = 0
-            }
-            if (panelCurrOpacities[currPanelIdx] >= 1) { panelCurrOpacities[currPanelIdx] = 1 }
-            document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
+            if (panelCurrOpacities[currPanelIdx] >= 1)
+                panelCurrOpacities[currPanelIdx] = 1
+            if(currPanelIdx < PANELS.length - 1)
+                document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
             document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
         }
         document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
@@ -107,6 +113,19 @@ export default class TechInfoPanels extends React.Component {
                             <div className='info-panel-content-container' id='projects-panel-content-container'>
                                 <div className='info-panel-content' id='projects-panel-content'>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Donec nisl enim, elementum non mauris sed, cursus dictum nisl. Nunc sed tortor pellentesque, elementum nulla id, ullamcorper urna. Curabitur nisi sem, tristique sed velit porta, molestie vulputate sem. Cras non tincidunt sapien. Nunc rhoncus tempus risus, at ornare sem interdum at. Donec rhoncus tortor justo. Praesent dignissim turpis pretium, volutpat sapien vitae, dapibus velit.
+                                </div>
+                            </div>
+                        </div>
+                        <div className='tech-info-panel' id='tech-experience-panel'>
+                            <div className='corner' id='top-right-corner'></div>
+                            <div className='corner' id='bottom-right-corner'></div>
+                            <div className='corner' id='bottom-left-corner'></div>
+                            <div className='corner' id='top-left-corner'></div>
+                            <div className='sides'></div>
+                            <div className='title' id='experience-title'>EDUCATION AND EXPERIENCE</div>
+                            <div className='info-panel-content-container' id='experience-panel-content-container'>
+                                <div className='info-panel-content' id='experience-panel-content'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Okay
                                 </div>
                             </div>
                         </div>
