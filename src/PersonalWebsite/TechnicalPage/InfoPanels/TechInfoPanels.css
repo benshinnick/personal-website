@@ -55,7 +55,7 @@ hr {
     border-width: 4px 0px;
     /* overflow: hidden; */
 
-    display:inline-block;
+    display: block;
     overflow-wrap: break-word;
     color: black;
     z-index: 1;

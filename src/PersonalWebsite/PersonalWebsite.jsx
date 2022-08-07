@@ -40,7 +40,7 @@ export default class PersonalWebsite extends React.Component {
                 this.changeToTechnicalPage()
             }
         }
-        else if (window.scrollY <= 50) {
+        else if (window.scrollY <= 100) {
             scrollPos = 'top'
             if(this.state.currentPage === 'technical') {
                 this.changeToHomePage()
