@@ -24,7 +24,6 @@ export default class TechInfoPanels extends React.Component {
             panelMaxHeights[i] = document.getElementById(`${PANELS[i]}-panel-content`).offsetHeight + 6
             document.getElementById(`${PANELS[i]}-panel-content-container`).style.height = `${panelMaxHeights[i]}px`
             panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 24
-            // console.log(panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight)
             document.getElementById(`tech-${PANELS[i]}-panel`).style.opacity = 1
             document.getElementById(`tech-${PANELS[i]}-panel`).style.marginTop = '0px'
             panelCurrHeights[i] = panelMaxHeights[i]
@@ -42,35 +41,42 @@ export default class TechInfoPanels extends React.Component {
                 currPanelIdx -= 1
             }
         }
-        else if (panelCurrHeights[currPanelIdx] <= 0 && currPanelIdx < PANELS.length - 1) {
+        if (panelCurrHeights[currPanelIdx] <= 0 && currPanelIdx < PANELS.length - 1) {
             panelCurrHeights[currPanelIdx] = 0
             panelTopMargins[currPanelIdx+1] -= scrollDiff
             panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
-            if (Math.abs(panelTopMargins[currPanelIdx+1]) >= panelCoverHeights[currPanelIdx] && panelCurrHeights[currPanelIdx] === 0) {
+            if (Math.abs(panelTopMargins[currPanelIdx+1]) >= panelCoverHeights[currPanelIdx]) {
                 panelTopMargins[currPanelIdx+1] = -1 * panelCoverHeights[currPanelIdx]
-                panelCurrOpacities[currPanelIdx] = 0
-                document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
-                document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
-                document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
-                if(currPanelIdx < PANELS.length - 1) { currPanelIdx += 1; return }
+                if(panelCurrHeights[currPanelIdx] === 0) {
+                    panelCurrOpacities[currPanelIdx] = 0
+                    document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
+                    document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
+                    document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
+                    if(currPanelIdx < PANELS.length - 1) { currPanelIdx += 1; return }
+                }
             }
             if (panelCurrOpacities[currPanelIdx] <= 0) { panelCurrOpacities[currPanelIdx] = 0 }
             document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
             document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
         }
-        else if (panelTopMargins[currPanelIdx+1] < 0 || panelCurrOpacities[currPanelIdx] < 1) {
-            panelTopMargins[currPanelIdx+1] -= scrollDiff
-            panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
-            if (panelTopMargins[currPanelIdx+1] >= 0)
-                panelTopMargins[currPanelIdx+1] = 0
-            if (panelCurrOpacities[currPanelIdx] >= 1)
-                panelCurrOpacities[currPanelIdx] = 1
-            else
-                panelCurrHeights[currPanelIdx] = 0
-            if(currPanelIdx < PANELS.length - 1)
+        else {
+        if (panelTopMargins[currPanelIdx+1] < 0 || panelCurrOpacities[currPanelIdx] < 1) {
+            if(currPanelIdx < PANELS.length - 1) {
+                panelTopMargins[currPanelIdx+1] -= scrollDiff
+                panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
+                if (panelTopMargins[currPanelIdx+1] >= 0)
+                    panelTopMargins[currPanelIdx+1] = 0
+                else
+                    panelCurrHeights[currPanelIdx] = 0
+                if (panelCurrOpacities[currPanelIdx] >= 1)
+                    panelCurrOpacities[currPanelIdx] = 1
+                else
+                    panelCurrHeights[currPanelIdx] = 0
                 document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
-            document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
+                document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
+            }
         }
+    }
         document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
     }
 
