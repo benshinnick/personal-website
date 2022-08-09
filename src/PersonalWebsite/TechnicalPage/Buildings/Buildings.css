@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-evenly;
     position: fixed;
-    width: 70vw;
+    width: 75vw;
     right: 0;
 }
 
@@ -109,6 +109,36 @@
 }
 
 #building-5-floors {
+    background-image: url(./BuildingSprites/building5-floors.png);
+    position: relative;
+    margin: 0;
+    width: 156px;
+    height: 300vh;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#building-6 {
+    top: 100px;
+    left: calc(15vw - 40px);
+    width: 208px;
+    height: 300%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#building-6-top {
+    background-image: url(./BuildingSprites/building1-top.png);
+    position: relative;
+    width: 156px;
+    height: 36px;
+    transform-origin: top right;
+    z-index: 1;
+    transition: margin-top 25ms ease-out;
+}
+
+#building-6-floors {
     background-image: url(./BuildingSprites/building5-floors.png);
     position: relative;
     margin: 0;

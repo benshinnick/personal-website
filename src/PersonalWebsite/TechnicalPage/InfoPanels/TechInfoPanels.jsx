@@ -23,7 +23,7 @@ export default class TechInfoPanels extends React.Component {
         for(var i = 0; i < PANELS.length; i++) {
             panelMaxHeights[i] = document.getElementById(`${PANELS[i]}-panel-content`).offsetHeight + 6
             document.getElementById(`${PANELS[i]}-panel-content-container`).style.height = `${panelMaxHeights[i]}px`
-            panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 24
+            panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 28
             document.getElementById(`tech-${PANELS[i]}-panel`).style.opacity = 1
             document.getElementById(`tech-${PANELS[i]}-panel`).style.marginTop = '0px'
             panelCurrHeights[i] = panelMaxHeights[i]
@@ -130,7 +130,7 @@ export default class TechInfoPanels extends React.Component {
                             <div className='corner' id='bottom-left-corner'></div>
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
-                            <div className='title' id='experience-title'>EDUCATION AND EXPERIENCE</div>
+                            <div className='title' id='experience-title'>STUFF</div>
                             <div className='info-panel-content-container' id='experience-panel-content-container'>
                                 <div className='info-panel-content' id='experience-panel-content'>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Okay
