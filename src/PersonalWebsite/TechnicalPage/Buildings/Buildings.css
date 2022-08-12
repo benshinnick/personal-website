@@ -69,7 +69,7 @@
     z-index: 1;
 }
 
-#building-4 {
+#building-5 {
     top: 100px;
     left: calc(15vw - 260px);
     width: 208px;
@@ -79,7 +79,7 @@
     z-index: 1;
 }
 
-#building-4-top {
+#building-5-top {
     background-image: url(./BuildingSprites/building4-top.png);
     width: 208px;
     height: 252px;
@@ -87,7 +87,7 @@
     z-index: 1;
 }
 
-#building-4-floors {
+#building-5-floors {
     background-image: url(./BuildingSprites/building4-floors.png);
     margin: 0;
     width: 208px;
@@ -97,7 +97,7 @@
     z-index: 1;
 }
 
-#building-5-top {
+#building-4-top {
     background-image: url(./BuildingSprites/building1-top.png);
     position: relative;
     /* margin-top: 150px; */
@@ -108,7 +108,7 @@
     transition: margin-top 25ms ease-out;
 }
 
-#building-5-floors {
+#building-4-floors {
     background-image: url(./BuildingSprites/building5-floors.png);
     position: relative;
     margin: 0;

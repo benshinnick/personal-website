@@ -26,13 +26,13 @@ export default class Buildings extends React.Component {
         building3margin = -window.scrollY/14 + 450
         building3.style.marginTop = `${building3margin}px`
 
-        const building4 = document.getElementById('building-4')
-        building4margin = -window.scrollY/8 + 250
-        building4.style.top = `${building4margin}px`
-
-        const building5 = document.getElementById('building-5-top')
+        const building5 = document.getElementById('building-4-top')
         building5margin = -window.scrollY/12 + 550
         building5.style.marginTop = `${building5margin}px`
+
+        const building4 = document.getElementById('building-5')
+        building4margin = -window.scrollY/8 + 250
+        building4.style.top = `${building4margin}px`
     }
 
     render() {
@@ -51,14 +51,14 @@ export default class Buildings extends React.Component {
                         <div id='building-3-top' className='sprite'></div>
                         <div id='building-3-floors' className='sprite'></div>
                     </div>
-                    <div id='building-5'>
-                        <div id='building-5-top' className='sprite'></div>
-                        <div id='building-5-floors' className='sprite'></div>
+                    <div id='building-4'>
+                        <div id='building-4-top' className='sprite'></div>
+                        <div id='building-4-floors' className='sprite'></div>
                     </div>
                 </div>
-                <div id='building-4'>
-                    <div id='building-4-top' className='sprite'></div>
-                    <div id='building-4-floors' className='sprite'></div>
+                <div id='building-5'>
+                    <div id='building-5-top' className='sprite'></div>
+                    <div id='building-5-floors' className='sprite'></div>
                 </div>
             </div>
         );
