@@ -96,7 +96,7 @@ hr {
     font-size: 18pt;
     text-align: left;
     font-weight: 900;
-    font-family: 'pixel';
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
     line-height: 1.4;
     letter-spacing: 1px;
     z-index: 1;

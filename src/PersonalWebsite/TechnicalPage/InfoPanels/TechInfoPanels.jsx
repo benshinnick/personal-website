@@ -108,7 +108,7 @@ export default class TechInfoPanels extends React.Component {
                             <div className='title' id='about-title'>ABOUT ME</div>
                             <div className='info-panel-content-container' id='about-panel-content-container'>
                                 <div className='info-panel-content' id='about-panel-content'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Donec nisl enim, elementum non mauris sed, cursus dictum nisl. Nunc sed tortor pellentesque, elementum nulla id, ullamcorper urna. Curabitur nisi sem.
+                                I'm currently a senior majoring in Computer Science. I enjoy designing and building full stack and mobile apps, and I am passionate about using the tools and knowledge I have to create and work on products that will improve the lives of others.
                                 </div>
                             </div>
                         </div>
