@@ -148,6 +148,7 @@ function isFlyingDownAnimated(rocketGuy) {
         || rocketGuy.classList.contains('fly-down-stop') 
 }
 
+// stop scrolling during page transitions
 // from: https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
 
 // left: 37, up: 38, right: 39, down: 40,

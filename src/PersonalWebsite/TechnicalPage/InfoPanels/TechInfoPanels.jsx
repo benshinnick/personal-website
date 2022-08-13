@@ -32,6 +32,7 @@ export default class TechInfoPanels extends React.Component {
         }
     }
 
+    // Handles the tech panels scrolling with sticky header and disappear effect
     updatePanelsOnScroll(scrollPos, scrollDiff) {
         panelCurrHeights[currPanelIdx] -= scrollDiff
         if (panelCurrHeights[currPanelIdx] >= panelMaxHeights[currPanelIdx] || scrollPos === 0) {
@@ -60,22 +61,22 @@ export default class TechInfoPanels extends React.Component {
             document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
         }
         else {
-        if (panelTopMargins[currPanelIdx+1] < 0 || panelCurrOpacities[currPanelIdx] < 1) {
-            if(currPanelIdx < PANELS.length - 1) {
-                panelTopMargins[currPanelIdx+1] -= scrollDiff
-                panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
-                if (panelTopMargins[currPanelIdx+1] >= 0)
-                    panelTopMargins[currPanelIdx+1] = 0
-                else
-                    panelCurrHeights[currPanelIdx] = 0
-                if (panelCurrOpacities[currPanelIdx] >= 1)
-                    panelCurrOpacities[currPanelIdx] = 1
-                else
-                    panelCurrHeights[currPanelIdx] = 0
-                document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
-                document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
+            if (panelTopMargins[currPanelIdx+1] < 0 || panelCurrOpacities[currPanelIdx] < 1) {
+                if(currPanelIdx < PANELS.length - 1) {
+                    panelTopMargins[currPanelIdx+1] -= scrollDiff
+                    panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
+                    if (panelTopMargins[currPanelIdx+1] >= 0)
+                        panelTopMargins[currPanelIdx+1] = 0
+                    else
+                        panelCurrHeights[currPanelIdx] = 0
+                    if (panelCurrOpacities[currPanelIdx] >= 1)
+                        panelCurrOpacities[currPanelIdx] = 1
+                    else
+                        panelCurrHeights[currPanelIdx] = 0
+                    document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
+                    document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
+                }
             }
-        }
     }
         document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
     }
