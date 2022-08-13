@@ -107,6 +107,7 @@ export default class RocketGuy extends React.Component {
             window.scrollTo(0, 700)
             enableScroll()
             rocketGuy.style.opacity = '1'
+            rocketGuy.style.zIndex = '1'
         }, 750)
     }
 
@@ -122,6 +123,7 @@ export default class RocketGuy extends React.Component {
             window.scrollTo(0, scrollHeight - 650)
             enableScroll()
             rocketGuy.style.opacity = '1'
+            rocketGuy.style.zIndex = '2'
         }, 750)
     }
 
