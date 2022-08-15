@@ -162,7 +162,7 @@
     -webkit-text-fill-color: transparent;
     white-space: pre;
     height: 55px;
-    font-weight: 900;
+    font-weight: bold;
     
     background-size: 200% 100%;
     transition:  background-position 0.5s linear, margin-top 0.5s linear;

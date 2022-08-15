@@ -8,7 +8,7 @@
     overflow: hidden;
     width: 8em;
     height:  35px;
-    font-weight: 600;
+    font-weight: bold;
     -webkit-font-smoothing: none;
     position: relative;
 }
@@ -76,7 +76,7 @@ hr {
 .info-text {
     font-size: 18pt;
     text-align: center;
-    font-weight: 900;
+    font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     line-height: 1.4;
     letter-spacing: 1px;

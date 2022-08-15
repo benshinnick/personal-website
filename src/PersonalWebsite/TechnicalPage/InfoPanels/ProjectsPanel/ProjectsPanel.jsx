@@ -7,18 +7,26 @@ export default class ProjectsPanel extends React.Component {
         let selectedElem = document.querySelector('.proj-selected')
         if(selectedElem === null) {
             document.getElementById(`${type}-display`).classList.add('proj-selected')
-            document.getElementById('project-info-content').textContent = type
+            document.getElementById('project-info-content').appendChild(this.getProjectInfoContentElememnt(type))
             this.props.onPanelContentChange('projects')
             return
         }
         selectedElem.className = 'project-display'
-        document.getElementById('project-info-content').textContent = ''
+        removeAllChildNodes(document.getElementById('project-info-content'))
         if(selectedElem.id !== `${type}-display`) {
             document.getElementById(`${type}-display`).classList.add('proj-selected')
-            document.getElementById('project-info-content').textContent = type
+            document.getElementById('project-info-content').appendChild(this.getProjectInfoContentElememnt(type))
         }
         this.props.onPanelContentChange('projects')
     }
+
+    getProjectInfoContentElememnt(type) {
+        var content = document.createElement('div')
+        content.className = 'project-info-content'
+        content.textContent = type
+        return content
+    }
+
     render() {
         return (
             <div className='info-panel-content' id='projects-panel-content'>
@@ -45,5 +53,11 @@ export default class ProjectsPanel extends React.Component {
                 </div>
             </div>
         );
+    }
+}
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
     }
 }

@@ -13,8 +13,8 @@
     justify-content: space-evenly;
 }
 
-#project-info-content {
-    padding: 0px;
+.project-info-content {
+    padding: 10px;
     margin-top: 0px;
 
     font-size: 16pt;
@@ -24,6 +24,8 @@
     line-height: 1.5;
     letter-spacing: 1px;
     z-index: 1;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .project-display {
@@ -114,6 +116,8 @@
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     line-height: 1.2;
     letter-spacing: 1px;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #algo-contest-icon {
