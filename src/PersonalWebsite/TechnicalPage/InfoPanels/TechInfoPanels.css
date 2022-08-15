@@ -33,11 +33,12 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
     -moz-osx-font-smoothing: grayscale;
 }
 
-hr {
+#about-panel-content-container hr {
     width: 100%;
-    margin: 8px;
-    margin-right: 16px;
-    margin-left: 16px;
+    /* margin: 8px; */
+    margin: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
     height: 4px;
     background: #e5e5e5;
     border: none;
