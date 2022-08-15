@@ -7,12 +7,17 @@ export default class ProjectsPanel extends React.Component {
         let selectedElem = document.querySelector('.proj-selected')
         if(selectedElem === null) {
             document.getElementById(`${type}-display`).classList.add('proj-selected')
+            document.getElementById('project-info-content').textContent = type
+            this.props.onPanelContentChange('projects')
             return
         }
         selectedElem.className = 'project-display'
+        document.getElementById('project-info-content').textContent = ''
         if(selectedElem.id !== `${type}-display`) {
             document.getElementById(`${type}-display`).classList.add('proj-selected')
+            document.getElementById('project-info-content').textContent = type
         }
+        this.props.onPanelContentChange('projects')
     }
     render() {
         return (
