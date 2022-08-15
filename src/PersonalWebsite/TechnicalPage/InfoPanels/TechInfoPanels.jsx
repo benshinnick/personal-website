@@ -4,6 +4,7 @@ import ProjectsPanel from './ProjectsPanel/ProjectsPanel';
 
 const OFFSET_Y_PX = 700
 const PANELS = ['about', 'projects', 'experience']
+var updateOnScroll = true
 var currPanelIdx = 0
 var lastScrollPos = 0
 
@@ -38,11 +39,13 @@ export default class TechInfoPanels extends React.Component {
         panelMaxHeights[panelIdx] = document.getElementById(`${PANELS[panelIdx]}-panel-content`).offsetHeight + 6
         panelCoverHeights[panelIdx] = document.getElementById(`${PANELS[panelIdx]}-title`).clientHeight + 28
         document.getElementById(`tech-${PANELS[panelIdx]}-panel`).style.opacity = 1
-        if(panelIdx !== currPanelIdx) {
-            document.getElementById(`${PANELS[panelIdx]}-panel-content-container`).style.height = `${panelMaxHeights[panelIdx]}px`
-            panelCurrHeights[panelIdx] = panelMaxHeights[panelIdx]
+        document.getElementById(`${PANELS[panelIdx]}-panel-content-container`).style.height = `${panelMaxHeights[panelIdx]}px`
+        panelCurrHeights[panelIdx] = panelMaxHeights[panelIdx]
+        if(panelIdx === currPanelIdx) {
+            updateOnScroll = false
+            window.scrollTo(0, Math.floor((panelMaxHeights[0] + panelCoverHeights[0])*6 + OFFSET_Y_PX))
+            setTimeout(() => { updateOnScroll = true }, 20)
         }
-        panelCurrOpacities[panelIdx] = 1
     }
 
     onResize() {
@@ -54,7 +57,9 @@ export default class TechInfoPanels extends React.Component {
         if (scrollPos < 0) { scrollPos = 0 }
         const scrollDiff = Math.floor(scrollPos - lastScrollPos)
 
-        updatePanelsOnScroll(scrollPos, scrollDiff)
+        if(updateOnScroll) {
+            updatePanelsOnScroll(scrollPos, scrollDiff)
+        }
         lastScrollPos = scrollPos
     }
 

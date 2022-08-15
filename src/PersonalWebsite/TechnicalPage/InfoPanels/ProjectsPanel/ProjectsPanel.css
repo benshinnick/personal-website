@@ -1,5 +1,5 @@
 #projects-panel-content {
-    padding-top: 4px;
+    padding-top: 8px;
     padding-bottom: 8px;
     width: 100%;
 }
@@ -14,7 +14,8 @@
 }
 
 #project-info-content {
-    padding: 8px;
+    padding: 0px;
+    margin-top: 0px;
 
     font-size: 16pt;
     text-align: left;
@@ -31,9 +32,11 @@
     margin: 0;
     padding: 0;
     padding-top: 8px;
+    padding-bottom: 0px;
     border-top: 4px solid transparent;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
 }
 
 .project-icon {
@@ -45,6 +48,7 @@
 .project-display:hover {
     padding-top: 0px;
     cursor: pointer;
+    padding-bottom: 8px;
 }
 
 #algo-contest-display.project-display:hover {
