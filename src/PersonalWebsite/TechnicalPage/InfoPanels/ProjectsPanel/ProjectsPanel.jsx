@@ -23,7 +23,23 @@ export default class ProjectsPanel extends React.Component {
     getProjectInfoContentElememnt(type) {
         var content = document.createElement('div')
         content.className = 'project-info-content'
-        content.textContent = type
+        if(type === 'algo-contest') {
+            content.style.borderColor = 'rgba(39, 219, 255, 0.5)'
+            content.style.backgroundColor = 'rgba(39, 219, 255, 0.1)'
+        }
+        if(type === 'huddle') {
+            content.style.borderColor = 'rgba(209, 25, 4, 0.5)'
+            content.style.backgroundColor = 'rgba(209, 25, 4, 0.1)'
+        }
+        if(type === 'miscellaneous') {
+            content.style.borderColor = 'rgba(16, 148, 25, 0.5)'
+            content.style.backgroundColor = 'rgba(16, 148, 25, 0.1)'
+        }
+        if(type === 'personal-website') {
+            content.style.borderColor = 'rgba(52, 31, 140, 0.5)'
+            content.style.backgroundColor = 'rgba(52, 31, 140, 0.1)'
+        }
+        content.textContent =  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Donec nisl enim, elementum non mauris sed, cursus dictum nisl. Nunc sed tortor pellentesque, elementum nulla id, ullamcorper urna. Curabitur nisi sem, tristique sed velit porta, molestie vulputate sem. Cras non tincidunt sapien. Nunc rhoncus tempus risus, at ornare sem interdum at. Donec rhoncus tortor justo. Praesent dignissim turpis pretium, volutpat sapien vitae, dapibus velit.'
         return content
     }
 
@@ -49,7 +65,6 @@ export default class ProjectsPanel extends React.Component {
                     </div>
                 </div>
                 <div id='project-info-content'>
-                    {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Donec nisl enim, elementum non mauris sed, cursus dictum nisl. Nunc sed tortor pellentesque, elementum nulla id, ullamcorper urna. Curabitur nisi sem, tristique sed velit porta, molestie vulputate sem. Cras non tincidunt sapien. Nunc rhoncus tempus risus, at ornare sem interdum at. Donec rhoncus tortor justo. Praesent dignissim turpis pretium, volutpat sapien vitae, dapibus velit. */}
                 </div>
             </div>
         );
