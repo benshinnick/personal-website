@@ -81,7 +81,9 @@ export default class TechInfoPanels extends React.Component {
                             <div className='info-panel-content-container' id='about-panel-content-container'>
                                 <div className='info-panel-content' id='about-panel-content'>
                                 <hr></hr>
-                                I'm currently a senior majoring in Computer Science. I am passionate about using the tools and knowledge I have to create and work on products that will improve the lives of others.
+                                <div id='panel-text'>
+                                    I'm currently a senior majoring in Computer Science. I am passionate about using the tools and knowledge I have to create and work on products that will improve the lives of others.
+                                </div>
                                 <hr></hr>
                                 </div>
                             </div>
@@ -106,7 +108,11 @@ export default class TechInfoPanels extends React.Component {
                             <div className='title' id='experience-title'>EXPERIENCE</div>
                             <div className='info-panel-content-container' id='experience-panel-content-container'>
                                 <div className='info-panel-content' id='experience-panel-content'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Okay
+                                    <hr></hr>
+                                    <div id='panel-text'>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Okay
+                                    </div>
+                                    <hr></hr>
                                 </div>
                             </div>
                         </div>

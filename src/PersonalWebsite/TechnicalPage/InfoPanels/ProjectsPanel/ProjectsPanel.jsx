@@ -50,18 +50,22 @@ export default class ProjectsPanel extends React.Component {
                     <div className='project-display' id='algo-contest-display' onClick={() => this.projectDisplayOnClick('algo-contest')}>
                         <div id='algo-contest-icon' className='sprite project-icon' />
                         <div className='project-text'>AlgoContest</div>
+                        <div className='arrow-icon'>&lt;</div>
                     </div>
                     <div className='project-display' id='huddle-display' onClick={() => this.projectDisplayOnClick('huddle')}>
                         <div className='sprite project-icon' id='huddle-icon' />
                         <div className='project-text'>Huddle</div>
+                        <div className='arrow-icon'>&lt;</div>
                     </div>
                     <div className='project-display' id='miscellaneous-display' onClick={() => this.projectDisplayOnClick('miscellaneous')}>
                         <div className='sprite project-icon' id='miscellaneous-icon' />
                         <div className='project-text'>Miscellaneous</div>
+                        <div className='arrow-icon'>&lt;</div>
                     </div>
                     <div className='project-display' id='personal-website-display' onClick={() => this.projectDisplayOnClick('personal-website')}>
                         <div className='sprite project-icon' id='personal-website-icon' />
                         <div className='project-text'>Personal Site</div>
+                        <div className='arrow-icon'>&lt;</div>
                     </div>
                 </div>
                 <div id='project-info-content'>
