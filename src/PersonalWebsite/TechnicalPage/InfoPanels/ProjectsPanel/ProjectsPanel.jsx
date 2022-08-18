@@ -3,11 +3,11 @@ import './ProjectsPanel.css';
 
 export default class ProjectsPanel extends React.Component {
 
-    projectDisplayOnClick(type) {
+    projectDisplayOnClick(type, color) {
         let selectedElem = document.querySelector('.proj-selected')
         if(selectedElem === null) {
             document.getElementById(`${type}-display`).classList.add('proj-selected')
-            document.getElementById('project-info-content').appendChild(this.getProjectInfoContentElememnt(type))
+            document.getElementById('project-info-content').appendChild(this.getProjectInfoContentElememnt(type, color))
             this.props.onPanelContentChange('projects')
             return
         }
@@ -15,12 +15,12 @@ export default class ProjectsPanel extends React.Component {
         removeAllChildNodes(document.getElementById('project-info-content'))
         if(selectedElem.id !== `${type}-display`) {
             document.getElementById(`${type}-display`).classList.add('proj-selected')
-            document.getElementById('project-info-content').appendChild(this.getProjectInfoContentElememnt(type))
+            document.getElementById('project-info-content').appendChild(this.getProjectInfoContentElememnt(type, color))
         }
         this.props.onPanelContentChange('projects')
     }
 
-    getProjectInfoContentElememnt(type) {
+    getProjectInfoContentElememnt(type, color) {
         var content = document.createElement('div')
         content.className = 'project-info-content'
         var descriptionContainer = document.createElement('div')
@@ -33,55 +33,44 @@ export default class ProjectsPanel extends React.Component {
         githubContainer.className = 'github-container'
         var githubLinkIcon = document.createElement('a')
         githubLinkIcon.className = 'github-icon'
+        // var githubBannerText = document.createElement('div')
+        // githubBannerText.className = 'github-banner-text'
+
+        content.style.borderColor = `rgba(${color}, 0.5)`
+        content.style.backgroundColor = `rgba(${color}, 0.1)`
+        githubContainer.style.backgroundColor = `rgba(${color}, 0.2)`
 
         if(type === 'algo-contest') {
-            content.style.borderColor = 'rgba(39, 219, 255, 0.5)'
-            content.style.backgroundColor = 'rgba(39, 219, 255, 0.1)'
             headerText.textContent = 'Algorithm Contest'
-            descriptionText.textContent = 'Wrapping the text around an image is quite attractive for any kind of website.By using HTML and CSS wrapping an image with the text is possible and there are many ways to do so because the shape of any image is not constant. In HTML, we can either align the image on the right side of the text, or to the left, or to the center.'
-
-            githubContainer.style.backgroundColor = 'rgba(39, 219, 255, 0.35)'
+            descriptionText.textContent = 'React application for visualizing sorting and pathfinding algorithms competing agianst each other in real time. I built this project because all algorithm visualization tools I could find online made it difficult to compare different algorithms, especially for algorithms with similar time complexites. My goal with this project was to give people a good sense of which popular sorting and pathfinding algorithms perform better than other related algorithms.'
             githubLinkIcon.href = 'https://github.com/benshinnick'
-            githubContainer.appendChild(githubLinkIcon)
-            content.appendChild(githubContainer)
         }
-        if(type === 'huddle') {
-            content.style.borderColor = 'rgba(209, 25, 4, 0.5)'
-            content.style.backgroundColor = 'rgba(209, 25, 4, 0.1)'
+        else if(type === 'huddle') {
             headerText.textContent = 'Huddle (Twitter Clone)'
-            descriptionText.textContent = 'A twitter clone written entirely in Java/JavaFX. It was created as a group project.'
-        
-            githubContainer.style.backgroundColor = 'rgba(209, 25, 4, 0.4)'
+            descriptionText.textContent = 'A twitter clone written entirely in Java/JavaFX using WebSockets. It was created as a group project.'
             githubLinkIcon.href = 'https://github.com/benshinnick'
-            githubContainer.appendChild(githubLinkIcon)
-            content.appendChild(githubContainer)
         }
-        if(type === 'miscellaneous') {
-            content.style.borderColor = 'rgba(16, 148, 25, 0.5)'
-            content.style.backgroundColor = 'rgba(16, 148, 25, 0.1)'
+        else if(type === 'miscellaneous') {
             headerText.textContent = 'Miscellaneous Projects'
-            descriptionText.textContent = 'Here is just a few interesting school/small projects I have worked on in the past.'
-        
-            githubContainer.style.backgroundColor = 'rgba(16, 148, 25, 0.4)'
+            descriptionText.textContent = 'Here is just a few interesting school/smaller projects I have worked on in the past.'
             githubLinkIcon.href = 'https://github.com/benshinnick'
-            githubContainer.appendChild(githubLinkIcon)
-            content.appendChild(githubContainer)
         }
-        if(type === 'personal-website') {
-            content.style.borderColor = 'rgba(52, 31, 140, 0.5)'
-            content.style.backgroundColor = 'rgba(52, 31, 140, 0.1)'
+        else if(type === 'personal-website') {
             headerText.textContent = 'Personal Site'
             descriptionText.textContent = 'You\'re looking at it! I\'ve had the idea for this site for a while, but only recently got around to making it. This website was a lot of work and I\'m really proud of some of the results I got.'
-
-            githubContainer.style.backgroundColor = 'rgba(52, 31, 140, 0.4)'
             githubLinkIcon.href = 'https://github.com/benshinnick'
+        }
+        if(type !== 'miscellaneous') {
+            // githubBannerText.textContent = 'SOURCE\nCODE'
+            // githubBannerText.style.color = `rgba(${color}, 1)`
             githubContainer.appendChild(githubLinkIcon)
             content.appendChild(githubContainer)
+            // githubContainer.appendChild(githubBannerText)
         }
+
         descriptionContainer.appendChild(headerText)
         descriptionContainer.appendChild(descriptionText)
         content.prepend(descriptionContainer)
-        // content.textContent =  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Donec nisl enim, elementum non mauris sed, cursus dictum nisl. Nunc sed tortor pellentesque, elementum nulla id, ullamcorper urna. Curabitur nisi sem, tristique sed velit porta, molestie vulputate sem. Cras non tincidunt sapien. Nunc rhoncus tempus risus, at ornare sem interdum at. Donec rhoncus tortor justo. Praesent dignissim turpis pretium, volutpat sapien vitae, dapibus velit.'
         return content
     }
 
@@ -89,22 +78,22 @@ export default class ProjectsPanel extends React.Component {
         return (
             <div className='info-panel-content' id='projects-panel-content'>
                 <div id='project-icons'>
-                    <div className='project-display' id='algo-contest-display' onClick={() => this.projectDisplayOnClick('algo-contest')}>
+                    <div className='project-display' id='algo-contest-display' onClick={() => this.projectDisplayOnClick('algo-contest', '39, 219, 255')}>
                         <div id='algo-contest-icon' className='sprite project-icon' />
                         <div className='project-text'>AlgoContest</div>
                         <div className='arrow-icon'>&lt;</div>
                     </div>
-                    <div className='project-display' id='huddle-display' onClick={() => this.projectDisplayOnClick('huddle')}>
+                    <div className='project-display' id='huddle-display' onClick={() => this.projectDisplayOnClick('huddle', '209, 25, 4')}>
                         <div className='sprite project-icon' id='huddle-icon' />
                         <div className='project-text'>Huddle</div>
                         <div className='arrow-icon'>&lt;</div>
                     </div>
-                    <div className='project-display' id='miscellaneous-display' onClick={() => this.projectDisplayOnClick('miscellaneous')}>
+                    <div className='project-display' id='miscellaneous-display' onClick={() => this.projectDisplayOnClick('miscellaneous', '16, 148, 25')}>
                         <div className='sprite project-icon' id='miscellaneous-icon' />
                         <div className='project-text'>Miscellaneous</div>
                         <div className='arrow-icon'>&lt;</div>
                     </div>
-                    <div className='project-display' id='personal-website-display' onClick={() => this.projectDisplayOnClick('personal-website')}>
+                    <div className='project-display' id='personal-website-display' onClick={() => this.projectDisplayOnClick('personal-website', '52, 31, 140')}>
                         <div className='sprite project-icon' id='personal-website-icon' />
                         <div className='project-text'>Personal Site</div>
                         <div className='arrow-icon'>&lt;</div>
