@@ -105,7 +105,7 @@ export default class TechInfoPanels extends React.Component {
                             <div className='corner' id='bottom-left-corner'></div>
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
-                            <div className='title' id='experience-title'>EXPERIENCE</div>
+                            <div className='title' id='experience-title'>EDUCATION AND EXPERIENCE</div>
                             <div className='info-panel-content-container' id='experience-panel-content-container'>
                                 <div className='info-panel-content' id='experience-panel-content'>
                                     <hr></hr>
@@ -124,6 +124,7 @@ export default class TechInfoPanels extends React.Component {
 }
 
 // Handles the tech panels scrolling with sticky header and disappear effect
+// Works for a variable number of panels
 // It's an absolute mess that I'm hopping to clean up later
 function updatePanelsOnScroll(scrollPos, scrollDiff) {
     panelCurrHeights[currPanelIdx] -= scrollDiff
