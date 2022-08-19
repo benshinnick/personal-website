@@ -33,43 +33,78 @@ export default class ProjectsPanel extends React.Component {
         githubContainer.className = 'github-container'
         var githubLinkIcon = document.createElement('a')
         githubLinkIcon.className = 'github-icon'
-        // var githubBannerText = document.createElement('div')
-        // githubBannerText.className = 'github-banner-text'
 
         content.style.borderColor = `rgba(${color}, 0.5)`
         content.style.backgroundColor = `rgba(${color}, 0.1)`
-        githubContainer.style.backgroundColor = `rgba(${color}, 0.2)`
+        githubContainer.style.backgroundColor = `rgba(${color}, 0.3)`
 
         if(type === 'algo-contest') {
             headerText.textContent = 'Algorithm Contest'
-            descriptionText.textContent = 'React application for visualizing sorting and pathfinding algorithms competing agianst each other in real time. I built this project because all algorithm visualization tools I could find online made it difficult to compare different algorithms, especially for algorithms with similar time complexites. My goal with this project was to give people a good sense of which popular sorting and pathfinding algorithms perform better than other related algorithms.'
+            var linkContainer = document.createElement('div')
+            linkContainer.textContent = 'Check Out The Deployed Site '
+            linkContainer.className = 'link-container'
+            var deployedSiteLink = document.createElement('a')
+            deployedSiteLink.className = 'link'
+            deployedSiteLink.textContent = 'Here'
+            deployedSiteLink.href = 'https://benshinnick.github.io/algorithm-contest'
+            linkContainer.appendChild(deployedSiteLink)
+            descriptionContainer.appendChild(linkContainer)
+
+            descriptionText.textContent = 'Web Application built with React for visualizing sorting and pathfinding algorithms competing agianst each other in real time.'
             githubLinkIcon.href = 'https://github.com/benshinnick'
         }
         else if(type === 'huddle') {
             headerText.textContent = 'Huddle (Twitter Clone)'
-            descriptionText.textContent = 'A twitter clone written entirely in Java/JavaFX using WebSockets. It was created as a group project.'
+            descriptionText.textContent = 'A twitter clone written entirely in Java/JavaFX using WebSockets. It was created as a group project where I worked on everything from designing the Client/Server communication to styling the various different pages of the app.'
             githubLinkIcon.href = 'https://github.com/benshinnick'
         }
         else if(type === 'miscellaneous') {
             headerText.textContent = 'Miscellaneous Projects'
-            descriptionText.textContent = 'Here is just a few interesting school/smaller projects I have worked on in the past.'
+            descriptionText.textContent = 'Here is just a few school/smaller projects I have worked on in the past.'
             githubLinkIcon.href = 'https://github.com/benshinnick'
+
+            // list of [project_title, github_link, language]
+            var projects = [
+                ['Restaurant Recommender', 'https://github.com/benshinnick', 'Kotlin'],
+                ['Traveling Salesperson Genetic Algorithm Solution', 'https://github.com/benshinnick', 'C++'],
+                ['Longest Common Subsequence Solver', 'https://github.com/benshinnick', 'C++'],
+                ['FSA Drawer And Checker', 'https://github.com/benshinnick', 'Python'],
+                ['Semantic Checker And Code Generator', 'https://github.com/benshinnick', 'C'],
+                ['Internet Tic-Tac-Toe', 'https://github.com/benshinnick', 'Java']
+            ]
+            // var projectContainer = document.createElement('div')
+            for(let i = 0; i < projects.length; ++i) {
+                var container = document.createElement('div')
+                container.textContent = '- '
+                container.className = 'misc-project-text'
+                var title = document.createElement('a')
+                title.className = 'misc-project-text'
+                title.textContent = projects[i][0]
+                title.href = projects[i][1]
+                var description = document.createElement('div')
+                description.className = 'misc-project-text'
+                description.textContent = '(' + projects[i][2] + ')'
+                // var githubLink = document.createElement('a')
+                // githubLink.href = projects[i][1]
+                // githubLink.textContent = 'GitHub'
+                // githubLink.className = 'misc-project-text'
+
+                container.appendChild(title)
+                container.appendChild(description)
+                // container.appendChild(githubLink)
+                descriptionContainer.appendChild(container)
+            }
         }
         else if(type === 'personal-website') {
             headerText.textContent = 'Personal Site'
-            descriptionText.textContent = 'You\'re looking at it! I\'ve had the idea for this site for a while, but only recently got around to making it. This website was a lot of work and I\'m really proud of some of the results I got.'
+            descriptionText.textContent = 'You\'re looking at it! I\'ve had the idea for this site for a while, but only recently got around to making it. This website was a lot of work and I\'m really proud of the result.'
             githubLinkIcon.href = 'https://github.com/benshinnick'
         }
-        if(type !== 'miscellaneous') {
-            // githubBannerText.textContent = 'SOURCE\nCODE'
-            // githubBannerText.style.color = `rgba(${color}, 1)`
-            githubContainer.appendChild(githubLinkIcon)
-            content.appendChild(githubContainer)
-            // githubContainer.appendChild(githubBannerText)
-        }
+        githubContainer.appendChild(githubLinkIcon)
+        content.appendChild(githubContainer)
 
-        descriptionContainer.appendChild(headerText)
-        descriptionContainer.appendChild(descriptionText)
+        descriptionContainer.prepend(descriptionText)
+        descriptionContainer.prepend(headerText)
         content.prepend(descriptionContainer)
         return content
     }
