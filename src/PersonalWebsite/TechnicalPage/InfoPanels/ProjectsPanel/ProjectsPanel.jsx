@@ -59,10 +59,6 @@ export default class ProjectsPanel extends React.Component {
             githubLinkIcon.href = 'https://github.com/benshinnick'
         }
         else if(type === 'miscellaneous') {
-            headerText.textContent = 'Miscellaneous Projects'
-            descriptionText.textContent = 'Here is just a few school/smaller projects I have worked on in the past.'
-            githubLinkIcon.href = 'https://github.com/benshinnick'
-
             // list of [project_title, github_link, language]
             var projects = [
                 ['Restaurant Recommender', 'https://github.com/benshinnick', 'Kotlin'],
@@ -84,16 +80,14 @@ export default class ProjectsPanel extends React.Component {
                 var description = document.createElement('div')
                 description.className = 'misc-project-text'
                 description.textContent = '(' + projects[i][2] + ')'
-                // var githubLink = document.createElement('a')
-                // githubLink.href = projects[i][1]
-                // githubLink.textContent = 'GitHub'
-                // githubLink.className = 'misc-project-text'
 
                 container.appendChild(title)
                 container.appendChild(description)
-                // container.appendChild(githubLink)
                 descriptionContainer.appendChild(container)
             }
+            headerText.textContent = 'Miscellaneous Projects'
+            descriptionText.textContent = 'Here is just a few school/smaller projects I have worked on in the past.'
+            githubLinkIcon.href = 'https://github.com/benshinnick'
         }
         else if(type === 'personal-website') {
             headerText.textContent = 'Personal Site'
