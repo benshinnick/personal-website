@@ -72,7 +72,7 @@ export default class ProjectsPanel extends React.Component {
             for(let i = 0; i < projects.length; ++i) {
                 var container = document.createElement('div')
                 container.textContent = '- '
-                container.className = 'misc-project-text'
+                container.className = 'misc-project-container'
                 var title = document.createElement('a')
                 title.className = 'misc-project-text'
                 title.textContent = projects[i][0]
