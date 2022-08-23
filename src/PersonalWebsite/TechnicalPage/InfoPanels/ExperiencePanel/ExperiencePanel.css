@@ -1,0 +1,17 @@
+#uwf-logo {
+    background-image: url('./Sprites/uwf-exp-small.png');
+    width: 56px;
+    height: 56px;
+    /* display: inline-block; */
+    image-rendering: pixelated;
+    margin: 8px;
+}
+
+#ihmc-logo {
+    background-image: url('./Sprites/ihmc-exp-small.png');
+    width: 56px;
+    height: 56px;
+    /* display: inline-block; */
+    image-rendering: pixelated;
+    margin: 8px;
+}

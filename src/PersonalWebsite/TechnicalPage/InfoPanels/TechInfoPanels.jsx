@@ -1,6 +1,7 @@
 import React from 'react';
 import './TechInfoPanels.css';
 import ProjectsPanel from './ProjectsPanel/ProjectsPanel';
+import ExperiencePanel from './ExperiencePanel/ExperiencePanel';
 
 const OFFSET_Y_PX = 700
 const PANELS = ['about', 'projects', 'experience']
@@ -107,15 +108,7 @@ export default class TechInfoPanels extends React.Component {
                             <div className='sides'></div>
                             <div className='title' id='experience-title'>EDUCATION AND EXPERIENCE</div>
                             <div className='info-panel-content-container' id='experience-panel-content-container'>
-                                <div className='info-panel-content' id='experience-panel-content'>
-                                    <hr></hr>
-                                    <div id='uwf-logo'></div>
-                                    <div id='ihmc-logo'></div>
-                                    <div id='panel-text'>
-                                        {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ornare velit. Donec mollis vitae turpis non laoreet. Maecenas ac mauris non ante egestas tempus. Okay */}
-                                    </div>
-                                    <hr></hr>
-                                </div>
+                                <ExperiencePanel />
                             </div>
                         </div>
                     </div>
