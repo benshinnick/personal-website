@@ -1,8 +1,59 @@
+#experience-panel-content {
+    width: 100%;
+}
+
+.exp-container {
+    border: 4px solid #e3e3e3;
+    width: 50%;
+    margin: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.exp-summary {
+    border-left: 4px solid #e3e3e3;
+    width: calc(100% - 72px);
+}
+
+.exp-title {
+    display: inline-block;
+    color: black;
+    font-size: 14pt;
+    letter-spacing: 1px;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: none;
+    width: 100%;
+    margin-top: 8px;
+    padding-bottom: 4px;
+    border-bottom: 4px solid #e3e3e3;
+}
+
+.exp-suptitle {
+    display: inline-block;
+    color: black;
+    font-size: 12pt;
+    letter-spacing: 1px;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: none;
+    width: 100%;
+    margin-top: 8px;
+    padding-bottom: 4px;
+    border-bottom: 4px solid #e3e3e3;
+}
+
 #uwf-logo {
     background-image: url('./Sprites/uwf-exp-small.png');
     width: 56px;
     height: 56px;
-    /* display: inline-block; */
+    display: inline-block;
     image-rendering: pixelated;
     margin: 8px;
 }
@@ -11,7 +62,7 @@
     background-image: url('./Sprites/ihmc-exp-small.png');
     width: 56px;
     height: 56px;
-    /* display: inline-block; */
+    display: inline-block;
     image-rendering: pixelated;
     margin: 8px;
 }
