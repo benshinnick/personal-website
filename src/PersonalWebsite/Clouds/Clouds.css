@@ -20,7 +20,7 @@
     background-image: url(./CloudSprites/medium-cloud.png);
     width: 298px;
     height: 62px;
-    bottom: 12px;
+    bottom: 15px;
     /* filter: drop-shadow(0 0 2px rgb(235, 235, 235)); */
     animation-name: move-medium;
     animation-timing-function: linear;
@@ -32,7 +32,8 @@
     background-image: url(./CloudSprites/large-cloud.png);
     width: 420px;
     height: 60px;
-    bottom: 37px;
+    bottom: 45px;
+    /* filter: drop-shadow(0 0 2px rgb(235, 235, 235)); */
     animation-name: move-large;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
