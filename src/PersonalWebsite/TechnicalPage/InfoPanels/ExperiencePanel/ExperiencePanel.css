@@ -1,14 +1,50 @@
+#experience-panel-content-container {
+    margin-left: 12px;
+}
+
 #experience-panel-content {
     width: 100%;
-    /* padding: 8px; */
+    display: flex;
+    min-height: fit-content;
+    /* overflow: hidden; */
+}
+
+.title-card-filler {
+    position: absolute;
+    width: 30px;
+    height: 90px;
+    margin-left: -30px;
+    background-color: transparent;
+}
+
+#exp-title-cards {
+    width: 45%;
+    display: inline-block;
+}
+
+#exp-info-section {
+    width: calc(45% + 16px);
+    min-height: 100%;
+    background-color: white;
+    margin-left: 16px;
+}
+
+#experience-panel-content #divider {
+    width: 4px;
+    background-color: #e3e3e3;
+    position: absolute;
+    min-height: calc(100% + 4px);
+    top: -4px;
+    margin-left: calc(45% + 20px);
 }
 
 .exp-container {
     border-width: 4px 0px;
     border-style: solid;
     border-color: black;
-    width: 45%;
+    width: calc(100% - 25px);
     margin: 10px;
+    margin-left: 4px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,7 +53,7 @@
 }
 
 .exp-container:hover {
-    margin-left: 35px;
+    margin-left: 29px;
     cursor: pointer;
 }
 

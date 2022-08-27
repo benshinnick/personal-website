@@ -7,23 +7,30 @@ export default class ExperiencePanel extends React.Component {
         return (
             <div className='info-panel-content' id='experience-panel-content'>
                 {/* <hr></hr> */}
-                <div className='exp-container'>
-                    <div className='left-border'></div>
-                    <div id='uwf-logo'></div>
-                    <div className='exp-summary'> 
-                        <div className='exp-title'>University Of West Florida</div>
-                        <div className='exp-subtitle'>B.S. Computer Science<br></br>2020 - 2023</div>
+                <div id='exp-title-cards'>
+                    <div className='exp-container'>
+                        <div className='title-card-filler'></div>
+                        <div className='left-border'></div>
+                        <div id='uwf-logo'></div>
+                        <div className='exp-summary'> 
+                            <div className='exp-title'>University Of West Florida</div>
+                            <div className='exp-subtitle'>B.S. Computer Science<br></br>2020 - 2023</div>
+                        </div>
+                        <div className='right-border'></div>
                     </div>
-                    <div className='right-border'></div>
+                    <div className='exp-container'>
+                        <div className='title-card-filler'></div>
+                        <div className='left-border'></div>
+                        <div id='ihmc-logo'></div>
+                        <div className='exp-summary'> 
+                            <div className='exp-title'>IHMC</div>
+                            <div className='exp-subtitle'>Software Engineer Intern<br></br>Summer 2022 - Present</div>
+                        </div>
+                        <div className='right-border'></div>
+                    </div>
                 </div>
-                <div className='exp-container'>
-                    <div className='left-border'></div>
-                    <div id='ihmc-logo'></div>
-                    <div className='exp-summary'> 
-                        <div className='exp-title'>IHMC</div>
-                        <div className='exp-subtitle'>Software Engineer Intern<br></br>Summer 2022 - Present</div>
-                    </div>
-                    <div className='right-border'></div>
+                <div id='divider'></div>
+                <div id='exp-info-section'>
                 </div>
                 {/* <hr></hr> */}
             </div>
