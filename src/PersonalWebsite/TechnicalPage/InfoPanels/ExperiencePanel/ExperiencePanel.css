@@ -11,10 +11,10 @@
 
 .title-card-filler {
     position: absolute;
-    width: 30px;
-    height: 90px;
+    width: calc(45% + 30px);
+    height: 100px;
+    line-height: 90px;
     margin-left: -30px;
-    background-color: transparent;
 }
 
 #exp-title-cards {
@@ -23,10 +23,19 @@
 }
 
 #exp-info-section {
-    width: calc(45% + 16px);
+    width: 50%;
     min-height: 100%;
-    background-color: white;
-    margin-left: 16px;
+    margin-left: 28px;
+    padding-top: 8px;
+
+    font-size: 16pt;
+    letter-spacing: 1px;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: none;
 }
 
 #experience-panel-content #divider {
@@ -49,11 +58,10 @@
     align-items: center;
     justify-content: space-between;
     background-color: white;
-    transition: margin-left 250ms;
+    transition: margin-left 200ms;
 }
 
 .exp-container:hover {
-    margin-left: 29px;
     cursor: pointer;
 }
 
