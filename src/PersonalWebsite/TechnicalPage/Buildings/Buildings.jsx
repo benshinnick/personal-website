@@ -15,7 +15,7 @@ export default class Buildings extends React.Component {
 
     onScroll() {
         const building1 = document.getElementById('building-1-top')
-        building1margin = -window.scrollY/16 + 250
+        building1margin = -window.scrollY/16 + 600
         building1.style.marginTop = `${building1margin}px`
 
         const building2 = document.getElementById('building-2-top')

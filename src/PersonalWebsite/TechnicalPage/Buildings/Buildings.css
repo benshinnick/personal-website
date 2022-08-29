@@ -1,9 +1,9 @@
 #right-buildings {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     position: fixed;
-    width: 75vw;
-    right: 0;
+    width: 65vw;
+    right: calc(10vw - 35px);
 }
 
 #building-1-top {

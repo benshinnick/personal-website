@@ -4,9 +4,9 @@
 
     height: fit-content;
     width: 60vw;
-    margin-left: 7.5vw;
-    margin-right: 7.5vw;
-    right: 0;
+    /* margin-left: 5vw;
+    margin-right: 5vw; */
+    right: 10vw;
 }
 
 .title {

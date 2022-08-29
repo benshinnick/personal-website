@@ -44,7 +44,7 @@
     position: absolute;
     min-height: calc(100% + 4px);
     top: -4px;
-    margin-left: calc(45% + 20px);
+    margin-left: calc(45% + 8px);
 }
 
 .exp-container {
