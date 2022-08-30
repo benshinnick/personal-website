@@ -97,6 +97,34 @@
     z-index: 1;
 }
 
+#building-7 {
+    top: 100px;
+    right: calc(10vw - 260px);
+    width: 208px;
+    height: 300%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#building-7-top {
+    background-image: url(./BuildingSprites/building4-top.png);
+    width: 208px;
+    height: 252px;
+    position: relative;
+    z-index: 1;
+}
+
+#building-7-floors {
+    background-image: url(./BuildingSprites/building4-floors.png);
+    margin: 0;
+    width: 208px;
+    height: 300%;
+    position: relative;
+    transform-origin: top right;
+    z-index: 1;
+}
+
 #building-4-top {
     background-image: url(./BuildingSprites/building1-top.png);
     position: relative;
