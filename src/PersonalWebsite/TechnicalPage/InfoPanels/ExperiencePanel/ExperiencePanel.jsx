@@ -6,13 +6,10 @@ var selectedCard = ''
 export default class ExperiencePanel extends React.Component {
 
     componentDidMount() {
-        selectedCard = 'ihmc'
-        let card = document.getElementById(`${selectedCard}-card`)
-        card.style.marginLeft = '16px'
+        this.selectCard('ihmc')
     }
 
     expCardOnClick(type) {
-        console.log(`${type} card clicked`)
         this.selectCard(type)
     }
 
@@ -20,11 +17,6 @@ export default class ExperiencePanel extends React.Component {
         let card = document.getElementById(`${selectedCard}-card`)
         card.style.marginLeft = '4px'
         this.selectCard(type)
-            card = document.getElementById(`${type}-card`)
-            card.style.marginLeft = '16px'
-        // }
-        document.getElementById('exp-info-section').textContent = type
-        console.log(`${type} card hovered`)
     }
 
     expCardOnLeave(type) {
@@ -34,13 +26,13 @@ export default class ExperiencePanel extends React.Component {
             card = document.getElementById(`${selectedCard}-card`)
             card.style.marginLeft = '16px'
         }
-        console.log(`${type} card left`)
     }
 
     selectCard(type) {
         let card = document.getElementById(`${type}-card`)
         card.style.marginLeft = '16px'
         selectedCard = type
+
         document.getElementById('exp-info-section').textContent = type
     }
 
@@ -96,9 +88,7 @@ export default class ExperiencePanel extends React.Component {
                     </div> */}
                 </div>
                 <div id='divider'></div>
-                <div id='exp-info-section'>
-                    Hello lets throw some text here
-                </div>
+                <div id='exp-info-section'></div>
                 {/* <hr></hr> */}
             </div>
         );

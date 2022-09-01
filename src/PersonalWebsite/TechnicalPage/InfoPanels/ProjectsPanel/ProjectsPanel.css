@@ -23,6 +23,7 @@
     border-left: 4px solid black;
     /* min-height: 150px; */
     display: flex;
+    justify-content: space-between;
 }
 
 .project-info-content .project-info-header {
@@ -138,9 +139,8 @@
 .project-info-content .github-container {
     width: 72px;
     background-color: black;
-    float: right;
     padding: 0;
-    /* display: inline-block; */
+    right: 0;
 }
 
 .project-info-content .github-icon {
@@ -155,7 +155,6 @@
     image-rendering: pixelated;
     z-index: 4;
     display: inline-block;
-    /* float: right; */
 }
 
 .project-info-content .github-icon:hover {

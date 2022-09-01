@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     position: fixed;
-    width: 65vw;
-    right: calc(10vw - 35px);
+    width: 70vw;
+    right: 8vw;
 }
 
 #building-1-top {
