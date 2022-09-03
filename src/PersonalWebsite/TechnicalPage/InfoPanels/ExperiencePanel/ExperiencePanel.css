@@ -1,5 +1,6 @@
 #experience-panel-content-container {
     margin-left: 12px;
+    margin-right: 12px;
 }
 
 #experience-panel-content {
@@ -23,18 +24,40 @@
 }
 
 #exp-info-section {
-    width: 50%;
+    width: calc(50% + 32px);
     min-height: 100%;
     margin-left: 28px;
-    padding-top: 8px;
+    margin-top: 4px;
+    padding-top: 4px;
+    padding-left: 4px;
+    border-left: 4px solid transparent;
+    margin-bottom: 4px;
+    /* border-color: rgba(21, 144, 206, 0.75);
+    background-color: rgba(21, 144, 206, 0.075); */
+    /* border-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.075); */
+}
 
-    font-size: 16pt;
+#title-text {
+    font-size: 17pt;
     letter-spacing: 1px;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    white-space: nowrap;
+    white-space: wrap;
     overflow: hidden;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
+    -webkit-font-smoothing: none; 
+}
+
+#description-container {
+    margin: 8px;
+    font-size: 14pt;
+    text-align: left;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    line-height: 1.3;
+    letter-spacing: 0px;
+    z-index: 1;
     -webkit-font-smoothing: none;
 }
 
@@ -44,7 +67,7 @@
     position: absolute;
     min-height: calc(100% + 4px);
     top: -4px;
-    margin-left: calc(45% + 8px);
+    margin-left: calc(45%);
 }
 
 .exp-container {
