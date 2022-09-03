@@ -4,7 +4,7 @@ import ProjectsPanel from './ProjectsPanel/ProjectsPanel';
 import ExperiencePanel from './ExperiencePanel/ExperiencePanel';
 
 const OFFSET_Y_PX = 700
-const PANELS = ['about', 'projects', 'experience', 'other']
+const PANELS = ['about', 'projects', 'experience', 'contact']
 var updateOnScroll = true
 var currPanelIdx = 0
 var lastScrollPos = 0
@@ -111,15 +111,15 @@ export default class TechInfoPanels extends React.Component {
                                 <ExperiencePanel />
                             </div>
                         </div>
-                        <div className='tech-info-panel' id='tech-other-panel'>
+                        <div className='tech-info-panel' id='tech-contact-panel'>
                             <div className='corner' id='top-right-corner'></div>
                             <div className='corner' id='bottom-right-corner'></div>
                             <div className='corner' id='bottom-left-corner'></div>
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
-                            <div className='title' id='other-title'>OTHER STUFF</div>
-                            <div className='info-panel-content-container' id='other-panel-content-container'>
-                                <div className='info-panel-content' id='other-panel-content'>
+                            <div className='title' id='contact-title'>CONTACT</div>
+                            <div className='info-panel-content-container' id='contact-panel-content-container'>
+                                <div className='info-panel-content' id='contact-panel-content'>
                                 <hr></hr>
                                 <div id='panel-text'>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur finibus quam finibus viverra dapibus. Praesent sit amet euismod turpis, quis tristique magna. In hac habitasse platea dictumst. Suspendisse nec pulvinar velit. Sed gravida mi ac vulputate cursus. Nullam at risus ut enim condimentum viverra. Sed at quam sed erat interdum scelerisque. Fusce ut pretium velit. In sollicitudin mi ut turpis porttitor convallis. Nulla efficitur diam quis sem ullamcorper dapibus in vitae purus. Ut ut diam quis libero malesuada cursus. Nunc vitae mollis neque. Phasellus rutrum facilisis orci. Integer vitae arcu aliquam, convallis ex sed, ultrices mauris.
