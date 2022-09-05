@@ -48,7 +48,7 @@ export default class TechInfoPanels extends React.Component {
             let panelHeights = 0
             for(let i = 0; i < panelIdx; i++)
                 panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
-            window.scrollTo(0, Math.floor((panelHeights)*6 + OFFSET_Y_PX))
+            window.scrollTo({top: Math.floor((panelHeights)*6 + OFFSET_Y_PX), behavior: 'instant'})
             setTimeout(() => { updateOnScroll = true }, 20)
         }
     }

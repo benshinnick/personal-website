@@ -18,10 +18,6 @@ export default class Navbar extends React.Component {
         document.querySelector('.selected').className = ''
         document.querySelector('#about-btn').className = 'selected'
         if(this.state.currentPage === 'technical') {
-            const numBuilings = 5
-            for(let i = 1; i < numBuilings; ++i)
-                document.getElementById(`building-${i}-top`).style.transition = 'margin-top 300ms ease-out'
-            document.getElementById(`building-${numBuilings}`).style.transition = 'top 300ms ease-out'
             window.scrollTo({top: 0, behavior: 'smooth'})
             this.setState({ currentPage: 'about' })
         }

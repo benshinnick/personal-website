@@ -28,6 +28,10 @@
     src: url(./Fonts/retro.ttf);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     overscroll-behavior-y: none;
 }

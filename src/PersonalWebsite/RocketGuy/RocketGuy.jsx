@@ -106,7 +106,7 @@ export default class RocketGuy extends React.Component {
         rocketGuy.style.transition = 'margin-top 600ms ease-out'
         disableScroll()
         setTimeout(() => {
-            window.scrollTo(0, 700)
+            window.scrollTo({top: 700, behavior: 'instant'})
             enableScroll()
             rocketGuy.style.opacity = '1'
             rocketGuy.style.zIndex = '1'
@@ -124,7 +124,7 @@ export default class RocketGuy extends React.Component {
         rocketGuy.style.transition = 'margin-top 600ms ease-out'
         disableScroll()
         setTimeout(() => {
-            window.scrollTo(0, scrollHeight - 650)
+            window.scrollTo({top: scrollHeight - 650, behavior: 'instant'})
             enableScroll()
             rocketGuy.style.opacity = '1'
             rocketGuy.style.zIndex = '2'
