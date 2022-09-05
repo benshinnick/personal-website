@@ -82,7 +82,7 @@ export default class RocketGuy extends React.Component {
 
         if(lastScrollYPos > currScrollYPos)
             if(!isFlyingUpAnimated(rocketGuy))
-                    this.switchToFlyingAnimation('up')
+                this.switchToFlyingAnimation('up')
         if(lastScrollYPos < currScrollYPos)
             if(!isFlyingDownAnimated(rocketGuy)) 
                 this.switchToFlyingAnimation('down')
@@ -101,7 +101,9 @@ export default class RocketGuy extends React.Component {
         topOffset = 0
         speedFactor = 3
         rocketGuy.style.opacity = '0'
+        rocketGuy.style.transition = ''
         rocketGuy.style.marginTop = '0'
+        rocketGuy.style.transition = 'margin-top 600ms ease-out'
         disableScroll()
         setTimeout(() => {
             window.scrollTo(0, 700)
@@ -117,7 +119,9 @@ export default class RocketGuy extends React.Component {
         topOffset = 50
         speedFactor = 1.5
         rocketGuy.style.opacity = '0'
+        rocketGuy.style.transition = ''
         rocketGuy.style.marginTop = `${scrollHeight/(2.5 * 1.5) + topOffset}px`
+        rocketGuy.style.transition = 'margin-top 600ms ease-out'
         disableScroll()
         setTimeout(() => {
             window.scrollTo(0, scrollHeight - 650)

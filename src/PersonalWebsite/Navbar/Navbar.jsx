@@ -22,7 +22,7 @@ export default class Navbar extends React.Component {
             for(let i = 1; i < numBuilings; ++i)
                 document.getElementById(`building-${i}-top`).style.transition = 'margin-top 300ms ease-out'
             document.getElementById(`building-${numBuilings}`).style.transition = 'top 300ms ease-out'
-            window.scrollTo(0, 0)
+            window.scrollTo({top: 0, behavior: 'smooth'})
             this.setState({ currentPage: 'about' })
         }
     }
@@ -38,7 +38,7 @@ export default class Navbar extends React.Component {
         document.querySelector('#technical-btn').className= 'selected'
         if(this.state.currentPage === 'about') {
             const scrollHeight = getMaxScrollYPos()
-            window.scrollTo(0, scrollHeight)
+            window.scrollTo({top: scrollHeight, behavior: 'smooth'})
             this.setState({ currentPage: 'technical' })
         }
     }
