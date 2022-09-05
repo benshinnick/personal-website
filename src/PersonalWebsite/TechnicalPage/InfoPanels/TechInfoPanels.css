@@ -51,6 +51,7 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
     letter-spacing: 1px;
     padding-left: 4%;
     padding-right: 4%;
+    -webkit-font-smoothing: none;
 }
 
 .tech-info-panel {
