@@ -108,7 +108,7 @@ export default class TechInfoPanels extends React.Component {
                                 <div className='info-panel-content' id='about-panel-content'>
                                 <hr></hr>
                                 <div id='panel-text'>
-                                    I'm currently a senior majoring in Computer Science. I am passionate about using the tools and knowledge I have to create and work on products that will improve the lives of others.
+                                    I'm currently a senior majoring in Computer Science. I'm hoping to add another senternce or two here to lengthen this to paragraph length. I am passionate about using the tools and knowledge I have to create and work on products that will improve the lives of others.
                                 </div>
                                 <hr></hr>
                                 </div>
