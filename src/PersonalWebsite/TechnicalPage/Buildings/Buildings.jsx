@@ -5,6 +5,8 @@ var building1margin
 var building2margin
 var building3margin
 var building4margin
+var building5margin
+var building7margin
 
 export default class Buildings extends React.Component {
 
@@ -14,19 +16,27 @@ export default class Buildings extends React.Component {
 
     onScroll() {
         const building1 = document.getElementById('building-1-top')
-        building1margin = -window.scrollY/16 + 250
+        building1margin = -window.scrollY/16 + 600
         building1.style.marginTop = `${building1margin}px`
 
         const building2 = document.getElementById('building-2-top')
-        building2margin = -window.scrollY/6 + 650
+        building2margin = -window.scrollY/8 + 650
         building2.style.marginTop = `${building2margin}px`
 
         const building3 = document.getElementById('building-3-top')
-        building3margin = -window.scrollY/12 + 450
+        building3margin = -window.scrollY/14 + 450
         building3.style.marginTop = `${building3margin}px`
 
-        const building4 = document.getElementById('building-4')
-        building4margin = -window.scrollY/8 + 250
+        const building5 = document.getElementById('building-4-top')
+        building5margin = -window.scrollY/12 + 550
+        building5.style.marginTop = `${building5margin}px`
+
+        const building7 = document.getElementById('building-7-top')
+        building7margin = -window.scrollY/6 + 650
+        building7.style.marginTop = `${building7margin}px`
+
+        const building4 = document.getElementById('building-5')
+        building4margin = -window.scrollY/6 + 400
         building4.style.top = `${building4margin}px`
     }
 
@@ -46,10 +56,18 @@ export default class Buildings extends React.Component {
                         <div id='building-3-top' className='sprite'></div>
                         <div id='building-3-floors' className='sprite'></div>
                     </div>
+                    <div id='building-4'>
+                        <div id='building-4-top' className='sprite'></div>
+                        <div id='building-4-floors' className='sprite'></div>
+                    </div>
                 </div>
-                <div id='building-4'>
-                    <div id='building-4-top' className='sprite'></div>
-                    <div id='building-4-floors' className='sprite'></div>
+                <div id='building-5'>
+                    <div id='building-5-top' className='sprite'></div>
+                    <div id='building-5-floors' className='sprite'></div>
+                </div>
+                <div id='building-7'>
+                    <div id='building-7-top' className='sprite'></div>
+                    <div id='building-7-floors' className='sprite'></div>
                 </div>
             </div>
         );

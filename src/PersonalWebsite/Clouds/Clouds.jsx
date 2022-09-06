@@ -124,7 +124,7 @@ function moveCloudsToBottom(clouds, cloudOffset, speed) {
             clouds[i].style.animationDuration = `${clouds.length * speed * 100}s`
             clouds[i].style.animationDelay = `${-i * speed * 100}s`
         }
-    }, 1000)
+    }, 1140)
 }
 
 function getFullPageWidthClouds(cloudSize) {

@@ -57,3 +57,31 @@
     top: 100px;
     background-image: url(./StarSprites/star-6.png);
 }
+/* ********************** */
+
+#star-7-tech {
+    /* border: 1px solid red; */
+    height: 36px;
+    width:36px;
+    left: calc(15vw - 20px);
+    top: 55vh;
+    background-image: url(./StarSprites/star-7.png);
+}
+
+#star-8-tech {
+    /* border: 1px solid orange; */
+    height: 28px;
+    width: 28px;
+    right: 1vw;
+    top: 60vh;
+    background-image: url(./StarSprites/star-8.png);
+}
+
+#star-9-tech {
+    /* border: 1px solid orange; */
+    height: 44px;
+    width: 44px;
+    left: 20vw;
+    top: 85vh;
+    background-image: url(./StarSprites/star-4.png);
+}

@@ -1,0 +1,160 @@
+#experience-panel-content-container {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+#experience-panel-content {
+    width: 100%;
+    display: flex;
+    min-height: fit-content;
+    /* overflow: hidden; */
+}
+
+.title-card-filler {
+    position: absolute;
+    width: calc(45% + 30px);
+    height: 100px;
+    line-height: 90px;
+    margin-left: -30px;
+}
+
+#exp-title-cards {
+    width: 45%;
+    display: inline-block;
+}
+
+#exp-info-section {
+    width: calc(50% + 32px);
+    min-height: 100%;
+    margin-left: 28px;
+    margin-top: 4px;
+    padding-top: 8px;
+    padding-left: 8px;
+    border-left: 4px solid transparent;
+    margin-bottom: 4px;
+}
+
+#title-text {
+    font-size: 18pt;
+    letter-spacing: 0px;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    white-space: wrap;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: left;
+    -webkit-font-smoothing: none; 
+}
+
+#description-container {
+    margin: 8px;
+    font-size: 14pt;
+    text-align: left;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    line-height: 1.3;
+    letter-spacing: 0px;
+    z-index: 1;
+    -webkit-font-smoothing: none;
+}
+
+#experience-panel-content #divider {
+    width: 4px;
+    background-color: #e3e3e3;
+    position: absolute;
+    min-height: calc(100% + 4px);
+    top: -4px;
+    margin-left: calc(45%);
+}
+
+.exp-container {
+    border-width: 4px 0px;
+    border-style: solid;
+    border-color: black;
+    width: calc(100% - 25px);
+    margin: 10px;
+    margin-left: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    transition: margin-left 200ms;
+}
+
+.exp-container:hover {
+    cursor: pointer;
+}
+
+.exp-container .left-border {
+    width: 4px;
+    border: 4px solid black;
+    border-right: 0;
+    align-self: stretch;
+    margin-left: -4px;
+}
+
+.exp-container .right-border {
+    width: 4px;
+    border: 4px solid black;
+    border-left: 0;
+    align-self: stretch;
+    margin-right: -4px;
+}
+
+.exp-summary {
+    border-left: 4px solid black;
+    width: calc(100% - 72px);
+}
+
+.exp-title {
+    display: inline-block;
+    color: black;
+    font-size: 13pt;
+    letter-spacing: 0px;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: none;
+    width: 95%;
+    margin-top: 8px;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    padding-bottom: 3px;
+    border-bottom: 3px solid #e3e3e3;
+}
+
+.exp-subtitle {
+    display: inline-block;
+    font-size: 12pt;
+    letter-spacing: 1px;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: none;
+    width: 100%;
+    line-height: 1.3;
+    color: rgb(45, 45, 45);
+}
+
+#uwf-logo {
+    background-image: url('./Sprites/uwf-exp-small.png');
+    min-width: 56px;
+    height: 56px;
+    display: inline-block;
+    image-rendering: pixelated;
+    margin: 8px;
+    margin-left: 4px;
+}
+
+#ihmc-logo {
+    background-image: url('./Sprites/ihmc-exp-small.png');
+    min-width: 56px;
+    height: 56px;
+    display: inline-block;
+    image-rendering: pixelated;
+    margin: 8px;
+    margin-left: 4px;
+}

@@ -1,4 +1,9 @@
 @font-face {
+    font-family: icons;
+    src: url(./Fonts/pixel-icons.ttf);
+}
+
+@font-face {
     font-family: eightbit;
     src: url(./Fonts/8-bit-pusab.ttf);
 }
@@ -21,6 +26,10 @@
 @font-face {
     font-family: retro;
     src: url(./Fonts/retro.ttf);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {

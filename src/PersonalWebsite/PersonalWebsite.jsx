@@ -40,7 +40,7 @@ export default class PersonalWebsite extends React.Component {
                 this.changeToTechnicalPage()
             }
         }
-        else if (window.scrollY <= 50) {
+        else if (window.scrollY <= 100) {
             scrollPos = 'top'
             if(this.state.currentPage === 'technical') {
                 this.changeToHomePage()
@@ -67,7 +67,7 @@ export default class PersonalWebsite extends React.Component {
                 this.cloudsRef.current.transitionCloudsToBottom()
                 this.navBarRef.current.switchToAbout()
                 const mainContent = document.getElementById('main-content')
-                mainContent.style.animation = '750ms home-disappear forwards'
+                mainContent.style.animation = '500ms home-disappear forwards'
                 this.navBarRef.current.transitionToHome()
                 setTimeout(() => {
                     root.render(<HomePage />)
@@ -88,7 +88,7 @@ export default class PersonalWebsite extends React.Component {
                 this.cloudsRef.current.transitionCloudsToTop()
                 this.navBarRef.current.switchToTechnical()
                 const mainContent = document.getElementById('main-content')
-                mainContent.style.animation = '750ms home-disappear forwards'
+                mainContent.style.animation = '500ms home-disappear forwards'
                 setTimeout(() => {
                     this.navBarRef.current.transitionToOverCloud()
                     root.render(<TechnicalPage />)

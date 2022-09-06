@@ -6,7 +6,7 @@ export default class Navbar extends React.Component {
         super(props)
 
         this.state = {
-            currentPage: 'about',
+            currentPage: 'about'
         }
     }
 
@@ -18,7 +18,7 @@ export default class Navbar extends React.Component {
         document.querySelector('.selected').className = ''
         document.querySelector('#about-btn').className = 'selected'
         if(this.state.currentPage === 'technical') {
-            window.scrollTo(0, 0)
+            window.scrollTo({top: 0, behavior: 'smooth'})
             this.setState({ currentPage: 'about' })
         }
     }
@@ -34,7 +34,7 @@ export default class Navbar extends React.Component {
         document.querySelector('#technical-btn').className= 'selected'
         if(this.state.currentPage === 'about') {
             const scrollHeight = getMaxScrollYPos()
-            window.scrollTo(0, scrollHeight)
+            window.scrollTo({top: scrollHeight, behavior: 'smooth'})
             this.setState({ currentPage: 'technical' })
         }
     }
@@ -71,7 +71,7 @@ export default class Navbar extends React.Component {
                     <div id='navbar' className='navbar-wrapper-home'>
                         <button id='name-home-button'>BEN SHINNICK</button>
                         <div className='links-wrapper'>
-                            <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>ABOUT</button>
+                            <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>HOME</button>
                             <button id='technical-btn' onClick={() => this.technicalButtonOnClick()}>TECHNICAL</button>
                             <button id='game-btn'onClick={() => this.gameButtonOnClick()}>GAME</button>
                         </div>
