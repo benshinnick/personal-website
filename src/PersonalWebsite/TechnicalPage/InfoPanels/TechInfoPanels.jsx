@@ -9,6 +9,7 @@ const PANELS = ['about', 'projects', 'experience', 'contact']
 var updateOnScroll = true
 var currPanelIdx = 0
 var lastScrollPos = 0
+var totalPanelsHeight = 0
 
 var panelMaxHeights = []
 var panelCoverHeights = []
@@ -24,7 +25,7 @@ export default class TechInfoPanels extends React.Component {
 
     inititializePanelValues() {
         currPanelIdx = 0
-        for(var i = 0; i < PANELS.length; i++) {
+        for(let i = 0; i < PANELS.length; i++) {
             panelMaxHeights[i] = document.getElementById(`${PANELS[i]}-panel-content`).offsetHeight + 6
             document.getElementById(`${PANELS[i]}-panel-content-container`).style.height = `${panelMaxHeights[i]}px`
             panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 28
@@ -34,6 +35,8 @@ export default class TechInfoPanels extends React.Component {
             panelCurrOpacities[i] = 1
             panelTopMargins[i] = 0
         }
+
+        this.setTotalPanelsHeight()
     }
 
     onPanelContentChange(panel) {
@@ -51,6 +54,21 @@ export default class TechInfoPanels extends React.Component {
             window.scrollTo({top: Math.floor((panelHeights)*6 + OFFSET_Y_PX), behavior: 'instant'})
             setTimeout(() => { updateOnScroll = true }, 20)
         }
+
+        this.setTotalPanelsHeight()
+    }
+
+    setTotalPanelsHeight() {
+        totalPanelsHeight = 0
+        for(let i = 0; i < PANELS.length; i++) {
+            totalPanelsHeight += panelMaxHeights[i]
+            totalPanelsHeight += panelTopMargins[i]
+            totalPanelsHeight += panelCoverHeights[i]
+        }
+    }
+
+    getTotalPanelsHeight() {
+        return totalPanelsHeight
     }
 
     onResize() {
@@ -58,12 +76,18 @@ export default class TechInfoPanels extends React.Component {
     }
 
     onScroll() {
-        var scrollPos = Math.floor((window.scrollY - OFFSET_Y_PX) / 6)
+        let scrollPos = Math.floor((window.scrollY - OFFSET_Y_PX) / 6)
         if (scrollPos < 0) { scrollPos = 0 }
-        const scrollDiff = Math.floor(scrollPos - lastScrollPos)
+        let scrollDiff = Math.floor(scrollPos - lastScrollPos)
 
         if(updateOnScroll) {
-            updatePanelsOnScroll(scrollPos, scrollDiff)
+            for(let i = 0; i < Math.abs(scrollDiff); i++) {
+                if(scrollDiff < 0) {
+                    updatePanelsOnScroll(lastScrollPos - i, -1)
+                } else {
+                    updatePanelsOnScroll(lastScrollPos + i, 1)
+                }
+            }
         }
         lastScrollPos = scrollPos
     }
@@ -135,6 +159,7 @@ export default class TechInfoPanels extends React.Component {
 // It's an absolute mess that I'm hopping to clean up later
 function updatePanelsOnScroll(scrollPos, scrollDiff) {
     panelCurrHeights[currPanelIdx] -= scrollDiff
+    // Transition to previous panel
     if (panelCurrHeights[currPanelIdx] >= panelMaxHeights[currPanelIdx] || scrollPos === 0) {
         panelCurrHeights[currPanelIdx] = panelMaxHeights[currPanelIdx]
         if(currPanelIdx > 0) {
@@ -142,6 +167,7 @@ function updatePanelsOnScroll(scrollPos, scrollDiff) {
             currPanelIdx -= 1
         }
     }
+    // Transition to next panel
     if (panelCurrHeights[currPanelIdx] <= 0 && currPanelIdx < PANELS.length - 1) {
         panelCurrHeights[currPanelIdx] = 0
         panelTopMargins[currPanelIdx+1] -= scrollDiff
@@ -160,6 +186,7 @@ function updatePanelsOnScroll(scrollPos, scrollDiff) {
         document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
         document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
     }
+    // In between transitions
     else {
         if (panelTopMargins[currPanelIdx+1] < 0 || panelCurrOpacities[currPanelIdx] < 1) {
             if(currPanelIdx < PANELS.length - 1) {

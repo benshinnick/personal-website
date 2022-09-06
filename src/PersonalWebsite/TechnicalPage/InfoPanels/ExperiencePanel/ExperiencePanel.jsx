@@ -88,21 +88,6 @@ export default class ExperiencePanel extends React.Component {
                         </div>
                         <div className='right-border'></div>
                     </div>
-                    {/* <div
-                        className='exp-container'
-                        id='other-card' onClick={() => this.expCardOnClick('other')}
-                        onMouseOver={() => this.expCardOnHover('other')}
-                        onMouseLeave={() => this.expCardOnLeave('other')}
-                    >
-                        <div className='title-card-filler'></div>
-                        <div className='left-border'></div>
-                        <div id='uwf-logo'></div>
-                        <div className='exp-summary'> 
-                            <div className='exp-title'>University Of West Florida</div>
-                            <div className='exp-subtitle'>B.S. Computer Science<br></br>2020 - 2023</div>
-                        </div>
-                        <div className='right-border'></div>
-                    </div> */}
                 </div>
                 <div id='divider'></div>
                 <div id='exp-info-section'>
