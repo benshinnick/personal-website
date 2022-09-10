@@ -4,7 +4,7 @@
 
     height: fit-content;
     width: calc(75vw - 120px);
-    left: calc(25vw - 72px);
+    left: calc(15vw + 68px);
 }
 
 .title {

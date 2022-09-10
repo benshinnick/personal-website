@@ -3,7 +3,7 @@
     justify-content: space-between;
     position: fixed;
     width: calc(75vw - 40px);
-    right: 160px;
+    left: calc(15vw + 20px);
 }
 
 #building-1-top {
