@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     position: fixed;
-    width: 71vw;
-    right: 8vw;
+    width: calc(75vw - 40px);
+    right: 160px;
 }
 
 #building-1-top {
@@ -76,69 +76,6 @@
     z-index: 1;
 }
 
-#building-5 {
-    top: 100px;
-    left: calc(15vw - 260px);
-    width: 208px;
-    height: 300%;
-    position: fixed;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-#building-5-top {
-    background-image: url(./BuildingSprites/building4-top.png);
-    transform: scale(0.9);
-    margin: 0 auto calc(-252px * 0.1);
-    width: 208px;
-    height: 252px;
-    position: relative;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-#building-5-floors {
-    background-image: url(./BuildingSprites/building4-floors.png);
-    transform: scale(0.9);
-    margin: 0;
-    width: 208px;
-    height: 300%;
-    position: relative;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-#building-7 {
-    top: 100px;
-    right: calc(10vw - 260px);
-    width: 208px;
-    height: 300%;
-    position: fixed;
-    z-index: 1;
-}
-
-#building-7-top {
-    background-image: url(./BuildingSprites/building4-top.png);
-    transform: scale(0.9);
-    margin: 0 auto calc(-208px * 0.1);
-    width: 208px;
-    height: 252px;
-    position: relative;
-    transform-origin: top left;
-    z-index: 1;
-}
-
-#building-7-floors {
-    background-image: url(./BuildingSprites/building4-floors.png);
-    transform: scale(0.9);
-    margin: 0;
-    width: 208px;
-    height: 300%;
-    position: relative;
-    transform-origin: top left;
-    z-index: 1;
-}
-
 #building-4-top {
     background-image: url(./BuildingSprites/building1-top.png);
     transform: scale(0.9);
@@ -163,7 +100,48 @@
     z-index: 1;
 }
 
-#building-6 {
+#left-border-building {
+    top: 100px;
+    left: calc(15vw - 260px);
+    width: 208px;
+    height: 300%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+.border-building-top {
+    background-image: url(./BuildingSprites/building4-top.png);
+    transform: scale(0.9);
+    margin: 0 auto calc(-252px * 0.1);
+    width: 208px;
+    height: 252px;
+    position: relative;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+.border-building-floors {
+    background-image: url(./BuildingSprites/building4-floors.png);
+    transform: scale(0.9);
+    margin: 0;
+    width: 208px;
+    height: 300%;
+    position: relative;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#right-border-building {
+    top: 100px;
+    right: -40px;
+    width: 208px;
+    height: 300%;
+    position: fixed;
+    z-index: 1;
+}
+
+/* #building-6 {
     top: 100px;
     transform: scale(0.9);
     left: calc(15vw - 40px);
@@ -195,4 +173,4 @@
     height: 300vh;
     transform-origin: top right;
     z-index: 1;
-}
+} */

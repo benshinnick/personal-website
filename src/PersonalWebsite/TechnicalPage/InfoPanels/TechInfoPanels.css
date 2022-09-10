@@ -3,8 +3,8 @@
     top: 100px;
 
     height: fit-content;
-    width: 65vw;
-    right: 10.5vw;
+    width: calc(75vw - 120px);
+    left: calc(25vw - 72px);
 }
 
 .title {
@@ -33,7 +33,6 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
 
 .info-panel-content hr {
     width: 100%;
-    /* margin: 8px; */
     margin: 0;
     margin-top: 8px;
     margin-bottom: 8px;
@@ -57,14 +56,13 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
 .tech-info-panel {
     margin-bottom: 20px;
     margin-top: 0;
-    width: 65vw;
+    width: calc(75vw - 120px);
     position: relative;
     animation: fade-in 1.5s linear;
     transform-origin: bottom left;
 
     border: 4px solid #e5e5e5;
     border-width: 4px 0px;
-    /* overflow: hidden; */
 
     display: block;
     overflow-wrap: break-word;
