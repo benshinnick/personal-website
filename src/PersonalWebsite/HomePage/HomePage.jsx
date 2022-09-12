@@ -4,6 +4,7 @@ import InfoPanels from './InfoPanels/InfoPanels';
 import Moon from './Moon/Moon';
 import Stars from './Stars/Stars';
 import UFO from './UFO/UFO';
+import ShootingStars from './Stars/ShootingStars';
 
 export default class HomePage extends React.Component {
 
@@ -29,6 +30,7 @@ export default class HomePage extends React.Component {
             <main className='home-page'>
                 <InfoPanels />
                 <Stars />
+                <ShootingStars />
                 <Moon />
                 <UFO />
                 <div id='filler' style={{height: window.innerHeight*4.4 + 'px'}} />
