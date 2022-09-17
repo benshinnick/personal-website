@@ -13,21 +13,19 @@ export default class ShootingStars extends React.Component {
     
     shootStars() {
         setInterval(() => {
-            if (Math.random() < 0.65) {
-                let newStar = document.createElement("div");
-                newStar.classList.add('shooting-star')
-                if (Math.random() < 0.5) {
-                    newStar.style.top = `${randomIntFromInterval(-140, window.innerHeight)}px`
-                    newStar.style.right = `${-412}px`
-                } else {
-                    newStar.style.top = `${-140}px`
-                    newStar.style.right = `${randomIntFromInterval(-412, window.innerWidth)}px`
-                }
-                document.getElementById('shooting-stars').appendChild(newStar)
-                this.startAnimation(newStar)
-                setTimeout(() => { newStar.remove() }, 2000)
+            let newStar = document.createElement("div");
+            newStar.classList.add('shooting-star')
+            if (Math.random() < 0.5) {
+                newStar.style.top = `${randomIntFromInterval(-140, window.innerHeight)}px`
+                newStar.style.right = `${-412}px`
+            } else {
+                newStar.style.top = `${-140}px`
+                newStar.style.right = `${randomIntFromInterval(-412, window.innerWidth)}px`
             }
-        }, 650)
+            document.getElementById('shooting-stars').appendChild(newStar)
+            this.startAnimation(newStar)
+            setTimeout(() => { newStar.remove() }, 2000)
+        }, randomIntFromInterval(400, 1250))
     }
 
     startAnimation(star) {

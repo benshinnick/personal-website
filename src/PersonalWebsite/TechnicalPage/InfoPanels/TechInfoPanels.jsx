@@ -75,8 +75,8 @@ export default class TechInfoPanels extends React.Component {
         this.inititializePanelValues()
     }
 
-    onScroll() {
-        let scrollPos = Math.floor((window.scrollY - OFFSET_Y_PX) / 6)
+    onScroll(scrollY) {
+        let scrollPos = Math.floor((scrollY - OFFSET_Y_PX) / 6)
         if (scrollPos < 0) { scrollPos = 0 }
         let scrollDiff = Math.floor(scrollPos - lastScrollPos)
 

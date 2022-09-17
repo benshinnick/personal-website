@@ -63,6 +63,9 @@ export default class PersonalWebsite extends React.Component {
     changeToHomePage() {
         setTimeout(() => {
             if(scrollPos === 'top') {
+                var id = setTimeout(function() {}, 0)
+                while (id--) clearTimeout(id)
+                this.rocketGuyRef.current.startAnimating()
                 this.setState({ currentPage: 'home' })
                 this.cloudsRef.current.transitionCloudsToBottom()
                 this.navBarRef.current.switchToAbout()
@@ -84,6 +87,9 @@ export default class PersonalWebsite extends React.Component {
     changeToTechnicalPage() {
         setTimeout(() => {
             if(scrollPos === 'bottom') {
+                var id = setTimeout(function() {}, 0)
+                while (id--) clearTimeout(id)
+                this.rocketGuyRef.current.startAnimating()
                 this.setState({ currentPage: 'technical' })
                 this.cloudsRef.current.transitionCloudsToTop()
                 this.navBarRef.current.switchToTechnical()

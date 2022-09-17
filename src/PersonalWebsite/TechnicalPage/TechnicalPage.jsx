@@ -30,8 +30,9 @@ export default class TechnicalPage extends React.Component {
     }
 
     handleScroll = () => {
-        this.buildingsRef.current.onScroll()
-        this.infoPanelsRef.current.onScroll()
+        const scrollY = window.scrollY
+        this.infoPanelsRef.current.onScroll(scrollY)
+        this.buildingsRef.current.onScroll(scrollY)
     }
 
     render() {

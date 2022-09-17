@@ -1,4 +1,4 @@
-#right-buildings {
+#center-buildings {
     display: flex;
     justify-content: space-between;
     position: fixed;
@@ -16,7 +16,6 @@
     height: 36px;
     transform-origin: top right;
     z-index: 1;
-    transition: margin-top 25ms ease-out;
 }
 
 #building-1-floors {
@@ -39,7 +38,6 @@
     position: relative;
     transform-origin: top right;
     z-index: 1;
-    transition: margin-top 25ms ease-out;
 }
 #building-2-floors {
     background-image: url(./BuildingSprites/building2-floors.png);
@@ -62,7 +60,6 @@
     position: relative;
     transform-origin: top right;
     z-index: 1;
-    transition: margin-top 25ms ease-out;
 }
 
 #building-3-floors {
@@ -86,7 +83,6 @@
     height: 36px;
     transform-origin: top right;
     z-index: 1;
-    transition: margin-top 25ms ease-out;
 }
 
 #building-4-floors {
@@ -140,37 +136,3 @@
     position: fixed;
     z-index: 1;
 }
-
-/* #building-6 {
-    top: 100px;
-    transform: scale(0.9);
-    left: calc(15vw - 40px);
-    width: 208px;
-    height: 300%;
-    position: fixed;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-#building-6-top {
-    background-image: url(./BuildingSprites/building1-top.png);
-    transform: scale(0.9);
-    margin: 0 auto calc(-36px * 0.1);
-    position: relative;
-    width: 156px;
-    height: 36px;
-    transform-origin: top right;
-    z-index: 1;
-    transition: margin-top 25ms ease-out;
-}
-
-#building-6-floors {
-    background-image: url(./BuildingSprites/building5-floors.png);
-    transform: scale(0.9);
-    position: relative;
-    margin: 0;
-    width: 156px;
-    height: 300vh;
-    transform-origin: top right;
-    z-index: 1;
-} */

@@ -19,12 +19,15 @@ export default class RocketGuy extends React.Component {
     }
 
     componentDidMount() {
-        this.switchAnimation('idle', NUM_ANIMATION_FRAMES)
-        
+        this.startAnimating()
         setTimeout(() => {
             window.scrollTo(0, STARTING_SCROLL_Y_POS)
              this.moveOnScroll()
         }, 5)
+    }
+
+    startAnimating() {
+        this.switchAnimation('idle', NUM_ANIMATION_FRAMES)
     }
 
     switchAnimation(name, frameCount) {
