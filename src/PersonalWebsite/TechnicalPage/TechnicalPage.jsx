@@ -16,7 +16,7 @@ export default class TechnicalPage extends React.Component {
     componentDidMount() {
         window.addEventListener('resize', this.handleResize)
         window.addEventListener('scroll', this.handleScroll)
-        setTimeout(() => {document.getElementById('filler-tech').style.height = `${Math.floor((this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*6 + 1250)}px`}, 50)
+        setTimeout(() => {document.getElementById('filler-tech').style.height = `${this.calcFillerSize()}px`}, 50)
     }
 
     componentWillUnmount() {
@@ -25,9 +25,16 @@ export default class TechnicalPage extends React.Component {
     }
 
     handleResize = () => {
-        document.getElementById('filler-tech').style.height = `${Math.floor((this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*6 + 1250)}px`
+        window.scrollTo({top: 700, behavior: 'instant'})
         this.infoPanelsRef.current.onResize()
-        window.scroll(0, 700)
+        setTimeout(() => {document.getElementById('filler-tech').style.height = `${this.calcFillerSize()}px`}, 50)
+    }
+
+    calcFillerSize() {
+        // Need to improve later
+        return Math.floor(
+            (this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*6 + 1300
+        )
     }
 
     handleScroll = () => {
