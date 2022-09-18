@@ -4,27 +4,27 @@ import './Buildings.css';
 export default class Buildings extends React.Component {
 
     componentDidMount() {
-        this.onScroll()
+        this.onScroll(700)
     }
 
     onScroll(scrollY) {
         const building1 = document.getElementById('building-1-top')
-        building1.style.marginTop = `${Math.round(-scrollY/16 + 600)}px`
+        building1.style.marginTop = `${Math.floor(-scrollY/16 + 600)}px`
 
         const building2 = document.getElementById('building-2-top')
-        building2.style.marginTop = `${Math.round(-scrollY/8 + 650)}px`
+        building2.style.marginTop = `${Math.floor(-scrollY/8 + 650)}px`
 
         const building3 = document.getElementById('building-3-top')
-        building3.style.marginTop = `${Math.round(-scrollY/14 + 450)}px`
+        building3.style.marginTop = `${Math.floor(-scrollY/14 + 450)}px`
 
         const building5 = document.getElementById('building-4-top')
-        building5.style.marginTop = `${Math.round(-scrollY/12 + 550)}px`
+        building5.style.marginTop = `${Math.floor(-scrollY/12 + 550)}px`
 
         const building7 = document.getElementById('right-border-building')
-        building7.style.marginTop = `${Math.round(-scrollY/6 + 650)}px`
+        building7.style.marginTop = `${Math.floor(-scrollY/6 + 650)}px`
 
         const building4 = document.getElementById('left-border-building')
-        building4.style.top = `${Math.round(-scrollY/6 + 400)}px`
+        building4.style.top = `${Math.floor(-scrollY/6 + 400)}px`
     }
 
     render() {

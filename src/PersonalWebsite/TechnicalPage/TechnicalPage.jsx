@@ -4,6 +4,7 @@ import Moon from './Moon/Moon';
 import Buildings from './Buildings/Buildings';
 import TechInfoPanels from './InfoPanels/TechInfoPanels';
 import Stars from './Stars/Stars'
+import ShootingStars from './Stars/ShootingStars'
 
 export default class TechnicalPage extends React.Component {
     constructor(props) {
@@ -40,6 +41,7 @@ export default class TechnicalPage extends React.Component {
             <main className='technical-page'>
                 <Moon />
                 <Stars />
+                <ShootingStars />
                 <Buildings ref={this.buildingsRef} />
                 <TechInfoPanels ref={this.infoPanelsRef} />
                 <div id='filler-tech' style={{height: window.innerHeight*8.5 + 'px'}} />
