@@ -36,7 +36,7 @@ export default class TechInfoPanels extends React.Component {
             panelTopMargins[i] = 0
         }
 
-        this.setTotalPanelsHeight()
+        setTotalPanelsHeight()
     }
 
     onPanelContentChange(panel) {
@@ -48,6 +48,7 @@ export default class TechInfoPanels extends React.Component {
         panelCurrHeights[panelIdx] = panelMaxHeights[panelIdx]
         if(panelIdx === currPanelIdx) {
             updateOnScroll = false
+            panelTopMargins[panelIdx] = -1 * panelCoverHeights[currPanelIdx]
             let panelHeights = 0
             for(let i = 0; i < panelIdx; i++)
                 panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
@@ -55,16 +56,10 @@ export default class TechInfoPanels extends React.Component {
             setTimeout(() => { updateOnScroll = true }, 20)
         }
 
-        this.setTotalPanelsHeight()
-    }
-
-    setTotalPanelsHeight() {
-        totalPanelsHeight = 0
-        for(let i = 0; i < PANELS.length; i++) {
-            totalPanelsHeight += panelMaxHeights[i]
-            totalPanelsHeight += panelTopMargins[i]
-            totalPanelsHeight += panelCoverHeights[i]
-        }
+        setTotalPanelsHeight()
+        // same formula defied in Technical page. I'm too lazy to get that function right now
+        const updatedFillerWidth = Math.floor((totalPanelsHeight - (window.innerHeight - 150))*6 + window.innerHeight + 350)
+        document.getElementById('filler-tech').style.height = `${updatedFillerWidth }px`
     }
 
     getTotalPanelsHeight() {
@@ -151,6 +146,15 @@ export default class TechInfoPanels extends React.Component {
                 </div>
             </div>
         );
+    }
+}
+
+function setTotalPanelsHeight() {
+    totalPanelsHeight = 0
+    for(let i = 0; i < PANELS.length; i++) {
+        totalPanelsHeight += panelMaxHeights[i]
+        totalPanelsHeight += panelCoverHeights[i]
+        // totalPanelsHeight += panelTopMargins[i]
     }
 }
 
