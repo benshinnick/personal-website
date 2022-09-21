@@ -47,6 +47,7 @@ export default class TechInfoPanels extends React.Component {
         document.getElementById(`${PANELS[panelIdx]}-panel-content-container`).style.height = `${panelMaxHeights[panelIdx]}px`
         panelCurrHeights[panelIdx] = panelMaxHeights[panelIdx]
         if(panelIdx === currPanelIdx) {
+            // this.scrollToTopOfPanel(panel)
             updateOnScroll = false
             panelTopMargins[panelIdx] = -1 * panelCoverHeights[currPanelIdx]
             let panelHeights = 0
@@ -57,9 +58,25 @@ export default class TechInfoPanels extends React.Component {
         }
 
         setTotalPanelsHeight()
-        // same formula defied in Technical page. I'm too lazy to get that function right now
-        const updatedFillerWidth = Math.floor((totalPanelsHeight - (window.innerHeight - 150))*6 + window.innerHeight + 350)
-        document.getElementById('filler-tech').style.height = `${updatedFillerWidth }px`
+        document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
+    }
+
+    scrollToTopOfPanel(panel) {
+        console.log(panel)
+        const panelIdx = PANELS.indexOf(panel)
+
+        let panelHeights = 0
+        for(let i = 0; i < panelIdx; i++)
+            panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
+        const scrollPos = Math.floor((panelHeights)*6 + OFFSET_Y_PX)
+        const maxScrollPos = document.getElementById('filler-tech').scrollHeight-window.innerHeight
+        if(scrollPos <= maxScrollPos) {
+            console.log(`ScrollPos = ${scrollPos}`)
+            window.scrollTo({top: scrollPos, behavior: 'smooth'})
+        } else {
+            console.log(`Max Scroll Pos = ${maxScrollPos}`)
+            window.scrollTo({top: maxScrollPos, behavior: 'smooth'})
+        }
     }
 
     getTotalPanelsHeight() {
@@ -71,6 +88,7 @@ export default class TechInfoPanels extends React.Component {
     }
 
     onScroll(scrollY) {
+        console.log(scrollY)
         let scrollPos = Math.floor((scrollY - OFFSET_Y_PX) / 6)
         if (scrollPos < 0) { scrollPos = 0 }
         let scrollDiff = Math.floor(scrollPos - lastScrollPos)
@@ -98,7 +116,7 @@ export default class TechInfoPanels extends React.Component {
                             <div className='corner' id='bottom-left-corner'></div>
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
-                            <div className='title' id='about-title'>ABOUT ME</div>
+                            <div className='title' id='about-title' onClick={() => { this.scrollToTopOfPanel('about') }}>ABOUT ME</div>
                             <div className='info-panel-content-container' id='about-panel-content-container'>
                                 <div className='info-panel-content' id='about-panel-content'>
                                 <hr></hr>
@@ -115,7 +133,7 @@ export default class TechInfoPanels extends React.Component {
                             <div className='corner' id='bottom-left-corner'></div>
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
-                            <div className='title' id='projects-title'>PROJECTS</div>
+                            <div className='title' id='projects-title' onClick={() => { this.scrollToTopOfPanel('projects') }}>PROJECTS</div>
                             <div className='info-panel-content-container' id='projects-panel-content-container'>
                                     <ProjectsPanel onPanelContentChange = {this.onPanelContentChange} />
                             </div>
@@ -126,7 +144,7 @@ export default class TechInfoPanels extends React.Component {
                             <div className='corner' id='bottom-left-corner'></div>
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
-                            <div className='title' id='experience-title'>EDUCATION AND EXPERIENCE</div>
+                            <div className='title' id='experience-title' onClick={() => { this.scrollToTopOfPanel('experience') }}>EDUCATION AND EXPERIENCE</div>
                             <div className='info-panel-content-container' id='experience-panel-content-container'>
                                 <ExperiencePanel />
                             </div>
@@ -137,7 +155,7 @@ export default class TechInfoPanels extends React.Component {
                             <div className='corner' id='bottom-left-corner'></div>
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
-                            <div className='title' id='contact-title'>CONTACT</div>
+                            <div className='title' id='contact-title' onClick={() => { this.scrollToTopOfPanel('contact') }}>CONTACT</div>
                             <div className='info-panel-content-container' id='contact-panel-content-container'>
                                 <ContactPanel />
                             </div>
@@ -147,6 +165,13 @@ export default class TechInfoPanels extends React.Component {
             </div>
         );
     }
+}
+
+// same formula defied in Technical page. I'm too lazy to get that function right now
+function getFillerSize() {
+    return Math.floor(
+        (totalPanelsHeight - (window.innerHeight - 150))*6 + window.innerHeight + 350
+    )
 }
 
 function setTotalPanelsHeight() {

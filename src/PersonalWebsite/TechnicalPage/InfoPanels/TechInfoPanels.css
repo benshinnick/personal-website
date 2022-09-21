@@ -26,6 +26,11 @@
     z-index: 2;
 }
 
+.title:hover {
+    cursor: pointer;
+    color: rgb(28, 29, 129);
+}
+
 _::-webkit-full-page-media, _:future, :root #greeting-text {
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: grayscale;
