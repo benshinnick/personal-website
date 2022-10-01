@@ -22,7 +22,7 @@ export default class RocketGuy extends React.Component {
         this.startAnimating()
         setTimeout(() => {
             window.scrollTo(0, STARTING_SCROLL_Y_POS)
-             this.moveOnScroll()
+             this.moveOnScroll(STARTING_SCROLL_Y_POS)
         }, 5)
     }
 
@@ -78,9 +78,8 @@ export default class RocketGuy extends React.Component {
         return document.querySelector('#rocket-guy').style.backgroundPosition === `-${SPRITE_WIDTH_PX}px 0px`
     }
 
-    moveOnScroll() {
+    moveOnScroll(currScrollYPos) {
         var rocketGuy = getRocketGuyElement()
-        var currScrollYPos = window.scrollY
         var spriteYPos = currScrollYPos/(2.5 * speedFactor) + topOffset
 
         if(lastScrollYPos > currScrollYPos)

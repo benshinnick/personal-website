@@ -28,7 +28,7 @@
 
 .title:hover {
     cursor: pointer;
-    color: rgb(28, 29, 129);
+    color: rgb(31, 33, 180);
 }
 
 _::-webkit-full-page-media, _:future, :root #greeting-text {
