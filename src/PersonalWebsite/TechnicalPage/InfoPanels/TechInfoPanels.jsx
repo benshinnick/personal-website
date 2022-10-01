@@ -62,7 +62,6 @@ export default class TechInfoPanels extends React.Component {
     }
 
     scrollToTopOfPanel(panel) {
-        console.log(panel)
         const panelIdx = PANELS.indexOf(panel)
 
         let panelHeights = 0
@@ -71,10 +70,8 @@ export default class TechInfoPanels extends React.Component {
         const scrollPos = Math.floor((panelHeights)*6 + OFFSET_Y_PX)
         const maxScrollPos = document.getElementById('filler-tech').scrollHeight-window.innerHeight
         if(scrollPos <= maxScrollPos) {
-            console.log(`ScrollPos = ${scrollPos}`)
             window.scrollTo({top: scrollPos, behavior: 'smooth'})
         } else {
-            console.log(`Max Scroll Pos = ${maxScrollPos}`)
             window.scrollTo({top: maxScrollPos, behavior: 'smooth'})
         }
     }
@@ -88,7 +85,6 @@ export default class TechInfoPanels extends React.Component {
     }
 
     onScroll(scrollY) {
-        console.log(scrollY)
         let scrollPos = Math.floor((scrollY - OFFSET_Y_PX) / 6)
         if (scrollPos < 0) { scrollPos = 0 }
         let scrollDiff = Math.floor(scrollPos - lastScrollPos)
