@@ -75,7 +75,7 @@ export default class PersonalWebsite extends React.Component {
                     setTimeout(() => {
                         mainContent.style.animation = '1000ms home-appear forwards'
                     }, 100)
-                }, 750)
+                }, 700)
                 this.rocketGuyRef.current.flyInFromBottom()
             }
         }, 600)
@@ -99,7 +99,7 @@ export default class PersonalWebsite extends React.Component {
                     setTimeout(() => {
                         mainContent.style.animation = '1000ms home-appear forwards'
                     }, 100)
-                }, 750)
+                }, 700)
                 this.rocketGuyRef.current.flyInFromTop()
             }
         }, 600)

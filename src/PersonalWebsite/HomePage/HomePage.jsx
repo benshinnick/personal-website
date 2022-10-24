@@ -17,7 +17,7 @@ export default class HomePage extends React.Component {
     }
 
     handleResize() {
-        document.getElementById('filler').style.height = `${Math.floor(window.innerHeight*4.4)}px`
+        document.getElementById('filler-home').style.height = `${Math.floor(window.innerHeight*5)}px`
         var ufo = document.getElementById('ufo');
         ufo.style.animation = 'none';
         setTimeout(() => {
@@ -33,7 +33,7 @@ export default class HomePage extends React.Component {
                 <ShootingStars />
                 <Moon />
                 <UFO />
-                <div id='filler' style={{height: window.innerHeight*4.4 + 'px'}} />
+                <div id='filler-home' style={{height: window.innerHeight*5 + 'px'}} />
             </main>
         );
     }
