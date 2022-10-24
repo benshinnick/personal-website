@@ -5,6 +5,7 @@
     height: fit-content;
     width: calc(75vw - 120px);
     left: calc(15vw + 68px);
+    z-index: 3;
 }
 
 .title {
@@ -59,7 +60,7 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
 }
 
 .tech-info-panel {
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     margin-top: 0;
     width: calc(75vw - 120px);
     position: relative;

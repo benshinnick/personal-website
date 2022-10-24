@@ -32,8 +32,8 @@ export default class TechnicalPage extends React.Component {
 
     calcFillerSize() {
         return Math.floor(
-            (this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*6
-            + window.innerHeight + 350
+            (this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*8
+            + window.innerHeight + 240
         )
     }
 
@@ -51,6 +51,8 @@ export default class TechnicalPage extends React.Component {
                 <ShootingStars />
                 <Buildings ref={this.buildingsRef} />
                 <TechInfoPanels ref={this.infoPanelsRef} />
+                <div id='center-column-vert'></div>
+                <div id='center-column-horiz'></div>
                 <div id='filler-tech' style={{height: window.innerHeight*8.5 + 'px'}} />
             </main>
         );

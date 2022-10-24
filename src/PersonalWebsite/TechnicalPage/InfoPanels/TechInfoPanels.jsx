@@ -28,7 +28,7 @@ export default class TechInfoPanels extends React.Component {
         for(let i = 0; i < PANELS.length; i++) {
             panelMaxHeights[i] = document.getElementById(`${PANELS[i]}-panel-content`).offsetHeight + 6
             document.getElementById(`${PANELS[i]}-panel-content-container`).style.height = `${panelMaxHeights[i]}px`
-            panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 28
+            panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 18
             document.getElementById(`tech-${PANELS[i]}-panel`).style.opacity = 1
             document.getElementById(`tech-${PANELS[i]}-panel`).style.marginTop = '0px'
             panelCurrHeights[i] = panelMaxHeights[i]
@@ -42,7 +42,7 @@ export default class TechInfoPanels extends React.Component {
     onPanelContentChange(panel) {
         const panelIdx = PANELS.indexOf(panel)
         panelMaxHeights[panelIdx] = document.getElementById(`${PANELS[panelIdx]}-panel-content`).offsetHeight + 6
-        panelCoverHeights[panelIdx] = document.getElementById(`${PANELS[panelIdx]}-title`).clientHeight + 28
+        panelCoverHeights[panelIdx] = document.getElementById(`${PANELS[panelIdx]}-title`).clientHeight + 18
         document.getElementById(`tech-${PANELS[panelIdx]}-panel`).style.opacity = 1
         document.getElementById(`${PANELS[panelIdx]}-panel-content-container`).style.height = `${panelMaxHeights[panelIdx]}px`
         panelCurrHeights[panelIdx] = panelMaxHeights[panelIdx]
@@ -53,7 +53,7 @@ export default class TechInfoPanels extends React.Component {
             let panelHeights = 0
             for(let i = 0; i < panelIdx; i++)
                 panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
-            window.scrollTo({top: Math.floor((panelHeights)*6 + OFFSET_Y_PX), behavior: 'instant'})
+            window.scrollTo({top: Math.floor((panelHeights)*8 + OFFSET_Y_PX), behavior: 'instant'})
             setTimeout(() => { updateOnScroll = true }, 20)
         }
 
@@ -67,7 +67,7 @@ export default class TechInfoPanels extends React.Component {
         let panelHeights = 0
         for(let i = 0; i < panelIdx; i++)
             panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
-        const scrollPos = Math.floor((panelHeights)*6 + OFFSET_Y_PX)
+        const scrollPos = Math.floor((panelHeights)*8 + OFFSET_Y_PX)
         const maxScrollPos = document.getElementById('filler-tech').scrollHeight-window.innerHeight
         if(scrollPos <= maxScrollPos) {
             window.scrollTo({top: scrollPos, behavior: 'smooth'})
@@ -85,7 +85,7 @@ export default class TechInfoPanels extends React.Component {
     }
 
     onScroll(scrollY) {
-        let scrollPos = Math.floor((scrollY - OFFSET_Y_PX) / 6)
+        let scrollPos = Math.floor((scrollY - OFFSET_Y_PX) / 8)
         if (scrollPos < 0) { scrollPos = 0 }
         let scrollDiff = Math.floor(scrollPos - lastScrollPos)
 
@@ -166,7 +166,7 @@ export default class TechInfoPanels extends React.Component {
 // same formula defied in Technical page. I'm too lazy to get that function right now
 function getFillerSize() {
     return Math.floor(
-        (totalPanelsHeight - (window.innerHeight - 150))*6 + window.innerHeight + 350
+        (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 240
     )
 }
 
