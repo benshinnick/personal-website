@@ -86,7 +86,6 @@ export default class RocketGuy extends React.Component {
         }
         else {
             const maxScrollYPos = document.getElementById("filler-tech").scrollHeight - window.innerHeight
-            console.log(currScrollYPos / maxScrollYPos)
             spriteYPos = Math.floor((currScrollYPos / maxScrollYPos) * window.innerHeight - 80)
         }
 
@@ -109,6 +108,7 @@ export default class RocketGuy extends React.Component {
     flyInFromTop() {
         const rocketGuy = getRocketGuyElement()
         topOffset = 0
+        percentageScrollingOn = true
         rocketGuy.style.opacity = '0'
         rocketGuy.style.transition = ''
         rocketGuy.style.marginTop = '0'
@@ -119,7 +119,6 @@ export default class RocketGuy extends React.Component {
             enableScroll()
             rocketGuy.style.opacity = '1'
             rocketGuy.style.zIndex = '1'
-            percentageScrollingOn = true
         }, 750)
     }
 
