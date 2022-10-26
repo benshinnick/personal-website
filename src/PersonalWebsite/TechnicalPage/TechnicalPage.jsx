@@ -33,7 +33,7 @@ export default class TechnicalPage extends React.Component {
     calcFillerSize() {
         return Math.floor(
             (this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*8
-            + window.innerHeight + 240
+            + window.innerHeight + 300
         )
     }
 
