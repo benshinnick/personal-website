@@ -97,6 +97,7 @@ export default class TechInfoPanels extends React.Component {
                     updatePanelsOnScroll(lastScrollPos + i, 1)
                 }
             }
+            applyPanelUpdates();
         }
         lastScrollPos = scrollPos
     }
@@ -177,6 +178,7 @@ function setTotalPanelsHeight() {
         totalPanelsHeight += panelCoverHeights[i]
         // totalPanelsHeight += panelTopMargins[i]
     }
+    totalPanelsHeight += 4;
 }
 
 // Handles the tech panels scrolling with sticky header and disappear effect
@@ -188,7 +190,6 @@ function updatePanelsOnScroll(scrollPos, scrollDiff) {
     if (panelCurrHeights[currPanelIdx] >= panelMaxHeights[currPanelIdx] || scrollPos === 0) {
         panelCurrHeights[currPanelIdx] = panelMaxHeights[currPanelIdx]
         if(currPanelIdx > 0) {
-            document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
             currPanelIdx -= 1
         }
     }
@@ -201,15 +202,10 @@ function updatePanelsOnScroll(scrollPos, scrollDiff) {
             panelTopMargins[currPanelIdx+1] = -1 * panelCoverHeights[currPanelIdx]
             if(panelCurrHeights[currPanelIdx] === 0) {
                 panelCurrOpacities[currPanelIdx] = 0
-                document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
-                document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
-                document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
                 if(currPanelIdx < PANELS.length - 1) { currPanelIdx += 1; return }
             }
         }
         if (panelCurrOpacities[currPanelIdx] <= 0) { panelCurrOpacities[currPanelIdx] = 0 }
-        document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
-        document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
     }
     // In between transitions
     else {
@@ -225,10 +221,21 @@ function updatePanelsOnScroll(scrollPos, scrollDiff) {
                     panelCurrOpacities[currPanelIdx] = 1
                 else
                     panelCurrHeights[currPanelIdx] = 0
-                document.getElementById(`tech-${PANELS[currPanelIdx+1]}-panel`).style.marginTop = `${panelTopMargins[currPanelIdx+1]}px`
-                document.getElementById(`tech-${PANELS[currPanelIdx]}-panel`).style.opacity = panelCurrOpacities[currPanelIdx]
             }
         }
+    }
 }
-    document.getElementById(`${PANELS[currPanelIdx]}-panel-content-container`).style.height = `${panelCurrHeights[currPanelIdx]}px`
+
+function applyPanelUpdates() {
+    for(let i = 0; i < PANELS.length; i++) {
+        const currPanel = document.getElementById(`tech-${PANELS[i]}-panel`)
+        const panelContentContainer = document.getElementById(`${PANELS[i]}-panel-content-container`)
+
+        if(panelContentContainer.style.height !== `${panelCurrHeights[i]}px`)
+            panelContentContainer.style.height = `${panelCurrHeights[i]}px`
+        if(currPanel.style.marginTop !== `${panelTopMargins[i]}px`)
+            currPanel.style.marginTop = `${panelTopMargins[i]}px`
+        if(currPanel.style.opacity !== panelCurrOpacities[i])
+            currPanel.style.opacity = panelCurrOpacities[i]
+    }
 }

@@ -24,7 +24,7 @@ export default class Buildings extends React.Component {
         building7.style.marginTop = `${Math.floor(-scrollY/6 + 650)}px`
 
         const building4 = document.getElementById('left-border-building')
-        building4.style.top = `${Math.floor(-scrollY/6 + 400)}px`
+        building4.style.marginTop = `${Math.floor(-scrollY/6 + 400)}px`
     }
 
     render() {
