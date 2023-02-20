@@ -25,7 +25,7 @@ export default class ShootingStars extends React.Component {
             document.getElementById('shooting-stars').appendChild(newStar)
             this.startAnimation(newStar)
             setTimeout(() => { newStar.remove() }, 2000)
-        }, 1150)
+        }, 2250)
     }
 
     startAnimation(star) {

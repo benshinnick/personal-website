@@ -27,7 +27,7 @@ export default class ShootingStars extends React.Component {
                 this.startAnimation(newStar)
                 setTimeout(() => { newStar.remove() }, 2000)
             }, randomIntFromInterval(0, 350))
-        }, 1000)
+        }, 2250)
     }
 
     startAnimation(star) {
