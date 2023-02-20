@@ -4,6 +4,7 @@ import Moon from './Moon/Moon';
 import Buildings from './Buildings/Buildings';
 import TechInfoPanels from './InfoPanels/TechInfoPanels';
 import Stars from './Stars/Stars'
+import ShootingStars from './Stars/ShootingStars'
 
 export default class TechnicalPage extends React.Component {
     constructor(props) {
@@ -15,7 +16,7 @@ export default class TechnicalPage extends React.Component {
     componentDidMount() {
         window.addEventListener('resize', this.handleResize)
         window.addEventListener('scroll', this.handleScroll)
-        setTimeout(() => {document.getElementById('filler-tech').style.height = `${Math.floor((this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*6 + 1250)}px`}, 50)
+        setTimeout(() => {document.getElementById('filler-tech').style.height = `${this.calcFillerSize()}px`}, 50)
     }
 
     componentWillUnmount() {
@@ -24,14 +25,22 @@ export default class TechnicalPage extends React.Component {
     }
 
     handleResize = () => {
-        document.getElementById('filler-tech').style.height = `${Math.floor((this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*6 + 1250)}px`
+        window.scrollTo({top: 700, behavior: 'instant'})
         this.infoPanelsRef.current.onResize()
-        window.scroll(0, 700)
+        setTimeout(() => {document.getElementById('filler-tech').style.height = `${this.calcFillerSize()}px`}, 50)
+    }
+
+    calcFillerSize() {
+        return Math.floor(
+            (this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*8
+            + window.innerHeight + 300
+        )
     }
 
     handleScroll = () => {
-        this.buildingsRef.current.onScroll()
-        this.infoPanelsRef.current.onScroll()
+        const scrollY = window.scrollY
+        this.infoPanelsRef.current.onScroll(scrollY)
+        this.buildingsRef.current.onScroll(scrollY)
     }
 
     render() {
@@ -39,8 +48,11 @@ export default class TechnicalPage extends React.Component {
             <main className='technical-page'>
                 <Moon />
                 <Stars />
+                <ShootingStars />
                 <Buildings ref={this.buildingsRef} />
                 <TechInfoPanels ref={this.infoPanelsRef} />
+                <div id='center-column-vert'></div>
+                <div id='center-column-horiz'></div>
                 <div id='filler-tech' style={{height: window.innerHeight*8.5 + 'px'}} />
             </main>
         );

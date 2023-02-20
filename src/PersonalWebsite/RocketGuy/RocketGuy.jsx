@@ -9,7 +9,7 @@ const NUM_ANIMATION_FRAMES = 4
 var lastScrollYPos = STARTING_SCROLL_Y_POS
 var timer = null
 var topOffset = 50
-var speedFactor = 1.5
+var percentageScrollingOn = false
 
 export default class RocketGuy extends React.Component {
 
@@ -19,12 +19,15 @@ export default class RocketGuy extends React.Component {
     }
 
     componentDidMount() {
-        this.switchAnimation('idle', NUM_ANIMATION_FRAMES)
-        
+        this.startAnimating()
         setTimeout(() => {
             window.scrollTo(0, STARTING_SCROLL_Y_POS)
-             this.moveOnScroll()
+             this.moveOnScroll(STARTING_SCROLL_Y_POS)
         }, 5)
+    }
+
+    startAnimating() {
+        this.switchAnimation('idle', NUM_ANIMATION_FRAMES)
     }
 
     switchAnimation(name, frameCount) {
@@ -75,10 +78,16 @@ export default class RocketGuy extends React.Component {
         return document.querySelector('#rocket-guy').style.backgroundPosition === `-${SPRITE_WIDTH_PX}px 0px`
     }
 
-    moveOnScroll() {
+    moveOnScroll(currScrollYPos) {
         var rocketGuy = getRocketGuyElement()
-        var currScrollYPos = window.scrollY
-        var spriteYPos = currScrollYPos/(2.5 * speedFactor) + topOffset
+        var spriteYPos;
+        if(!percentageScrollingOn) {
+            spriteYPos = Math.floor(currScrollYPos/(3.75) + topOffset)
+        }
+        else {
+            const maxScrollYPos = document.getElementById("filler-tech").scrollHeight - window.innerHeight
+            spriteYPos = Math.floor((currScrollYPos / maxScrollYPos) * window.innerHeight - 80)
+        }
 
         if(lastScrollYPos > currScrollYPos)
             if(!isFlyingUpAnimated(rocketGuy))
@@ -99,7 +108,7 @@ export default class RocketGuy extends React.Component {
     flyInFromTop() {
         const rocketGuy = getRocketGuyElement()
         topOffset = 0
-        speedFactor = 3
+        percentageScrollingOn = true
         rocketGuy.style.opacity = '0'
         rocketGuy.style.transition = ''
         rocketGuy.style.marginTop = '0'
@@ -115,16 +124,17 @@ export default class RocketGuy extends React.Component {
 
     flyInFromBottom() {
         const rocketGuy = getRocketGuyElement()
-        const scrollHeight = Math.floor(window.innerHeight*4.4) - window.innerHeight
+        const scrollHeight = Math.floor(window.innerHeight*5) - window.innerHeight
         topOffset = 50
-        speedFactor = 1.5
+        percentageScrollingOn = false
         rocketGuy.style.opacity = '0'
         rocketGuy.style.transition = ''
         rocketGuy.style.marginTop = `${scrollHeight/(2.5 * 1.5) + topOffset}px`
         rocketGuy.style.transition = 'margin-top 600ms ease-out'
         disableScroll()
         setTimeout(() => {
-            window.scrollTo({top: scrollHeight - 650, behavior: 'instant'})
+            const scrollHeight = document.getElementById("filler-home").scrollHeight - window.innerHeight 
+            window.scrollTo({top: scrollHeight - 1200, behavior: 'instant'})
             enableScroll()
             rocketGuy.style.opacity = '1'
             rocketGuy.style.zIndex = '2'
