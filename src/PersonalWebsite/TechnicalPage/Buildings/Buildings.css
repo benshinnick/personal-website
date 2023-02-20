@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     position: fixed;
-    width: calc(75vw - 40px);
-    left: calc(15vw + 20px);
+    width: calc(74vw - 40px);
+    left: calc(15.5vw + 20px);
 }
 
 #building-1-top {
@@ -39,6 +39,7 @@
     transform-origin: top right;
     z-index: 1;
 }
+
 #building-2-floors {
     background-image: url(./BuildingSprites/building2-floors.png);
     transform: scale(0.9);
@@ -130,7 +131,7 @@
 
 #right-border-building {
     top: 100px;
-    right: -40px;
+    right: calc(10vw - 208px);
     width: 208px;
     height: 300%;
     position: fixed;
