@@ -49,7 +49,7 @@ export default class TechnicalPage extends React.Component {
                 <Moon />
                 <Stars />
                 <ShootingStars />
-                {/* <Buildings ref={this.buildingsRef} /> */}
+                <Buildings ref={this.buildingsRef} />
                 <TechInfoPanels ref={this.infoPanelsRef} />
                 <div id='center-column-vert'></div>
                 <div id='center-column-horiz'></div>

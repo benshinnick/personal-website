@@ -7,6 +7,7 @@ import Clouds from './Clouds/Clouds';
 import RocketGuy from './RocketGuy/RocketGuy';
 import HomePage from './HomePage/HomePage';
 import TechnicalPage from './TechnicalPage/TechnicalPage';
+import Buildings from './TechnicalPage/Buildings/Buildings';
 
 var scrollPos = 'mid'
 var root = null

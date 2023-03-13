@@ -6,7 +6,7 @@
     zoom: 1;
     width: 80px;
     height: 80px;
-    margin-left: calc(15vw - 40px);
+    left: calc(15vw - 40px);
     transition: margin-top 600ms ease-out;
     z-index: 2;
 
