@@ -73,7 +73,6 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
     border-width: 0px 4px;
 
     display: block;
-    overflow-wrap: break-word;
     color: black;
     z-index: 1;
     justify-content: space-between;
