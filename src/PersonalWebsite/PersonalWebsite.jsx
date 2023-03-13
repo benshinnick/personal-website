@@ -60,13 +60,14 @@ export default class PersonalWebsite extends React.Component {
 
     changeToHomePage() {
         setTimeout(() => {
+            console.log(scrollPos)
             if(scrollPos === 'top') {
                 var id = setTimeout(function() {}, 0)
                 while (id--) clearTimeout(id)
                 this.rocketGuyRef.current.startAnimating()
                 this.setState({ currentPage: 'home' })
                 this.cloudsRef.current.transitionCloudsToBottom()
-                this.navBarRef.current.switchToAbout()
+                this.navBarRef.current.switchToHome()
                 const mainContent = document.getElementById('main-content')
                 mainContent.style.animation = '500ms home-disappear forwards'
                 this.navBarRef.current.transitionToHome()

@@ -8,7 +8,6 @@ export default class Buildings extends React.Component {
     }
 
     onScroll(scrollY) {
-
         const left1 = document.getElementById('left-border-building-1')
         left1.style.marginTop = `${Math.floor(-scrollY/6 + 550)}px`
 
@@ -23,26 +22,11 @@ export default class Buildings extends React.Component {
 
         const right3 = document.getElementById('right-border-building-3')
         right3.style.marginTop = `${Math.floor(-scrollY/18 + 500)}px`
-
     }
 
     render() {
         return (
-            <div>
-                <div id='center-buildings'>
-                    {/* <div id='building-1'>
-                        <div id='building-1-top' className='sprite'></div>
-                        <div id='building-1-floors' className='sprite'></div>
-                    </div>
-                    <div id='building-2'>
-                        <div id='building-2-top' className='sprite'></div>
-                        <div id='building-2-floors' className='sprite'></div>
-                    </div>
-                    <div id='building-4'>
-                        <div id='building-4-top' className='sprite'></div>
-                        <div id='building-4-floors' className='sprite'></div>
-                    </div> */}
-                </div>
+            <div id='buildings'>
                 <div id='left-border-buildings'>
                     <div id='left-border-building-1'>
                         <div className='building-4-top sprite'></div>
@@ -67,11 +51,6 @@ export default class Buildings extends React.Component {
                             <div id='building-5-floors' className='sprite'></div>
                     </div>
                 </div>
-
-                {/* <div id='right-border-building'>
-                    <div className='border-building-top sprite'></div>
-                    <div className='border-building-floors sprite'></div>
-                </div> */}
             </div>
         );
     }

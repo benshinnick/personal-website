@@ -37,6 +37,9 @@ export default class TechInfoPanels extends React.Component {
         }
 
         setTotalPanelsHeight()
+        document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
+        document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
+        document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
     }
 
     onPanelContentChange(panel) {
@@ -59,6 +62,8 @@ export default class TechInfoPanels extends React.Component {
 
         setTotalPanelsHeight()
         document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
+        document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
+        document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
     }
 
     scrollToTopOfPanel(panel) {
