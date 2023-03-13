@@ -33,7 +33,7 @@ export default class TechnicalPage extends React.Component {
     calcFillerSize() {
         return Math.floor(
             (this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*8
-            + window.innerHeight + 300
+            + window.innerHeight + 234
         )
     }
 
@@ -49,7 +49,7 @@ export default class TechnicalPage extends React.Component {
                 <Moon />
                 <Stars />
                 <ShootingStars />
-                <Buildings ref={this.buildingsRef} />
+                {/* <Buildings ref={this.buildingsRef} /> */}
                 <TechInfoPanels ref={this.infoPanelsRef} />
                 <div id='center-column-vert'></div>
                 <div id='center-column-horiz'></div>

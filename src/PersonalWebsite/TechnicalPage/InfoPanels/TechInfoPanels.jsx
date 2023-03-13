@@ -164,10 +164,10 @@ export default class TechInfoPanels extends React.Component {
     }
 }
 
-// same formula defied in Technical page. I'm too lazy to get that function right now
+// same formula defied in Technical page
 function getFillerSize() {
     return Math.floor(
-        (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 300
+        (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 234
     )
 }
 
