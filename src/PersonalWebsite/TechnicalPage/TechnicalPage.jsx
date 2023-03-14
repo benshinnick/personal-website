@@ -31,10 +31,12 @@ export default class TechnicalPage extends React.Component {
     }
 
     calcFillerSize() {
-        return Math.floor(
-            (this.infoPanelsRef.current.getTotalPanelsHeight()-(window.innerHeight - 150))*8
+        const fillerSize = Math.floor(
+            (this.infoPanelsRef.current.getTotalPanelsHeight() - (window.innerHeight - 150)) * 8
             + window.innerHeight + 234
         )
+        if(fillerSize <= 0) return window.innerHeight+2500;
+        return fillerSize;
     }
 
     handleScroll = () => {

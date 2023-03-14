@@ -21,6 +21,11 @@ export default class Navbar extends React.Component {
             window.scrollTo({top: 0, behavior: 'smooth'})
             this.setState({ currentPage: 'home' })
         }
+        if(window.scrollY === 0) {
+            window.scrollTo({top: 100, behavior: 'instant'})
+            window.scrollTo({top: 0, behavior: 'instant'})
+            this.setState({ currentPage: 'home' })
+        }
     }
 
     switchToHome() {

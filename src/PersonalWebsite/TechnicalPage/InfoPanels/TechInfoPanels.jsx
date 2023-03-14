@@ -4,7 +4,7 @@ import ProjectsPanel from './ProjectsPanel/ProjectsPanel';
 import ExperiencePanel from './ExperiencePanel/ExperiencePanel';
 import ContactPanel from './ContactPanel/ContactPanel';
 
-const OFFSET_Y_PX = 700
+var OFFSET_Y_PX = 700
 const PANELS = ['about', 'projects', 'experience', 'contact']
 var updateOnScroll = true
 var currPanelIdx = 0
@@ -37,7 +37,7 @@ export default class TechInfoPanels extends React.Component {
         }
 
         setTotalPanelsHeight()
-        document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
+        console.log(getFillerSize())
         document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
         document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
     }
@@ -171,9 +171,15 @@ export default class TechInfoPanels extends React.Component {
 
 // same formula defied in Technical page
 function getFillerSize() {
-    return Math.floor(
+    const fillerSize = Math.floor(
         (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 234
     )
+    if(fillerSize <= 0) {
+        OFFSET_Y_PX = 2500
+        return window.innerHeight+2500;
+    } 
+    OFFSET_Y_PX = 700
+    return fillerSize;
 }
 
 function setTotalPanelsHeight() {
