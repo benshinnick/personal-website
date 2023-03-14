@@ -60,7 +60,6 @@ export default class PersonalWebsite extends React.Component {
 
     changeToHomePage() {
         setTimeout(() => {
-            console.log(scrollPos)
             if(scrollPos === 'top') {
                 var id = setTimeout(function() {}, 0)
                 while (id--) clearTimeout(id)

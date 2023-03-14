@@ -48,14 +48,6 @@
     z-index: 0;
 }
 
-#center-buildings {
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    width: calc(74vw - 40px);
-    left: calc(15.5vw + 20px);
-}
-
 #building-1-top {
     background-image: url(./BuildingSprites/building1-top.png);
     transform: scale(0.9);
@@ -68,18 +60,6 @@
 
 #building-1-floors {
     background-image: url(./BuildingSprites/building1-floors.png);
-    transform: scale(0.9);
-    position: relative;
-    margin: 0;
-    margin-top: -4px;
-    width: 156px;
-    height: 300vh;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-#building-5-floors {
-    background-image: url(./BuildingSprites/building5-floors.png);
     transform: scale(0.9);
     position: relative;
     margin: 0;
@@ -135,25 +115,13 @@
     z-index: 1;
 }
 
-#building-4-top {
-    background-image: url(./BuildingSprites/building1-top.png);
+.building-4-floors {
+    background-image: url(./BuildingSprites/building4-floors.png);
     transform: scale(0.9);
-    margin: 0 auto calc(-36px * 0.1);
-    position: relative;
-    /* margin-top: 150px; */
-    width: 156px;
-    height: 36px;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-#building-4-floors {
-    background-image: url(./BuildingSprites/building5-floors.png);
-    transform: scale(0.9);
-    position: relative;
     margin: 0;
-    width: 156px;
-    height: 300vh;
+    width: 208px;
+    height: 300%;
+    position: relative;
     transform-origin: top right;
     z-index: 1;
 }
@@ -169,22 +137,36 @@
     z-index: 1;
 }
 
-.building-4-floors {
-    background-image: url(./BuildingSprites/building4-floors.png);
+#building-5-floors {
+    background-image: url(./BuildingSprites/building5-floors.png);
     transform: scale(0.9);
-    margin: 0;
-    width: 208px;
-    height: 300%;
     position: relative;
+    margin: 0;
+    margin-top: -4px;
+    width: 156px;
+    height: 300vh;
     transform-origin: top right;
     z-index: 1;
 }
 
-#right-border-building {
-    top: 100px;
-    right: calc(10vw - 208px);
-    width: 208px;
-    height: 300%;
-    position: fixed;
+/* #building-4-top {
+    background-image: url(./BuildingSprites/building1-top.png);
+    transform: scale(0.9);
+    margin: 0 auto calc(-36px * 0.1);
+    position: relative;
+    width: 156px;
+    height: 36px;
+    transform-origin: top right;
     z-index: 1;
-}
+} */
+
+/* #building-4-floors {
+    background-image: url(./BuildingSprites/building5-floors.png);
+    transform: scale(0.9);
+    position: relative;
+    margin: 0;
+    width: 156px;
+    height: 300vh;
+    transform-origin: top right;
+    z-index: 1;
+} */

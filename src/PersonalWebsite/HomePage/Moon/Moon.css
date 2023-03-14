@@ -1,7 +1,7 @@
 #moon-home {
     background-image: url(./moon.png);
     bottom: 135px;
-    right: 10vw;
+    left: calc(90vw - 56px + 32px);
     width: 96px;
     height: 96px;
     position: fixed;

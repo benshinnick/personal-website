@@ -37,7 +37,6 @@ export default class TechInfoPanels extends React.Component {
         }
 
         setTotalPanelsHeight()
-        console.log(getFillerSize())
         document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
         document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
     }
