@@ -172,7 +172,7 @@ export default class TechInfoPanels extends React.Component {
 // same formula defied in Technical page
 function getFillerSize() {
     const fillerSize = Math.floor(
-        (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 234
+        (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 240
     )
     if(fillerSize <= 0) {
         OFFSET_Y_PX = 2500
