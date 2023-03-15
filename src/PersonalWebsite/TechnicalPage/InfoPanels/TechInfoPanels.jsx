@@ -37,6 +37,7 @@ export default class TechInfoPanels extends React.Component {
         }
 
         setTotalPanelsHeight()
+        document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
         document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
         document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
     }
@@ -175,7 +176,7 @@ function getFillerSize() {
     )
     if(fillerSize <= 0) {
         OFFSET_Y_PX = 2500
-        return window.innerHeight+2500;
+        return window.innerHeight+OFFSET_Y_PX;
     } 
     OFFSET_Y_PX = 700
     return fillerSize;
