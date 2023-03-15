@@ -6,33 +6,38 @@ export default class Navbar extends React.Component {
         super(props)
 
         this.state = {
-            currentPage: 'about'
+            currentPage: 'home'
         }
     }
 
     componentDidMount() {
-        document.querySelector('#about-btn').className = 'selected'
+        document.querySelector('#home-btn').className = 'selected'
     }
 
-    aboutButtonOnClick() {
+    homeButtonOnClick() {
         document.querySelector('.selected').className = ''
-        document.querySelector('#about-btn').className = 'selected'
+        document.querySelector('#home-btn').className = 'selected'
         if(this.state.currentPage === 'technical') {
             window.scrollTo({top: 0, behavior: 'smooth'})
-            this.setState({ currentPage: 'about' })
+            this.setState({ currentPage: 'home' })
+        }
+        if(window.scrollY === 0) {
+            window.scrollTo({top: 100, behavior: 'instant'})
+            window.scrollTo({top: 0, behavior: 'instant'})
+            this.setState({ currentPage: 'home' })
         }
     }
 
-    switchToAbout() {
+    switchToHome() {
         document.querySelector('.selected').className = ''
-        document.querySelector('#about-btn').className = 'selected'
-        this.setState({ currentPage: 'about' })
+        document.querySelector('#home-btn').className = 'selected'
+        this.setState({ currentPage: 'home' })
     }
 
     technicalButtonOnClick() {
         document.querySelector('.selected').className = ''
         document.querySelector('#technical-btn').className= 'selected'
-        if(this.state.currentPage === 'about') {
+        if(this.state.currentPage === 'home') {
             const scrollHeight = getMaxScrollYPos()
             window.scrollTo({top: scrollHeight, behavior: 'smooth'})
             this.setState({ currentPage: 'technical' })
@@ -71,7 +76,7 @@ export default class Navbar extends React.Component {
                     <div id='navbar' className='navbar-wrapper-home'>
                         <button id='name-home-button'>BEN SHINNICK</button>
                         <div className='links-wrapper'>
-                            <button id='about-btn' onClick={() => this.aboutButtonOnClick()}>HOME</button>
+                            <button id='home-btn' onClick={() => this.homeButtonOnClick()}>HOME</button>
                             <button id='technical-btn' onClick={() => this.technicalButtonOnClick()}>TECHNICAL</button>
                             <button id='game-btn'onClick={() => this.gameButtonOnClick()}>GAME</button>
                         </div>

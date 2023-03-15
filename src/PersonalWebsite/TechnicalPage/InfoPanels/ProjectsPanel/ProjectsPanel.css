@@ -1,7 +1,17 @@
 #projects-panel-content {
     padding-top: 8px;
     padding-bottom: 8px;
-    width: 100%;
+    width: 100.1%;
+}
+
+.info-panel-content-container {
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.info-panel-content-container::-webkit-scrollbar {
+    display: none;
 }
 
 #project-icons {

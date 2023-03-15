@@ -7,6 +7,7 @@ import Clouds from './Clouds/Clouds';
 import RocketGuy from './RocketGuy/RocketGuy';
 import HomePage from './HomePage/HomePage';
 import TechnicalPage from './TechnicalPage/TechnicalPage';
+import Buildings from './TechnicalPage/Buildings/Buildings';
 
 var scrollPos = 'mid'
 var root = null
@@ -65,7 +66,7 @@ export default class PersonalWebsite extends React.Component {
                 this.rocketGuyRef.current.startAnimating()
                 this.setState({ currentPage: 'home' })
                 this.cloudsRef.current.transitionCloudsToBottom()
-                this.navBarRef.current.switchToAbout()
+                this.navBarRef.current.switchToHome()
                 const mainContent = document.getElementById('main-content')
                 mainContent.style.animation = '500ms home-disappear forwards'
                 this.navBarRef.current.transitionToHome()

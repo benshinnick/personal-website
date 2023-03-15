@@ -1,17 +1,57 @@
-#center-buildings {
-    display: flex;
-    justify-content: space-between;
+#left-border-building-1 {
+    top: 100px;
+    left: calc(15vw - 280px);
+    width: 208px;
+    height: 300%;
     position: fixed;
-    width: calc(74vw - 40px);
-    left: calc(15.5vw + 20px);
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#left-border-building-2 {
+    top: 100px;
+    left: calc(15vw - 328px);
+    width: 208px;
+    height: 300%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 0;
+}
+
+#right-border-building-1 {
+    left: calc(90vw - 60px);
+    top: 100px;
+    width: 208px;
+    height: 300%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#right-border-building-2 {
+    left: calc(90vw - 56px + 76px);
+    top: 100px;
+    width: 148px;
+    height: 300%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 2;
+}
+
+#right-border-building-3 {
+    left: calc(90vw - 56px + 32px);
+    top: 100px;
+    width: 148px;
+    height: 300%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 0;
 }
 
 #building-1-top {
     background-image: url(./BuildingSprites/building1-top.png);
     transform: scale(0.9);
-    margin: 0 auto calc(-36px * 0.1);
     position: relative;
-    /* margin-top: 150px; */
     width: 156px;
     height: 36px;
     transform-origin: top right;
@@ -23,6 +63,7 @@
     transform: scale(0.9);
     position: relative;
     margin: 0;
+    margin-top: -4px;
     width: 156px;
     height: 300vh;
     transform-origin: top right;
@@ -74,51 +115,7 @@
     z-index: 1;
 }
 
-#building-4-top {
-    background-image: url(./BuildingSprites/building1-top.png);
-    transform: scale(0.9);
-    margin: 0 auto calc(-36px * 0.1);
-    position: relative;
-    /* margin-top: 150px; */
-    width: 156px;
-    height: 36px;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-#building-4-floors {
-    background-image: url(./BuildingSprites/building5-floors.png);
-    transform: scale(0.9);
-    position: relative;
-    margin: 0;
-    width: 156px;
-    height: 300vh;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-#left-border-building {
-    top: 100px;
-    left: calc(15vw - 260px);
-    width: 208px;
-    height: 300%;
-    position: fixed;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-.border-building-top {
-    background-image: url(./BuildingSprites/building4-top.png);
-    transform: scale(0.9);
-    margin: 0 auto calc(-252px * 0.1);
-    width: 208px;
-    height: 252px;
-    position: relative;
-    transform-origin: top right;
-    z-index: 1;
-}
-
-.border-building-floors {
+.building-4-floors {
     background-image: url(./BuildingSprites/building4-floors.png);
     transform: scale(0.9);
     margin: 0;
@@ -129,11 +126,47 @@
     z-index: 1;
 }
 
-#right-border-building {
-    top: 100px;
-    right: calc(10vw - 208px);
+.building-4-top {
+    background-image: url(./BuildingSprites/building4-top.png);
+    transform: scale(0.9);
+    margin: 0 auto calc(-252px * 0.1);
     width: 208px;
-    height: 300%;
-    position: fixed;
+    height: 252px;
+    position: relative;
+    transform-origin: top right;
     z-index: 1;
 }
+
+#building-5-floors {
+    background-image: url(./BuildingSprites/building5-floors.png);
+    transform: scale(0.9);
+    position: relative;
+    margin: 0;
+    margin-top: -4px;
+    width: 156px;
+    height: 300vh;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+/* #building-4-top {
+    background-image: url(./BuildingSprites/building1-top.png);
+    transform: scale(0.9);
+    margin: 0 auto calc(-36px * 0.1);
+    position: relative;
+    width: 156px;
+    height: 36px;
+    transform-origin: top right;
+    z-index: 1;
+} */
+
+/* #building-4-floors {
+    background-image: url(./BuildingSprites/building5-floors.png);
+    transform: scale(0.9);
+    position: relative;
+    margin: 0;
+    width: 156px;
+    height: 300vh;
+    transform-origin: top right;
+    z-index: 1;
+} */

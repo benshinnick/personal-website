@@ -4,7 +4,7 @@ import ProjectsPanel from './ProjectsPanel/ProjectsPanel';
 import ExperiencePanel from './ExperiencePanel/ExperiencePanel';
 import ContactPanel from './ContactPanel/ContactPanel';
 
-const OFFSET_Y_PX = 700
+var OFFSET_Y_PX = 700
 const PANELS = ['about', 'projects', 'experience', 'contact']
 var updateOnScroll = true
 var currPanelIdx = 0
@@ -28,7 +28,7 @@ export default class TechInfoPanels extends React.Component {
         for(let i = 0; i < PANELS.length; i++) {
             panelMaxHeights[i] = document.getElementById(`${PANELS[i]}-panel-content`).offsetHeight + 6
             document.getElementById(`${PANELS[i]}-panel-content-container`).style.height = `${panelMaxHeights[i]}px`
-            panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 18
+            panelCoverHeights[i] = document.getElementById(`${PANELS[i]}-title`).clientHeight + 17
             document.getElementById(`tech-${PANELS[i]}-panel`).style.opacity = 1
             document.getElementById(`tech-${PANELS[i]}-panel`).style.marginTop = '0px'
             panelCurrHeights[i] = panelMaxHeights[i]
@@ -37,6 +37,9 @@ export default class TechInfoPanels extends React.Component {
         }
 
         setTotalPanelsHeight()
+        document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
+        document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
+        document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
     }
 
     onPanelContentChange(panel) {
@@ -59,6 +62,8 @@ export default class TechInfoPanels extends React.Component {
 
         setTotalPanelsHeight()
         document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
+        document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
+        document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
     }
 
     scrollToTopOfPanel(panel) {
@@ -164,11 +169,17 @@ export default class TechInfoPanels extends React.Component {
     }
 }
 
-// same formula defied in Technical page. I'm too lazy to get that function right now
+// same formula defied in Technical page
 function getFillerSize() {
-    return Math.floor(
-        (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 300
+    const fillerSize = Math.floor(
+        (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 240
     )
+    if(fillerSize <= 0) {
+        OFFSET_Y_PX = 2500
+        return window.innerHeight+OFFSET_Y_PX;
+    } 
+    OFFSET_Y_PX = 700
+    return fillerSize;
 }
 
 function setTotalPanelsHeight() {

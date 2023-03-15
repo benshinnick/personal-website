@@ -3,7 +3,7 @@
     top: 96px;
     width: calc(75vw - 112px);
     left: calc(15vw + 64px);
-    height: calc(100vh - 114px);
+    height: calc(100vh - 100px);
     border-top: solid 4px rgba(255, 255, 255, 0.85);
     border-bottom: solid 4px rgba(255, 255, 255, 0.85);
     z-index: 2;
@@ -14,7 +14,7 @@
     top: 100px;
     width: calc(75vw - 104px);
     left: calc(15vw + 60px);
-    height: calc(100vh - 114px);
+    height: calc(100vh - 100px);
     background-color: rgba(255, 255, 255, 0.85);
     z-index: 2;
 }
