@@ -83,3 +83,21 @@
 .fly-down-build-switch-mid {
     background-image: url(./AnimationSprites/fly-down-build.png);
 }
+
+@media (max-width: 675px) {
+    #rocket-guy {
+        left: 7.5vw;
+    }
+}
+
+@media (max-width: 575px) {
+    #rocket-guy {
+        left: 4vw;
+    }
+}
+
+@media (max-width: 520px) {
+    #rocket-guy {
+        left: 1vw;
+    }
+}

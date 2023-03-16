@@ -10,6 +10,7 @@ export default class HomePage extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.handleResize)
+        this.handleResize()
     }
 
     componentWillUnmount() {
@@ -23,6 +24,10 @@ export default class HomePage extends React.Component {
         setTimeout(() => {
             ufo.style.animation = '25s linear 1s infinite alternate shift'
         }, 25)
+        if(window.innerWidth <= 1050)
+            document.getElementById('connect-text').textContent = "CONNECT"
+        else
+            document.getElementById('connect-text').textContent = "CONNECT WITH ME"
     }
 
     render() {

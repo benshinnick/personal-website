@@ -19,3 +19,9 @@
     from { right: calc(70vw - 79px); }
     to { right: calc(30vw - 16px); }
 }
+
+@media (max-height: 650px) {
+    #ufo {
+        display: none;
+    }
+}

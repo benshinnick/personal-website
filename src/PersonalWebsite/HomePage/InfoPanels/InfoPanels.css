@@ -18,7 +18,7 @@
     white-space: nowrap;
     overflow: hidden;
     width: 8em;
-    height:  35px;
+    height:  32px;
     font-weight: bold;
     -webkit-font-smoothing: none;
     position: relative;
@@ -131,4 +131,62 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     transform: rotate(270deg);
     left: 0;
     top: 0;
+}
+
+/* @media (max-width: 675px) {
+    #rocket-guy {
+        left: 7.5vw;
+    }
+}
+
+@media (max-width: 575px) {
+    #rocket-guy {
+        left: 4vw;
+    }
+}
+
+@media (max-width: 520px) {
+    #rocket-guy {
+        left: 1vw;
+    }
+} */
+
+@media (max-width: 1250px) {
+    .info-text {
+        font-size: 16pt;
+        margin-left: 6%;
+        margin-right: 6%;
+    }
+}
+
+@media (max-width: 675px) {
+    #greeting-text {
+        font-size: 20pt;
+        height:  26px;
+    }
+
+    .text-panel {
+        width: calc(70vw - 80px);
+    }
+
+    #info-panels {
+        top: 45%;
+        left: calc(15vw + 80px);
+        width: calc(70vw - 80px);
+    }
+
+    .info-text {
+        font-size: 16pt;
+    }
+}
+
+@media (max-width: 575px) {
+    #greeting-text {
+        font-size: 18pt;
+        height:  22px;
+    }
+}
+
+@media (max-width: 520px) {
+
 }
