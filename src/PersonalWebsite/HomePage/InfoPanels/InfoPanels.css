@@ -85,7 +85,7 @@ hr {
 }
 
 .info-text {
-    font-size: 18pt;
+    font-size: 17pt;
     text-align: center;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
@@ -151,7 +151,7 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     }
 } */
 
-@media (max-width: 1250px) {
+@media (max-width: 1200px) {
     .info-text {
         font-size: 16pt;
         margin-left: 6%;
@@ -159,7 +159,19 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     }
 }
 
-@media (max-width: 675px) {
+@media (max-width: 1000px) {
+    .text-panel {
+        width: calc(60vw - 80px);
+    }
+
+    #info-panels {
+        top: 45%;
+        left: calc(20vw + 40px);
+        width: calc(60vw - 80px);
+    }
+}
+
+@media (max-width: 800px) {
     #greeting-text {
         font-size: 20pt;
         height:  26px;
@@ -171,12 +183,18 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 
     #info-panels {
         top: 45%;
-        left: calc(15vw + 80px);
+        left: calc(15vw + 40px);
         width: calc(70vw - 80px);
     }
 
     .info-text {
         font-size: 16pt;
+    }
+}
+
+@media (max-width: 660px) {
+    .info-text {
+        font-size: 14pt;
     }
 }
 
