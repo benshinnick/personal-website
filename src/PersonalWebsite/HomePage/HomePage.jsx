@@ -11,10 +11,22 @@ export default class HomePage extends React.Component {
     componentDidMount() {
         window.addEventListener('resize', this.handleResize)
         this.handleResize()
+        this.ufoFlyIn();
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleResize)
+    }
+
+    ufoFlyIn() {
+        var ufo = document.getElementById('ufo');
+        setTimeout(() => {
+            ufo.style.display = "block";
+            ufo.style.animation = '500ms ease-out 0s 1 alternate slide-in';
+        }, 25)
+        setTimeout(() => {
+            ufo.style.animation = '25s linear 0s infinite alternate shift'
+        }, 500) 
     }
 
     handleResize() {

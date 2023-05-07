@@ -192,46 +192,65 @@ function setTotalPanelsHeight() {
     totalPanelsHeight += 4;
 }
 
-// Handles the tech panels scrolling with sticky header and disappear effect
-// Works for a variable number of panels
-// It's an absolute mess that I'm hopping to clean up later
 function updatePanelsOnScroll(scrollPos, scrollDiff) {
-    panelCurrHeights[currPanelIdx] -= scrollDiff
-    // Transition to previous panel
-    if (panelCurrHeights[currPanelIdx] >= panelMaxHeights[currPanelIdx] || scrollPos === 0) {
-        panelCurrHeights[currPanelIdx] = panelMaxHeights[currPanelIdx]
-        if(currPanelIdx > 0) {
-            currPanelIdx -= 1
+    panelCurrHeights[currPanelIdx] -= scrollDiff;
+
+    const isScrollPosZero = scrollPos === 0;
+    const isCurrPanelMaxHeightReached = panelCurrHeights[currPanelIdx] >= panelMaxHeights[currPanelIdx];
+
+    if (isCurrPanelMaxHeightReached || isScrollPosZero) {
+        panelCurrHeights[currPanelIdx] = panelMaxHeights[currPanelIdx];
+        if (currPanelIdx > 0) {
+            currPanelIdx -= 1;
         }
+        return;
     }
-    // Transition to next panel
-    if (panelCurrHeights[currPanelIdx] <= 0 && currPanelIdx < PANELS.length - 1) {
-        panelCurrHeights[currPanelIdx] = 0
-        panelTopMargins[currPanelIdx+1] -= scrollDiff
-        panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
-        if (Math.abs(panelTopMargins[currPanelIdx+1]) >= panelCoverHeights[currPanelIdx]) {
-            panelTopMargins[currPanelIdx+1] = -1 * panelCoverHeights[currPanelIdx]
-            if(panelCurrHeights[currPanelIdx] === 0) {
-                panelCurrOpacities[currPanelIdx] = 0
-                if(currPanelIdx < PANELS.length - 1) { currPanelIdx += 1; return }
+
+    const isCurrPanelHeightZero = panelCurrHeights[currPanelIdx] <= 0;
+    const isLastPanelIndex = currPanelIdx === PANELS.length - 1;
+
+    if (isCurrPanelHeightZero && !isLastPanelIndex) {
+        panelCurrHeights[currPanelIdx] = 0;
+        panelTopMargins[currPanelIdx + 1] -= scrollDiff;
+        panelCurrOpacities[currPanelIdx] -= scrollDiff / panelCoverHeights[currPanelIdx];
+
+        const isPanelTopMarginsAbsGreaterThanOrEqualToCoverHeights = Math.abs(panelTopMargins[currPanelIdx + 1]) >= panelCoverHeights[currPanelIdx];
+
+        if (isPanelTopMarginsAbsGreaterThanOrEqualToCoverHeights) {
+            panelTopMargins[currPanelIdx + 1] = -1 * panelCoverHeights[currPanelIdx];
+
+            if (isCurrPanelHeightZero) {
+                panelCurrOpacities[currPanelIdx] = 0;
+                if (!isLastPanelIndex) {
+                    currPanelIdx += 1;
+                    return;
+                }
             }
         }
-        if (panelCurrOpacities[currPanelIdx] <= 0) { panelCurrOpacities[currPanelIdx] = 0 }
-    }
-    // In between transitions
-    else {
-        if (panelTopMargins[currPanelIdx+1] < 0 || panelCurrOpacities[currPanelIdx] < 1) {
-            if(currPanelIdx < PANELS.length - 1) {
-                panelTopMargins[currPanelIdx+1] -= scrollDiff
-                panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
-                if (panelTopMargins[currPanelIdx+1] >= 0)
-                    panelTopMargins[currPanelIdx+1] = 0
-                else
-                    panelCurrHeights[currPanelIdx] = 0
-                if (panelCurrOpacities[currPanelIdx] >= 1)
-                    panelCurrOpacities[currPanelIdx] = 1
-                else
-                    panelCurrHeights[currPanelIdx] = 0
+
+        if (panelCurrOpacities[currPanelIdx] <= 0) {
+            panelCurrOpacities[currPanelIdx] = 0;
+        }
+    } else {
+        const isPanelTopMarginsLessThanZero = panelTopMargins[currPanelIdx + 1] < 0;
+        const isPanelCurrOpacitiesLessThanOne = panelCurrOpacities[currPanelIdx] < 1;
+
+        if (isPanelTopMarginsLessThanZero || isPanelCurrOpacitiesLessThanOne) {
+            if (!isLastPanelIndex) {
+                panelTopMargins[currPanelIdx + 1] -= scrollDiff;
+                panelCurrOpacities[currPanelIdx] -= scrollDiff / panelCoverHeights[currPanelIdx];
+
+                if (panelTopMargins[currPanelIdx + 1] >= 0) {
+                    panelTopMargins[currPanelIdx + 1] = 0;
+                } else {
+                    panelCurrHeights[currPanelIdx] = 0;
+                }
+
+                if (panelCurrOpacities[currPanelIdx] >= 1) {
+                    panelCurrOpacities[currPanelIdx] = 1;
+                } else {
+                    panelCurrHeights[currPanelIdx] = 0;
+                }
             }
         }
     }

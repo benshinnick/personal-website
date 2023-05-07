@@ -6,6 +6,7 @@
     height: 35px;
     position: fixed;
     transform-origin: top right;
+    display: none;
     animation: 1s linear 0s 1 alternate slide-in, 25s linear 1s infinite alternate shift;
     z-index: 1;
 }
