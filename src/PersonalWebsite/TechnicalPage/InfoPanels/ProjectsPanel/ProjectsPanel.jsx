@@ -117,12 +117,12 @@ export default class ProjectsPanel extends React.Component {
                         <div className='project-text'>Huddle</div>
                         <div className='arrow-icon'>&lt;</div>
                     </div>
-                    <div className='project-display' id='miscellaneous-display' onClick={() => this.projectDisplayOnClick('miscellaneous', '16, 148, 25')}>
+                    <div className='project-display' id='miscellaneous-display' onClick={() => this.projectDisplayOnClick('miscellaneous', '52, 31, 140')}>
                         <div className='sprite project-icon' id='miscellaneous-icon' />
                         <div className='project-text'>Miscellaneous</div>
                         <div className='arrow-icon'>&lt;</div>
                     </div>
-                    <div className='project-display' id='personal-website-display' onClick={() => this.projectDisplayOnClick('personal-website', '52, 31, 140')}>
+                    <div className='project-display' id='personal-website-display' onClick={() => this.projectDisplayOnClick('personal-website', '16, 148, 25')}>
                         <div className='sprite project-icon' id='personal-website-icon' />
                         <div className='project-text'>Personal Site</div>
                         <div className='arrow-icon'>&lt;</div>
