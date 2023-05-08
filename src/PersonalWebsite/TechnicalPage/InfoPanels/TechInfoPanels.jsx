@@ -5,7 +5,7 @@ import ExperiencePanel from './ExperiencePanel/ExperiencePanel';
 import ContactPanel from './ContactPanel/ContactPanel';
 
 var OFFSET_Y_PX = 700
-const PANELS = ['about', 'projects', 'experience', 'contact']
+const PANELS = ['about', 'experience', 'projects', 'contact']
 var updateOnScroll = true
 var currPanelIdx = 0
 var lastScrollPos = 0
@@ -49,21 +49,48 @@ export default class TechInfoPanels extends React.Component {
         document.getElementById(`tech-${PANELS[panelIdx]}-panel`).style.opacity = 1
         document.getElementById(`${PANELS[panelIdx]}-panel-content-container`).style.height = `${panelMaxHeights[panelIdx]}px`
         panelCurrHeights[panelIdx] = panelMaxHeights[panelIdx]
-        if(panelIdx === currPanelIdx) {
-            // this.scrollToTopOfPanel(panel)
-            updateOnScroll = false
-            panelTopMargins[panelIdx] = -1 * panelCoverHeights[currPanelIdx]
-            let panelHeights = 0
-            for(let i = 0; i < panelIdx; i++)
-                panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
-            window.scrollTo({top: Math.floor((panelHeights)*8 + OFFSET_Y_PX), behavior: 'instant'})
-            setTimeout(() => { updateOnScroll = true }, 20)
-        }
 
         setTotalPanelsHeight()
         document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
         document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
         document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
+
+        if(currPanelIdx >= panelIdx) {
+            let panelHeights = 0
+            for(let i = 0; i < panelIdx; i++)
+                panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
+
+            const maxScrollY = document.getElementById('filler-tech').scrollHeight-window.innerHeight
+            let scrollY = Math.ceil((panelHeights)*8 + OFFSET_Y_PX)
+            if(scrollY > maxScrollY) scrollY = maxScrollY
+
+            updateOnScroll = false
+            window.scrollTo({top:  OFFSET_Y_PX, behavior: 'instant'})
+            lastScrollPos = 0
+            
+            currPanelIdx = 0
+            for(let i = 0; i < PANELS.length; i++) {
+                document.getElementById(`${PANELS[i]}-panel-content-container`).style.height = `${panelMaxHeights[i]}px`
+                document.getElementById(`tech-${PANELS[i]}-panel`).style.opacity = 1
+                document.getElementById(`tech-${PANELS[i]}-panel`).style.marginTop = '0px'
+                panelCurrHeights[i] = panelMaxHeights[i]
+                panelCurrOpacities[i] = 1
+                panelTopMargins[i] = 0
+            }
+
+            let scrollPos = Math.floor((scrollY - OFFSET_Y_PX) / 8)
+            if (scrollPos < 0) { scrollPos = 0 }
+            let scrollDiff = Math.floor(scrollPos - lastScrollPos)
+            for(let i = 0; i < Math.abs(scrollDiff); i++) {
+                if(scrollDiff < 0) updatePanelsOnScroll(lastScrollPos - i, -1)
+                else updatePanelsOnScroll(lastScrollPos + i, 1)
+            }
+            applyPanelUpdates();
+            lastScrollPos = scrollPos
+
+            window.scrollTo({top: scrollY, behavior: 'instant'})
+            updateOnScroll = true
+        }
     }
 
     scrollToTopOfPanel(panel) {
@@ -129,17 +156,6 @@ export default class TechInfoPanels extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className='tech-info-panel' id='tech-projects-panel'>
-                            <div className='corner' id='top-right-corner'></div>
-                            <div className='corner' id='bottom-right-corner'></div>
-                            <div className='corner' id='bottom-left-corner'></div>
-                            <div className='corner' id='top-left-corner'></div>
-                            <div className='sides'></div>
-                            <div className='title' id='projects-title' onClick={() => { this.scrollToTopOfPanel('projects') }}>PROJECTS</div>
-                            <div className='info-panel-content-container' id='projects-panel-content-container'>
-                                    <ProjectsPanel onPanelContentChange = {this.onPanelContentChange} />
-                            </div>
-                        </div>
                         <div className='tech-info-panel' id='tech-experience-panel'>
                             <div className='corner' id='top-right-corner'></div>
                             <div className='corner' id='bottom-right-corner'></div>
@@ -149,6 +165,17 @@ export default class TechInfoPanels extends React.Component {
                             <div className='title' id='experience-title' onClick={() => { this.scrollToTopOfPanel('experience') }}>EDUCATION AND EXPERIENCE</div>
                             <div className='info-panel-content-container' id='experience-panel-content-container'>
                                 <ExperiencePanel />
+                            </div>
+                        </div>
+                        <div className='tech-info-panel' id='tech-projects-panel'>
+                            <div className='corner' id='top-right-corner'></div>
+                            <div className='corner' id='bottom-right-corner'></div>
+                            <div className='corner' id='bottom-left-corner'></div>
+                            <div className='corner' id='top-left-corner'></div>
+                            <div className='sides'></div>
+                            <div className='title' id='projects-title' onClick={() => { this.scrollToTopOfPanel('projects') }}>PROJECTS</div>
+                            <div className='info-panel-content-container' id='projects-panel-content-container'>
+                                    <ProjectsPanel onPanelContentChange = {this.onPanelContentChange} />
                             </div>
                         </div>
                         <div className='tech-info-panel' id='tech-contact-panel'>
