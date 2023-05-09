@@ -17,8 +17,8 @@
     /* border: 1px solid red; */
     height: 71px;
     width:67px;
-    right: 2vw;
-    top: 100px;
+    right: 1vw;
+    top: 40vh;
     background-image: url(./StarSprites/star-2.png);
 }
 
@@ -72,8 +72,8 @@
     /* border: 1px solid orange; */
     height: 28px;
     width: 28px;
-    right: 1vw;
-    top: 60vh;
+    right: 2vw;
+    top: 100px;
     background-image: url(./StarSprites/star-8.png);
 }
 

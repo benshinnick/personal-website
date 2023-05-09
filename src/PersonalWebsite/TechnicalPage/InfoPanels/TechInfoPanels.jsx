@@ -4,8 +4,9 @@ import ProjectsPanel from './ProjectsPanel/ProjectsPanel';
 import ExperiencePanel from './ExperiencePanel/ExperiencePanel';
 import ContactPanel from './ContactPanel/ContactPanel';
 
+var IGNORE_END_Y_PX
 var OFFSET_Y_PX = 700
-const PANELS = ['about', 'projects', 'experience', 'contact']
+const PANELS = ['about', 'experience', 'projects', 'contact']
 var updateOnScroll = true
 var currPanelIdx = 0
 var lastScrollPos = 0
@@ -38,8 +39,14 @@ export default class TechInfoPanels extends React.Component {
 
         setTotalPanelsHeight()
         document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
-        document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
-        document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
+        if(calcFillerSize() <= OFFSET_Y_PX) {
+            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-8}px`
+            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-8}px`
+        }
+        else {
+            document.getElementById('center-column-vert').style.height = ""
+            document.getElementById('center-column-horiz').style.height = ""
+        }
     }
 
     onPanelContentChange(panel) {
@@ -49,35 +56,72 @@ export default class TechInfoPanels extends React.Component {
         document.getElementById(`tech-${PANELS[panelIdx]}-panel`).style.opacity = 1
         document.getElementById(`${PANELS[panelIdx]}-panel-content-container`).style.height = `${panelMaxHeights[panelIdx]}px`
         panelCurrHeights[panelIdx] = panelMaxHeights[panelIdx]
-        if(panelIdx === currPanelIdx) {
-            // this.scrollToTopOfPanel(panel)
-            updateOnScroll = false
-            panelTopMargins[panelIdx] = -1 * panelCoverHeights[currPanelIdx]
-            let panelHeights = 0
-            for(let i = 0; i < panelIdx; i++)
-                panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
-            window.scrollTo({top: Math.floor((panelHeights)*8 + OFFSET_Y_PX), behavior: 'instant'})
-            setTimeout(() => { updateOnScroll = true }, 20)
-        }
 
         setTotalPanelsHeight()
         document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
-        document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
-        document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
+        if(calcFillerSize() <= OFFSET_Y_PX) {
+            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-8}px`
+            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-8}px`
+        }
+        else {
+            document.getElementById('center-column-vert').style.height = ""
+            document.getElementById('center-column-horiz').style.height = ""
+        }
+
+        // wow, this is some of the worst code I've ever written
+        if(calcFillerSize() <=  OFFSET_Y_PX) return
+        let panelHeights = 0
+        for(let i = 0; i < panelIdx; i++)
+            panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
+        
+
+        // const maxScrollY = document.getElementById('filler-tech').scrollHeight-window.innerHeight
+        let scrollY = Math.ceil((panelHeights)*8 + OFFSET_Y_PX)
+        if(scrollY > IGNORE_END_Y_PX) scrollY = IGNORE_END_Y_PX
+
+        updateOnScroll = false
+        window.scrollTo({top:  OFFSET_Y_PX, behavior: 'instant'})
+        lastScrollPos = 0
+        
+        currPanelIdx = 0
+        for(let i = 0; i < PANELS.length; i++) {
+            document.getElementById(`${PANELS[i]}-panel-content-container`).style.height = `${panelMaxHeights[i]}px`
+            document.getElementById(`tech-${PANELS[i]}-panel`).style.opacity = 1
+            document.getElementById(`tech-${PANELS[i]}-panel`).style.marginTop = '0px'
+            panelCurrHeights[i] = panelMaxHeights[i]
+            panelCurrOpacities[i] = 1
+            panelTopMargins[i] = 0
+        }
+
+        let scrollPos = Math.floor((scrollY - OFFSET_Y_PX) / 8)
+        if (scrollPos < 0) { scrollPos = 0 }
+        let scrollDiff = Math.floor(scrollPos - lastScrollPos)
+        const ignorePos = Math.floor((IGNORE_END_Y_PX - OFFSET_Y_PX) / 8)
+        for(let i = 0; i < Math.abs(scrollDiff); i++) {
+            if(scrollDiff < 0 && lastScrollPos - i <= ignorePos) updatePanelsOnScroll(lastScrollPos - i, -1)
+            else if(lastScrollPos + i <= ignorePos) updatePanelsOnScroll(lastScrollPos + i, 1)
+        }
+        applyPanelUpdates();
+        lastScrollPos = scrollPos
+
+        window.scrollTo({top: scrollY, behavior: 'instant'})
+        updateOnScroll = true
     }
 
     scrollToTopOfPanel(panel) {
+        if(calcFillerSize() <= OFFSET_Y_PX) return
+
         const panelIdx = PANELS.indexOf(panel)
 
         let panelHeights = 0
         for(let i = 0; i < panelIdx; i++)
             panelHeights += panelMaxHeights[i] + panelCoverHeights[i]
         const scrollPos = Math.floor((panelHeights)*8 + OFFSET_Y_PX)
-        const maxScrollPos = document.getElementById('filler-tech').scrollHeight-window.innerHeight
-        if(scrollPos <= maxScrollPos) {
+        // const maxScrollPos = document.getElementById('filler-tech').scrollHeight-window.innerHeight
+        if(scrollPos <= IGNORE_END_Y_PX) {
             window.scrollTo({top: scrollPos, behavior: 'smooth'})
         } else {
-            window.scrollTo({top: maxScrollPos, behavior: 'smooth'})
+            window.scrollTo({top: IGNORE_END_Y_PX, behavior: 'smooth'})
         }
     }
 
@@ -86,21 +130,24 @@ export default class TechInfoPanels extends React.Component {
     }
 
     onResize() {
+        OFFSET_Y_PX = 700
         this.inititializePanelValues()
+        getFillerSize()
     }
 
     onScroll(scrollY) {
         let scrollPos = Math.floor((scrollY - OFFSET_Y_PX) / 8)
         if (scrollPos < 0) { scrollPos = 0 }
         let scrollDiff = Math.floor(scrollPos - lastScrollPos)
+        const ignorePos = Math.floor((IGNORE_END_Y_PX - OFFSET_Y_PX) / 8)
 
         if(updateOnScroll) {
+            const scrollStart = lastScrollPos
             for(let i = 0; i < Math.abs(scrollDiff); i++) {
-                if(scrollDiff < 0) {
-                    updatePanelsOnScroll(lastScrollPos - i, -1)
-                } else {
-                    updatePanelsOnScroll(lastScrollPos + i, 1)
-                }
+                if(scrollDiff < 0 && scrollStart - i <= ignorePos)
+                    updatePanelsOnScroll(scrollStart - i, -1)
+                else if(scrollStart + i <= ignorePos)
+                    updatePanelsOnScroll(scrollStart + i, 1)
             }
             applyPanelUpdates();
         }
@@ -129,17 +176,6 @@ export default class TechInfoPanels extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className='tech-info-panel' id='tech-projects-panel'>
-                            <div className='corner' id='top-right-corner'></div>
-                            <div className='corner' id='bottom-right-corner'></div>
-                            <div className='corner' id='bottom-left-corner'></div>
-                            <div className='corner' id='top-left-corner'></div>
-                            <div className='sides'></div>
-                            <div className='title' id='projects-title' onClick={() => { this.scrollToTopOfPanel('projects') }}>PROJECTS</div>
-                            <div className='info-panel-content-container' id='projects-panel-content-container'>
-                                    <ProjectsPanel onPanelContentChange = {this.onPanelContentChange} />
-                            </div>
-                        </div>
                         <div className='tech-info-panel' id='tech-experience-panel'>
                             <div className='corner' id='top-right-corner'></div>
                             <div className='corner' id='bottom-right-corner'></div>
@@ -149,6 +185,17 @@ export default class TechInfoPanels extends React.Component {
                             <div className='title' id='experience-title' onClick={() => { this.scrollToTopOfPanel('experience') }}>EDUCATION AND EXPERIENCE</div>
                             <div className='info-panel-content-container' id='experience-panel-content-container'>
                                 <ExperiencePanel />
+                            </div>
+                        </div>
+                        <div className='tech-info-panel' id='tech-projects-panel'>
+                            <div className='corner' id='top-right-corner'></div>
+                            <div className='corner' id='bottom-right-corner'></div>
+                            <div className='corner' id='bottom-left-corner'></div>
+                            <div className='corner' id='top-left-corner'></div>
+                            <div className='sides'></div>
+                            <div className='title' id='projects-title' onClick={() => { this.scrollToTopOfPanel('projects') }}>PROJECTS</div>
+                            <div className='info-panel-content-container' id='projects-panel-content-container'>
+                                    <ProjectsPanel onPanelContentChange = {this.onPanelContentChange} />
                             </div>
                         </div>
                         <div className='tech-info-panel' id='tech-contact-panel'>
@@ -169,17 +216,22 @@ export default class TechInfoPanels extends React.Component {
     }
 }
 
-// same formula defied in Technical page
-function getFillerSize() {
-    const fillerSize = Math.floor(
+function calcFillerSize() {
+    return Math.floor(
         (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 240
     )
-    if(fillerSize <= 0) {
-        OFFSET_Y_PX = 2500
+}
+
+// same formula defied in Technical page
+function getFillerSize() {
+    const fillerSize = calcFillerSize()
+    if(fillerSize <= OFFSET_Y_PX) {
+        OFFSET_Y_PX = 7000
         return window.innerHeight+OFFSET_Y_PX;
     } 
     OFFSET_Y_PX = 700
-    return fillerSize;
+    IGNORE_END_Y_PX = fillerSize - window.innerHeight
+    return fillerSize+OFFSET_Y_PX
 }
 
 function setTotalPanelsHeight() {
@@ -192,46 +244,65 @@ function setTotalPanelsHeight() {
     totalPanelsHeight += 4;
 }
 
-// Handles the tech panels scrolling with sticky header and disappear effect
-// Works for a variable number of panels
-// It's an absolute mess that I'm hopping to clean up later
 function updatePanelsOnScroll(scrollPos, scrollDiff) {
-    panelCurrHeights[currPanelIdx] -= scrollDiff
-    // Transition to previous panel
-    if (panelCurrHeights[currPanelIdx] >= panelMaxHeights[currPanelIdx] || scrollPos === 0) {
-        panelCurrHeights[currPanelIdx] = panelMaxHeights[currPanelIdx]
-        if(currPanelIdx > 0) {
-            currPanelIdx -= 1
+    panelCurrHeights[currPanelIdx] -= scrollDiff;
+
+    const isScrollPosZero = scrollPos === 0;
+    const isCurrPanelMaxHeightReached = panelCurrHeights[currPanelIdx] >= panelMaxHeights[currPanelIdx];
+
+    if (isCurrPanelMaxHeightReached || isScrollPosZero) {
+        panelCurrHeights[currPanelIdx] = panelMaxHeights[currPanelIdx];
+        if (currPanelIdx > 0) {
+            currPanelIdx -= 1;
         }
+        return;
     }
-    // Transition to next panel
-    if (panelCurrHeights[currPanelIdx] <= 0 && currPanelIdx < PANELS.length - 1) {
-        panelCurrHeights[currPanelIdx] = 0
-        panelTopMargins[currPanelIdx+1] -= scrollDiff
-        panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
-        if (Math.abs(panelTopMargins[currPanelIdx+1]) >= panelCoverHeights[currPanelIdx]) {
-            panelTopMargins[currPanelIdx+1] = -1 * panelCoverHeights[currPanelIdx]
-            if(panelCurrHeights[currPanelIdx] === 0) {
-                panelCurrOpacities[currPanelIdx] = 0
-                if(currPanelIdx < PANELS.length - 1) { currPanelIdx += 1; return }
+
+    const isCurrPanelHeightZero = panelCurrHeights[currPanelIdx] <= 0;
+    const isLastPanelIndex = currPanelIdx === PANELS.length - 1;
+
+    if (isCurrPanelHeightZero && !isLastPanelIndex) {
+        panelCurrHeights[currPanelIdx] = 0;
+        panelTopMargins[currPanelIdx + 1] -= scrollDiff;
+        panelCurrOpacities[currPanelIdx] -= scrollDiff / panelCoverHeights[currPanelIdx];
+
+        const isPanelTopMarginsAbsGreaterThanOrEqualToCoverHeights = Math.abs(panelTopMargins[currPanelIdx + 1]) >= panelCoverHeights[currPanelIdx];
+
+        if (isPanelTopMarginsAbsGreaterThanOrEqualToCoverHeights) {
+            panelTopMargins[currPanelIdx + 1] = -1 * panelCoverHeights[currPanelIdx];
+
+            if (isCurrPanelHeightZero) {
+                panelCurrOpacities[currPanelIdx] = 0;
+                if (!isLastPanelIndex) {
+                    currPanelIdx += 1;
+                    return;
+                }
             }
         }
-        if (panelCurrOpacities[currPanelIdx] <= 0) { panelCurrOpacities[currPanelIdx] = 0 }
-    }
-    // In between transitions
-    else {
-        if (panelTopMargins[currPanelIdx+1] < 0 || panelCurrOpacities[currPanelIdx] < 1) {
-            if(currPanelIdx < PANELS.length - 1) {
-                panelTopMargins[currPanelIdx+1] -= scrollDiff
-                panelCurrOpacities[currPanelIdx] -= scrollDiff / (panelCoverHeights[currPanelIdx])
-                if (panelTopMargins[currPanelIdx+1] >= 0)
-                    panelTopMargins[currPanelIdx+1] = 0
-                else
-                    panelCurrHeights[currPanelIdx] = 0
-                if (panelCurrOpacities[currPanelIdx] >= 1)
-                    panelCurrOpacities[currPanelIdx] = 1
-                else
-                    panelCurrHeights[currPanelIdx] = 0
+
+        if (panelCurrOpacities[currPanelIdx] <= 0) {
+            panelCurrOpacities[currPanelIdx] = 0;
+        }
+    } else {
+        const isPanelTopMarginsLessThanZero = panelTopMargins[currPanelIdx + 1] < 0;
+        const isPanelCurrOpacitiesLessThanOne = panelCurrOpacities[currPanelIdx] < 1;
+
+        if (isPanelTopMarginsLessThanZero || isPanelCurrOpacitiesLessThanOne) {
+            if (!isLastPanelIndex) {
+                panelTopMargins[currPanelIdx + 1] -= scrollDiff;
+                panelCurrOpacities[currPanelIdx] -= scrollDiff / panelCoverHeights[currPanelIdx];
+
+                if (panelTopMargins[currPanelIdx + 1] >= 0) {
+                    panelTopMargins[currPanelIdx + 1] = 0;
+                } else {
+                    panelCurrHeights[currPanelIdx] = 0;
+                }
+
+                if (panelCurrOpacities[currPanelIdx] >= 1) {
+                    panelCurrOpacities[currPanelIdx] = 1;
+                } else {
+                    panelCurrHeights[currPanelIdx] = 0;
+                }
             }
         }
     }

@@ -116,10 +116,11 @@ export default class PersonalWebsite extends React.Component {
                     <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'>
                         <defs>
                             <linearGradient id="myGradient" gradientTransform="rotate(90)">
-                            {/* <animate attributeName="stop-color" begin="indefinite" values="#04234f;orange;red;" dur="1s" repeatCount="1" fill="freeze"/> */}
-                            <stop id='a' offset="5%" stopColor="#021b3d" />
-                            <stop offset="60%" stopColor="#2d3879" />
-                            <stop offset="95%" stopColor="#6a5aac" />
+                            <stop offset="5%" stopColor="#021b3d" />
+                            <stop offset="30%" stopColor="#102a52" />
+                            <stop offset="50%" stopColor="#1e4075" />
+                            <stop offset="80%" stopColor="#278AB0" />
+                            <stop offset="100%" stopColor="#22e6a7" />
                             </linearGradient>
                         </defs>
                         <rect fill="url('#myGradient')" width='100%' height='100%'/>
