@@ -1,7 +1,7 @@
 #moon-home {
     background-image: url(./moon.png);
     bottom: 135px;
-    left: calc(90vw - 56px + 32px);
+    left: calc(85vw - 56px + 28px);
     width: 96px;
     height: 96px;
     position: fixed;
@@ -13,4 +13,16 @@
 @keyframes moon-appear-from-bottom {
     from {bottom: -96px}
     to { bottom: 135px; }
+}
+
+@media (max-width: 1165px) {
+    #moon-home {
+        left: calc(85vw - 56px + 28px);
+    }
+}
+
+@media (max-width: 575px) {
+    #moon-home {
+        display: none;
+    }
 }

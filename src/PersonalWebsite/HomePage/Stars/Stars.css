@@ -5,6 +5,7 @@
 }
 
 #star-1 {
+    /* border: 1px solid red; */
     height: 75px;
     width: 75px;
     right: 16vw;
@@ -13,14 +14,16 @@
 }
 
 #star-2 {
+    /* border: 1px solid orange; */
     height: 71px;
-    width:67px;
-    left: calc(70vw + 40px);
+    width: 67px;
+    right: calc(25vw - 67px);
     top: calc(100px + 45vh);
     background-image: url(./StarSprites/star-2.png);
 }
 
 #star-3 {
+    /* border: 1px solid blue; */
     height: 88px;
     width: 88px;
     right: 6vw;
@@ -29,14 +32,16 @@
 }
 
 #star-4 {
+    /* border: 1px solid green; */
     height: 44px;
     width: 44px;
-    left: 3vw;
+    left: calc(8vw - 44px);
     top: calc(100px + 30vh);
     background-image: url(./StarSprites/star-4.png);
 }
 
 #star-5 {
+    /* border: 1px solid gray; */
     height: 67px;
     width: 68px;
     left: 20vw;
@@ -45,9 +50,165 @@
 }
 
 #star-6 {
+    /* border: 1px solid purple; */
     height: 60px;
     width: 60px;
     left: 20vw;
     top: calc(100px + 10vh);
     background-image: url(./StarSprites/star-6.png);
+}
+
+#star-7 {
+    /* border: 1px solid darkgreen; */
+    height: 44px;
+    width: 44px;
+    display: none;
+    background-image: url(./StarSprites/star-4.png);
+}
+
+@media (max-width: 1165px) {
+    #star-5 {
+        /* border: 1px solid gray; */
+        left: calc(20vw - 30px);
+        top: calc(100px + 50vh);
+    }
+
+    #star-6 {
+        /* border: 1px solid purple; */
+        left: calc(20vw - 60px);
+        top: calc(100px + 7.5vh);
+    }
+}
+
+@media (max-width: 1000px) {
+    #star-1 {
+        /* border: 1px solid red; */
+        right: calc(17.5vw - 75px);
+        top: calc(100px + 5vh);
+    }
+    
+    #star-2 {
+        /* border: 1px solid orange; */
+        right: calc(20vw - 67px);
+        top: calc(100px + 45vh);
+    }
+    
+    #star-3 {
+        /* border: 1px solid blue; */
+        right: 2vw;
+        top: calc(100px + 25vh);
+    }
+    
+    #star-4 {
+        /* border: 1px solid green; */
+        left: 3vw;
+        top: calc(100px + 30vh);
+    }
+
+    #star-5 {
+        /* border: 1px solid gray; */
+        left: calc(15vw - 60px);
+        top: calc(100px + 50vh);
+    }
+
+    #star-6 {
+        /* border: 1px solid purple; */
+        left: calc(20vw - 60px);
+        top: calc(100px + 7.5vh);
+    }
+}
+
+@media (max-width: 800px) {
+    #star-1 {
+        /* border: 1px solid red; */
+        right: calc(15vw - 75px);
+        top: calc(100px + 5vh);
+    }
+    
+    #star-2 {
+        /* border: 1px solid orange; */
+        right: 16px;
+        top: calc(100px + 40vh);
+    }
+    
+    #star-3 {
+        /* border: 1px solid blue; */
+        display: none;
+    }
+    
+    #star-4 {
+        /* border: 1px solid green; */
+        left: 2vw;
+        top: calc(100px + 30vh);
+    }
+
+    #star-5 {
+        /* border: 1px solid gray; */
+        left: calc(14vw - 60px);
+        top: calc(100px + 50vh);
+    }
+
+    #star-6 {
+        /* border: 1px solid purple; */
+        left: calc(16vw - 60px);
+        top: calc(100px + 7.5vh);
+    }
+}
+
+@media (max-width: 675px) {
+    #star-1 {
+        /* border: 1px solid red; */
+        right: calc(20vw - 75px);
+        top: calc(100px + 2vh);
+    }
+    
+    #star-2 {
+        /* border: 1px solid orange; */
+        right: 12px;
+        top: calc(100px + 35vh);
+    }
+    
+    #star-3 {
+        /* border: 1px solid blue; */
+        /* right: 4px;
+        top: calc(100px + 25vh); */
+        display: none;
+    }
+    
+    #star-4 {
+        /* border: 1px solid green; */
+        left: 8px;
+        top: calc(100px + 30vh);
+    }
+
+    #star-5 {
+        /* border: 1px solid gray; */
+        left: calc(18vw - 60px);
+        top: calc(100px + 55vh);
+    }
+
+    #star-6 {
+        /* border: 1px solid purple; */
+        left: calc(18vw - 60px);
+        top: calc(100px + 5vh);
+    }
+}
+
+@media (max-width: 575px) {
+    #star-2 {
+        /* border: 1px solid orange; */
+        right: 12px;
+        top: 70vh;
+    }
+
+
+    #star-7 {
+        /* border: 1px solid darkgreen; */
+        height: 44px;
+        width: 44px;
+        display: block;
+        top: 50vh;
+        right: 16px;
+        background-image: url(./StarSprites/star-4.png);
+    }
 }

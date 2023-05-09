@@ -39,7 +39,7 @@ export default class ContactPanel extends React.Component {
 
           document.getElementById('email-text').textContent = "Copied!"
           setTimeout(() => {
-            document.getElementById('email-text').textContent = "shinnickbenjamin@gmail!"
+            document.getElementById('email-text').textContent = "shinnickbenjamin@gmail"
           }, 1000)
       }
 

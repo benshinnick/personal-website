@@ -84,20 +84,45 @@
     background-image: url(./AnimationSprites/fly-down-build.png);
 }
 
-@media (max-width: 675px) {
+@media (max-width: 1000px) {
     #rocket-guy {
         left: 7.5vw;
     }
 }
 
+@media (max-width: 800px) {
+    #rocket-guy {
+        left: 5vw;
+    }
+}
+
+
+@media (max-width: 675px) {
+    #rocket-guy {
+        left: 4.5vw;
+    }
+}
+
 @media (max-width: 575px) {
     #rocket-guy {
-        left: 4vw;
+        left: 3.5vw;
     }
 }
 
 @media (max-width: 520px) {
     #rocket-guy {
-        left: 1vw;
+        left: 2vw;
+    }
+}
+
+@media (max-width: 400px) {
+    #rocket-guy {
+        left: 1.5vw;
+    }
+}
+
+@media (max-width: 370px) {
+    #rocket-guy {
+        left: 1.5vw;
     }
 }
