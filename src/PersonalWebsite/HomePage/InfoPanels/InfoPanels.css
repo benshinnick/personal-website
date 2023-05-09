@@ -205,6 +205,21 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 675px) {
+    .info-text {
+        font-size: 13pt;
+    }
+}
 
+@media (max-width: 425px) {
+    .text-panel {
+        width: calc(82.5vw - 80px);
+    }
+
+    #info-panels {
+        top: 45%;
+        left: calc(15vw + 40px);
+        width: calc(82.5vw - 80px);
+
+    }
 }

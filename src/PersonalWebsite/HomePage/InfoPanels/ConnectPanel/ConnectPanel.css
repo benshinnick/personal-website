@@ -296,3 +296,9 @@ a span {
         display: none;
     }
 }
+
+@media (max-width: 425px) {
+    .connect-panel #link-icons {
+        width: calc(82.5vw - 80px);
+    }
+}

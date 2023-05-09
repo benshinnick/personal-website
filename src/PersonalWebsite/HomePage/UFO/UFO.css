@@ -21,6 +21,13 @@
     to { right: calc(30vw - 16px); }
 }
 
+@media (max-height: 675px) {
+    #ufo {
+        display: none;
+        visibility: hidden;
+    }
+}
+
 @media (max-width: 1000px) {
     #ufo {
         right: calc(72.5vw - 79px);
@@ -50,12 +57,5 @@
     @keyframes shift {
         from { right: calc(75vw - 79px); }
         to { right: calc(22.5vw - 16px); }
-    }
-}
-
-
-@media (max-height: 650px) {
-    #ufo {
-        display: none;
     }
 }

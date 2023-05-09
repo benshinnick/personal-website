@@ -15,6 +15,11 @@
     to { bottom: 135px; }
 }
 
+@keyframes disappear-to-bottom {
+    from { bottom: 135px;}
+    to { bottom: -96px; }
+}
+
 @media (max-width: 1165px) {
     #moon-home {
         left: calc(85vw - 56px + 28px);

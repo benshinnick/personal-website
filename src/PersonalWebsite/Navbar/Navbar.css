@@ -143,13 +143,50 @@
 
 @media (max-width: 520px) {
     .navbar-wrapper-home .links-wrapper button {
-        font-size: 12pt;
+        font-size: 13pt;
     }
 
     .navbar-wrapper-home #name-home-button {
-        font-size: 12pt;
+        font-size: 13pt;
     }
     .navbar-wrapper-home {
         width: 95vw;
+    }
+}
+
+@media (max-width: 425px) {
+    #name-home-button {
+        /* display: none; */
+    }
+
+    .links-wrapper {
+        display: flex;
+        justify-content: space-between;
+        /* width: 95vw; */
+    }
+
+
+    .navbar-wrapper-home .links-wrapper button {
+        padding-top: 5px;
+        padding-bottom: 2px;
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+    
+    .navbar-wrapper-home #name-home-button {
+        padding-top: 5px;
+        padding-bottom: 2px;
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+}
+
+@media (max-width: 400px) {
+    .navbar-wrapper-home .links-wrapper button {
+        font-size: 14pt;
+    }
+
+    .navbar-wrapper-home #name-home-button {
+        font-size: 14pt;
     }
 }
