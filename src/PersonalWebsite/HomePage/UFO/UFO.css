@@ -28,6 +28,13 @@
     }
 }
 
+@media (max-width: 400px) and (max-height: 730px) {
+    #ufo {
+        display: none;
+        visibility: hidden;
+    }
+}
+
 @media (max-width: 1000px) {
     #ufo {
         right: calc(72.5vw - 79px);
@@ -57,5 +64,12 @@
     @keyframes shift {
         from { right: calc(75vw - 79px); }
         to { right: calc(22.5vw - 16px); }
+    }
+}
+
+@media (max-width: 425px) {    
+    @keyframes shift {
+        from { right: calc(75vw - 79px); }
+        to { right: calc(10vw - 16px); }
     }
 }

@@ -212,3 +212,44 @@
         background-image: url(./StarSprites/star-4.png);
     }
 }
+
+@media (max-width: 425px) {
+    #star-1 {
+        /* border: 1px solid red; */
+        right: calc(30vw - 75px);
+        top: calc(65px);
+    }
+    
+    #star-2 {
+        display: none;
+    }
+    
+    #star-4 {
+        /* border: 1px solid green; */
+        left: 8px;
+        top: calc(100px + 30vh);
+    }
+
+    #star-5 {
+        /* border: 1px solid gray; */
+        left: calc(18vw - 60px);
+        top: calc(100px + 55vh);
+    }
+
+    #star-6 {
+        /* border: 1px solid purple; */
+        left: calc(22vw - 60px);
+        top: calc(50px + 5vh);
+    }
+
+    #star-7 {
+        right: 12px;
+        top: calc(100px + 62.5vh);
+    }
+}
+
+@media (max-width: 425px) and (max-height: 675px) {
+    #star-7 {
+        display: none;
+    }
+}
