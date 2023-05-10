@@ -10,6 +10,7 @@ var lastScrollYPos = STARTING_SCROLL_Y_POS
 var timer = null
 var topOffset = 50
 var percentageScrollingOn = false
+var page = 'home'
 
 export default class RocketGuy extends React.Component {
 
@@ -46,7 +47,7 @@ export default class RocketGuy extends React.Component {
 
     switchSpriteImage(name) {
         this.stopCurrentAnimation();
-        getRocketGuyElement().className = `sprite ${name}`
+        getRocketGuyElement().className = `sprite rocket-guy-${page} ${name}`
     }
 
     stopCurrentAnimation() {
@@ -139,6 +140,10 @@ export default class RocketGuy extends React.Component {
             rocketGuy.style.opacity = '1'
             rocketGuy.style.zIndex = '2'
         }, 750)
+    }
+
+    setPage(pageName) {
+        page = pageName
     }
 
     render() {

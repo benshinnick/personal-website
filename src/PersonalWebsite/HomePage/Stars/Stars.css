@@ -310,7 +310,7 @@
     }
 }
 
-@media (min-height: 950px) and (min-width: 900px) {
+@media (min-height: 1200px) and (min-width: 900px) {
     #star-8 {
         /* border: 1px solid red; */
         top: 65vh;

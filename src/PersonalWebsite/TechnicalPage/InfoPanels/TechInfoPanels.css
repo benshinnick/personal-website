@@ -156,3 +156,18 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     left: 0;
     top: 0;
 }
+
+@media (max-width: 1000px) {
+    #technical-panels {
+        width: calc(85vw - 120px);
+        left: calc(7.5vw + 64px);
+    }
+
+    .tech-info-panel {
+        width: calc(85vw - 120px);
+    }
+}
+
+@media (max-width: 850px) {
+/* start here */
+}

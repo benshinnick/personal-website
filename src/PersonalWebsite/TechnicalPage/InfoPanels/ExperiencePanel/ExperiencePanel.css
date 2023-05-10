@@ -158,3 +158,98 @@
     margin: 8px;
     margin-left: 4px;
 }
+
+.long-title {
+    display: block;
+}
+
+.long-description {
+    display: block;
+}
+
+.short-title {
+    display: none;
+}
+
+.short-description {
+    display: none;
+}
+
+@media (max-width: 1285px) {
+    .exp-summary .exp-title {
+        font-size: 12pt;
+    }
+
+    .exp-summary .exp-subtitle {
+        font-size: 12pt;
+    }
+
+    .title-card-filler {
+        width: calc(45% + 30px);
+    }
+    
+    #exp-title-cards {
+        width: 55%;
+    }
+    
+    #exp-info-section {
+        width: calc(48.5% + 32px);
+    }
+
+    #experience-panel-content #divider {
+        margin-left: calc(50%);
+    }
+}
+
+@media (max-width: 1200px) {
+    .long-title {
+        display: none;
+    }
+    
+    .long-description {
+        display: none;
+    }
+    
+    .short-title {
+        display: block;
+    }
+    
+    .short-description {
+        display: block;
+    }
+    
+}
+
+@media (max-width: 1150px) {
+    .exp-summary .exp-title {
+        font-size: 12pt;
+    }
+
+    .exp-summary .exp-subtitle {
+        font-size: 12pt;
+    }
+
+    .title-card-filler {
+        width: calc(45% + 30px);
+    }
+    
+    #exp-title-cards {
+        width: 90%;
+    }
+    
+    #exp-info-section {
+        width: calc(48.5% + 32px);
+    }
+
+    #experience-panel-content #divider {
+        margin-left: calc(60%);
+    }
+
+    #title-text {
+        font-size: 16pt;
+    }
+
+    #description-container {
+        font-size: 12pt;
+    }
+}

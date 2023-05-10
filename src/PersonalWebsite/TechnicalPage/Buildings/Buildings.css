@@ -149,6 +149,17 @@
     z-index: 1;
 }
 
+@media (max-width: 1000px) {
+    #left-border-building-1 {
+        left: calc(14vw - 280px);
+    }
+
+    #left-border-building-2 {
+        left: calc(13.5vw - 328px);
+    }
+}
+
+
 /* #building-4-top {
     background-image: url(./BuildingSprites/building1-top.png);
     transform: scale(0.9);
