@@ -184,3 +184,13 @@
         font-size: 14pt;
     }
 }
+
+@media (min-height: 950px) and (min-width: 1250px) {
+    .navbar-wrapper-home .links-wrapper button {
+        font-size: 20pt;
+    }
+
+    .navbar-wrapper-home #name-home-button {
+        font-size: 20pt;
+    }
+}

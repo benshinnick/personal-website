@@ -223,3 +223,43 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 
     }
 }
+
+@media (max-height: 600px) {
+    .info-text {
+        font-size: 14pt;
+    }
+}
+
+@media (max-height: 550px) {
+    .info-text {
+        font-size: 12pt;
+    }
+
+    #reach-out-panel {
+        display: none;
+    }
+}
+
+@media (max-height: 430px) {
+    #greeting-text {
+        font-size: 20pt;
+        height:  22px;
+    }
+
+    #info-panels {
+        top: 40%;
+    }
+
+}
+
+@media (min-height: 950px) and (min-width: 1250px) {
+    #greeting-text {
+        font-size: 28pt;
+        height:  36px;
+    }
+
+    .info-text {
+        font-size: 18pt;
+    }
+
+}

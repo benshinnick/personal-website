@@ -248,6 +248,34 @@
     }
 }
 
+@media (max-width: 1500px) and (max-height: 700px) {
+    #star-2 {
+        display: none;
+    }
+}
+
+@media (max-width: 1500px) and (max-height: 525px) {
+    #star-5 {
+        top: 60vh;
+    }
+
+    #star-3 {
+        display: none;
+    }
+}
+
+@media (max-width: 1500px) and (max-height: 400px) {
+    #star-1 {
+        display: none;
+    }
+}
+
+@media (max-width: 1500px) and (max-height: 525px) {
+    #star-5 {
+        top: 60vh;
+    }
+}
+
 @media (max-width: 425px) and (max-height: 675px) {
     #star-7 {
         display: none;
