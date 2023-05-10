@@ -275,7 +275,7 @@ a span {
 }
 
 @media (max-width: 675px) {
-    .connect-panel #github-icon {
+    /* .connect-panel #github-icon {
         background-image: url(./Sprites/github-icon.png);
     }
 
@@ -285,7 +285,7 @@ a span {
     
     .connect-panel #email-icon {
         background-image: url(./Sprites/email-icon.png);
-    }
+    } */
     
 
     .connect-panel #link-icons {
