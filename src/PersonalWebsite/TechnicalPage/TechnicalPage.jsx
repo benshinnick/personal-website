@@ -26,6 +26,11 @@ export default class TechnicalPage extends React.Component {
     handleResize = () => {
         window.scrollTo({top: 700, behavior: 'instant'})
         this.infoPanelsRef.current.onResize()
+
+        if(window.innerWidth <= 400)
+            document.getElementById('name-home-button').textContent = "B_E_N"
+        else
+            document.getElementById('name-home-button').textContent = "BEN SHINNICK"
     }
 
     handleScroll = () => {

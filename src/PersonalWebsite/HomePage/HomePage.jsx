@@ -42,7 +42,7 @@ export default class HomePage extends React.Component {
             document.getElementById('connect-text').textContent = "CONNECT WITH ME"
 
         if(window.innerWidth <= 400)
-            document.getElementById('name-home-button').textContent = "BEN"
+            document.getElementById('name-home-button').textContent = "B_E_N"
         else
             document.getElementById('name-home-button').textContent = "BEN SHINNICK"
     }
