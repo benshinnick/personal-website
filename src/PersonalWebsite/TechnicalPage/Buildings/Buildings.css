@@ -159,6 +159,16 @@
     }
 }
 
+@media (max-width: 850px) {
+    #left-border-building-1 {
+        left: calc(12vw - 280px);
+    }
+
+    #left-border-building-2 {
+        left: calc(11vw - 328px);
+    }
+}
+
 
 /* #building-4-top {
     background-image: url(./BuildingSprites/building1-top.png);

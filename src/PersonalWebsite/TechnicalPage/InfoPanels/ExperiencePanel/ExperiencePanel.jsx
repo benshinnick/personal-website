@@ -94,11 +94,12 @@ export default class ExperiencePanel extends React.Component {
                     </div>
                 </div>
                 <div id='divider'></div>
+                <hr className='vert-divider'></hr>
                 <div id='exp-info-section'>
                     <div id='title-text'/>
                     <div id='description-container'/>
                 </div>
-                {/* <hr></hr> */}
+                <hr className='vert-divider' id='bottom-divider'></hr>
             </div>
         );
     }

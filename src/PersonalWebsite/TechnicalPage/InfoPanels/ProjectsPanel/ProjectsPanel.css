@@ -337,7 +337,7 @@
     }
 }
 
-@media (max-width: 975px) {
+@media (max-width: 825px) {
     #personal-website-display {
         display: block;
     }

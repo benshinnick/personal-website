@@ -30,3 +30,15 @@
         left: calc(7.5vw + 60px);
     }
 }
+
+@media (max-width: 850px) {
+    #center-column-vert {
+        width: calc(92.5vw - 112px);
+        left: calc(3.75vw + 64px);
+    }
+    
+    #center-column-horiz {
+        width: calc(92.5vw - 104px);
+        left: calc(3.75vw + 60px);
+    }
+}

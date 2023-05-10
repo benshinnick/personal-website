@@ -169,5 +169,12 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 }
 
 @media (max-width: 850px) {
-/* start here */
+    #technical-panels {
+        width: calc(92.5vw - 120px);
+        left: calc(3.75vw + 64px);
+    }
+
+    .tech-info-panel {
+        width: calc(92.5vw - 120px);
+    }
 }
