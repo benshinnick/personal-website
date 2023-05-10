@@ -39,9 +39,9 @@ export default class TechInfoPanels extends React.Component {
 
         setTotalPanelsHeight()
         document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
-        if(calcFillerSize() <= OFFSET_Y_PX) {
-            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-8}px`
-            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-8}px`
+        if(calcFillerSize() < window.innerHeight + OFFSET_Y_PX) {
+            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
+            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
         }
         else {
             document.getElementById('center-column-vert').style.height = ""
@@ -59,9 +59,9 @@ export default class TechInfoPanels extends React.Component {
 
         setTotalPanelsHeight()
         document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
-        if(calcFillerSize() <= OFFSET_Y_PX) {
-            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-8}px`
-            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-8}px`
+        if(calcFillerSize() < window.innerHeight + OFFSET_Y_PX) {
+            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
+            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
         }
         else {
             document.getElementById('center-column-vert').style.height = ""
@@ -218,7 +218,7 @@ export default class TechInfoPanels extends React.Component {
 
 function calcFillerSize() {
     return Math.floor(
-        (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 240
+        (totalPanelsHeight - (window.innerHeight - 134))*8 + window.innerHeight + 240
     )
 }
 
