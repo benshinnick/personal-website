@@ -14,7 +14,7 @@
     display: none;
 }
 
-#project-icons {
+.project-icons {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -329,4 +329,22 @@
 
 #miscellaneous-icon {
     background-image: url(./Sprites/miscellaneous.png);
+}
+
+@media (max-width: 1225px) {
+    #personal-website-display {
+        display: none;
+    }
+}
+
+@media (max-width: 975px) {
+    #personal-website-display {
+        display: block;
+    }
+
+    .project-icons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
 }

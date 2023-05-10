@@ -106,7 +106,7 @@ export default class ProjectsPanel extends React.Component {
     render() {
         return (
             <div className='info-panel-content' id='projects-panel-content'>
-                <div id='project-icons'>
+                <div className='project-icons'>
                     <div className='project-display' id='algo-contest-display' onClick={() => this.projectDisplayOnClick('algo-contest', '39, 219, 255')}>
                         <div id='algo-contest-icon' className='sprite project-icon' />
                         <div className='project-text'>AlgoContest</div>
@@ -117,14 +117,14 @@ export default class ProjectsPanel extends React.Component {
                         <div className='project-text'>Huddle</div>
                         <div className='arrow-icon'>&lt;</div>
                     </div>
-                    <div className='project-display' id='miscellaneous-display' onClick={() => this.projectDisplayOnClick('miscellaneous', '52, 31, 140')}>
-                        <div className='sprite project-icon' id='miscellaneous-icon' />
-                        <div className='project-text'>Miscellaneous</div>
-                        <div className='arrow-icon'>&lt;</div>
-                    </div>
                     <div className='project-display' id='personal-website-display' onClick={() => this.projectDisplayOnClick('personal-website', '16, 148, 25')}>
                         <div className='sprite project-icon' id='personal-website-icon' />
                         <div className='project-text'>Personal Site</div>
+                        <div className='arrow-icon'>&lt;</div>
+                    </div>
+                    <div className='project-display' id='miscellaneous-display' onClick={() => this.projectDisplayOnClick('miscellaneous', '52, 31, 140')}>
+                        <div className='sprite project-icon' id='miscellaneous-icon' />
+                        <div className='project-text'>Miscellaneous</div>
                         <div className='arrow-icon'>&lt;</div>
                     </div>
                 </div>
