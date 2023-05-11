@@ -212,6 +212,10 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 }
 
 @media (max-width: 425px) {
+    .info-text {
+        font-size: 11pt;
+    }
+
     .text-panel {
         width: calc(82.5vw - 80px);
     }
@@ -249,7 +253,6 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     #info-panels {
         top: 40%;
     }
-
 }
 
 @media (min-height: 950px) and (min-width: 1250px) {
@@ -261,5 +264,4 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     .info-text {
         font-size: 18pt;
     }
-
 }
