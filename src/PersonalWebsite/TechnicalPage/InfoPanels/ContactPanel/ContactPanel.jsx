@@ -52,9 +52,9 @@ export default class ContactPanel extends React.Component {
                 </div>
                 <hr></hr>
                 <div id='email-line'>
-                    <div className='email-icons'>E F N</div>
+                    <div className='email-icons' id='left-email-icons'>E</div>
                     <div id='email-text' onClick={() => { this.copyTextToClipboard('shinnickbenjamin@gmail') }}>shinnickbenjamin@gmail</div>
-                    <div className='email-icons'>a s 5</div>
+                    <div className='email-icons' id='right-email-icons'>N</div>
                 </div>
                 <hr></hr>
                 <ConnectPanel />

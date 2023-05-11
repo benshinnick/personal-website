@@ -348,3 +348,33 @@
         justify-items: center;
     }
 }
+
+@media (max-width: 420px) {
+    #personal-website-display {
+        display: block;
+    }
+
+    .project-icons {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: center;
+    }
+
+    #personal-website-display {
+        display: none;
+    }
+
+    .project-icon {
+        margin: 20px 40px;
+    }
+
+    .project-text {
+        width: 230px;
+    }
+
+    .arrow-icon {
+        width: 227px;
+    }
+    
+
+}

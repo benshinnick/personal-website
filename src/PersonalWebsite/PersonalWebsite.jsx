@@ -70,8 +70,8 @@ export default class PersonalWebsite extends React.Component {
                 const mainContent = document.getElementById('main-content')
                 mainContent.style.animation = '500ms home-disappear forwards'
                 this.navBarRef.current.transitionToHome()
+                this.rocketGuyRef.current.setPage('home')
                 setTimeout(() => {
-                    this.rocketGuyRef.current.setPage('home')
                     root.render(<HomePage />)
                     this.setState({ currentPage: 'home' })
                     setTimeout(() => {

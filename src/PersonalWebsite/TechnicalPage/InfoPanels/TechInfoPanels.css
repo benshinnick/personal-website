@@ -178,3 +178,36 @@ _::-webkit-full-page-media, _:future, :root .info-text {
         width: calc(92.5vw - 120px);
     }
 }
+
+@media (max-width: 750px) {
+    #technical-panels {
+        width: calc(85vw);
+        left: calc(7.5vw - 4px);
+    }
+
+    .tech-info-panel {
+        width: calc(85vw);
+    }
+}
+
+@media (max-width: 475px) {
+    #technical-panels {
+        width: calc(90vw);
+        left: calc(5vw - 4px);
+    }
+
+    .tech-info-panel {
+        width: calc(90vw);
+    }
+}
+
+@media (max-width: 440px) {
+    #technical-panels {
+        width: calc(100vw - 24px);
+        left: calc(8px);
+    }
+
+    .tech-info-panel {
+        width: calc(100vw - 24px);
+    }
+}

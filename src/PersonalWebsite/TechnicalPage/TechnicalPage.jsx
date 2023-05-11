@@ -14,6 +14,7 @@ export default class TechnicalPage extends React.Component {
     }
 
     componentDidMount() {
+        this.handleResize();
         window.addEventListener('resize', this.handleResize)
         window.addEventListener('scroll', this.handleScroll)
     }
@@ -31,6 +32,16 @@ export default class TechnicalPage extends React.Component {
             document.getElementById('name-home-button').textContent = "B_E_N"
         else
             document.getElementById('name-home-button').textContent = "BEN SHINNICK"
+
+
+        if(window.innerWidth <= 650) {
+            document.getElementById('left-email-icons').textContent = "E"
+            document.getElementById('right-email-icons').textContent = "N"
+        }
+        else {
+            document.getElementById('left-email-icons').textContent = "E F N"
+            document.getElementById('right-email-icons').textContent = "a s 5"
+        }
     }
 
     handleScroll = () => {

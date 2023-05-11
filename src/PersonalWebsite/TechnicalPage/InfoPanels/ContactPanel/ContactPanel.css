@@ -114,3 +114,10 @@
     font-weight: normal;
     -webkit-font-smoothing: none;
 }
+
+/* @media (max-width: 650px) {
+    #contact-panel-content #email-line .email-icons {
+        display: none;
+        border: 1px red;
+    }
+} */

@@ -144,6 +144,7 @@ export default class RocketGuy extends React.Component {
 
     setPage(pageName) {
         page = pageName
+        getRocketGuyElement().className = `sprite rocket-guy-${page}`
     }
 
     render() {

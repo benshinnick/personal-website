@@ -112,6 +112,12 @@
     }
 }
 
+@media (max-width: 750px) {
+    .rocket-guy-technical {
+        display: none;
+    }
+}
+
 
 @media (max-width: 675px) {
     .rocket-guy-home {

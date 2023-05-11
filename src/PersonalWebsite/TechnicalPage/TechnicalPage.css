@@ -42,3 +42,39 @@
         left: calc(3.75vw + 60px);
     }
 }
+
+@media (max-width: 750px) {
+    #center-column-vert {
+        width: calc(85vw + 8px);
+        left: calc(7.5vw - 4px);
+    }
+    
+    #center-column-horiz {
+        width: calc(85vw + 16px);
+        left: calc(7.5vw - 8px);
+    }
+}
+
+@media (max-width: 475px) {
+    #center-column-vert {
+        width: calc(90vw + 8px);
+        left: calc(5vw - 4px);
+    }
+    
+    #center-column-horiz {
+        width: calc(90vw + 16px);
+        left: calc(5vw - 8px);
+    }
+}
+
+@media (max-width: 440px) {
+    #center-column-vert {
+        width: calc(100vw - 16px);
+        left: 8px;
+    }
+    
+    #center-column-horiz {
+        width: calc(100vw - 8px);
+        left: 4px;
+    }
+}
