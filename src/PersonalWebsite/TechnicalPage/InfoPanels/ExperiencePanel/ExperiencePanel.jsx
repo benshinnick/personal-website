@@ -51,6 +51,7 @@ export default class ExperiencePanel extends React.Component {
 
         document.getElementById('title-text').textContent = title
         document.getElementById('description-container').textContent = description
+        this.props.onPanelContentChange('experience')
     }
 
     render() {
