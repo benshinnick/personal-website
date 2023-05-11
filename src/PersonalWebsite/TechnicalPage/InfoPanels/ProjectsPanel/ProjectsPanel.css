@@ -354,27 +354,49 @@
         display: block;
     }
 
-    .project-icons {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        justify-items: center;
+    #algo-contest-icon {
+        background-image: url(./Sprites/algo-contest-icon-smaller.png);
     }
-
-    #personal-website-display {
-        display: none;
+    
+    #huddle-icon {
+        background-image: url(./Sprites/huddle-icon-smaller.png);
+    }
+    
+    #personal-website-icon {
+        background-image: url(./Sprites/personal-website-icon-smaller.png);
+    }
+    
+    #miscellaneous-icon {
+        background-image: url(./Sprites/miscellaneous-icon-smaller.png);
     }
 
     .project-icon {
-        margin: 20px 40px;
+        width: 120px;
+        height: 120px;
+        margin: 20px 10px;
     }
 
     .project-text {
-        width: 230px;
+        width: 140px;
+        font-size: 12pt;
+        margin: 10px 0;
     }
 
     .arrow-icon {
-        width: 227px;
+        width: 126px;
     }
-    
+}
 
+@media (max-width: 345px) {
+    .project-icon {
+        margin: 20px 5px;
+    }
+
+    .project-text {
+        width: 130px;
+    }
+
+    .arrow-icon {
+        width: 116px;
+    }
 }
