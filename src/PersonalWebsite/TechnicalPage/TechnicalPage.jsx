@@ -42,6 +42,11 @@ export default class TechnicalPage extends React.Component {
             document.getElementById('left-email-icons').textContent = "E F N"
             document.getElementById('right-email-icons').textContent = "a s 5"
         }
+
+        if(window.innerWidth <= 600)
+            document.getElementById('connect-text').textContent = "CONNECT"
+        else
+            document.getElementById('connect-text').textContent = "CONNECT WITH ME"
     }
 
     handleScroll = () => {

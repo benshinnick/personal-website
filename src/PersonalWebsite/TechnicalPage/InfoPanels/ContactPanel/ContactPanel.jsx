@@ -57,7 +57,9 @@ export default class ContactPanel extends React.Component {
                     <div className='email-icons' id='right-email-icons'>N</div>
                 </div>
                 <hr></hr>
-                <ConnectPanel />
+                <div id='tech-connect-panel'>
+                  <ConnectPanel />
+                </div>
                 <hr></hr>
             </div>
         );
