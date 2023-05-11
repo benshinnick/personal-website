@@ -168,6 +168,12 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     }
 }
 
+@media (max-width: 900px) {
+    .info-panel-content #panel-text {
+        font-size: 14pt;
+    }
+}
+
 @media (max-width: 850px) {
     #technical-panels {
         width: calc(92.5vw - 120px);
@@ -190,6 +196,12 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     }
 }
 
+@media (max-width: 525px) {
+    .title {
+        font-size: 16pt;
+    }
+}
+
 @media (max-width: 475px) {
     #technical-panels {
         width: calc(90vw);
@@ -209,5 +221,20 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 
     .tech-info-panel {
         width: calc(100vw - 24px);
+    }
+}
+
+@media (max-width: 400px) {
+    .title {
+        font-size: 14pt;
+    }
+    .info-panel-content #panel-text {
+        font-size: 12pt;
+    }
+}
+
+@media (max-width: 360px) {
+    .title {
+        font-size: 12pt;
     }
 }

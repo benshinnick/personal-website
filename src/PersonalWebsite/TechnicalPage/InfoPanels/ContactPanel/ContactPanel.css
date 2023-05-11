@@ -88,6 +88,7 @@
 #email-line {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 92%;
     padding-left: 4%;
     padding-right: 4%;
@@ -115,9 +116,24 @@
     -webkit-font-smoothing: none;
 }
 
-/* @media (max-width: 650px) {
+@media (max-width: 650px) {
+    #contact-panel-content #email-line #email-text {
+        font-size: 14pt;
+    }
+}
+
+@media (max-width: 405px) {
+    #contact-panel-content #email-line #email-text {
+        font-size: 12pt;
+    }
+}
+
+@media (max-width: 350px) {
     #contact-panel-content #email-line .email-icons {
         display: none;
-        border: 1px red;
     }
-} */
+
+    #email-line {
+        justify-content: center;
+    }
+}
