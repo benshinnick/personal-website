@@ -66,6 +66,7 @@ export default class TechnicalPage extends React.Component {
                 <div id='center-column-vert'></div>
                 <div id='center-column-horiz'></div>
                 <div id='filler-tech' style={{height: window.innerHeight*8.5 + 'px'}} />
+                <div id='secret'>HEY!</div>
             </main>
         );
     }
