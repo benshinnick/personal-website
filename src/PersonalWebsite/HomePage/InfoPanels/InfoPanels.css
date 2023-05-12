@@ -151,6 +151,12 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     }
 } */
 
+@media (min-width: 1600px) {
+    .info-text {
+        font-size: 18pt;
+    }
+}
+
 @media (max-width: 1200px) {
     .info-text {
         font-size: 16pt;
