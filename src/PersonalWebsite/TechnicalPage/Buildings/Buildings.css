@@ -2,17 +2,49 @@
     top: 100px;
     left: calc(15vw - 280px);
     width: 208px;
-    height: 300%;
+    height: 150%;
     position: fixed;
     transform-origin: top right;
-    z-index: 1;
+    z-index: 3;
 }
 
 #left-border-building-2 {
     top: 100px;
     left: calc(15vw - 328px);
     width: 208px;
-    height: 300%;
+    height: 150%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#left-border-building-3 {
+    display: none;
+    top: 100px;
+    left: calc(4vw - 328px);
+    width: 208px;
+    height: 150%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 2;
+}
+
+#left-border-building-4 {
+    display: none;
+    top: 100px;
+    left: calc(9.5vw - 328px);
+    width: 208px;
+    height: 150%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 2;
+}
+
+#left-border-building-5 {
+    left: calc(7vw - 60px);
+    top: 100px;
+    width: 208px;
+    height: 150%;
     position: fixed;
     transform-origin: top right;
     z-index: 0;
@@ -22,7 +54,7 @@
     left: calc(90vw - 60px);
     top: 100px;
     width: 208px;
-    height: 300%;
+    height: 150%;
     position: fixed;
     transform-origin: top right;
     z-index: 1;
@@ -32,7 +64,7 @@
     left: calc(90vw - 56px + 76px);
     top: 100px;
     width: 148px;
-    height: 300%;
+    height: 150%;
     position: fixed;
     transform-origin: top right;
     z-index: 2;
@@ -42,13 +74,35 @@
     left: calc(90vw - 56px + 32px);
     top: 100px;
     width: 148px;
-    height: 300%;
+    height: 150%;
     position: fixed;
     transform-origin: top right;
     z-index: 0;
 }
 
-#building-1-top {
+#right-border-building-4 {
+    display: none;
+    left: calc(96vw - 60px);
+    top: 100px;
+    width: 208px;
+    height: 150%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 1;
+}
+
+#right-border-building-5 {
+    display: none;
+    left: calc(93vw - 60px);
+    top: 100px;
+    width: 208px;
+    height: 150%;
+    position: fixed;
+    transform-origin: top right;
+    z-index: 0;
+}
+
+.building-1-top {
     background-image: url(./BuildingSprites/building1-top.png);
     transform: scale(0.9);
     position: relative;
@@ -58,19 +112,19 @@
     z-index: 1;
 }
 
-#building-1-floors {
+.building-1-floors {
     background-image: url(./BuildingSprites/building1-floors.png);
     transform: scale(0.9);
     position: relative;
     margin: 0;
     margin-top: -4px;
     width: 156px;
-    height: 300vh;
+    height: 150vh;
     transform-origin: top right;
     z-index: 1;
 }
 
-#building-2-top {
+.building-2-top {
     background-image: url(./BuildingSprites/building2-top.png);
     transform: scale(0.9);
     margin: 0 auto calc(-188px * 0.1);
@@ -81,19 +135,19 @@
     z-index: 1;
 }
 
-#building-2-floors {
+.building-2-floors {
     background-image: url(./BuildingSprites/building2-floors.png);
     transform: scale(0.9);
     margin: 0;
     width: 392px;
-    height: 300vh;
+    height: 150vh;
     position: relative;
     transform-origin: top right;
     image-rendering: crisp-edges;
     z-index: 1;
 }
 
-#building-3-top {
+.building-3-top {
     background-image: url(./BuildingSprites/building3-top.png);
     transform: scale(0.9);
     margin: 0 auto calc(-148px * 0.1);
@@ -104,12 +158,12 @@
     z-index: 1;
 }
 
-#building-3-floors {
+.building-3-floors {
     background-image: url(./BuildingSprites/building3-floors.png);
     transform: scale(0.9);
     margin: 0;
     width: 148px;
-    height: 300vh;
+    height: 150vh;
     position: relative;
     transform-origin: top right;
     z-index: 1;
@@ -120,7 +174,7 @@
     transform: scale(0.9);
     margin: 0;
     width: 208px;
-    height: 300%;
+    height: 150%;
     position: relative;
     transform-origin: top right;
     z-index: 1;
@@ -137,16 +191,87 @@
     z-index: 1;
 }
 
-#building-5-floors {
+.building-5-floors {
     background-image: url(./BuildingSprites/building5-floors.png);
     transform: scale(0.9);
     position: relative;
     margin: 0;
     margin-top: -4px;
     width: 156px;
-    height: 300vh;
+    height: 150vh;
     transform-origin: top right;
     z-index: 1;
+}
+
+@media (max-width: 1000px) {
+    #left-border-building-1 {
+        left: calc(14vw - 280px);
+    }
+
+    #left-border-building-2 {
+        left: calc(13.5vw - 328px);
+    }
+    #left-border-building-5 {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+    #left-border-building-1 {
+        left: calc(12vw - 280px);
+    }
+
+    #left-border-building-2 {
+        left: calc(11vw - 328px);
+    }
+
+}
+
+@media (max-width: 750px) {
+    #left-border-building-1 {
+        left: calc(12.5vw - 280px);
+    }
+
+    #left-border-building-2 {
+        left: calc(6.5vw - 328px);
+    }
+
+    #left-border-building-5 {
+        display: none;
+    }
+}
+
+@media (max-width: 475px) {
+    #left-border-building-1 {
+        left: calc(45vw - 204px);
+    }
+    #left-border-building-2 {
+        left: calc(50vw - 204px);
+    }
+
+    #right-border-building-2 {
+        left: -25vw;
+    }
+}
+
+@media (min-width: 1750px) {
+    #left-border-building-3 {
+        display: block;
+    }
+
+    #right-border-building-4 {
+        display: block;
+    }
+}
+
+@media (min-width: 2600px) {
+    #left-border-building-4 {
+        display: block;
+    }
+
+    #right-border-building-5 {
+        display: block;
+    }
 }
 
 /* #building-4-top {
@@ -166,7 +291,7 @@
     position: relative;
     margin: 0;
     width: 156px;
-    height: 300vh;
+    height: 150vh;
     transform-origin: top right;
     z-index: 1;
 } */

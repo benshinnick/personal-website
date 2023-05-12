@@ -8,8 +8,8 @@
     /* border: 1px solid green; */
     height: 75px;
     width: 75px;
-    right: 25vw;
-    top: 200px;
+    right: 5vw;
+    top: 65vh;
     background-image: url(./StarSprites/star-1.png);
 }
 
@@ -24,24 +24,27 @@
 
 #star-4-tech {
     /* border: 1px solid orange; */
+    display: none;
     height: 44px;
     width: 44px;
-    right: 40vw;
-    top: 15vh;
+    left: 2vw;
+    top: 40vh;
     background-image: url(./StarSprites/star-4.png);
 }
 
 #star-3-tech {
     /* border: 1px solid blue; */
+    /* display: none; */
     height: 88px;
     width: 88px;
-    right: 60vw;
-    top: 90px;
+    left: 5vw;
+    top: 75vh;
     background-image: url(./StarSprites/star-3.png);
 }
 
 #star-5-tech {
     /* border: 1px solid cyan; */
+    display: none;
     height: 67px;
     width: 68px;
     right: 75vw;

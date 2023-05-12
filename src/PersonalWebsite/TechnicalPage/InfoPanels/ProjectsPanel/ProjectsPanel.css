@@ -14,7 +14,7 @@
     display: none;
 }
 
-#project-icons {
+.project-icons {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -154,8 +154,6 @@
     width: 56px;
     height: 56px;
     margin-top: 16px;
-    margin-right: 8px;
-    margin-left: 8px;
     margin-bottom: 0px;
     image-rendering: pixelated;
     z-index: 4;
@@ -176,9 +174,7 @@
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
 
-    width: 166px;
-    margin-left: 5px;
-    margin-right: 9px;
+    width: 100%;
     margin-bottom: 4px;
     text-align: center;
     position: relative;
@@ -296,8 +292,8 @@
 }
 
 .project-text {
-    width: 170px;
-    margin: 20px 5px;
+    width: 100%;
+    margin: 5px 0 0 2px;
     margin-bottom: 0;
     position: relative;
 
@@ -329,4 +325,118 @@
 
 #miscellaneous-icon {
     background-image: url(./Sprites/miscellaneous.png);
+}
+
+@media (max-width: 1225px) {
+    #algo-contest-icon {
+        background-image: url(./Sprites/algo-contest-icon-smaller.png);
+    }
+    
+    #huddle-icon {
+        background-image: url(./Sprites/huddle-icon-smaller.png);
+    }
+    
+    #personal-website-icon {
+        background-image: url(./Sprites/personal-website-icon-smaller.png);
+    }
+    
+    #miscellaneous-icon {
+        background-image: url(./Sprites/miscellaneous-icon-smaller.png);
+    }
+
+    .project-icon {
+        width: 120px;
+        height: 120px;
+    }
+
+    .project-text {
+        font-size: 12pt;
+    }
+}
+
+@media (max-width: 825px) {
+    #personal-website-display {
+        display: block;
+    }
+
+    .project-icons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+
+    .project-icon {
+        margin: 20px 10px;
+    }
+
+    #algo-contest-icon {
+        background-image: url(./Sprites/algo-contest-icon.png);
+    }
+    
+    #huddle-icon {
+        background-image: url(./Sprites/huddle-icon.png);
+    }
+    
+    #personal-website-icon {
+        background-image: url(./Sprites/personal-website-icon.png);
+    }
+    
+    #miscellaneous-icon {
+        background-image: url(./Sprites/miscellaneous.png);
+    }
+
+    .project-icon {
+        width: 160px;
+        height: 160px;
+    }
+
+    .project-text {
+        font-size: 16pt;
+    }
+}
+
+@media (max-width: 420px) {
+    #personal-website-display {
+        display: block;
+    }
+
+    #algo-contest-icon {
+        background-image: url(./Sprites/algo-contest-icon-smaller.png);
+    }
+    
+    #huddle-icon {
+        background-image: url(./Sprites/huddle-icon-smaller.png);
+    }
+    
+    #personal-website-icon {
+        background-image: url(./Sprites/personal-website-icon-smaller.png);
+    }
+    
+    #miscellaneous-icon {
+        background-image: url(./Sprites/miscellaneous-icon-smaller.png);
+    }
+
+    .project-icon {
+        width: 120px;
+        height: 120px;
+        margin: 20px 10px;
+    }
+
+    .project-text {
+        font-size: 12pt;
+    }
+}
+
+@media (max-width: 345px) {
+    /* .project-icon {
+        margin: 20px 5px;
+    }
+
+    .project-text {
+        width: 130px;
+    }
+
+    .arrow-icon {
+        width: 116px;
+    } */
 }

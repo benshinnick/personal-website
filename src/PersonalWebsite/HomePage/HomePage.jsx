@@ -25,7 +25,7 @@ export default class HomePage extends React.Component {
             ufo.style.animation = '500ms ease-out 0s 1 alternate slide-in';
         }, 25)
         setTimeout(() => {
-            ufo.style.animation = '25s linear 0s infinite alternate shift'
+            ufo.style.animation = `${getUfoShiftAnimationSpeed()}s linear 0s infinite alternate shift`
         }, 500) 
     }
 
@@ -34,12 +34,17 @@ export default class HomePage extends React.Component {
         var ufo = document.getElementById('ufo');
         ufo.style.animation = 'none';
         setTimeout(() => {
-            ufo.style.animation = '25s linear 1s infinite alternate shift'
+            ufo.style.animation = `${getUfoShiftAnimationSpeed()}s linear 1s infinite alternate shift`
         }, 25)
         if(window.innerWidth <= 1050)
             document.getElementById('connect-text').textContent = "CONNECT"
         else
             document.getElementById('connect-text').textContent = "CONNECT WITH ME"
+
+        if(window.innerWidth <= 400)
+            document.getElementById('name-home-button').textContent = "B_E_N"
+        else
+            document.getElementById('name-home-button').textContent = "BEN SHINNICK"
     }
 
     render() {
@@ -54,4 +59,12 @@ export default class HomePage extends React.Component {
             </main>
         );
     }
+}
+
+function getUfoShiftAnimationSpeed() {
+    if(window.innerWidth < 1000)
+        return 20
+    if(window.innerWidth < 800)
+        return 15
+    return 25
 }

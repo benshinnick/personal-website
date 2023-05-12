@@ -53,8 +53,9 @@ export default class InfoPanels extends React.Component {
                                 IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
                             </div>
                         </div>
-
-                        <ConnectPanel />
+                        <div id='home-connect-panel'>
+                            <ConnectPanel />
+                        </div>
                     </div>
                 </div>
             </div>

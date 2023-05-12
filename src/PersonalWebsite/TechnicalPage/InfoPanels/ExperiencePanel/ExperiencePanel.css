@@ -24,9 +24,9 @@
 }
 
 #exp-info-section {
-    width: calc(50% + 32px);
+    width: calc(55%);
     min-height: 100%;
-    margin-left: 28px;
+    margin-left: 4px;
     margin-top: 4px;
     padding-top: 8px;
     padding-left: 8px;
@@ -58,6 +58,7 @@
 }
 
 #experience-panel-content #divider {
+    display: none;
     width: 4px;
     background-color: #e3e3e3;
     position: absolute;
@@ -157,4 +158,180 @@
     image-rendering: pixelated;
     margin: 8px;
     margin-left: 4px;
+}
+
+.vert-divider {
+    display: none;
+}
+
+.long-title {
+    display: block;
+}
+
+.long-description {
+    display: block;
+}
+
+.short-title {
+    display: none;
+}
+
+.short-description {
+    display: none;
+}
+
+@media (max-width: 1285px) {
+    
+    .exp-summary .exp-title {
+        font-size: 12pt;
+    }
+
+    .exp-summary .exp-subtitle {
+        font-size: 12pt;
+    }
+
+    .title-card-filler {
+        width: calc(45% + 30px);
+    }
+    
+    #exp-title-cards {
+        width: 55%;
+    }
+    
+    #exp-info-section {
+        width: calc(48.5% + 32px);
+    }
+
+    #experience-panel-content #divider {
+        margin-left: calc(50%);
+    }
+}
+
+@media (max-width: 1200px) {
+    .long-title {
+        display: none;
+    }
+    
+    .long-description {
+        display: none;
+    }
+    
+    .short-title {
+        display: block;
+    }
+    
+    .short-description {
+        display: block;
+    }
+    
+}
+
+@media (max-width: 1150px) {
+    .exp-summary .exp-title {
+        font-size: 12pt;
+    }
+
+    .exp-summary .exp-subtitle {
+        font-size: 12pt;
+    }
+
+    .title-card-filler {
+        width: calc(45% + 30px);
+    }
+    
+    #exp-title-cards {
+        width: 90%;
+    }
+    
+    #exp-info-section {
+        width: calc(48.5% + 32px);
+    }
+
+    #experience-panel-content #divider {
+        margin-left: calc(60%);
+    }
+
+    #title-text {
+        font-size: 16pt;
+    }
+
+    #description-container {
+        font-size: 12pt;
+    }
+
+    .exp-summary {
+        padding-top:1px;
+    }
+}
+
+@media (max-width: 775px) {
+    #exp-title-cards {
+        width: 100%;
+    }
+
+    #exp-info-section {
+        width: calc(100% - 16px);
+        border-top: 4px;
+        min-height: 0;
+    }
+
+    #experience-panel-content {
+        display: grid;
+    }
+
+    .vert-divider {
+        display: block;
+    }
+
+    /* #exp-info-section {
+        border: 4px solid transparent;
+    } */
+}
+
+@media (max-width: 400px) {
+    .exp-summary .exp-title {
+        padding-top: 2px;
+        font-size: 11pt;
+    }
+
+    .exp-summary .exp-subtitle {
+        font-size: 11pt;
+        padding-bottom: 2px;
+    }
+}
+
+@media (max-width: 370px) {
+    .exp-summary .exp-title {
+        padding-top: 5px;
+        font-size: 10pt;
+    }
+
+    .exp-summary .exp-subtitle {
+        font-size: 10pt;
+        padding-bottom: 4px;
+    }
+}
+
+@media (max-width: 350px) {
+    .exp-summary .exp-title {
+        padding-top: 8px;
+        font-size: 9pt;
+    }
+
+    .exp-summary .exp-subtitle {
+        font-size: 9pt;
+        padding-bottom: 7px;
+    }
+}
+
+@media (max-width: 330px) {
+    .exp-summary .exp-title {
+        padding-top: 10px;
+        font-size: 8pt;
+    }
+
+    .exp-summary .exp-subtitle {
+        font-size: 8pt;
+        padding-bottom: 9px;
+    }
 }

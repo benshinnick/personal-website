@@ -6,14 +6,20 @@
     zoom: 1;
     width: 80px;
     height: 80px;
-    left: calc(15vw - 40px);
     transition: margin-top 600ms ease-out;
     z-index: 2;
-
     animation-name: float;
     animation-timing-function: steps(5);
     animation-duration: 1s;
     animation-iteration-count: infinite;
+}
+
+.rocket-guy-home {
+    left: calc(15vw - 40px);
+}
+
+.rocket-guy-technical {
+    left: calc(15vw - 40px);
 }
 
 .sprite {
@@ -84,20 +90,61 @@
     background-image: url(./AnimationSprites/fly-down-build.png);
 }
 
-@media (max-width: 675px) {
-    #rocket-guy {
+@media (max-width: 1000px) {
+    .rocket-guy-home {
         left: 7.5vw;
+    }
+
+    .rocket-guy-technical {
+        left: calc(10vw - 40px);
+    }
+}
+
+@media (max-width: 850px) {
+    .rocket-guy-technical {
+        left: calc(7vw - 40px);
+    }
+}
+
+@media (max-width: 800px) {
+    .rocket-guy-home {
+        left: 5vw;
+    }
+}
+
+@media (max-width: 750px) {
+    .rocket-guy-technical {
+        display: none;
+    }
+}
+
+
+@media (max-width: 675px) {
+    .rocket-guy-home {
+        left: 4.5vw;
     }
 }
 
 @media (max-width: 575px) {
-    #rocket-guy {
-        left: 4vw;
+    .rocket-guy-home {
+        left: 3.5vw;
     }
 }
 
 @media (max-width: 520px) {
-    #rocket-guy {
-        left: 1vw;
+    .rocket-guy-home {
+        left: 2vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .rocket-guy-home {
+        left: 1.5vw;
+    }
+}
+
+@media (max-width: 370px) {
+    .rocket-guy-home {
+        left: 1.5vw;
     }
 }

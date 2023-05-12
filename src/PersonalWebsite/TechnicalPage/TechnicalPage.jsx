@@ -14,6 +14,7 @@ export default class TechnicalPage extends React.Component {
     }
 
     componentDidMount() {
+        this.handleResize();
         window.addEventListener('resize', this.handleResize)
         window.addEventListener('scroll', this.handleScroll)
     }
@@ -26,6 +27,26 @@ export default class TechnicalPage extends React.Component {
     handleResize = () => {
         window.scrollTo({top: 700, behavior: 'instant'})
         this.infoPanelsRef.current.onResize()
+
+        if(window.innerWidth <= 400)
+            document.getElementById('name-home-button').textContent = "B_E_N"
+        else
+            document.getElementById('name-home-button').textContent = "BEN SHINNICK"
+
+
+        if(window.innerWidth <= 650) {
+            document.getElementById('left-email-icons').textContent = "E"
+            document.getElementById('right-email-icons').textContent = "N"
+        }
+        else {
+            document.getElementById('left-email-icons').textContent = "E F N"
+            document.getElementById('right-email-icons').textContent = "a s 5"
+        }
+
+        if(window.innerWidth <= 600)
+            document.getElementById('connect-text').textContent = "CONNECT"
+        else
+            document.getElementById('connect-text').textContent = "CONNECT WITH ME"
     }
 
     handleScroll = () => {
@@ -45,6 +66,7 @@ export default class TechnicalPage extends React.Component {
                 <div id='center-column-vert'></div>
                 <div id='center-column-horiz'></div>
                 <div id='filler-tech' style={{height: window.innerHeight*8.5 + 'px'}} />
+                <div id='secret'>HEY!</div>
             </main>
         );
     }

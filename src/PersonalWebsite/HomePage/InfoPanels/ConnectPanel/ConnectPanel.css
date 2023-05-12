@@ -178,8 +178,8 @@ _::-webkit-full-page-media, _:future, :root #connect-text {
     position: absolute;
     bottom: 13px;
 
-    left: calc((100% - 220.5px) / 2);
-    width: 220px;
+    left: calc((100% - 195.5px) / 2);
+    width: 195px;
     height: 1mm;
     background-color: white;
     transform-origin: center;
@@ -198,6 +198,14 @@ _::-webkit-full-page-media, _:future, :root #connect-text {
     background-position: left bottom;
 }
 
+#tech-connect-panel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1500px;
+    justify-content: center;
+}
+
 a span {
     height: 1px;
     width: 1px;
@@ -211,7 +219,7 @@ a span {
         font-size: 16pt;
     }
 
-    .connect-panel #connect-info #underline {
+    #home-connect-panel .connect-panel #connect-info #underline {
         left: calc((100% - 180.5px) / 2);
         width: 180px;
     }
@@ -230,7 +238,7 @@ a span {
         width: calc(15vw - 12px);
     }
 
-    .connect-panel #connect-info #underline {
+    #home-connect-panel .connect-panel #connect-info #underline {
         left: calc((100% - 90.5px) / 2);
         width: 90px;
     }
@@ -249,7 +257,7 @@ a span {
         width: calc(15vw - 4px);
     }
 
-    .connect-panel #connect-info #underline {
+    #home-connect-panel .connect-panel #connect-info #underline {
         left: calc((100% - 90.5px) / 2);
         width: 90px;
     }
@@ -268,31 +276,53 @@ a span {
         width: calc(20vw - 12px);
     }
 
-    .connect-panel #connect-info #underline {
+    #home-connect-panel .connect-panel #connect-info #underline {
         left: calc((100% - 90.5px) / 2);
         width: 90px;
     }
 }
 
 @media (max-width: 675px) {
-    .connect-panel #github-icon {
-        background-image: url(./Sprites/github-icon.png);
-    }
-
-    .connect-panel #linked-in-icon {
-        background-image: url(./Sprites/linked-in-icon.png);
-    }
-    
-    .connect-panel #email-icon {
-        background-image: url(./Sprites/email-icon.png);
-    }
-    
-
     .connect-panel #link-icons {
         width: calc(70vw - 80px);
     }
 
     .connect-panel #connect-info {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    #contact-panel-content #tech-connect-panel .connect-panel #connect-info {
+        width: 35%;
+    }
+
+    #contact-panel-content #tech-connect-panel .connect-panel #link-icons {
+        width: calc(65% - 4px);
+    }
+
+    #tech-connect-panel .connect-panel #connect-info #underline {
+        left: calc((100% - 90.5px) / 2);
+        width: 90px;
+    }
+}
+
+@media (max-width: 425px) {
+    .connect-panel #link-icons {
+        width: calc(82.5vw - 80px);
+    }
+}
+
+@media (max-width: 375px) {
+    #contact-panel-content #tech-connect-panel .connect-panel #connect-info {
+        display: none;
+    }
+
+    #contact-panel-content #tech-connect-panel .connect-panel #link-icons {
+        width: calc(100%);
+    }
+
+    #tech-connect-panel .connect-panel #connect-info #underline {
         display: none;
     }
 }

@@ -39,9 +39,9 @@ export default class TechInfoPanels extends React.Component {
 
         setTotalPanelsHeight()
         document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
-        if(calcFillerSize() <= OFFSET_Y_PX) {
-            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-8}px`
-            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-8}px`
+        if(calcFillerSize() < window.innerHeight + OFFSET_Y_PX) {
+            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
+            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
         }
         else {
             document.getElementById('center-column-vert').style.height = ""
@@ -59,9 +59,9 @@ export default class TechInfoPanels extends React.Component {
 
         setTotalPanelsHeight()
         document.getElementById('filler-tech').style.height = `${getFillerSize()}px`
-        if(calcFillerSize() <= OFFSET_Y_PX) {
-            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-8}px`
-            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-8}px`
+        if(calcFillerSize() < window.innerHeight + OFFSET_Y_PX) {
+            document.getElementById('center-column-vert').style.height = `${totalPanelsHeight-13}px`
+            document.getElementById('center-column-horiz').style.height = `${totalPanelsHeight-13}px`
         }
         else {
             document.getElementById('center-column-vert').style.height = ""
@@ -79,6 +79,8 @@ export default class TechInfoPanels extends React.Component {
         let scrollY = Math.ceil((panelHeights)*8 + OFFSET_Y_PX)
         if(scrollY > IGNORE_END_Y_PX) scrollY = IGNORE_END_Y_PX
 
+        let scrollYStart = window.document.documentElement.scrollTop
+        let goToPrevPosition = currPanelIdx < panelIdx
         updateOnScroll = false
         window.scrollTo({top:  OFFSET_Y_PX, behavior: 'instant'})
         lastScrollPos = 0
@@ -93,6 +95,7 @@ export default class TechInfoPanels extends React.Component {
             panelTopMargins[i] = 0
         }
 
+        if(goToPrevPosition) scrollY = scrollYStart
         let scrollPos = Math.floor((scrollY - OFFSET_Y_PX) / 8)
         if (scrollPos < 0) { scrollPos = 0 }
         let scrollDiff = Math.floor(scrollPos - lastScrollPos)
@@ -184,7 +187,7 @@ export default class TechInfoPanels extends React.Component {
                             <div className='sides'></div>
                             <div className='title' id='experience-title' onClick={() => { this.scrollToTopOfPanel('experience') }}>EDUCATION AND EXPERIENCE</div>
                             <div className='info-panel-content-container' id='experience-panel-content-container'>
-                                <ExperiencePanel />
+                                <ExperiencePanel onPanelContentChange = {this.onPanelContentChange} />
                             </div>
                         </div>
                         <div className='tech-info-panel' id='tech-projects-panel'>
@@ -218,7 +221,7 @@ export default class TechInfoPanels extends React.Component {
 
 function calcFillerSize() {
     return Math.floor(
-        (totalPanelsHeight - (window.innerHeight - 150))*8 + window.innerHeight + 240
+        (totalPanelsHeight - (window.innerHeight - 134))*8 + window.innerHeight + 240
     )
 }
 

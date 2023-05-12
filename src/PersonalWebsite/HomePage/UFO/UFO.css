@@ -21,8 +21,55 @@
     to { right: calc(30vw - 16px); }
 }
 
-@media (max-height: 650px) {
+@media (max-height: 675px) {
     #ufo {
         display: none;
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 400px) and (max-height: 730px) {
+    #ufo {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 1000px) {
+    #ufo {
+        right: calc(72.5vw - 79px);
+    }
+
+    @keyframes slide-in {
+        from { left: 100vw; }
+        to { left: calc(27.5vw - 32px); }
+    }
+    
+    @keyframes shift {
+        from { right: calc(72.5vw - 79px); }
+        to { right: calc(25vw - 16px); }
+    }
+}
+
+@media (max-width: 800px) {
+    #ufo {
+        right: calc(75vw - 79px);
+    }
+
+    @keyframes slide-in {
+        from { left: 100vw; }
+        to { left: calc(25vw - 32px); }
+    }
+    
+    @keyframes shift {
+        from { right: calc(75vw - 79px); }
+        to { right: calc(22.5vw - 16px); }
+    }
+}
+
+@media (max-width: 425px) {    
+    @keyframes shift {
+        from { right: calc(75vw - 79px); }
+        to { right: calc(10vw - 16px); }
     }
 }

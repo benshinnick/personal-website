@@ -126,6 +126,18 @@
     .navbar-wrapper-home {
         width: 85vw;
     }
+
+    .navbar-wrapper-cloud .links-wrapper button {
+        font-size: 15pt;
+    }
+
+    .navbar-wrapper-cloud #name-home-button {
+        font-size: 15pt;
+    }
+    .navbar-wrapper-cloud {
+        width: 85vw;
+        top: 16px;
+    }
 }
 
 @media (max-width: 575px) {
@@ -139,17 +151,112 @@
     .navbar-wrapper-home {
         width: 90vw;
     }
+    
+    .navbar-wrapper-cloud .links-wrapper button {
+        font-size: 13pt;
+    }
+
+    .navbar-wrapper-cloud #name-home-button {
+        font-size: 13pt;
+    }
+    .navbar-wrapper-cloud {
+        width: 90vw;
+    }
 }
 
 @media (max-width: 520px) {
     .navbar-wrapper-home .links-wrapper button {
-        font-size: 12pt;
+        font-size: 13pt;
     }
 
     .navbar-wrapper-home #name-home-button {
-        font-size: 12pt;
+        font-size: 13pt;
     }
     .navbar-wrapper-home {
         width: 95vw;
+    }
+
+    .navbar-wrapper-cloud .links-wrapper button {
+        font-size: 13pt;
+    }
+
+    .navbar-wrapper-cloud #name-home-button {
+        font-size: 13pt;
+    }
+    .navbar-wrapper-cloud {
+        width: 95vw;
+    }
+}
+
+@media (max-width: 425px) {
+    .links-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar-wrapper-home .links-wrapper button {
+        padding-top: 5px;
+        padding-bottom: 2px;
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+    
+    .navbar-wrapper-home #name-home-button {
+        padding-top: 5px;
+        padding-bottom: 2px;
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+
+    .navbar-wrapper-cloud .links-wrapper button {
+        padding-top: 5px;
+        padding-bottom: 2px;
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+    
+    .navbar-wrapper-cloud #name-home-button {
+        padding-top: 5px;
+        padding-bottom: 2px;
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+}
+
+@media (max-width: 400px) {
+    .navbar-wrapper-home .links-wrapper button {
+        font-size: 14pt;
+    }
+
+    .navbar-wrapper-home #name-home-button {
+        font-size: 14pt;
+        padding-left: 4px;
+    }
+
+    .navbar-wrapper-cloud .links-wrapper button {
+        font-size: 14pt;
+    }
+
+    .navbar-wrapper-cloud #name-home-button {
+        font-size: 14pt;
+        padding-left: 4px;
+    }
+}
+
+@media (min-height: 950px) and (min-width: 1250px) {
+    .navbar-wrapper-home .links-wrapper button {
+        font-size: 20pt;
+    }
+
+    .navbar-wrapper-home #name-home-button {
+        font-size: 20pt;
+    }
+
+    .navbar-wrapper-cloud .links-wrapper button {
+        font-size: 20pt;
+    }
+
+    .navbar-wrapper-cloud #name-home-button {
+        font-size: 20pt;
     }
 }

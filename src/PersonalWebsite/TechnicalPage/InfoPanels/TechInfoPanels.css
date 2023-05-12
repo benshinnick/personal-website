@@ -1,6 +1,6 @@
 #technical-panels {
     position: fixed;
-    top: 104px;
+    top: 88px;
 
     height: fit-content;
     width: calc(75vw - 120px);
@@ -155,4 +155,86 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     transform: rotate(270deg);
     left: 0;
     top: 0;
+}
+
+@media (max-width: 1000px) {
+    #technical-panels {
+        width: calc(85vw - 120px);
+        left: calc(7.5vw + 64px);
+    }
+
+    .tech-info-panel {
+        width: calc(85vw - 120px);
+    }
+}
+
+@media (max-width: 900px) {
+    .info-panel-content #panel-text {
+        font-size: 14pt;
+    }
+}
+
+@media (max-width: 850px) {
+    #technical-panels {
+        width: calc(92.5vw - 120px);
+        left: calc(3.75vw + 64px);
+    }
+
+    .tech-info-panel {
+        width: calc(92.5vw - 120px);
+    }
+}
+
+@media (max-width: 750px) {
+    #technical-panels {
+        width: calc(85vw);
+        left: calc(7.5vw - 4px);
+    }
+
+    .tech-info-panel {
+        width: calc(85vw);
+    }
+}
+
+@media (max-width: 525px) {
+    .title {
+        font-size: 16pt;
+    }
+}
+
+@media (max-width: 475px) {
+    #technical-panels {
+        width: calc(90vw);
+        left: calc(5vw - 4px);
+    }
+
+    .tech-info-panel {
+        width: calc(90vw);
+    }
+}
+
+@media (max-width: 440px) {
+    #technical-panels {
+        width: calc(100vw - 24px);
+        left: calc(8px);
+    }
+
+    .tech-info-panel {
+        width: calc(100vw - 24px);
+    }
+}
+
+@media (max-width: 400px) {
+    .title {
+        font-size: 14pt;
+    }
+    .info-panel-content #panel-text {
+        font-size: 12pt;
+    }
+}
+
+@media (max-width: 360px) {
+    .title {
+        font-size: 12pt;
+    }
 }
