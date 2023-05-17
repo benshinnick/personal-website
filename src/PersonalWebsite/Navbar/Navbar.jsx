@@ -50,9 +50,9 @@ export default class Navbar extends React.Component {
         this.setState({ currentPage: 'technical' })
     }
 
-    gameButtonOnClick() {
+    extraButtonOnClick() {
         document.querySelector('.selected').className = ''
-        document.querySelector('#game-btn').className= 'selected'
+        document.querySelector('#extra-btn').className= 'selected'
     }
 
     transitionToOverCloud() {
@@ -78,7 +78,7 @@ export default class Navbar extends React.Component {
                         <div className='links-wrapper'>
                             <button id='home-btn' onClick={() => this.homeButtonOnClick()}>HOME</button>
                             <button id='technical-btn' onClick={() => this.technicalButtonOnClick()}>TECHNICAL</button>
-                            <button id='game-btn'onClick={() => this.gameButtonOnClick()}>GAMES</button>
+                            <button id='extra-btn'onClick={() => this.extraButtonOnClick()}>EXTRA</button>
                         </div>
                     </div>
                 </div>
