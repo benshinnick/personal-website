@@ -110,6 +110,15 @@
     margin-bottom: 0;
 }
 
+.extra-transition-tile {
+    position: fixed;
+    background-color: black;
+    transition-property: top;
+    transition-duration: 1.25s;
+    transition-delay: 0s;
+    transition-timing-function: ease-in-out;
+}
+
 @keyframes nav-appear {
     from { opacity: 0; }
     to { opacity: 1; }
