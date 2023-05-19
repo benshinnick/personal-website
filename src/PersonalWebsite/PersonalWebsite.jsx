@@ -7,6 +7,7 @@ import Clouds from './Clouds/Clouds';
 import RocketGuy from './RocketGuy/RocketGuy';
 import HomePage from './HomePage/HomePage';
 import TechnicalPage from './TechnicalPage/TechnicalPage';
+import ExtraPage from './ExtraPage/ExtraPage';
 
 var scrollPos = 'mid'
 var root = null
@@ -57,9 +58,9 @@ export default class PersonalWebsite extends React.Component {
         this.setState({ currentPage: 'home' })
     }
 
-    changeToHomePage() {
+    changeToHomePage = () => {
         setTimeout(() => {
-            if(scrollPos === 'top') {
+            if(scrollPos === 'top' || this.state.currentPage !== 'extra') {
                 var id = setTimeout(function() {}, 0)
                 while (id--) clearTimeout(id)
                 this.rocketGuyRef.current.startAnimating()
@@ -80,11 +81,26 @@ export default class PersonalWebsite extends React.Component {
                 this.rocketGuyRef.current.flyInFromBottom()
             }
         }, 600)
+        if(this.state.currentPage === 'extra') {
+            var id = setTimeout(function() {}, 0)
+            while (id--) clearTimeout(id)
+            this.setState({ currentPage: 'home' })
+            this.cloudsRef.current.instantMoveCloudsToBottom()
+            this.navBarRef.current.switchToHome()
+            this.navBarRef.current.transitionToHome()
+            this.rocketGuyRef.current.setPage('home')
+            this.rocketGuyRef.current.startAnimating()
+            root.render(<HomePage />)
+            setTimeout(() => {
+                this.setState({ currentPage: 'home' })
+                window.scrollTo(0, 450)
+            }, 100)
+        }
     }
 
-    changeToTechnicalPage() {
+    changeToTechnicalPage = () => {
         setTimeout(() => {
-            if(scrollPos === 'bottom') {
+            if(scrollPos === 'bottom' || this.state.currentPage !== 'extra') {
                 var id = setTimeout(function() {}, 0)
                 while (id--) clearTimeout(id)
                 this.rocketGuyRef.current.startAnimating()
@@ -105,12 +121,43 @@ export default class PersonalWebsite extends React.Component {
                 this.rocketGuyRef.current.flyInFromTop()
             }
         }, 600)
+        if(this.state.currentPage === 'extra') {
+            var id = setTimeout(function() {}, 0)
+            while (id--) clearTimeout(id)
+            this.cloudsRef.current.instantMoveCloudsToTop()
+            this.navBarRef.current.switchToTechnical()
+            this.navBarRef.current.transitionToOverCloud()
+
+            this.setState({ currentPage: 'technical' })
+            this.navBarRef.current.switchToTechnical()
+            this.rocketGuyRef.current.setPage('technical')
+            this.rocketGuyRef.current.startAnimating()
+            root.render(<TechnicalPage />)
+            setTimeout(() => {
+                this.rocketGuyRef.current.setPage('technical')
+                window.scrollTo(0, 700)
+            }, 100)
+        }
+    }
+
+    changeToExtraPage = () => {
+        var id = setTimeout(function() {}, 0)
+        while (id--) clearTimeout(id)
+        this.setState({ currentPage: 'extra' })
+        this.rocketGuyRef.current.setPage('extra')
+        setTimeout(() => {
+            root.render(<ExtraPage />)
+        }, 2125)
     }
 
     render() {
         return (
             <div>
-                <Navbar ref={this.navBarRef} />
+                <Navbar ref={this.navBarRef}
+                    changeToHomePage = {this.changeToHomePage}
+                    changeToTechnicalPage = {this.changeToTechnicalPage}
+                    changeToExtraPage = {this.changeToExtraPage}
+                />
                 <Clouds ref={this.cloudsRef} />
                 <RocketGuy ref={this.rocketGuyRef} />
                 <div id="background-gradient" className='home-sky'>

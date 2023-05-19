@@ -22,6 +22,10 @@
     left: calc(15vw - 40px);
 }
 
+/* .rocket-guy-extra {
+    display: none;
+} */
+
 .sprite {
     image-rendering: optimizeSpeed;     
     image-rendering: -moz-crisp-edges;          

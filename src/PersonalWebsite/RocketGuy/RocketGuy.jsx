@@ -80,36 +80,37 @@ export default class RocketGuy extends React.Component {
     }
 
     moveOnScroll(currScrollYPos) {
-        var rocketGuy = getRocketGuyElement()
-        var spriteYPos;
-        if(!percentageScrollingOn) {
-            spriteYPos = Math.floor(currScrollYPos/(3.75) + topOffset)
+        if(page !== 'extra') {
+            var rocketGuy = getRocketGuyElement()
+            var spriteYPos;
+            if(!percentageScrollingOn) {
+                spriteYPos = Math.floor(currScrollYPos/(3.75) + topOffset)
+            }
+            else {
+                const maxScrollYPos = document.getElementById("filler-tech").scrollHeight - window.innerHeight
+                spriteYPos = Math.floor((currScrollYPos / maxScrollYPos) * window.innerHeight - 80)
+            }
+    
+            if(lastScrollYPos > currScrollYPos)
+                if(!isFlyingUpAnimated(rocketGuy))
+                    this.switchToFlyingAnimation('up')
+            if(lastScrollYPos < currScrollYPos)
+                if(!isFlyingDownAnimated(rocketGuy)) 
+                    this.switchToFlyingAnimation('down')
+    
+            if(timer !== null) clearTimeout(timer)       
+            timer = setTimeout(() => {
+                this.switchToStoppingAnimation()
+            }, 500);
+    
+            rocketGuy.style.marginTop = `${spriteYPos}px`
+            lastScrollYPos = currScrollYPos
         }
-        else {
-            const maxScrollYPos = document.getElementById("filler-tech").scrollHeight - window.innerHeight
-            spriteYPos = Math.floor((currScrollYPos / maxScrollYPos) * window.innerHeight - 80)
-        }
-
-        if(lastScrollYPos > currScrollYPos)
-            if(!isFlyingUpAnimated(rocketGuy))
-                this.switchToFlyingAnimation('up')
-        if(lastScrollYPos < currScrollYPos)
-            if(!isFlyingDownAnimated(rocketGuy)) 
-                this.switchToFlyingAnimation('down')
-
-        if(timer !== null) clearTimeout(timer)       
-        timer = setTimeout(() => {
-            this.switchToStoppingAnimation()
-        }, 500);
-
-        rocketGuy.style.marginTop = `${spriteYPos}px`
-        lastScrollYPos = currScrollYPos
     }
 
     flyInFromTop() {
         const rocketGuy = getRocketGuyElement()
         topOffset = 0
-        percentageScrollingOn = true
         rocketGuy.style.opacity = '0'
         rocketGuy.style.transition = ''
         rocketGuy.style.marginTop = '0'
@@ -127,7 +128,6 @@ export default class RocketGuy extends React.Component {
         const rocketGuy = getRocketGuyElement()
         const scrollHeight = Math.floor(window.innerHeight*5) - window.innerHeight
         topOffset = 50
-        percentageScrollingOn = false
         rocketGuy.style.opacity = '0'
         rocketGuy.style.transition = ''
         rocketGuy.style.marginTop = `${scrollHeight/(2.5 * 1.5) + topOffset}px`
@@ -144,7 +144,9 @@ export default class RocketGuy extends React.Component {
 
     setPage(pageName) {
         page = pageName
-        getRocketGuyElement().className = `sprite rocket-guy-${page}`
+        if(page !== 'extra') getRocketGuyElement().className = `sprite rocket-guy-${page}`
+        if(page === 'technical') percentageScrollingOn = true
+        if(page === 'home') percentageScrollingOn = false
     }
 
     render() {

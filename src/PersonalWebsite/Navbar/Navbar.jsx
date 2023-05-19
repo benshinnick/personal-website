@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 
-var numTiles = 15
+var numTiles = 10
 
 export default class Navbar extends React.Component {
     constructor(props) {
@@ -29,6 +29,10 @@ export default class Navbar extends React.Component {
             window.scrollTo({top: 0, behavior: 'instant'})
             this.setState({ currentPage: 'home' })
         }
+        if(this.state.currentPage === 'extra') {
+            this.removeExtraPageTiles()
+            this.props.changeToHomePage()
+        }
     }
 
     switchToHome() {
@@ -45,6 +49,10 @@ export default class Navbar extends React.Component {
             window.scrollTo({top: scrollHeight, behavior: 'smooth'})
             this.setState({ currentPage: 'technical' })
         }
+        if(this.state.currentPage === 'extra') {
+            this.removeExtraPageTiles()
+            this.props.changeToTechnicalPage()
+        }
     }
 
     switchToTechnical() {
@@ -56,7 +64,9 @@ export default class Navbar extends React.Component {
     extraButtonOnClick() {
         document.querySelector('.selected').className = ''
         document.querySelector('#extra-btn').className= 'selected'
+        this.setState({ currentPage: 'extra' })
         this.playExtraPageTransitionAnimation()
+        this.props.changeToExtraPage()
     }
 
     transitionToOverCloud() {
@@ -75,9 +85,14 @@ export default class Navbar extends React.Component {
 
     playExtraPageTransitionAnimation() {
         for(let i = 0; i < numTiles; i++) {
-            setTimeout(() => {
-                document.getElementById(`tile-${i+1}`).style.top = '0'
-            }, i * 125)
+            document.getElementById(`tile-${i+1}`).style.animation = `1s ease-in-out ${i*125}ms tile-slide-in forwards`
+        }
+    }
+
+    removeExtraPageTiles() {
+        let counter = 0
+        for(let i = numTiles-1; i >= 0; i--) {
+            document.getElementById(`tile-${i+1}`).style.animation = `1s ease-in-out ${counter++*100}ms tile-slide-out backwards`
         }
     }
 

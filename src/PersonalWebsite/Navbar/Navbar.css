@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 4px solid white;
-    z-index: 1;
+    z-index: 11;
 }
 
 .navbar-wrapper-home .links-wrapper button {
@@ -64,7 +64,7 @@
     border: 4px solid black;
     filter: drop-shadow(0 0 4px rgb(235, 235, 235));
     background-color: white;
-    z-index: 6;
+    z-index: 11;
 }
 
 .navbar-wrapper-cloud .links-wrapper button {
@@ -113,10 +113,22 @@
 .extra-transition-tile {
     position: fixed;
     background-color: black;
-    transition-property: top;
+    /* transition-property: top;
     transition-duration: 1.25s;
     transition-delay: 0s;
-    transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out; */
+    z-index: 10;
+    animation-fill-mode: forwards;
+}
+
+@keyframes tile-slide-in {
+    from { top: 100vh; }
+    to { top: 0px; }
+}
+
+@keyframes tile-slide-out {
+    from { top: 0px; }
+    to { top: 100vh; }
 }
 
 @keyframes nav-appear {
