@@ -187,12 +187,12 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 
 @media (max-width: 750px) {
     #technical-panels {
-        width: calc(85vw);
-        left: calc(7.5vw - 4px);
+        width: calc(100vw - 40px);
+        left: calc(16px);
     }
 
     .tech-info-panel {
-        width: calc(85vw);
+        width: calc(100vw - 40px);
     }
 }
 
@@ -202,7 +202,7 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     }
 }
 
-@media (max-width: 475px) {
+/* @media (max-width: 475px) {
     #technical-panels {
         width: calc(90vw);
         left: calc(5vw - 4px);
@@ -211,9 +211,9 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     .tech-info-panel {
         width: calc(90vw);
     }
-}
+} */
 
-@media (max-width: 440px) {
+/* @media (max-width: 440px) {
     #technical-panels {
         width: calc(100vw - 24px);
         left: calc(8px);
@@ -222,7 +222,7 @@ _::-webkit-full-page-media, _:future, :root .info-text {
     .tech-info-panel {
         width: calc(100vw - 24px);
     }
-}
+} */
 
 @media (max-width: 400px) {
     .title {

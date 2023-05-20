@@ -1,6 +1,6 @@
 #left-border-building-1 {
     top: 100px;
-    left: calc(15vw - 280px);
+    left: calc(14vw - 280px);
     width: 208px;
     height: 150%;
     position: fixed;
@@ -10,7 +10,7 @@
 
 #left-border-building-2 {
     top: 100px;
-    left: calc(15vw - 328px);
+    left: calc(14vw - 320px);
     width: 208px;
     height: 150%;
     position: fixed;
@@ -230,6 +230,7 @@
 @media (max-width: 750px) {
     #left-border-building-1 {
         left: calc(12.5vw - 280px);
+        z-index: 2;
     }
 
     #left-border-building-2 {

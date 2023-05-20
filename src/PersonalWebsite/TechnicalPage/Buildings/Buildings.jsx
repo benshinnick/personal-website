@@ -10,11 +10,11 @@ export default class Buildings extends React.Component {
     onScroll(scrollY) {
         const screenWidth = window.innerWidth
         const left1 = document.getElementById('left-border-building-1')
-        if(screenWidth > 650) left1.style.marginTop = `${Math.floor(-scrollY/6 + 550)}px`
+        if(screenWidth > 650) left1.style.marginTop = `${Math.floor(-scrollY/14 + 400)}px`
         else left1.style.marginTop = `${Math.floor(-scrollY/26 + 550)}px`
 
         const left2 = document.getElementById('left-border-building-2')
-        if(screenWidth > 650) left2.style.marginTop = `${Math.floor(-scrollY/20 + 600)}px`
+        if(screenWidth > 650) left2.style.marginTop = `${Math.floor(-scrollY/20 + 570)}px`
         else left2.style.marginTop = `${Math.floor(-scrollY/36 + 600)}px`
 
         const right1 = document.getElementById('right-border-building-1')
@@ -31,16 +31,16 @@ export default class Buildings extends React.Component {
 
         // outer buildings
         const left3 = document.getElementById('left-border-building-3')
-        left3.style.marginTop = `${Math.floor(-scrollY/14 + 250)}px`
+        left3.style.marginTop = `${Math.floor(-scrollY/18 + 250)}px`
         const left4 = document.getElementById('left-border-building-4')
-        left4.style.marginTop = `${Math.floor(-scrollY/18 + 400)}px`
+        left4.style.marginTop = `${Math.floor(-scrollY/15 + 400)}px`
         const left5 = document.getElementById('left-border-building-5')
-        left5.style.marginTop = `${Math.floor(-scrollY/16 + 550)}px`
+        left5.style.marginTop = `${Math.floor(-scrollY/28 + 450)}px`
 
         const right4 = document.getElementById('right-border-building-4')
-        right4.style.marginTop = `${Math.floor(-scrollY/16 + 400)}px`
+        right4.style.marginTop = `${Math.floor(-scrollY/10 + 400)}px`
         const right5 = document.getElementById('right-border-building-5')
-        right5.style.marginTop = `${Math.floor(-scrollY/12 + 700)}px`
+        right5.style.marginTop = `${Math.floor(-scrollY/10 + 700)}px`
     }
 
     render() {
