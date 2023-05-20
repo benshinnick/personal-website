@@ -25,7 +25,7 @@ export default class Navbar extends React.Component {
         if(this.state.currentPage === 'technical') {
             window.scrollTo({top: 0, behavior: 'smooth'})
             this.setState({ currentPage: 'home' })
-            this.props.changeToHomePage()
+            this.props.changeToHomePage(true)
         }
         if(window.scrollY === 0) {
             window.scrollTo({top: 100, behavior: 'instant'})
@@ -34,7 +34,7 @@ export default class Navbar extends React.Component {
         }
         if(this.state.currentPage === 'extra') {
             this.removeExtraPageTiles()
-            this.props.changeToHomePage()
+            this.props.changeToHomePage(true)
         }
     }
 
@@ -53,11 +53,11 @@ export default class Navbar extends React.Component {
             const scrollHeight = getMaxScrollYPos()
             window.scrollTo({top: scrollHeight, behavior: 'smooth'})
             this.setState({ currentPage: 'technical' })
-            this.props.changeToTechnicalPage()
+            this.props.changeToTechnicalPage(true)
         }
         if(this.state.currentPage === 'extra') {
             this.removeExtraPageTiles()
-            this.props.changeToTechnicalPage()
+            this.props.changeToTechnicalPage(true)
         }
     }
 

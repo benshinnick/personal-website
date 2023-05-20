@@ -39,12 +39,12 @@ export default class PersonalWebsite extends React.Component {
         if ((window.innerHeight + scrollY + 50) >= document.body.offsetHeight) {
             scrollPos = 'bottom'
             if(this.state.currentPage === 'home')
-                this.changeToTechnicalPage()
+                this.changeToTechnicalPage(false)
         }
         else if (scrollY <= 100) {
             scrollPos = 'top'
             if(this.state.currentPage === 'technical')
-                this.changeToHomePage()
+                this.changeToHomePage(false)
         }
         else
             scrollPos = 'middle'
@@ -58,7 +58,7 @@ export default class PersonalWebsite extends React.Component {
         this.setState({ currentPage: 'home' })
     }
 
-    changeToHomePage = () => {
+    changeToHomePage = (fromNavButton) => {
         if(this.state.currentPage !== 'extra') {
             setTimeout(() => {
                 if(scrollPos === 'top') {
@@ -82,11 +82,11 @@ export default class PersonalWebsite extends React.Component {
                     }, 700)
                     this.rocketGuyRef.current.flyInFromBottom()
                 }
-                else {
-                    setTimeout(() => {
-                        window.scrollTo({top: 0, behavior: 'instant'})
-                        this.changeToHomePage()
-                    }, 250)
+                else if(fromNavButton) {
+                        setTimeout(() => {
+                            window.scrollTo({top: 0, behavior: 'instant'})
+                            this.changeToHomePage(true)
+                        }, 100)
                 }
             }, 600)
         }
@@ -109,7 +109,7 @@ export default class PersonalWebsite extends React.Component {
         }
     }
 
-    changeToTechnicalPage = () => {
+    changeToTechnicalPage = (fromNavButton) => {
         if(this.state.currentPage !== 'extra') {
             setTimeout(() => {
                 if(scrollPos === 'bottom') {
@@ -133,12 +133,12 @@ export default class PersonalWebsite extends React.Component {
                     }, 700)
                     this.rocketGuyRef.current.flyInFromTop()
                 }
-                else {
+                else if(fromNavButton) {
                     setTimeout(() => {
                         const scrollHeight = getMaxScrollYPos()
                         window.scrollTo({top: scrollHeight, behavior: 'instant'})
-                        this.changeToTechnicalPage()
-                    }, 250)
+                        this.changeToTechnicalPage(true)
+                    }, 100)
                 }
             }, 600)
         }
