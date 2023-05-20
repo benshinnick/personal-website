@@ -83,16 +83,20 @@ export default class PersonalWebsite extends React.Component {
                     this.rocketGuyRef.current.flyInFromBottom()
                 }
                 else if(fromNavButton) {
-                        setTimeout(() => {
+                    setTimeout(() => {
+                        if(this.state.currentPage !== 'home') {
                             window.scrollTo({top: 0, behavior: 'instant'})
                             this.changeToHomePage(true)
-                        }, 100)
+                        }
+                    }, 100)
                 }
             }, 600)
         }
         if(this.state.currentPage === 'extra') {
             var id = setTimeout(function() {}, 0)
             while (id--) clearTimeout(id)
+            this.navBarRef.current.moveExtraTilesToForeground()
+            this.navBarRef.current.addBackEnvironmentElements()
             this.setState({ currentPage: 'home' })
             this.cloudsRef.current.instantMoveCloudsToBottom()
             this.navBarRef.current.switchToHome()
@@ -135,9 +139,11 @@ export default class PersonalWebsite extends React.Component {
                 }
                 else if(fromNavButton) {
                     setTimeout(() => {
-                        const scrollHeight = getMaxScrollYPos()
-                        window.scrollTo({top: scrollHeight, behavior: 'instant'})
-                        this.changeToTechnicalPage(true)
+                        if(this.state.currentPage !== 'technical') {
+                            const scrollHeight = getMaxScrollYPos()
+                            window.scrollTo({top: scrollHeight, behavior: 'instant'})
+                            this.changeToTechnicalPage(true)
+                        }
                     }, 100)
                 }
             }, 600)
@@ -145,9 +151,11 @@ export default class PersonalWebsite extends React.Component {
         if(this.state.currentPage === 'extra') {
             var id = setTimeout(function() {}, 0)
             while (id--) clearTimeout(id)
+            this.navBarRef.current.addBackEnvironmentElements()
+            this.navBarRef.current.moveExtraTilesToForeground()
             this.cloudsRef.current.instantMoveCloudsToTop()
             this.navBarRef.current.switchToTechnical()
-            this.navBarRef.current.transitionToOverCloud()
+            this.navBarRef.current.transitionToOverCloudInstant()
 
             this.setState({ currentPage: 'technical' })
             this.navBarRef.current.switchToTechnical()
@@ -172,13 +180,25 @@ export default class PersonalWebsite extends React.Component {
         this.navBarRef.current.disableNavbar()
         if(this.state.currentPage === 'technical') {
             setTimeout(() => {
-                this.navBarRef.current.transitionToHome()
+                root.render(<ExtraPage />)
+                this.navBarRef.current.enableNavbar()
+                this.navBarRef.current.transitionToExtra()
+                setTimeout(()=> {
+                    this.navBarRef.current.removeEnvironmentElements()
+                    this.navBarRef.current.moveExtraTilesToBackground()
+                }, 100)
             }, 2125)
         }
-        setTimeout(() => {
-            root.render(<ExtraPage />)
-            this.navBarRef.current.enableNavbar()
-        }, 2125)
+        else {
+            setTimeout(() => {
+                root.render(<ExtraPage />)
+                this.navBarRef.current.enableNavbar()
+                setTimeout(()=> {
+                    this.navBarRef.current.removeEnvironmentElements()
+                    this.navBarRef.current.moveExtraTilesToBackground()
+                }, 100)
+            }, 2125)
+        }
     }
 
     render() {

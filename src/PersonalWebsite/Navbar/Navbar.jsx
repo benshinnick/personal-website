@@ -84,11 +84,49 @@ export default class Navbar extends React.Component {
         setTimeout(() => { navbar.style.animation = 'none'}, 500)
     }
 
+    transitionToOverCloudInstant() {
+        const navbar = document.getElementById('navbar')
+        navbar.className = 'navbar-wrapper-cloud'
+    }
+
     transitionToHome() {
         const navbar = document.getElementById('navbar')
         navbar.className = 'navbar-wrapper-home'
         navbar.style.animation = '500ms nav-appear forwards'
         setTimeout(() => { navbar.style.animation = 'none'}, 500)
+    }
+
+    transitionToExtra() {
+        const navbar = document.getElementById('navbar')
+        navbar.className = 'navbar-wrapper-home'
+    }
+
+    removeEnvironmentElements() {
+        document.getElementById('rocket-guy').style.display = 'none';
+        const collection = document.getElementsByClassName("cloud");
+        for(let i = 0; i < collection.length; i++) {
+            collection[i].style.display = 'none';
+        }
+    }
+
+    addBackEnvironmentElements() {
+        document.getElementById('rocket-guy').style.display = '';
+        const collection = document.getElementsByClassName("cloud");
+        for(let i = 0; i < collection.length; i++) {
+            collection[i].style.display = '';
+        }
+    }
+
+    moveExtraTilesToBackground() {
+        for(let i = 0; i < numTiles; i++) {
+            document.getElementById(`tile-${i+1}`).style.zIndex = "0";
+        }
+    }
+
+    moveExtraTilesToForeground() {
+        for(let i = 0; i < numTiles; i++) {
+            document.getElementById(`tile-${i+1}`).style.zIndex = "10";
+        }
     }
 
     playExtraPageTransitionAnimation() {
