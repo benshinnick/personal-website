@@ -11,6 +11,9 @@ export default class TechnicalPage extends React.Component {
     render() {
         return (
             <main className='extra-page'>
+                <div className='fill'>
+                    <div id='computer-layout' className='sprite'></div>
+                </div>
             </main>
         );
     }

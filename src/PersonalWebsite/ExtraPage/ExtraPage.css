@@ -1,0 +1,23 @@
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+#computer-layout {
+    position: fixed;
+    background-image: url(./Sprites/computer-horizontal-layout.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    top: 100px;
+    /* left: 50%; */
+    /* -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    z-index: 12;
+    /* border: 1px solid red; */
+    flex-shrink: 0;
+    width: 80%;
+    height: calc(100vh - 100px);
+    object-fit: contain;
+}
