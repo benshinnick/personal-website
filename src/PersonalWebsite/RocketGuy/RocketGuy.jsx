@@ -114,14 +114,18 @@ export default class RocketGuy extends React.Component {
         rocketGuy.style.opacity = '0'
         rocketGuy.style.transition = ''
         rocketGuy.style.marginTop = '0'
+        window.scrollTo({top: 101, behavior: 'instant'})
         rocketGuy.style.transition = 'margin-top 600ms ease-out'
         disableScroll()
         setTimeout(() => {
-            window.scrollTo({top: 700, behavior: 'instant'})
-            enableScroll()
-            rocketGuy.style.opacity = '1'
-            rocketGuy.style.zIndex = '1'
-        }, 750)
+            window.scrollTo({top: 101, behavior: 'instant'})
+            setTimeout(() => {
+                window.scrollTo({top: 700, behavior: 'instant'})
+                enableScroll()
+                rocketGuy.style.opacity = '1'
+                rocketGuy.style.zIndex = '1'
+            }, 400)
+        }, 350)
     }
 
     flyInFromBottom() {
@@ -134,12 +138,15 @@ export default class RocketGuy extends React.Component {
         rocketGuy.style.transition = 'margin-top 600ms ease-out'
         disableScroll()
         setTimeout(() => {
-            const scrollHeight = document.getElementById("filler-home").scrollHeight - window.innerHeight 
-            window.scrollTo({top: scrollHeight - 1200, behavior: 'instant'})
-            enableScroll()
-            rocketGuy.style.opacity = '1'
-            rocketGuy.style.zIndex = '2'
-        }, 750)
+            window.scrollTo({top: scrollHeight, behavior: 'instant'})
+            setTimeout(() => {
+                const scrollHeight = document.getElementById("filler-home").scrollHeight - window.innerHeight 
+                window.scrollTo({top: scrollHeight - 1200, behavior: 'instant'})
+                enableScroll()
+                rocketGuy.style.opacity = '1'
+                rocketGuy.style.zIndex = '2'
+            }, 400)
+        }, 350)
     }
 
     setPage(pageName) {

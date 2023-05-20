@@ -85,7 +85,8 @@ export default class PersonalWebsite extends React.Component {
                 else if(fromNavButton) {
                     setTimeout(() => {
                         if(this.state.currentPage !== 'home') {
-                            window.scrollTo({top: 0, behavior: 'instant'})
+                            // const scrollHeight = getMaxScrollYPos()
+                            // window.scrollTo({top: scrollHeight, behavior: 'instant'})
                             this.changeToHomePage(true)
                         }
                     }, 100)
@@ -140,8 +141,7 @@ export default class PersonalWebsite extends React.Component {
                 else if(fromNavButton) {
                     setTimeout(() => {
                         if(this.state.currentPage !== 'technical') {
-                            const scrollHeight = getMaxScrollYPos()
-                            window.scrollTo({top: scrollHeight, behavior: 'instant'})
+                            // window.scrollTo({top: 0, behavior: 'instant'})
                             this.changeToTechnicalPage(true)
                         }
                     }, 100)
