@@ -18,11 +18,14 @@ export default class Navbar extends React.Component {
     }
 
     homeButtonOnClick() {
+        if(this.state.currentPage === 'home') return;
+        this.disableNavbar()
         document.querySelector('.selected').className = ''
         document.querySelector('#home-btn').className = 'selected'
         if(this.state.currentPage === 'technical') {
             window.scrollTo({top: 0, behavior: 'smooth'})
             this.setState({ currentPage: 'home' })
+            this.props.changeToHomePage()
         }
         if(window.scrollY === 0) {
             window.scrollTo({top: 100, behavior: 'instant'})
@@ -42,12 +45,15 @@ export default class Navbar extends React.Component {
     }
 
     technicalButtonOnClick() {
+        if(this.state.currentPage === 'technical') return;
+        this.disableNavbar()
         document.querySelector('.selected').className = ''
         document.querySelector('#technical-btn').className= 'selected'
         if(this.state.currentPage === 'home') {
             const scrollHeight = getMaxScrollYPos()
             window.scrollTo({top: scrollHeight, behavior: 'smooth'})
             this.setState({ currentPage: 'technical' })
+            this.props.changeToTechnicalPage()
         }
         if(this.state.currentPage === 'extra') {
             this.removeExtraPageTiles()
@@ -62,6 +68,8 @@ export default class Navbar extends React.Component {
     }
 
     extraButtonOnClick() {
+        if(this.state.currentPage === 'extra') return;
+        this.disableNavbar()
         document.querySelector('.selected').className = ''
         document.querySelector('#extra-btn').className= 'selected'
         this.setState({ currentPage: 'extra' })
@@ -108,6 +116,20 @@ export default class Navbar extends React.Component {
             tile.style.left = `${(100/numTiles)*i}vw`
             tileContainer.appendChild(tile);
         }
+    }
+
+    disableNavbar() {
+        document.getElementById("name-home-button").disabled = true
+        document.getElementById("home-btn").disabled = true
+        document.getElementById("technical-btn").disabled = true
+        document.getElementById("extra-btn").disabled = true
+    }
+
+    enableNavbar() {
+        document.getElementById("name-home-button").disabled = false
+        document.getElementById("home-btn").disabled = false
+        document.getElementById("technical-btn").disabled = false
+        document.getElementById("extra-btn").disabled = false
     }
 
     render() {

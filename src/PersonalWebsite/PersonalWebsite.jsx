@@ -59,35 +59,43 @@ export default class PersonalWebsite extends React.Component {
     }
 
     changeToHomePage = () => {
-        setTimeout(() => {
-            if(scrollPos === 'top' || this.state.currentPage !== 'extra') {
-                var id = setTimeout(function() {}, 0)
-                while (id--) clearTimeout(id)
-                this.rocketGuyRef.current.startAnimating()
-                this.setState({ currentPage: 'home' })
-                this.cloudsRef.current.transitionCloudsToBottom()
-                this.navBarRef.current.switchToHome()
-                const mainContent = document.getElementById('main-content')
-                mainContent.style.animation = '500ms home-disappear forwards'
-                this.navBarRef.current.transitionToHome()
-                this.rocketGuyRef.current.setPage('home')
-                setTimeout(() => {
-                    root.render(<HomePage />)
+        if(this.state.currentPage !== 'extra') {
+            setTimeout(() => {
+                if(scrollPos === 'top') {
+                    var id = setTimeout(function() {}, 0)
+                    while (id--) clearTimeout(id)
+                    this.rocketGuyRef.current.startAnimating()
                     this.setState({ currentPage: 'home' })
+                    this.cloudsRef.current.transitionCloudsToBottom()
+                    this.navBarRef.current.switchToHome()
+                    const mainContent = document.getElementById('main-content')
+                    mainContent.style.animation = '500ms home-disappear forwards'
+                    this.navBarRef.current.transitionToHome()
+                    this.rocketGuyRef.current.setPage('home')
                     setTimeout(() => {
-                        mainContent.style.animation = '1000ms home-appear forwards'
-                    }, 100)
-                }, 700)
-                this.rocketGuyRef.current.flyInFromBottom()
-            }
-        }, 600)
+                        root.render(<HomePage />)
+                        this.setState({ currentPage: 'home' })
+                        setTimeout(() => {
+                            this.navBarRef.current.enableNavbar()
+                            mainContent.style.animation = '1000ms home-appear forwards'
+                        }, 100)
+                    }, 700)
+                    this.rocketGuyRef.current.flyInFromBottom()
+                }
+                else {
+                    setTimeout(() => {
+                        window.scrollTo({top: 0, behavior: 'instant'})
+                        this.changeToHomePage()
+                    }, 250)
+                }
+            }, 600)
+        }
         if(this.state.currentPage === 'extra') {
             var id = setTimeout(function() {}, 0)
             while (id--) clearTimeout(id)
             this.setState({ currentPage: 'home' })
             this.cloudsRef.current.instantMoveCloudsToBottom()
             this.navBarRef.current.switchToHome()
-            this.navBarRef.current.transitionToHome()
             this.rocketGuyRef.current.setPage('home')
             this.rocketGuyRef.current.startAnimating()
             root.render(<HomePage />)
@@ -95,32 +103,45 @@ export default class PersonalWebsite extends React.Component {
                 this.setState({ currentPage: 'home' })
                 window.scrollTo(0, 450)
             }, 100)
+            setTimeout(() => {
+                this.navBarRef.current.enableNavbar()
+            }, 2125)
         }
     }
 
     changeToTechnicalPage = () => {
-        setTimeout(() => {
-            if(scrollPos === 'bottom' || this.state.currentPage !== 'extra') {
-                var id = setTimeout(function() {}, 0)
-                while (id--) clearTimeout(id)
-                this.rocketGuyRef.current.startAnimating()
-                this.setState({ currentPage: 'technical' })
-                this.cloudsRef.current.transitionCloudsToTop()
-                this.navBarRef.current.switchToTechnical()
-                const mainContent = document.getElementById('main-content')
-                mainContent.style.animation = '500ms home-disappear forwards'
-                setTimeout(() => {
-                    this.rocketGuyRef.current.setPage('technical')
-                    this.navBarRef.current.transitionToOverCloud()
-                    root.render(<TechnicalPage />)
+        if(this.state.currentPage !== 'extra') {
+            setTimeout(() => {
+                if(scrollPos === 'bottom') {
+                    var id = setTimeout(function() {}, 0)
+                    while (id--) clearTimeout(id)
+                    this.rocketGuyRef.current.startAnimating()
                     this.setState({ currentPage: 'technical' })
+                    this.cloudsRef.current.transitionCloudsToTop()
+                    this.navBarRef.current.switchToTechnical()
+                    const mainContent = document.getElementById('main-content')
+                    mainContent.style.animation = '500ms home-disappear forwards'
                     setTimeout(() => {
-                        mainContent.style.animation = '1000ms home-appear forwards'
-                    }, 100)
-                }, 700)
-                this.rocketGuyRef.current.flyInFromTop()
-            }
-        }, 600)
+                        this.rocketGuyRef.current.setPage('technical')
+                        this.navBarRef.current.transitionToOverCloud()
+                        root.render(<TechnicalPage />)
+                        this.setState({ currentPage: 'technical' })
+                        setTimeout(() => {
+                            mainContent.style.animation = '1000ms home-appear forwards'
+                            this.navBarRef.current.enableNavbar()
+                        }, 100)
+                    }, 700)
+                    this.rocketGuyRef.current.flyInFromTop()
+                }
+                else {
+                    setTimeout(() => {
+                        const scrollHeight = getMaxScrollYPos()
+                        window.scrollTo({top: scrollHeight, behavior: 'instant'})
+                        this.changeToTechnicalPage()
+                    }, 250)
+                }
+            }, 600)
+        }
         if(this.state.currentPage === 'extra') {
             var id = setTimeout(function() {}, 0)
             while (id--) clearTimeout(id)
@@ -137,6 +158,9 @@ export default class PersonalWebsite extends React.Component {
                 this.rocketGuyRef.current.setPage('technical')
                 window.scrollTo(0, 700)
             }, 100)
+            setTimeout(() => {
+                this.navBarRef.current.enableNavbar()
+            }, 2125)
         }
     }
 
@@ -145,8 +169,15 @@ export default class PersonalWebsite extends React.Component {
         while (id--) clearTimeout(id)
         this.setState({ currentPage: 'extra' })
         this.rocketGuyRef.current.setPage('extra')
+        this.navBarRef.current.disableNavbar()
+        if(this.state.currentPage === 'technical') {
+            setTimeout(() => {
+                this.navBarRef.current.transitionToHome()
+            }, 2125)
+        }
         setTimeout(() => {
             root.render(<ExtraPage />)
+            this.navBarRef.current.enableNavbar()
         }, 2125)
     }
 
@@ -178,4 +209,14 @@ export default class PersonalWebsite extends React.Component {
             </div>
         )
     }
+}
+
+function getMaxScrollYPos() {
+    return Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight, 
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+    ) - window.innerHeight
 }
