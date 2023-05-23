@@ -12,8 +12,8 @@
     margin: 0;
     margin-bottom: -7px;
     color: black;
-    font-size: 18pt;
-    letter-spacing: 3px;
+    font-size: 20pt;
+    letter-spacing: 2px;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     white-space: nowrap;
     overflow: hidden;
@@ -22,7 +22,7 @@
     -webkit-font-smoothing: none;
     position: relative;
     display: inline-block;
-    padding: 5px 0 5px 2%;
+    padding: 5px 0 3px 2%;
     border-bottom: 4px solid #f1f1f1;
     z-index: 2;
 }
@@ -50,7 +50,7 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
 }
 
 .info-panel-content #panel-text {
-    font-size: 16pt;
+    font-size: 18pt;
     text-align: left;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
@@ -170,7 +170,7 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 
 @media (max-width: 900px) {
     .info-panel-content #panel-text {
-        font-size: 14pt;
+        font-size: 16pt;
     }
 }
 

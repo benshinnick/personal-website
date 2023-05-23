@@ -98,6 +98,7 @@ export default class PersonalWebsite extends React.Component {
             while (id--) clearTimeout(id)
             this.navBarRef.current.moveExtraTilesToForeground()
             this.navBarRef.current.addBackEnvironmentElements()
+            this.cloudsRef.current.unhideClouds()
             this.setState({ currentPage: 'home' })
             this.cloudsRef.current.instantMoveCloudsToBottom()
             this.navBarRef.current.switchToHome()
@@ -152,6 +153,7 @@ export default class PersonalWebsite extends React.Component {
             var id = setTimeout(function() {}, 0)
             while (id--) clearTimeout(id)
             this.navBarRef.current.addBackEnvironmentElements()
+            this.cloudsRef.current.unhideClouds()
             this.navBarRef.current.moveExtraTilesToForeground()
             this.cloudsRef.current.instantMoveCloudsToTop()
             this.navBarRef.current.switchToTechnical()
@@ -185,6 +187,7 @@ export default class PersonalWebsite extends React.Component {
                 this.navBarRef.current.transitionToExtra()
                 setTimeout(()=> {
                     this.navBarRef.current.removeEnvironmentElements()
+                    this.cloudsRef.current.hideClouds()
                     this.navBarRef.current.moveExtraTilesToBackground()
                 }, 100)
             }, 2125)
@@ -195,6 +198,7 @@ export default class PersonalWebsite extends React.Component {
                 this.navBarRef.current.enableNavbar()
                 setTimeout(()=> {
                     this.navBarRef.current.removeEnvironmentElements()
+                    this.cloudsRef.current.hideClouds()
                     this.navBarRef.current.moveExtraTilesToBackground()
                 }, 100)
             }, 2125)
@@ -229,14 +233,4 @@ export default class PersonalWebsite extends React.Component {
             </div>
         )
     }
-}
-
-function getMaxScrollYPos() {
-    return Math.max(
-        document.body.scrollHeight,
-        document.body.offsetHeight, 
-        document.documentElement.clientHeight,
-        document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
-    ) - window.innerHeight
 }

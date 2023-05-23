@@ -57,8 +57,27 @@ export default class Clouds extends React.Component {
                 if(size === 'small' || size === 'medium') {
                     cloud.style.filter = 'drop-shadow(0 0 2px rgb(235, 235, 235))'
                 }
+                if(this.state.cloudPosition === 'hidden') {
+                    cloud.style.display = 'none'
+                }
                 clouds.appendChild(cloud)
             }
+        }
+    }
+
+    hideClouds() {
+        this.setState({ cloudPosition: 'hidden' }, () => {
+            const collection = document.getElementsByClassName("cloud");
+            for(let i = 0; i < collection.length; i++) {
+                collection[i].style.display = 'none';
+            }
+        })
+    }
+
+    unhideClouds() {
+        const collection = document.getElementsByClassName("cloud");
+        for(let i = 0; i < collection.length; i++) {
+            collection[i].style.display = '';
         }
     }
 

@@ -2,9 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 30px;
     width: 100vw;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 30px);
     z-index: 12;
 }
 
@@ -17,7 +17,7 @@
     z-index: 12;
     flex-shrink: 0;
     width: 80%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 30px);
     object-fit: contain;
     animation: appear 500ms linear 0s;
 }
