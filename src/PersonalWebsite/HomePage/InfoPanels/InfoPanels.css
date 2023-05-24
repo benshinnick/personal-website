@@ -13,7 +13,7 @@
     margin: 0;
     color: white;
     font-size: 24pt;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     white-space: nowrap;
     overflow: hidden;
@@ -89,10 +89,13 @@ hr {
     text-align: center;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    line-height: 1.4;
+    line-height: 1.2;
     letter-spacing: 1px;
-    margin-left: 12%;
-    margin-right: 12%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: black;
+    -webkit-font-smoothing: none;
 }
 
 _::-webkit-full-page-media, _:future, :root .info-text {
@@ -162,6 +165,7 @@ _::-webkit-full-page-media, _:future, :root .info-text {
         font-size: 16pt;
         margin-left: 6%;
         margin-right: 6%;
+        width: 88%;
     }
 }
 
