@@ -36,7 +36,7 @@ export default class HomePage extends React.Component {
         setTimeout(() => {
             ufo.style.animation = `${getUfoShiftAnimationSpeed()}s linear 1s infinite alternate shift`
         }, 25)
-        if(window.innerWidth <= 1050)
+        if(window.innerWidth <= 1150)
             document.getElementById('connect-text').textContent = "CONNECT"
         else
             document.getElementById('connect-text').textContent = "CONNECT WITH ME"

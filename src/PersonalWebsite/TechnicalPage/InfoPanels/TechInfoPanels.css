@@ -168,9 +168,9 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 }
 
 @media (max-width: 900px) {
-    .info-panel-content #panel-text {
+    /* .info-panel-content #panel-text {
         font-size: 16pt;
-    }
+    } */
 }
 
 @media (max-width: 850px) {
@@ -225,15 +225,15 @@ _::-webkit-full-page-media, _:future, :root .info-text {
 
 @media (max-width: 400px) {
     .title {
-        font-size: 14pt;
+        font-size: 20px;
     }
-    .info-panel-content #panel-text {
+    /* .info-panel-content #panel-text {
         font-size: 12pt;
-    }
+    } */
 }
 
 @media (max-width: 360px) {
     .title {
-        font-size: 12pt;
+        font-size: 18px;
     }
 }

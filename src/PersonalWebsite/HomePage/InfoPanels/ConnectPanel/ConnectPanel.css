@@ -226,7 +226,7 @@ a span {
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1150px) {
     .connect-panel #connect-info #connect-text {
         font-size: 17pt;
     }
@@ -305,6 +305,10 @@ a span {
     #tech-connect-panel .connect-panel #connect-info #underline {
         left: calc((100% - 90.5px) / 2);
         width: 90px;
+    }
+
+    .home-page br {
+        display: none;
     }
 }
 
