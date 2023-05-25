@@ -49,7 +49,7 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
 }
 
 .info-panel-content #panel-text {
-    font-size: 18px;
+    font-size: 20px;
     text-align: left;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
