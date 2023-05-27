@@ -2,9 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 64px;
     width: 100vw;
-    height: calc(100vh - 30px);
+    height: calc(100vh - 72px);
     z-index: 12;
 }
 
@@ -13,11 +13,11 @@
     background-image: url(./Sprites/computer-horizontal-layout.png);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center top;
     z-index: 12;
     flex-shrink: 0;
     width: 80%;
-    height: calc(100vh - 30px);
+    height: calc(100vh - 72px);
     object-fit: contain;
     animation: appear 500ms linear 0s;
 }

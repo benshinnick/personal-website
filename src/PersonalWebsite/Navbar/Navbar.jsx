@@ -103,18 +103,10 @@ export default class Navbar extends React.Component {
 
     removeEnvironmentElements() {
         document.getElementById('rocket-guy').style.display = 'none';
-        const collection = document.getElementsByClassName("cloud");
-        for(let i = 0; i < collection.length; i++) {
-            collection[i].style.display = 'none';
-        }
     }
 
     addBackEnvironmentElements() {
         document.getElementById('rocket-guy').style.display = '';
-        const collection = document.getElementsByClassName("cloud");
-        for(let i = 0; i < collection.length; i++) {
-            collection[i].style.display = '';
-        }
     }
 
     moveExtraTilesToBackground() {
