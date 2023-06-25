@@ -11,7 +11,7 @@
 
 #computer-layout {
     top: 0;
-    margin-top: 16px;
+    margin-top: 1%;
     background-image: url(./Sprites/computer-horizontal-layout.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -19,18 +19,20 @@
     z-index: 13;
     flex-shrink: 0;
     width: 80%;
-    padding-top: 32.28%;
+    padding-top: min(32.28%, 505px);
     height: 0;
     object-fit: contain;
     animation: appear 500ms linear 0s;
+    max-width: 1250px; 
 }
 
 #game-selection-container {
-    margin-top: 40px;
+    margin-top: 3%;
     /* border: 1px solid red;
     background-color: red; */
     z-index: 13;
-    width: 80%;
+    width: 100%;
+    max-width: 1250px; 
     display: flex;
     justify-content: space-evenly;
     animation: appear 500ms linear 0s;
@@ -41,9 +43,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
-    width: 15%;
+    width: 11%;
+    max-width: 150px;
     height: 0;
-    padding-top: 10.77%;
+    padding-top: 6.7%;
 }
 
 #tetris-game-cart {
@@ -51,9 +54,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
-    width: 15%;
+    width: 11%;
+    max-width: 150px;
     height: 0;
-    padding-top: 10.77%;
+    padding-top: 6.7%;
 }
 
 #minesweeper-game-cart {
@@ -61,9 +65,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
-    width: 15%;
+    width: 11%;
+    max-width: 150px;
     height: 0;
-    padding-top: 10.77%;
+    padding-top: 6.7%;
 }
 
 @keyframes appear {
