@@ -186,10 +186,10 @@ export default class PersonalWebsite extends React.Component {
                 this.navBarRef.current.enableNavbar()
                 this.navBarRef.current.transitionToExtra()
                 setTimeout(()=> {
-                    this.navBarRef.current.removeEnvironmentElements()
                     this.cloudsRef.current.hideClouds()
+                    this.navBarRef.current.removeEnvironmentElements()
                     this.navBarRef.current.moveExtraTilesToBackground()
-                }, 100)
+                }, 25)
             }, 2125)
         }
         else {
@@ -197,10 +197,10 @@ export default class PersonalWebsite extends React.Component {
                 root.render(<ExtraPage />)
                 this.navBarRef.current.enableNavbar()
                 setTimeout(()=> {
-                    this.navBarRef.current.removeEnvironmentElements()
                     this.cloudsRef.current.hideClouds()
+                    this.navBarRef.current.removeEnvironmentElements()
                     this.navBarRef.current.moveExtraTilesToBackground()
-                }, 100)
+                }, 25)
             }, 2125)
         }
     }

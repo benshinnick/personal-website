@@ -13,11 +13,11 @@ export default class TechnicalPage extends React.Component {
             <main className='extra-page'>
                 <div className='fill'>
                     <div id='computer-layout' className='sprite'/>
-                </div>
-                <div id='game-selection-container'>
-                    <div id='snake-game-cart'></div>
-                    <div id='tetris-game-cart'></div>
-                    <div id='minesweeper-game-cart'></div>
+                    <div id='game-selection-container'>
+                        <div id='snake-game-cart' className='sprite'></div>
+                        <div id='tetris-game-cart' className='sprite'></div>
+                        <div id='minesweeper-game-cart' className='sprite'></div>
+                    </div>
                 </div>
             </main>
         );
