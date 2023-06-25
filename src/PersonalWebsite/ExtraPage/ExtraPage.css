@@ -19,7 +19,7 @@
     z-index: 13;
     flex-shrink: 0;
     width: 80%;
-    padding-top: min(32.28%, 505px);
+    padding-top: min(34.2%, 505px);
     height: 0;
     object-fit: contain;
     animation: appear 500ms linear 0s;
@@ -27,22 +27,24 @@
 }
 
 #game-selection-container {
-    margin-top: 3%;
     /* border: 1px solid red;
     background-color: red; */
     z-index: 13;
-    width: 100%;
+    width: 85%;
     max-width: 1250px; 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     animation: appear 500ms linear 0s;
 }
 
 .game-selection {
+    /* border: 1px solid rgba(255, 255, 255, 0.5); */
+    margin-right: 4px;
+    margin-left: 4px;
     padding-top: 2.5%;
     padding-bottom: 2.5%;
-    width: 33.33%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +52,7 @@
 
 .game-selection-text {
     color: white;
-    font-size: min(2.5vw, 50px);
+    font-size: min(2.5vw, 40px);
     text-align: center;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
@@ -58,6 +60,10 @@
     margin-top: 16px;
     width: 100%;
     -webkit-font-smoothing: none;
+}
+
+.game-selection:hover #snake-label {
+    color: #f17878;
 }
 
 #snake-game-cart {
@@ -71,6 +77,10 @@
     max-width: 150px;
 }
 
+.game-selection:hover #tetris-label {
+    color: #76a4e9;
+}
+
 #tetris-game-cart {
     background-image: url(./Sprites/tetris-game-cart.png);
     background-size: contain;
@@ -80,6 +90,10 @@
     height: 0;
     width: 33.33%;
     max-width: 150px;
+}
+
+.game-selection:hover #minesweeper-label {
+    color: #90f49d;
 }
 
 #minesweeper-game-cart {
