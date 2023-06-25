@@ -9,14 +9,22 @@
     z-index: 12;
 }
 
-#computer-layout {
+#nav-bar-background {
+    position: fixed;
+    background-color: black;
+    height: 52px;
     top: 0;
-    margin-top: 1%;
+    width: 100vw;
+    z-index: 13;
+    filter: drop-shadow(0 0 4px black);
+}
+
+#computer-layout {
     background-image: url(./Sprites/computer-horizontal-layout.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
-    z-index: 13;
+    z-index: 12;
     flex-shrink: 0;
     width: 80%;
     padding-top: min(34.2%, 505px);
@@ -29,7 +37,7 @@
 #game-selection-container {
     /* border: 1px solid red;
     background-color: red; */
-    z-index: 13;
+    z-index: 12;
     width: 85%;
     max-width: 1250px; 
     display: flex;
@@ -60,6 +68,22 @@
     margin-top: 16px;
     width: 100%;
     -webkit-font-smoothing: none;
+}
+
+#password-clue {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: min(2vw, 30px);
+    text-align: right;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    line-height: 1.2;
+    margin-top: 40px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    -webkit-font-smoothing: none;  
+    z-index: 13;
+    animation: appear 500ms linear 0s;
 }
 
 .game-selection:hover #snake-label {

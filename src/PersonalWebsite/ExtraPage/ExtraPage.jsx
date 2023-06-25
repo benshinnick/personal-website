@@ -25,6 +25,7 @@ export default class TechnicalPage extends React.Component {
         return (
             <main className='extra-page'>
                 <div className='fill'>
+                <div id='nav-bar-background'></div>
                     <div id='computer-layout' className='sprite'/>
                     <div id='game-selection-container'>
                         <div className='game-selection' id='snake-game-selection'>
@@ -40,6 +41,7 @@ export default class TechnicalPage extends React.Component {
                             <div id='minesweeper-label' className='game-selection-text'>MINESWEEPER</div>
                         </div>
                     </div>
+                    <div id='password-clue'>Password Fragments Unlocked (0/3) *********************</div>
                 </div>
             </main>
         );
