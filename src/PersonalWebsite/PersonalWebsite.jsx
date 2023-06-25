@@ -183,24 +183,24 @@ export default class PersonalWebsite extends React.Component {
         if(this.state.currentPage === 'technical') {
             setTimeout(() => {
                 root.render(<ExtraPage />)
-                this.navBarRef.current.enableNavbar()
+                this.cloudsRef.current.hideClouds()
                 this.navBarRef.current.transitionToExtra()
-                setTimeout(()=> {
-                    this.cloudsRef.current.hideClouds()
-                    this.navBarRef.current.removeEnvironmentElements()
+                setTimeout(() => {
+                    this.navBarRef.current.enableNavbar()
                     this.navBarRef.current.moveExtraTilesToBackground()
-                }, 25)
+                    this.navBarRef.current.removeEnvironmentElements()
+                }, 100)
             }, 2125)
         }
         else {
             setTimeout(() => {
                 root.render(<ExtraPage />)
-                this.navBarRef.current.enableNavbar()
-                setTimeout(()=> {
-                    this.cloudsRef.current.hideClouds()
-                    this.navBarRef.current.removeEnvironmentElements()
+                this.cloudsRef.current.hideClouds()
+                setTimeout(() => {
+                    this.navBarRef.current.enableNavbar()
                     this.navBarRef.current.moveExtraTilesToBackground()
-                }, 25)
+                    this.navBarRef.current.removeEnvironmentElements()
+                }, 100)
             }, 2125)
         }
     }

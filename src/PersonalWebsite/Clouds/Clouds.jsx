@@ -69,6 +69,7 @@ export default class Clouds extends React.Component {
         this.setState({ cloudPosition: 'hidden' }, () => {
             const collection = document.getElementsByClassName("cloud");
             for(let i = 0; i < collection.length; i++) {
+                collection[i].style.bottom = '-800px';
                 collection[i].style.display = 'none';
             }
         })

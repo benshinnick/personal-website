@@ -113,10 +113,6 @@
 .extra-transition-tile {
     position: fixed;
     background-color: black;
-    /* transition-property: top;
-    transition-duration: 1.25s;
-    transition-delay: 0s;
-    transition-timing-function: ease-in-out; */
     border: 1px solid black;
     z-index: 10;
     animation-fill-mode: forwards;
