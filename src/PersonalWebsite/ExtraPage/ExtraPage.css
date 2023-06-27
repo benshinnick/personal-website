@@ -12,17 +12,16 @@
 #password-input-container {
     width: 100%;
     height: 100%;
-    /* background-color: red; */
 }
 
 
 #password-label {
     color: white;
-    font-size: max(2vw, 16px);
+    font-size: max(2vw, 12px);
     text-align: left;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    margin-top: 16px;
+    margin-top: 12%;
     margin-left: 3%;
     width: 90%;
     -webkit-font-smoothing: none;
@@ -30,12 +29,12 @@
 
 #password-input {
     color: white;
-    font-size: max(2vw, 16px);
+    font-size: max(2vw, 12px);
     text-align: left;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     padding: 0.5vw;
-    margin-top: 8px;
+    margin-top: 2%;
     margin-left: 3%;
     width: 63%;
     -webkit-font-smoothing: none;
@@ -57,7 +56,6 @@
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     padding: 0.5vw;
-    margin-top: 8px;
     margin-left: 2%;
     margin-right: 2%;
     width: 25%;
@@ -83,8 +81,8 @@
     background-position: center top;
     z-index: 12;
     flex-shrink: 0;
-    width: 80%;
-    padding-top: min(34.2%, 505px);
+    width: 85vw;
+    padding-top: min(36.2vw, 505px);
     height: 0;
     object-fit: contain;
     animation: appear 500ms linear 0s;
@@ -92,20 +90,15 @@
 }
 
 #computer-screen {
-    /* background-color: red; */
-    margin-top: max(-33.7vw, -461px);
+    /* margin-top: max(-33.7vw, -461px); */
+    margin-top: max(calc(-32vw - 17px), -466px);
     margin-left: 17.8%;
     width: min(49.8%, 592px);
-    height: min(23vw, 343px);
+    height: min(24.2vw, 343px);
+    /* display: flex; */
 }
 
-@media only screen and (min-width: 1480px)  {
-    #computer-screen {
-        margin-left: 15.1vw;
-    }
-}
-
-@media only screen and (min-width: 1570px)  {
+@media only screen and (min-width: 1450px)  {
     #computer-screen {
         margin-left: 242px;
     }
