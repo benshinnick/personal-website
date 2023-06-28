@@ -1,5 +1,6 @@
 import React from 'react';
 import './ExtraPage.css';
+import './PasswordScreen.css'
 import * as vt from './vanilla-tilt.js';
 
 export default class TechnicalPage extends React.Component {
@@ -30,9 +31,15 @@ export default class TechnicalPage extends React.Component {
                         <div id='computer-screen'>
                             <div id="password-input-container">
                                 <div id="password-label">Password: </div>
-                                <input type="text" id="password-input" name="password"></input>
+                                <input type="text" id="password-input" name="password" autoComplete="off"></input>
                                 <div id="password-submit-button">
+                                    <div className="corner" id="submit-top-left-corner"></div>
+                                    <div className="corner" id="submit-top-right-corner"></div>
+                                    <div className="corner" id="submit-bottom-right-corner"></div>
+                                    <div className="corner" id="submit-bottom-left-corner"></div>
+                                    <div className="submit-border" id="submit-top-border"></div>
                                     <input type="submit" id="password-submit-input" value="Enter"></input>
+                                    <div className="submit-border" id="submit-bottom-border"></div>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +58,7 @@ export default class TechnicalPage extends React.Component {
                             <div id='minesweeper-label' className='game-selection-text'>MINESWEEPER</div>
                         </div>
                     </div>
-                    <div id='password-clue'>Password Sections Unlocked (0/3)</div>
+                    {/* <div id='password-clue'>Password Sections Unlocked (0/3)</div> */}
                 </div>
             </main>
         );
