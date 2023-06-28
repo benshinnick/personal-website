@@ -10,8 +10,9 @@
 }
 
 #password-input-container {
-    width: 100%;
+    width: 90%;
     height: 100%;
+    padding: 5%;
 }
 
 
@@ -21,8 +22,6 @@
     text-align: left;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    margin-top: 12%;
-    margin-left: 3%;
     width: 90%;
     -webkit-font-smoothing: none;
 }
@@ -33,14 +32,11 @@
     text-align: left;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    padding: 0.5vw;
-    margin-top: 2%;
-    margin-left: 3%;
+    padding: 0.3vw 0.6vw;
     width: 63%;
     -webkit-font-smoothing: none;
     background-color: black;
     border: 0.3vw solid white;
-    /* border-radius: 4px; */
 }
 
 #password-input:focus {
@@ -49,19 +45,24 @@
     outline: none;
 }
 
+#password-submit-button {
+    display: inline-block;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 25%;
+}
+
 #password-submit-input {
     color: black;
     font-size: max(2vw, 12px);
     text-align: center;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    padding: 0.5vw;
-    margin-left: 2%;
-    margin-right: 2%;
-    width: 25%;
+    border: none;
+    padding: 0.6vw 2vw;
     -webkit-font-smoothing: none;
     background-color: white;
-    border: 0.3vw solid white;
+    margin-left: 0.3vw;
 }
 
 #nav-bar-background {
@@ -91,10 +92,11 @@
 
 #computer-screen {
     /* margin-top: max(-33.7vw, -461px); */
-    margin-top: max(calc(-32vw - 17px), -466px);
-    margin-left: 17.8%;
+    margin-top: max(-32.27vw, -451px);
+    margin-left: 15.13vw;
     width: min(49.8%, 592px);
-    height: min(24.2vw, 343px);
+    height: min(24.5vw, 343px);
+    /* background-color: red; */
     /* display: flex; */
 }
 

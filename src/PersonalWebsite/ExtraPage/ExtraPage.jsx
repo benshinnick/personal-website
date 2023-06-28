@@ -31,7 +31,9 @@ export default class TechnicalPage extends React.Component {
                             <div id="password-input-container">
                                 <div id="password-label">Password: </div>
                                 <input type="text" id="password-input" name="password"></input>
-                                <input type="submit" id="password-submit-input" value="Enter"></input>
+                                <div id="password-submit-button">
+                                    <input type="submit" id="password-submit-input" value="Enter"></input>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -49,7 +51,7 @@ export default class TechnicalPage extends React.Component {
                             <div id='minesweeper-label' className='game-selection-text'>MINESWEEPER</div>
                         </div>
                     </div>
-                    <div id='password-clue'>Password Segments Unlocked (0/3)</div>
+                    <div id='password-clue'>Password Sections Unlocked (0/3)</div>
                 </div>
             </main>
         );
