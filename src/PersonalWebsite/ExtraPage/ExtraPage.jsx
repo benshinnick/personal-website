@@ -19,7 +19,23 @@ export default class TechnicalPage extends React.Component {
         });
     }
 
-    componentWillUnmount() {
+    // componentWillUnmount() {
+    // }
+
+    passwordSubmitButtonOnClick() {
+        console.log("password submit button was clicked")
+    }
+
+    snakeGameSelected() {
+        console.log("snake game was selected")
+    }
+
+    tetrisGameSelected() {
+        console.log("tetris game was selected")
+    }
+
+    minesweeperGameSelected() {
+        console.log("minesweeper game was selected")
     }
 
     render() {
@@ -32,7 +48,7 @@ export default class TechnicalPage extends React.Component {
                             <div id="password-input-container">
                                 <div id="password-label">Password: </div>
                                 <input type="text" id="password-input" name="password" autoComplete="off"></input>
-                                <div id="password-submit-button">
+                                <div id="password-submit-button" onClick={() => this.passwordSubmitButtonOnClick()}>
                                     <div className="corner" id="submit-top-left-corner"></div>
                                     <div className="corner" id="submit-top-right-corner"></div>
                                     <div className="corner" id="submit-bottom-right-corner"></div>
@@ -45,15 +61,15 @@ export default class TechnicalPage extends React.Component {
                         </div>
                     </div>
                     <div id='game-selection-container'>
-                        <div className='game-selection' id='snake-game-selection'>
+                        <div className='game-selection' id='snake-game-selection' onClick={() => this.snakeGameSelected()}>
                             <div id='snake-game-cart' className='sprite'></div>
                             <div id='snake-label' className='game-selection-text'>SNAKE</div>
                         </div>
-                        <div className='game-selection' id='tetris-game-selection'>
+                        <div className='game-selection' id='tetris-game-selection' onClick={() => this.tetrisGameSelected()}>
                             <div id='tetris-game-cart' className='sprite'></div>
                             <div id='tetris-label' className='game-selection-text'>TETRIS</div>
                         </div>
-                        <div className='game-selection' id='minesweeper-game-selection'>
+                        <div className='game-selection' id='minesweeper-game-selection' onClick={() => this.minesweeperGameSelected()}>
                             <div id='minesweeper-game-cart' className='sprite'></div>
                             <div id='minesweeper-label' className='game-selection-text'>MINESWEEPER</div>
                         </div>
