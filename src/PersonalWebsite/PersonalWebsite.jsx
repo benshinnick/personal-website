@@ -180,6 +180,7 @@ export default class PersonalWebsite extends React.Component {
         this.setState({ currentPage: 'extra' })
         this.rocketGuyRef.current.setPage('extra')
         this.navBarRef.current.disableNavbar()
+        window.scrollTo(0, 0)
         if(this.state.currentPage === 'technical') {
             setTimeout(() => {
                 root.render(<ExtraPage />)

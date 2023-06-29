@@ -52,7 +52,7 @@
 }
 
 #game-selection-container {
-    margin-top: 5vw;
+    margin-top: 2.5vw;
     z-index: 12;
     width: 85%;
     max-width: 1250px; 
@@ -86,30 +86,14 @@
     -webkit-font-smoothing: none;
 }
 
-#password-clue {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: min(2vw, 30px);
-    text-align: right;
-    font-weight: bold;
-    font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    line-height: 1.6;
-    margin-top: 40px;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    -webkit-font-smoothing: none;  
-    z-index: 13;
-    animation: appear 500ms linear 0s;
-}
-
 .game-selection:hover #snake-label {
     color: #f17878;
 }
 
-.game-selection:active #snake-label {
+/* .game-selection:active #snake-label {
     margin-top: 12px;
     color: #cd4747;
-}
+} */
 
 #snake-game-cart {
     background-image: url(./Sprites/snake-game-cart.png);
@@ -126,10 +110,10 @@
     color: #76a4e9;
 }
 
-.game-selection:active #tetris-label {
+/* .game-selection:active #tetris-label {
     margin-top: 12px;
     color: #4378c8;
-}
+} */
 
 #tetris-game-cart {
     background-image: url(./Sprites/tetris-game-cart.png);
@@ -146,10 +130,10 @@
     color: #90f49d;
 }
 
-.game-selection:active #minesweeper-label {
+/* .game-selection:active #minesweeper-label {
     margin-top: 12px;
     color: #52c461;
-}
+} */
 
 #minesweeper-game-cart {
     background-image: url(./Sprites/minesweeper-game-cart.png);
