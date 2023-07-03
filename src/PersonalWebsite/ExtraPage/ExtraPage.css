@@ -106,17 +106,17 @@
     max-width: 150px;
 }
 
-.game-selection:hover #tetris-label {
+.game-selection:hover #tetra-mix-label {
     color: #76a4e9;
 }
 
-/* .game-selection:active #tetris-label {
+/* .game-selection:active #tetra-mix-label {
     margin-top: 12px;
     color: #4378c8;
 } */
 
-#tetris-game-cart {
-    background-image: url(./Sprites/tetris-game-cart.png);
+#tetra-mix-game-cart {
+    background-image: url(./Sprites/tetra-mix-game-cart.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
