@@ -3,6 +3,8 @@ import './ExtraPage.css';
 import './PasswordScreen.css'
 import * as vt from './vanilla-tilt.js';
 
+var selectedGame = 'none'
+
 export default class TechnicalPage extends React.Component {
     componentDidMount() {
         vt.VanillaTilt.init(document.querySelector("#snake-game-selection"), {
@@ -20,9 +22,6 @@ export default class TechnicalPage extends React.Component {
         this.loadPasswordScreen()
     }
 
-    // componentWillUnmount() {
-    // }
-
     clearComputerScreen() {
         document.getElementById('computer-screen').innerHTML = '';
     }
@@ -31,7 +30,7 @@ export default class TechnicalPage extends React.Component {
         this.clearComputerScreen();
 
         var passwordInputContainer = document.createElement('div')
-        passwordInputContainer.id = 'password-input-container'
+        passwordInputContainer.className = 'computer-screen-container'
 
         var passwordLabel = document.createElement('div')
         passwordLabel.id = 'password-label'
@@ -96,7 +95,7 @@ export default class TechnicalPage extends React.Component {
         this.clearComputerScreen();
 
         var snakeTitleScreenContainer = document.createElement('div')
-        snakeTitleScreenContainer.id = 'password-input-container'
+        snakeTitleScreenContainer.className = 'computer-screen-container'
 
         var titleLabel = document.createElement('div')
         titleLabel.id = 'password-label'
@@ -110,7 +109,7 @@ export default class TechnicalPage extends React.Component {
         this.clearComputerScreen();
 
         var tetraMixTitleScreenContainer = document.createElement('div')
-        tetraMixTitleScreenContainer.id = 'password-input-container'
+        tetraMixTitleScreenContainer.className = 'computer-screen-container'
 
         var titleLabel = document.createElement('div')
         titleLabel.id = 'password-label'
@@ -124,7 +123,7 @@ export default class TechnicalPage extends React.Component {
         this.clearComputerScreen();
 
         var minesweeperTitleScreenContainer = document.createElement('div')
-        minesweeperTitleScreenContainer.id = 'password-input-container'
+        minesweeperTitleScreenContainer.className = 'computer-screen-container'
 
         var titleLabel = document.createElement('div')
         titleLabel.id = 'password-label'
@@ -142,19 +141,30 @@ export default class TechnicalPage extends React.Component {
         }, 150);
     }
 
-    snakeGameSelected() {
-        console.log("snake game was selected")
-        this.loadSnakeTitleScreen()
-    }
+    handleGameSelection(game) {
+        if(selectedGame === game) {
+            this.loadPasswordScreen()
+            document.getElementById(`${game}-game-selection`).className = 'game-selection'
+            document.getElementById(`${game}-label`).innerHTML = game.toUpperCase().replace('-',' ')
+            selectedGame = 'none'
+            return
+        }
+        if(game === 'snake') this.loadSnakeTitleScreen()
+        if(game === 'tetra-mix') this.loadTetraMixTitleScreen()
+        if(game === 'minesweeper') this.loadMinesweeperTitleScreen()
 
-    tetraMixGameSelected() {
-        console.log("tetra mix game was selected")
-        this.loadTetraMixTitleScreen()
-    }
-
-    minesweeperGameSelected() {
-        console.log("minesweeper game was selected")
-        this.loadMinesweeperTitleScreen()
+        if(selectedGame === 'none') {
+            document.getElementById(`${game}-game-selection`).className = 'game-selection-ejected'
+            document.getElementById(`${game}-label`).innerHTML = 'EJECT'
+            selectedGame = game
+        }
+        else {
+            document.getElementById(`${selectedGame}-game-selection`).className = 'game-selection'
+            document.getElementById(`${selectedGame}-label`).innerHTML = selectedGame.toUpperCase().replace('-',' ')
+            document.getElementById(`${game}-game-selection`).className = 'game-selection-ejected'
+            document.getElementById(`${game}-label`).innerHTML = 'EJECT'
+            selectedGame = game
+        }
     }
 
     render() {
@@ -166,17 +176,17 @@ export default class TechnicalPage extends React.Component {
                         <div id='computer-screen'></div>
                     </div>
                     <div id='game-selection-container'>
-                        <div className='game-selection' id='snake-game-selection' onClick={() => this.snakeGameSelected()}>
-                            <div id='snake-game-cart' className='sprite'></div>
-                            <div id='snake-label' className='game-selection-text'>SNAKE</div>
+                        <div className='game-selection' id='snake-game-selection' onClick={() => this.handleGameSelection('snake')}>
+                            <div id='snake-game-cart' className='sprite game-cart snake-game-cart'></div>
+                            <div id='snake-label' className='game-selection-label'>SNAKE</div>
                         </div>
-                        <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.tetraMixGameSelected()}>
-                            <div id='tetra-mix-game-cart' className='sprite'></div>
-                            <div id='tetra-mix-label' className='game-selection-text'>TETRA MIX</div>
+                        <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.handleGameSelection('tetra-mix')}>
+                            <div id='tetra-mix-game-cart' className='sprite game-cart tetra-mix-game-cart'></div>
+                            <div id='tetra-mix-label' className='game-selection-label'>TETRA MIX</div>
                         </div>
-                        <div className='game-selection' id='minesweeper-game-selection' onClick={() => this.minesweeperGameSelected()}>
-                            <div id='minesweeper-game-cart' className='sprite'></div>
-                            <div id='minesweeper-label' className='game-selection-text'>MINESWEEPER</div>
+                        <div className='game-selection' id='minesweeper-game-selection' onClick={() => this.handleGameSelection('minesweeper')}>
+                            <div id='minesweeper-game-cart' className='sprite game-cart minesweeper-game-cart'></div>
+                            <div id='minesweeper-label' className='game-selection-label'>MINESWEEPER</div>
                         </div>
                     </div>
                 </div>

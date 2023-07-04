@@ -9,6 +9,12 @@
     z-index: 12;
 }
 
+.computer-screen-container {
+    width: 90%;
+    height: 100%;
+    padding: 5%;
+}
+
 #nav-bar-background {
     position: fixed;
     background-color: black;
@@ -63,7 +69,6 @@
 }
 
 .game-selection {
-    /* border: 2px solid white; */
     margin-right: 4px;
     margin-left: 4px;
     padding-top: 2.5%;
@@ -74,7 +79,18 @@
     align-items: center;
 }
 
-.game-selection-text {
+.game-selection-ejected {
+    margin-right: 4px;
+    margin-left: 4px;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-selection-label {
     color: white;
     font-size: min(2.5vw, 40px);
     text-align: center;
@@ -86,64 +102,62 @@
     -webkit-font-smoothing: none;
 }
 
-.game-selection:hover #snake-label {
+.game-cart {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    padding-top: 18%;
+    height: 0;
+    width: 33.33%;
+    max-width: 150px;
+}
+
+#snake-game-selection.game-selection #snake-game-cart {
+    background-image: url(./Sprites/snake-game-cart.png);
+}
+
+#snake-game-selection.game-selection-ejected #snake-game-cart {
+    background-image: url(./Sprites/eject-game-cart.png);
+}
+
+#snake-game-selection.game-selection:hover #snake-label {
     color: #f17878;
 }
 
-/* .game-selection:active #snake-label {
-    margin-top: 12px;
-    color: #cd4747;
-} */
-
-#snake-game-cart {
-    background-image: url(./Sprites/snake-game-cart.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center top;
-    padding-top: 18%;
-    height: 0;
-    width: 33.33%;
-    max-width: 150px;
+#snake-game-selection.game-selection-ejected:hover #snake-label {
+    color: rgb(180, 180, 180);
 }
 
-.game-selection:hover #tetra-mix-label {
+#tetra-mix-game-selection.game-selection #tetra-mix-game-cart {
+    background-image: url(./Sprites/tetra-mix-game-cart.png);
+}
+
+#tetra-mix-game-selection.game-selection-ejected #tetra-mix-game-cart {
+    background-image: url(./Sprites/eject-game-cart.png);
+}
+
+#tetra-mix-game-selection.game-selection:hover #tetra-mix-label {
     color: #76a4e9;
 }
 
-/* .game-selection:active #tetra-mix-label {
-    margin-top: 12px;
-    color: #4378c8;
-} */
-
-#tetra-mix-game-cart {
-    background-image: url(./Sprites/tetra-mix-game-cart.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center top;
-    padding-top: 18%;
-    height: 0;
-    width: 33.33%;
-    max-width: 150px;
+#tetra-mix-game-selection.game-selection-ejected:hover #tetra-mix-label {
+    color: rgb(180, 180, 180);
 }
 
-.game-selection:hover #minesweeper-label {
+#minesweeper-game-selection.game-selection .minesweeper-game-cart {
+    background-image: url(./Sprites/minesweeper-game-cart.png);
+}
+
+#minesweeper-game-selection.game-selection-ejected .minesweeper-game-cart {
+    background-image: url(./Sprites/eject-game-cart.png);
+}
+
+.game-selection.game-selection:hover #minesweeper-label {
     color: #90f49d;
 }
 
-/* .game-selection:active #minesweeper-label {
-    margin-top: 12px;
-    color: #52c461;
-} */
-
-#minesweeper-game-cart {
-    background-image: url(./Sprites/minesweeper-game-cart.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center top;
-    padding-top: 18%;
-    height: 0;
-    width: 33.33%;
-    max-width: 150px;
+.game-selection.game-selection-ejected:hover #minesweeper-label {
+    color: rgb(180, 180, 180);
 }
 
 @keyframes appear {
