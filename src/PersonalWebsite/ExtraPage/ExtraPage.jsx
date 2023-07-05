@@ -142,17 +142,21 @@ export default class TechnicalPage extends React.Component {
     }
 
     handleGameSelection(game) {
+        document.getElementById('inserted-game-cart').style.animation = '';
         if(selectedGame === game) {
             this.loadPasswordScreen()
             document.getElementById(`${game}-game-selection`).className = 'game-selection'
             document.getElementById(`${game}-label`).innerHTML = game.toUpperCase().replace('-',' ')
             selectedGame = 'none'
+            document.getElementById('inserted-game-cart').style.animation = 'eject-cart forwards ease-in-out 650ms'
             return
         }
         if(game === 'snake') this.loadSnakeTitleScreen()
         if(game === 'tetra-mix') this.loadTetraMixTitleScreen()
         if(game === 'minesweeper') this.loadMinesweeperTitleScreen()
 
+
+        document.getElementById('inserted-game-cart').className = ''
         if(selectedGame === 'none') {
             document.getElementById(`${game}-game-selection`).className = 'game-selection-ejected'
             document.getElementById(`${game}-label`).innerHTML = 'EJECT'
@@ -165,6 +169,11 @@ export default class TechnicalPage extends React.Component {
             document.getElementById(`${game}-label`).innerHTML = 'EJECT'
             selectedGame = game
         }
+        setTimeout(() => {
+            document.getElementById('inserted-game-cart').className = `${game}-game-cart`
+            document.getElementById('inserted-game-cart').style.animation = 'insert-cart forwards ease-in-out 650ms'
+        }, 1)
+        // document.getElementById('inserted-game-cart').style.animation = 'insert-cart forwards ease-in-out 650ms'
     }
 
     render() {
@@ -173,6 +182,7 @@ export default class TechnicalPage extends React.Component {
                 <div className='fill'>
                 <div id='nav-bar-background'></div>
                     <div id='computer-layout' className='sprite'>
+                        <div id='inserted-game-cart'><div id='bottom-border'></div></div>
                         <div id='computer-screen'></div>
                     </div>
                     <div id='game-selection-container'>
