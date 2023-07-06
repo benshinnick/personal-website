@@ -155,7 +155,6 @@ export default class TechnicalPage extends React.Component {
         if(game === 'tetra-mix') this.loadTetraMixTitleScreen()
         if(game === 'minesweeper') this.loadMinesweeperTitleScreen()
 
-
         document.getElementById('inserted-game-cart').className = ''
         if(selectedGame === 'none') {
             document.getElementById(`${game}-game-selection`).className = 'game-selection-ejected'
@@ -182,8 +181,9 @@ export default class TechnicalPage extends React.Component {
                 <div className='fill'>
                 <div id='nav-bar-background'></div>
                     <div id='computer-layout' className='sprite'>
-                        <div id='inserted-game-cart'><div id='bottom-border'></div></div>
+                        <div id='inserted-game-cart'></div>
                         <div id='computer-screen'></div>
+                        <div id='bottom-border'></div>
                     </div>
                     <div id='game-selection-container'>
                         <div className='game-selection' id='snake-game-selection' onClick={() => this.handleGameSelection('snake')}>
