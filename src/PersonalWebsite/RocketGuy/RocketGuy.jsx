@@ -112,19 +112,21 @@ export default class RocketGuy extends React.Component {
         const rocketGuy = getRocketGuyElement()
         topOffset = 0
         rocketGuy.style.opacity = '0'
-        rocketGuy.style.transition = ''
-        rocketGuy.style.marginTop = '0'
-        window.scrollTo({top: 101, behavior: 'instant'})
-        rocketGuy.style.transition = 'margin-top 600ms ease-out'
+        rocketGuy.style.transition = 'margin-top 1ms ease-out'
         disableScroll()
         setTimeout(() => {
-            window.scrollTo({top: 101, behavior: 'instant'})
+            rocketGuy.style.marginTop = '-1000px'
+            rocketGuy.style.transition = 'margin-top 1000ms ease-out'
             setTimeout(() => {
+                rocketGuy.style.transition = 'margin-top 1000ms ease-out'
                 window.scrollTo({top: 700, behavior: 'instant'})
                 enableScroll()
                 rocketGuy.style.opacity = '1'
                 rocketGuy.style.zIndex = '1'
             }, 400)
+            setTimeout(() => {
+                rocketGuy.style.transition = 'margin-top 600ms ease-out'
+            }, 500)
         }, 350)
     }
 
@@ -132,20 +134,23 @@ export default class RocketGuy extends React.Component {
         const rocketGuy = getRocketGuyElement()
         const scrollHeight = Math.floor(window.innerHeight*5) - window.innerHeight
         topOffset = 50
-        rocketGuy.style.opacity = '0'
-        rocketGuy.style.transition = ''
         rocketGuy.style.marginTop = `${scrollHeight/(2.5 * 1.5) + topOffset}px`
-        rocketGuy.style.transition = 'margin-top 600ms ease-out'
+        rocketGuy.style.transition = 'margin-top 1ms ease-out'
         disableScroll()
         setTimeout(() => {
-            window.scrollTo({top: scrollHeight, behavior: 'instant'})
+            rocketGuy.style.marginTop = `${scrollHeight/(2.5 * 1.5) + topOffset + 200}px`
+            rocketGuy.style.transition = 'margin-top 1000ms ease-out'
             setTimeout(() => {
+                rocketGuy.style.transition = 'margin-top 1000ms ease-out'
                 const scrollHeight = document.getElementById("filler-home").scrollHeight - window.innerHeight 
                 window.scrollTo({top: scrollHeight - 1200, behavior: 'instant'})
                 enableScroll()
                 rocketGuy.style.opacity = '1'
                 rocketGuy.style.zIndex = '2'
             }, 400)
+            setTimeout(() => {
+                rocketGuy.style.transition = 'margin-top 600ms ease-out'
+            }, 500)
         }, 350)
     }
 
