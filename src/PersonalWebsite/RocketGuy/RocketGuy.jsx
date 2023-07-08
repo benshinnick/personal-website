@@ -134,6 +134,7 @@ export default class RocketGuy extends React.Component {
         const rocketGuy = getRocketGuyElement()
         const scrollHeight = Math.floor(window.innerHeight*5) - window.innerHeight
         topOffset = 50
+        rocketGuy.style.opacity = '0'
         rocketGuy.style.marginTop = `${scrollHeight/(2.5 * 1.5) + topOffset}px`
         rocketGuy.style.transition = 'margin-top 1ms ease-out'
         disableScroll()
