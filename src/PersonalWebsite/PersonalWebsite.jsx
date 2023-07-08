@@ -35,7 +35,6 @@ export default class PersonalWebsite extends React.Component {
 
     handleScroll = () => {
         const scrollY = window.scrollY
-        console.log(window.scrollY)
         this.rocketGuyRef.current.moveOnScroll(scrollY)
         if ((window.innerHeight + scrollY + 50) >= document.body.offsetHeight) {
             scrollPos = 'bottom'
