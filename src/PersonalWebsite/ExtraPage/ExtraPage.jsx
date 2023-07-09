@@ -1,6 +1,7 @@
 import React from 'react';
 import './ExtraPage.css';
-import './PasswordScreen.css'
+import './PasswordScreen.css';
+import './TitleScreens.css';
 import * as vt from './vanilla-tilt.js';
 
 var selectedGame = 'none'
@@ -97,10 +98,42 @@ export default class TechnicalPage extends React.Component {
         var snakeTitleScreenContainer = document.createElement('div')
         snakeTitleScreenContainer.className = 'computer-screen-container'
 
+        var titleBanner = document.createElement('div')
+        titleBanner.className = 'title-banner'
+        titleBanner.id = 'snake-title-banner'
+        snakeTitleScreenContainer.appendChild(titleBanner)
+
         var titleLabel = document.createElement('div')
-        titleLabel.id = 'password-label'
+        titleLabel.className = 'game-title'
         titleLabel.innerHTML = 'SNAKE'
         snakeTitleScreenContainer.appendChild(titleLabel)
+
+        var playButton = document.createElement('div')
+        playButton.id = 'snake-play-button'
+        playButton.className = 'game-play-button'
+        playButton.innerHTML = 'PLAY'
+        snakeTitleScreenContainer.appendChild(playButton)
+
+        var iconContainer = document.createElement('div')
+        iconContainer.className = 'game-icon-conatainer'
+
+        var settingsButton = document.createElement('div')
+        settingsButton.className = 'settings-button'
+        var settingsButtonTooltip = document.createElement('div')
+        settingsButtonTooltip.className = 'icon-tooltip'
+        settingsButtonTooltip.innerHTML = "settings"
+        settingsButton.appendChild(settingsButtonTooltip)
+        iconContainer.appendChild(settingsButton)
+
+        var highScoresButton = document.createElement('div')
+        highScoresButton.className = 'high-scores-button'
+        var highScoresButtonTooltip = document.createElement('div')
+        highScoresButtonTooltip.className = 'icon-tooltip'
+        highScoresButtonTooltip.innerHTML = "high<br></br>scores"
+        highScoresButton.appendChild(highScoresButtonTooltip)
+        iconContainer.appendChild(highScoresButton)
+
+        snakeTitleScreenContainer.appendChild(iconContainer)
 
         document.getElementById('computer-screen').appendChild(snakeTitleScreenContainer)
     }

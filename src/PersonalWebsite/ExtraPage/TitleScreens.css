@@ -1,0 +1,143 @@
+.title-banner {
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    flex-shrink: 0;
+    padding-top: min(8.6vw, 505px);
+    height: 0;
+    object-fit: contain;
+    /* animation: appear 500ms linear 0s; */
+    /* max-width: 1250px; */
+
+}
+
+#snake-title-banner {
+    /* background-color: blue; */
+    background-image: url(./Sprites/snake-title-screen.png);
+}
+
+.game-title {
+    color: white;
+    font-size: 3.5vw;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    width: 100%;
+    padding-bottom: 0.6vw;
+    -webkit-font-smoothing: none;
+    letter-spacing: 0.3vw;
+    /* background-color: red; */
+    /* border-top: 0.4vw solid white; */
+    margin-top: 2vw;
+}
+
+.game-play-button {
+    font-size: 3.5vw;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    width: 33.3%;
+    margin-left: 33.3%;
+    margin-right: 33.3%;
+    padding-bottom: 0.6vw;
+    -webkit-font-smoothing: none;
+    letter-spacing: 0.2vw;
+    margin-top: 1vw;
+}
+
+#snake-play-button {
+    color: #eb4242;
+}
+
+#snake-play-button:hover {
+    color: #eb3131;
+    cursor: pointer;
+}
+
+.game-icon-conatainer {
+    width: 100%;
+    margin-top: -2vw;
+}
+
+.settings-button {
+    width: 6.2%;
+    height: 0;
+    float: left;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    flex-shrink: 0;
+    padding-top: 2.5vw;
+    height: 0;
+    object-fit: contain;
+    background-image: url(./Sprites/settings-icon.png);
+}
+
+.settings-button:hover {
+    background-image: url(./Sprites/settings-icon-hover.png);
+    cursor: pointer;
+}
+
+.settings-button .icon-tooltip {
+    margin-left: -1.9vw;
+    margin-top: -4.9vw;
+    visibility: visible;
+    color: white;
+    font-size: 1.4vw;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    padding-bottom: 0.6vw;
+    -webkit-font-smoothing: none;
+    padding: 0.3vw;
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+}
+
+.settings-button:hover .icon-tooltip {
+    visibility: visible;
+}
+
+.high-scores-button {
+    width: 6.2%;
+    height: 0;
+    float: right;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    flex-shrink: 0;
+    padding-top: 2.5vw;
+    height: 0;
+    object-fit: contain;
+    background-image: url(./Sprites/high-scores-icon.png);
+}
+
+.high-scores-button:hover {
+    background-image: url(./Sprites/high-scores-icon-hover.png);
+    cursor: pointer;
+}
+
+.high-scores-button .icon-tooltip {
+    margin-left: -1.6vw;
+    margin-top: -6.1vw;
+    visibility: visible;
+    color: white;
+    font-size: 1.4vw;
+    line-height: 0.8vw;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    -webkit-font-smoothing: none;
+    padding: 0.3vw;
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+}
+
+.high-scores-button:hover .icon-tooltip {
+    visibility: visible;
+}
