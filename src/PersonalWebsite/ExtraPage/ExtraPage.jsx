@@ -92,27 +92,27 @@ export default class TechnicalPage extends React.Component {
         document.getElementById('computer-screen').appendChild(passwordInputContainer)
     }
 
-    loadSnakeTitleScreen() {
+    loadGameTitleScreen(game) {
         this.clearComputerScreen();
 
-        var snakeTitleScreenContainer = document.createElement('div')
-        snakeTitleScreenContainer.className = 'computer-screen-container'
+        var gameTitleScreenContainer = document.createElement('div')
+        gameTitleScreenContainer.className = 'computer-screen-container'
 
         var titleBanner = document.createElement('div')
         titleBanner.className = 'title-banner'
-        titleBanner.id = 'snake-title-banner'
-        snakeTitleScreenContainer.appendChild(titleBanner)
+        titleBanner.id = `${game}-title-banner`
+        gameTitleScreenContainer.appendChild(titleBanner)
 
         var titleLabel = document.createElement('div')
         titleLabel.className = 'game-title'
-        titleLabel.innerHTML = 'SNAKE'
-        snakeTitleScreenContainer.appendChild(titleLabel)
+        titleLabel.innerHTML = `${game.toUpperCase().replace("-"," ")}`
+        gameTitleScreenContainer.appendChild(titleLabel)
 
         var playButton = document.createElement('div')
-        playButton.id = 'snake-play-button'
+        playButton.id = `${game}-play-button`
         playButton.className = 'game-play-button'
         playButton.innerHTML = 'PLAY'
-        snakeTitleScreenContainer.appendChild(playButton)
+        gameTitleScreenContainer.appendChild(playButton)
 
         var iconContainer = document.createElement('div')
         iconContainer.className = 'game-icon-conatainer'
@@ -133,37 +133,9 @@ export default class TechnicalPage extends React.Component {
         highScoresButton.appendChild(highScoresButtonTooltip)
         iconContainer.appendChild(highScoresButton)
 
-        snakeTitleScreenContainer.appendChild(iconContainer)
+        gameTitleScreenContainer.appendChild(iconContainer)
 
-        document.getElementById('computer-screen').appendChild(snakeTitleScreenContainer)
-    }
-
-    loadTetraMixTitleScreen() {
-        this.clearComputerScreen();
-
-        var tetraMixTitleScreenContainer = document.createElement('div')
-        tetraMixTitleScreenContainer.className = 'computer-screen-container'
-
-        var titleLabel = document.createElement('div')
-        titleLabel.id = 'password-label'
-        titleLabel.innerHTML = 'TETRA MIX'
-        tetraMixTitleScreenContainer.appendChild(titleLabel)
-
-        document.getElementById('computer-screen').appendChild(tetraMixTitleScreenContainer)
-    }
-
-    loadMinesweeperTitleScreen() {
-        this.clearComputerScreen();
-
-        var minesweeperTitleScreenContainer = document.createElement('div')
-        minesweeperTitleScreenContainer.className = 'computer-screen-container'
-
-        var titleLabel = document.createElement('div')
-        titleLabel.id = 'password-label'
-        titleLabel.innerHTML = 'MINESWEEPER'
-        minesweeperTitleScreenContainer.appendChild(titleLabel)
-
-        document.getElementById('computer-screen').appendChild(minesweeperTitleScreenContainer)
+        document.getElementById('computer-screen').appendChild(gameTitleScreenContainer)
     }
 
     passwordSubmitButtonOnClick() {
@@ -184,9 +156,9 @@ export default class TechnicalPage extends React.Component {
             document.getElementById('inserted-game-cart').style.animation = 'eject-cart forwards ease-in-out 650ms'
             return
         }
-        if(game === 'snake') this.loadSnakeTitleScreen()
-        if(game === 'tetra-mix') this.loadTetraMixTitleScreen()
-        if(game === 'minesweeper') this.loadMinesweeperTitleScreen()
+        if(game === 'snake') this.loadGameTitleScreen('snake')
+        if(game === 'tetra-mix') this.loadGameTitleScreen('tetra-mix')
+        if(game === 'minesweeper') this.loadGameTitleScreen('minesweeper')
 
         document.getElementById('inserted-game-cart').className = ''
         if(selectedGame === 'none') {

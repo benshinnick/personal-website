@@ -13,8 +13,15 @@
 }
 
 #snake-title-banner {
-    /* background-color: blue; */
-    background-image: url(./Sprites/snake-title-screen.png);
+    background-image: url(./Sprites/snake-title-banner.png);
+}
+
+#tetra-mix-title-banner {
+    background-image: url(./Sprites/tetra-mix-title-banner.png);
+}
+
+#minesweeper-title-banner {
+    background-image: url(./Sprites/minesweeper-title-banner.png);
 }
 
 .game-title {
@@ -52,6 +59,24 @@
 
 #snake-play-button:hover {
     color: #eb3131;
+    cursor: pointer;
+}
+
+#tetra-mix-play-button {
+    color: #7472f6;
+}
+
+#tetra-mix-play-button:hover {
+    color: #615fed;
+    cursor: pointer;
+}
+
+#minesweeper-play-button {
+    color: #5cf07a;
+}
+
+#minesweeper-play-button:hover {
+    color: #47e667;
     cursor: pointer;
 }
 
