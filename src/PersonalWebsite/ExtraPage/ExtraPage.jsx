@@ -89,7 +89,13 @@ export default class TechnicalPage extends React.Component {
         passwordClue.innerHTML = 'Password Sections Unlocked (0/3)'
         passwordInputContainer.appendChild(passwordClue)
 
+        var time = document.createElement('div')
+        time.id = 'time'
+        passwordInputContainer.appendChild(time)
+
         document.getElementById('computer-screen').appendChild(passwordInputContainer)
+
+        startTime()
     }
 
     loadGameTitleScreen(game) {
@@ -208,4 +214,21 @@ export default class TechnicalPage extends React.Component {
             </main>
         );
     }
+}
+
+function checkTime(i) {
+    return (i < 10) ? "0" + i : i;
+}
+
+function startTime() {
+    var dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var today = new Date();
+    var d = checkTime(today.getDay());
+    var h = checkTime(today.getHours());
+    var m = checkTime(today.getMinutes());
+    var s = checkTime(today.getSeconds());
+    document.getElementById('time').innerHTML = dayOfWeek[parseInt(d)] + " " + h + ":" + m + ":" + s;
+    setTimeout(function () {
+        startTime()
+    }, 500);
 }
