@@ -18,10 +18,17 @@
 
 #tetra-mix-title-banner {
     background-image: url(./Sprites/tetra-mix-title-banner.png);
+    padding-top: 25vw;
+    margin-top: 2vw;
+    margin-bottom: -28vw;
 }
 
 #minesweeper-title-banner {
     background-image: url(./Sprites/minesweeper-title-banner.png);
+}
+
+.tetra-mix-title-screen .game-icon-conatainer {
+    margin-top: 7.6vw;
 }
 
 .game-title {
@@ -33,11 +40,13 @@
     width: 100%;
     padding-bottom: 0.6vw;
     -webkit-font-smoothing: none;
-    letter-spacing: 0.3vw;
+    letter-spacing: 0.1vw;
     /* background-color: red; */
     /* border-top: 0.4vw solid white; */
     margin-top: 2vw;
 }
+
+
 
 .game-play-button {
     font-size: 3.5vw;

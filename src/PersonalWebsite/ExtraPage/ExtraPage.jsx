@@ -86,7 +86,7 @@ export default class TechnicalPage extends React.Component {
 
         var passwordClue = document.createElement('div')
         passwordClue.id = 'password-clue'
-        passwordClue.innerHTML = 'Password Sections Unlocked (0/3)'
+        passwordClue.innerHTML = 'Passwords Unlocked (0/3)'
         passwordInputContainer.appendChild(passwordClue)
 
         var time = document.createElement('div')
@@ -102,7 +102,7 @@ export default class TechnicalPage extends React.Component {
         this.clearComputerScreen();
 
         var gameTitleScreenContainer = document.createElement('div')
-        gameTitleScreenContainer.className = 'computer-screen-container'
+        gameTitleScreenContainer.className = `computer-screen-container ${game}-title-screen`
 
         var titleBanner = document.createElement('div')
         titleBanner.className = 'title-banner'
