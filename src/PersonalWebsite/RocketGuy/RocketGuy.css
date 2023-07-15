@@ -6,7 +6,7 @@
     zoom: 1;
     width: 80px;
     height: 80px;
-    transition: margin-top 600ms ease-out;
+    transition: transform 600ms ease-out;
     z-index: 2;
     animation-name: float;
     animation-timing-function: steps(5);

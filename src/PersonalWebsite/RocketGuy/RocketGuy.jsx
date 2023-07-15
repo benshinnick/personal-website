@@ -103,7 +103,7 @@ export default class RocketGuy extends React.Component {
                 this.switchToStoppingAnimation()
             }, 500);
     
-            rocketGuy.style.marginTop = `${spriteYPos}px`
+            rocketGuy.style.transform = `translateY(${spriteYPos}px)`
             lastScrollYPos = currScrollYPos
         }
     }
@@ -112,20 +112,20 @@ export default class RocketGuy extends React.Component {
         const rocketGuy = getRocketGuyElement()
         topOffset = 0
         rocketGuy.style.opacity = '0'
-        rocketGuy.style.transition = 'margin-top 1ms ease-out'
+        rocketGuy.style.transition = 'transform 1ms ease-out'
         disableScroll()
         setTimeout(() => {
-            rocketGuy.style.marginTop = '-1000px'
-            rocketGuy.style.transition = 'margin-top 1000ms ease-out'
+            rocketGuy.style.transform = 'translateY(-1000px)'
+            rocketGuy.style.transition = 'transform 1000ms ease-out'
             setTimeout(() => {
-                rocketGuy.style.transition = 'margin-top 1000ms ease-out'
+                rocketGuy.style.transition = 'transform 1000ms ease-out'
                 window.scrollTo({top: 700, behavior: 'instant'})
                 enableScroll()
                 rocketGuy.style.opacity = '1'
                 rocketGuy.style.zIndex = '1'
             }, 400)
             setTimeout(() => {
-                rocketGuy.style.transition = 'margin-top 600ms ease-out'
+                rocketGuy.style.transition = 'transform 400ms ease-out'
             }, 500)
         }, 350)
     }
@@ -135,14 +135,14 @@ export default class RocketGuy extends React.Component {
         const scrollHeight = Math.floor(window.innerHeight*5) - window.innerHeight
         topOffset = 50
         rocketGuy.style.opacity = '0'
-        rocketGuy.style.marginTop = `${scrollHeight/(2.5 * 1.5) + topOffset}px`
-        rocketGuy.style.transition = 'margin-top 1ms ease-out'
+        rocketGuy.style.transform = `translateY(${scrollHeight/(2.5 * 1.5) + topOffset}px)`
+        rocketGuy.style.transition = 'transform 1ms ease-out'
         disableScroll()
         setTimeout(() => {
-            rocketGuy.style.marginTop = `${scrollHeight/(2.5 * 1.5) + topOffset + 200}px`
-            rocketGuy.style.transition = 'margin-top 1000ms ease-out'
+            rocketGuy.style.transform = `${scrollHeight/(2.5 * 1.5) + topOffset + 200}px`
+            rocketGuy.style.transition = 'transform 1000ms ease-out'
             setTimeout(() => {
-                rocketGuy.style.transition = 'margin-top 1000ms ease-out'
+                rocketGuy.style.transition = 'transform 1000ms ease-out'
                 const scrollHeight = document.getElementById("filler-home").scrollHeight - window.innerHeight 
                 window.scrollTo({top: scrollHeight - 1200, behavior: 'instant'})
                 enableScroll()
@@ -150,7 +150,7 @@ export default class RocketGuy extends React.Component {
                 rocketGuy.style.zIndex = '2'
             }, 400)
             setTimeout(() => {
-                rocketGuy.style.transition = 'margin-top 600ms ease-out'
+                rocketGuy.style.transition = 'transform 600ms ease-out'
             }, 500)
         }, 350)
     }

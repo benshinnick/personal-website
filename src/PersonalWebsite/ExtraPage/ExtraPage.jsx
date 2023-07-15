@@ -145,7 +145,6 @@ export default class TechnicalPage extends React.Component {
     }
 
     passwordSubmitButtonOnClick() {
-        console.log("password submit button was clicked")
         document.getElementById("password-input").style.animation = "horizontal-shaking linear 150ms"
         setTimeout(() => {
             document.getElementById("password-input").style.animation = ""
@@ -185,7 +184,6 @@ export default class TechnicalPage extends React.Component {
             document.getElementById('inserted-game-cart').className = `${game}-game-cart`
             document.getElementById('inserted-game-cart').style.animation = 'insert-cart forwards ease-in-out 650ms'
         }, 1)
-        // document.getElementById('inserted-game-cart').style.animation = 'insert-cart forwards ease-in-out 650ms'
     }
 
     render() {
