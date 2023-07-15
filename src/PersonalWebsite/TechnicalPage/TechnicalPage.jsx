@@ -4,7 +4,7 @@ import Moon from './Moon/Moon';
 import Buildings from './Buildings/Buildings';
 import TechInfoPanels from './InfoPanels/TechInfoPanels';
 import Stars from './Stars/Stars'
-import ShootingStars from './Stars/ShootingStars'
+import ShootingStars from '../HomePage/Stars/ShootingStars'
 
 export default class TechnicalPage extends React.Component {
     constructor(props) {

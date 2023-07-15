@@ -45,16 +45,16 @@
 }
 
 @keyframes move-small {
-    from {left: -184px; }
-    to { left: 100%; }
+    from { transform: translateX(-184px); }
+    to { transform: translateX(100vw) }
 }
 
 @keyframes move-medium {
-    from {left: -296px; }
-    to { left: 100%; }
+    from { transform: translateX(-296px); }
+    to { transform: translateX(100vw); }
 }
 
 @keyframes move-large {
-    from {left: -420px; }
-    to { left: 100%; }
+    from { transform: translateX(-420px); }
+    to { transform: translateX(100vw); }
 }

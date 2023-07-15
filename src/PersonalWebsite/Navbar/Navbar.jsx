@@ -113,12 +113,14 @@ export default class Navbar extends React.Component {
         for(let i = 0; i < numTiles; i++) {
             document.getElementById(`tile-${i+1}`).style.zIndex = "0";
         }
+        document.getElementById('background-solid').style.display = "block";
     }
 
     moveExtraTilesToForeground() {
         for(let i = 0; i < numTiles; i++) {
             document.getElementById(`tile-${i+1}`).style.zIndex = "10";
         }
+        document.getElementById('background-solid').style.display = "none";
     }
 
     playExtraPageTransitionAnimation() {

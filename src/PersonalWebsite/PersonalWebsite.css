@@ -38,7 +38,7 @@ body {
 }
 
 #background-gradient {
-    z-index: -1;
+    z-index: 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -66,6 +66,37 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#top-background {
+    z-index: 0;
+    position: fixed;
+    left: 0;
+    top: -50vh;
+    width: 100vw;
+    height: 50vw;
+    background-color: #021b3d;
+}
+
+#bottom-background {
+    z-index: 0;
+    position: fixed;
+    left: 0;
+    bottom: -50vh;
+    width: 100vw;
+    height: 50vw;
+    background-color: #22e6a7;
+}
+
+#background-solid {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: none;
 }
 
 * {
