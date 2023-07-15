@@ -163,6 +163,7 @@
     white-space: pre;
     height: 55px;
     font-weight: bold;
+    letter-spacing: 1px;
     
     background-size: 200% 100%;
     transition:  background-position 0.5s linear, margin-top 0.5s linear;
@@ -225,7 +226,7 @@ a span {
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1150px) {
     .connect-panel #connect-info #connect-text {
         font-size: 17pt;
     }
@@ -305,6 +306,10 @@ a span {
         left: calc((100% - 90.5px) / 2);
         width: 90px;
     }
+
+    .home-page br {
+        display: none;
+    }
 }
 
 @media (max-width: 425px) {
@@ -324,5 +329,11 @@ a span {
 
     #tech-connect-panel .connect-panel #connect-info #underline {
         display: none;
+    }
+}
+
+@media (min-height: 950px) and (min-width: 1250px) {
+    .connect-panel #connect-info #connect-text {
+        font-size: 18pt;
     }
 }

@@ -1,0 +1,229 @@
+.fill {
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 64px;
+    width: 100vw;
+    height: calc(100vh - 147px);
+    z-index: 12;
+}
+
+.computer-screen-container {
+    width: 90%;
+    height: 100%;
+    padding: 5%;
+}
+
+#nav-bar-background {
+    position: fixed;
+    background-color: black;
+    height: 54px;
+    top: 0;
+    width: 100vw;
+    z-index: 13;
+    filter: drop-shadow(0 0 4px black);
+}
+
+#computer-layout {
+    background-image: url(./Sprites/computer-horizontal-layout.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    z-index: 12;
+    flex-shrink: 0;
+    margin-top: 1vw;
+    width: 85vw;
+    padding-top: min(36.2vw, 505px);
+    height: 0;
+    object-fit: contain;
+    animation: appear 500ms linear 0s;
+    max-width: 1250px;
+}
+
+#computer-screen {
+    margin-top: max(-32.27vw, -451px);
+    margin-left: 15.13vw;
+    width: min(49.8%, 592px);
+    height: min(24.5vw, 343px);
+}
+
+#game-selection-container {
+    margin-top: 2.5vw;
+    z-index: 12;
+    width: 85%;
+    max-width: 1250px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: appear 500ms linear 0s;
+}
+
+.game-selection {
+    margin-right: 4px;
+    margin-left: 4px;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-selection-ejected {
+    margin-right: 4px;
+    margin-left: 4px;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-selection-label {
+    color: white;
+    font-size: min(2.5vw, 40px);
+    text-align: center;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    line-height: 1.2;
+    margin-top: 16px;
+    width: 100%;
+    -webkit-font-smoothing: none;
+}
+
+.game-cart {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    padding-top: 18%;
+    height: 0;
+    width: 33.33%;
+    max-width: 150px;
+}
+
+#snake-game-selection.game-selection #snake-game-cart {
+    background-image: url(./Sprites/snake-game-cart.png);
+}
+
+#snake-game-selection.game-selection-ejected #snake-game-cart {
+    background-image: url(./Sprites/eject-game-cart.png);
+}
+
+#snake-game-selection.game-selection:hover #snake-label {
+    color: #f17878;
+}
+
+#snake-game-selection.game-selection-ejected:hover #snake-label {
+    color: rgb(180, 180, 180);
+}
+
+#tetra-mix-game-selection.game-selection #tetra-mix-game-cart {
+    background-image: url(./Sprites/tetra-mix-game-cart.png);
+}
+
+#tetra-mix-game-selection.game-selection-ejected #tetra-mix-game-cart {
+    background-image: url(./Sprites/eject-game-cart.png);
+}
+
+#tetra-mix-game-selection.game-selection:hover #tetra-mix-label {
+    color: #76a4e9;
+}
+
+#tetra-mix-game-selection.game-selection-ejected:hover #tetra-mix-label {
+    color: rgb(180, 180, 180);
+}
+
+#minesweeper-game-selection.game-selection .minesweeper-game-cart {
+    background-image: url(./Sprites/minesweeper-game-cart.png);
+}
+
+#minesweeper-game-selection.game-selection-ejected .minesweeper-game-cart {
+    background-image: url(./Sprites/eject-game-cart.png);
+}
+
+.game-selection.game-selection:hover #minesweeper-label {
+    color: #90f49d;
+}
+
+.game-selection-ejected:hover #minesweeper-label {
+    color: rgb(180, 180, 180);
+}
+
+#inserted-game-cart {
+    position: absolute;
+    margin-top: -15.85vw;
+    margin-left: 3.1vw;
+    width: 5.85vw;
+    height: 8vw;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+#inserted-game-cart.snake-game-cart {
+    background-image: url(./Sprites/snake-game-cart.png);
+}
+
+#inserted-game-cart.tetra-mix-game-cart {
+    background-image: url(./Sprites/tetra-mix-game-cart.png);
+}
+
+#inserted-game-cart.minesweeper-game-cart {
+    background-image: url(./Sprites/minesweeper-game-cart.png);
+}
+
+#bottom-border {
+    position: absolute;
+    margin-top: -8.05vw;
+    margin-left: 3.1vw;
+    width: 5.85vw;
+    height: 8vw;
+    background-color: rgba(0, 0, 0, 0.01);
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-image: url(./Sprites/cart-bottom-border.png);
+}
+
+@keyframes insert-cart {
+    from { background-position: center top; opacity: 0; }
+    to { background-position: center bottom; opacity: 1; }
+}
+
+@keyframes eject-cart {
+    from { background-position: center bottom; opacity: 1; }
+    to { background-position: center top; opacity: 0; }
+}
+
+@keyframes appear {
+    from { opacity: 0; }
+    to { opacity: 100; }
+}
+
+@media only screen and (min-width: 1400px)  {
+    #computer-layout {
+        width: 1250px;
+    }
+
+    #computer-screen {
+        margin-left: 242px;
+    }
+
+    #inserted-game-cart {
+        margin-left: 74px;
+        margin-top: -228px;
+        width: 82px;
+        height: 120px;
+    }
+
+    #bottom-border {
+        margin-left: 74px;
+        margin-top: -120px;
+        width: 82px;
+        height: 120px;
+    }
+}

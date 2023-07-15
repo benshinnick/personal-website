@@ -57,9 +57,45 @@ export default class Clouds extends React.Component {
                 if(size === 'small' || size === 'medium') {
                     cloud.style.filter = 'drop-shadow(0 0 2px rgb(235, 235, 235))'
                 }
+                if(this.state.cloudPosition === 'hidden') {
+                    cloud.style.display = 'none'
+                }
                 clouds.appendChild(cloud)
             }
         }
+    }
+
+    hideClouds() {
+        this.setState({ cloudPosition: 'hidden' }, () => {
+            const collection = document.getElementsByClassName("cloud");
+            for(let i = 0; i < collection.length; i++) {
+                collection[i].style.bottom = '-800px';
+                collection[i].style.display = 'none';
+            }
+        })
+    }
+
+    unhideClouds() {
+        const collection = document.getElementsByClassName("cloud");
+        for(let i = 0; i < collection.length; i++) {
+            collection[i].style.display = '';
+        }
+    }
+
+    instantMoveCloudsToTop() {
+        this.setState({ cloudPosition: 'top' }, () => {
+            moveCloudsToTopInstant(document.getElementsByClassName('small'), 52, 21, 0.1)
+            moveCloudsToTopInstant(document.getElementsByClassName('medium'), 60, -6, 0.15)
+            moveCloudsToTopInstant(document.getElementsByClassName('large'), 60, -32, 0.30)
+        })
+    }
+
+    instantMoveCloudsToBottom() {
+        this.setState({ cloudPosition: 'bottom' }, () => {
+            moveCloudsToBottomInstant(document.getElementsByClassName('small'), -4, 0.1)
+            moveCloudsToBottomInstant(document.getElementsByClassName('medium'), 12, 0.15)
+            moveCloudsToBottomInstant(document.getElementsByClassName('large'), 37, 0.30)
+        })
     }
 
     transitionCloudsToTop() {
@@ -95,6 +131,15 @@ function adjustBottomClouds(clouds, cloudHeight, cloudOffset) {
     }
 }
 
+function moveCloudsToTopInstant(clouds, cloudHeight, cloudOffset, speed) {
+    for(var i = 0; i < clouds.length; ++i) {
+        clouds[i].style.transition = ''
+        clouds[i].style.bottom = `${window.innerHeight-cloudHeight-cloudOffset}px`
+        clouds[i].style.animationDuration = `${clouds.length * speed * 100}s`
+        clouds[i].style.animationDelay = `${-i * speed * 100}s`
+    }
+}
+
 function moveCloudsToTop(clouds, cloudHeight, cloudOffset, speed) {
     for(var i = 0; i < clouds.length; ++i) {
         clouds[i].style.transition = 'bottom 750ms ease-in-out'
@@ -109,6 +154,15 @@ function moveCloudsToTop(clouds, cloudHeight, cloudOffset, speed) {
             clouds[i].style.animationDelay = `${-i * speed * 100}s`
         }
     }, 1000)
+}
+
+function moveCloudsToBottomInstant(clouds, cloudOffset, speed) {
+    for(var i = 0; i < clouds.length; ++i) {
+        clouds[i].style.transition = ''
+        clouds[i].style.bottom = `${cloudOffset}px`
+        clouds[i].style.animationDuration = `${clouds.length * speed * 100}s`
+        clouds[i].style.animationDelay = `${-i * speed * 100}s`
+    }
 }
 
 function moveCloudsToBottom(clouds, cloudOffset, speed) {

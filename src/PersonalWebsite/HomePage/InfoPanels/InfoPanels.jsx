@@ -38,7 +38,7 @@ export default class InfoPanels extends React.Component {
                             <div className='sides'></div>
                             <hr></hr>
                                 <div className='info-text' id='intro-text'>
-                                I WILL ADD A ONE SENTENCE INTRODUCTION HERE LATER
+                                I WILL ADD A ONE SENTENCE <br></br>INTRODUCTION HERE LATER
                                 </div>
                             <hr></hr>
                         </div>
@@ -50,7 +50,7 @@ export default class InfoPanels extends React.Component {
                             <div className='corner' id='top-left-corner'></div>
                             <div className='sides'></div>
                             <div className='info-text' id='reach-out-text'>
-                                IF YOU WANT TO CHAT, DON'T HESITATE TO REACH OUT!<br></br>
+                                IF YOU WANT TO CHAT, DON'T <br></br>HESITATE TO REACH OUT!<br></br>
                             </div>
                         </div>
                         <div id='home-connect-panel'>
