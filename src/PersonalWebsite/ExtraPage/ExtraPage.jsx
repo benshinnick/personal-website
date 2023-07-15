@@ -153,6 +153,10 @@ export default class TechnicalPage extends React.Component {
     }
 
     handleGameSelection(game) {
+        // clear timeouts
+        var id = setTimeout(function() {}, 0)
+        while (id--) clearTimeout(id)
+        // insert cart and load screen;
         document.getElementById('inserted-game-cart').style.animation = '';
         if(selectedGame === game) {
             this.loadPasswordScreen()
@@ -162,9 +166,7 @@ export default class TechnicalPage extends React.Component {
             document.getElementById('inserted-game-cart').style.animation = 'eject-cart forwards ease-in-out 650ms'
             return
         }
-        if(game === 'snake') this.loadGameTitleScreen('snake')
-        if(game === 'tetra-mix') this.loadGameTitleScreen('tetra-mix')
-        if(game === 'minesweeper') this.loadGameTitleScreen('minesweeper')
+        this.loadGameTitleScreen(game)
 
         document.getElementById('inserted-game-cart').className = ''
         if(selectedGame === 'none') {
