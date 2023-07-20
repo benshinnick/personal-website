@@ -45,9 +45,9 @@
 }
 
 @keyframes float {
-    from { top: 0; }
-    50% { top: 5px; }
-    to { top: 0px; }
+    from { translate: 0 0; }
+    50% { translate: 0 5px; }
+    to { translate: 0 0; }
 }
 
 .fly-up-build {

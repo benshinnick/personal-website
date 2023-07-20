@@ -1,7 +1,8 @@
 #ufo {
     background-image: url(./ufo.png);
     bottom: 135px;
-    right: calc(70vw - 79px);
+    right: 0;
+    transform: translateX(calc(-70vw + 79px));
     width: 95px;
     height: 35px;
     position: fixed;
@@ -12,13 +13,13 @@
 }
 
 @keyframes slide-in {
-    from { left: 100vw; }
-    to { left: calc(30vw - 32px); }
+    from { transform: translateX(100vw); }
+    to { transform: translateX(calc(-70vw + 79px)); }
 }
 
 @keyframes shift {
-    from { right: calc(70vw - 79px); }
-    to { right: calc(30vw - 16px); }
+    from { transform: translateX(calc(-70vw + 79px)); }
+    to { transform: translateX(calc(-30vw + 16px)); }
 }
 
 @media (max-height: 675px) {
@@ -37,39 +38,39 @@
 
 @media (max-width: 1000px) {
     #ufo {
-        right: calc(72.5vw - 79px);
+        transform: translateX(-72.5vw + 79px);
     }
 
     @keyframes slide-in {
-        from { left: 100vw; }
-        to { left: calc(27.5vw - 32px); }
+        from { transform: translateX(100vw); }
+        to { transform: translateX(calc(-72.5vw + 79px)); }
     }
     
     @keyframes shift {
-        from { right: calc(72.5vw - 79px); }
-        to { right: calc(25vw - 16px); }
+        from { transform: translateX(calc(-72.5vw + 79px)); }
+        to { transform: translateX(calc(-25vw + 16px)); }
     }
 }
 
 @media (max-width: 800px) {
     #ufo {
-        right: calc(75vw - 79px);
+        transform: translateX(-75vw + 79px);
     }
 
     @keyframes slide-in {
-        from { left: 100vw; }
-        to { left: calc(25vw - 32px); }
+        from { transform: translateX(100vw); }
+        to { transform: translateX(calc(-75vw + 79px)); }
     }
     
     @keyframes shift {
-        from { right: calc(75vw - 79px); }
-        to { right: calc(22.5vw - 16px); }
+        from { transform: translateX(calc(-75vw + 79px)); }
+        to { transform: translateX(calc(-22.5vw + 16px)); }
     }
 }
 
 @media (max-width: 425px) {    
-    @keyframes shift {
-        from { right: calc(75vw - 79px); }
-        to { right: calc(10vw - 16px); }
+    #ufo {
+        display: none;
+        visibility: hidden;
     }
 }

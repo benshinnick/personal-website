@@ -69,7 +69,7 @@ export default class Clouds extends React.Component {
         this.setState({ cloudPosition: 'hidden' }, () => {
             const collection = document.getElementsByClassName("cloud");
             for(let i = 0; i < collection.length; i++) {
-                collection[i].style.bottom = '-800px';
+                collection[i].style.translate = '0 800px';
                 collection[i].style.display = 'none';
             }
         })
@@ -127,14 +127,14 @@ export default class Clouds extends React.Component {
 
 function adjustBottomClouds(clouds, cloudHeight, cloudOffset) {
     for(var i = 0; i < clouds.length; ++i) {
-        clouds[i].style.bottom = `${window.innerHeight-cloudHeight-cloudOffset}px`
+        clouds[i].style.translate = `0 ${-1*(window.innerHeight-cloudHeight-cloudOffset)}px`
     }
 }
 
 function moveCloudsToTopInstant(clouds, cloudHeight, cloudOffset, speed) {
     for(var i = 0; i < clouds.length; ++i) {
         clouds[i].style.transition = ''
-        clouds[i].style.bottom = `${window.innerHeight-cloudHeight-cloudOffset}px`
+        clouds[i].style.translate = `0 ${-1*(window.innerHeight-cloudHeight-cloudOffset)}px`
         clouds[i].style.animationDuration = `${clouds.length * speed * 100}s`
         clouds[i].style.animationDelay = `${-i * speed * 100}s`
     }
@@ -142,8 +142,8 @@ function moveCloudsToTopInstant(clouds, cloudHeight, cloudOffset, speed) {
 
 function moveCloudsToTop(clouds, cloudHeight, cloudOffset, speed) {
     for(var i = 0; i < clouds.length; ++i) {
-        clouds[i].style.transition = 'bottom 750ms ease-in-out'
-        clouds[i].style.bottom = `${window.innerHeight-cloudHeight-cloudOffset}px`
+        clouds[i].style.transition = 'translate 750ms ease-in-out'
+        clouds[i].style.translate = `0 ${-1*(window.innerHeight-cloudHeight-cloudOffset)}px`
         clouds[i].style.animationDuration = `${clouds.length * speed}s`
         clouds[i].style.animationDelay = `${-i * speed}s`
     }
@@ -159,7 +159,7 @@ function moveCloudsToTop(clouds, cloudHeight, cloudOffset, speed) {
 function moveCloudsToBottomInstant(clouds, cloudOffset, speed) {
     for(var i = 0; i < clouds.length; ++i) {
         clouds[i].style.transition = ''
-        clouds[i].style.bottom = `${cloudOffset}px`
+        clouds[i].style.translate = `0 ${-1*cloudOffset}px`
         clouds[i].style.animationDuration = `${clouds.length * speed * 100}s`
         clouds[i].style.animationDelay = `${-i * speed * 100}s`
     }
@@ -167,8 +167,8 @@ function moveCloudsToBottomInstant(clouds, cloudOffset, speed) {
 
 function moveCloudsToBottom(clouds, cloudOffset, speed) {
     for(var i = 0; i < clouds.length; ++i) {
-        clouds[i].style.transition = 'bottom 750ms ease-in-out'
-        clouds[i].style.bottom = `${cloudOffset}px`
+        clouds[i].style.transition = 'translate 750ms ease-in-out'
+        clouds[i].style.translate = `0 ${-1*cloudOffset}px`
         clouds[i].style.animationDuration = `${clouds.length * speed}s`
         clouds[i].style.animationDelay = `${-i * speed}s`
     }

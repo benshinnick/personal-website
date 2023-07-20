@@ -1,6 +1,7 @@
 #moon-home {
     background-image: url(./moon.png);
-    bottom: 135px;
+    bottom: 0;
+    transform: translateY(-135px);
     left: calc(85vw - 56px + 28px);
     width: 96px;
     height: 96px;
@@ -11,13 +12,13 @@
 }
 
 @keyframes moon-appear-from-bottom {
-    from {bottom: -96px}
-    to { bottom: 135px; }
+    from { transform: translateY(96px);}
+    to { transform: translateY(-135px); }
 }
 
 @keyframes disappear-to-bottom {
-    from { bottom: 135px;}
-    to { bottom: -96px; }
+    from { transform: translateY(-135px);}
+    to { transform: translateY(96px); }
 }
 
 @media (max-width: 1165px) {

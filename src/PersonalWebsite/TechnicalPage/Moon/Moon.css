@@ -1,6 +1,7 @@
 #moon-tech {
     background-image: url(./moon.png);
-    top: 115px;
+    top: 0;
+    transform: translateY(115px);
     left: calc(90vw - 56px + 28px);
     width: 96px;
     height: 96px;
@@ -11,6 +12,6 @@
 }
 
 @keyframes moon-appear-from-top {
-    from {top: -96px}
-    to { top: 115px; }
+    from { transform: translateY(-96px); }
+    to { transform: translateY(115px); }
 }
