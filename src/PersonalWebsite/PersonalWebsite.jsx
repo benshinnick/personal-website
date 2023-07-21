@@ -215,8 +215,6 @@ export default class PersonalWebsite extends React.Component {
                 />
                 <Clouds ref={this.cloudsRef} />
                 <RocketGuy ref={this.rocketGuyRef} />
-                <div id="top-background"></div>
-                <div id="bottom-background"></div>
                 <div id="background-gradient" className='home-sky'>
                     <div id="background-solid"></div>
                     <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'>
