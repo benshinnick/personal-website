@@ -1,10 +1,15 @@
 import React from 'react';
+import { createRoot } from 'react-dom/client';
+import SnakeGame from './SnakeGame/SnakeGame';
+import TetraMixGame from './TetraMixGame/TetraMixGame';
+import MinesweeperGame from './MinesweeperGame/MinesweeperGame';
 import './ExtraPage.css';
 import './PasswordScreen.css';
 import './TitleScreens.css';
 import * as vt from './vanilla-tilt.js';
 
-var selectedGame = 'none'
+var selectedGame = 'none';
+var gameCanvas = null;
 
 export default class TechnicalPage extends React.Component {
     componentDidMount() {
@@ -120,6 +125,7 @@ export default class TechnicalPage extends React.Component {
         playButton.id = `${game}-play-button`
         playButton.className = 'game-play-button'
         playButton.innerHTML = 'PLAY'
+        playButton.addEventListener('click', () => { this.loadGame(game) })
         gameTitleScreenContainer.appendChild(playButton)
 
         var iconContainer = document.createElement('div')
@@ -144,6 +150,15 @@ export default class TechnicalPage extends React.Component {
         gameTitleScreenContainer.appendChild(iconContainer)
 
         document.getElementById('computer-screen').appendChild(gameTitleScreenContainer)
+    }
+
+    loadGame(game) {
+        const mainContent = document.getElementById("game-container")
+        mainContent.style.display = 'block';
+        if(gameCanvas === null) gameCanvas = createRoot(mainContent)
+        if(game === 'snake') gameCanvas.render(<SnakeGame/>)
+        if(game === 'tetra-mix') gameCanvas.render(<TetraMixGame/>)
+        if(game === 'minesweeper') gameCanvas.render(<MinesweeperGame/>)
     }
 
     passwordSubmitButtonOnClick() {

@@ -231,6 +231,7 @@ export default class PersonalWebsite extends React.Component {
                     </svg>
                 </div>
                 <div id='main-content' />
+                <div id='game-container'></div>
             </div>
         )
     }

@@ -51,6 +51,7 @@
     padding-bottom: 0.6vw;
     -webkit-font-smoothing: none;
     letter-spacing: 0.1vw;
+    padding-left: 0.3vw;
     /* background-color: red; */
     /* border-top: 0.4vw solid white; */
     margin-top: 2vw;
@@ -64,7 +65,9 @@
     width: 33.3%;
     margin-left: 33.3%;
     margin-right: 33.3%;
-    padding-bottom: 0.6vw;
+    padding-bottom: 0.3vw;
+    padding-left: 0.3vw;
+    border-bottom: 0.3vw solid transparent;
     -webkit-font-smoothing: none;
     letter-spacing: 0.2vw;
     margin-top: 1vw;
@@ -75,7 +78,7 @@
 }
 
 #snake-play-button:hover {
-    color: #eb3131;
+    border-color: #eb4242;
     cursor: pointer;
 }
 
@@ -84,16 +87,16 @@
 }
 
 #tetra-mix-play-button:hover {
-    color: #615fed;
+    border-color: #615fed;
     cursor: pointer;
 }
 
 #minesweeper-play-button {
-    color: #5cf07a;
+    color: #47e667;
 }
 
 #minesweeper-play-button:hover {
-    color: #47e667;
+    border-color: #47e667;
     cursor: pointer;
 }
 
@@ -229,7 +232,8 @@
         width: 33.3%;
         margin-left: 33.3%;
         margin-right: 33.3%;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 5px solid transparent;
         letter-spacing: 2px;
         margin-top: 0px;
     }
@@ -279,6 +283,7 @@
     
     .game-play-button {
         font-size: 6vw;
+        border-bottom: 0.6vw solid transparent;
     }
 
     #tetra-mix-title-banner {
