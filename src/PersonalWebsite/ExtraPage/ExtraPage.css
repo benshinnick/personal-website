@@ -160,7 +160,7 @@
 
 #inserted-game-cart {
     position: absolute;
-    margin-top: -15.85vw;
+    margin-top: -15.8vw;
     margin-left: 3.1vw;
     width: 5.85vw;
     height: 8vw;
@@ -184,7 +184,7 @@
 
 #bottom-border {
     position: absolute;
-    margin-top: -8.05vw;
+    margin-top: -8vw;
     margin-left: 3.1vw;
     width: 5.85vw;
     height: 8vw;
@@ -232,5 +232,103 @@
         margin-top: -120px;
         width: 82px;
         height: 120px;
+    }
+
+    #game-selection-container {
+        margin-top: 25px;
+    }
+
+    .game-cart {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        padding-top: 75px;
+        height: 0;
+        width: 89%;
+    }
+
+    .game-selection-label {
+        font-size: 35px;
+        margin-top: 16px;
+    }
+}
+
+@media only screen and (max-width: 850px)  {
+    #computer-layout {
+        background-image: url(./Sprites/computer-vertical-layout.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        z-index: 12;
+        flex-shrink: 0;
+        margin-top: 1vw;
+        width: 85vw;
+        padding-top: 55.2vw;
+        height: 0;
+        object-fit: contain;
+        animation: appear 500ms linear 0s;
+        max-width: 1250px;
+    }
+
+    #computer-screen {
+        margin-top: -51.25vw;
+        margin-left: 7.1vw;
+        width: 70.75vw;
+        height: 40.75vw;
+    }
+
+    #bottom-border {
+        display: none;
+    }
+
+    #inserted-game-cart {
+        display: none;
+    }
+
+    #game-selection-container {
+        width: 90%;
+    }
+    
+    .game-selection {
+        margin-right: 0;
+        margin-left: 0;
+        padding-top: 5%;
+        padding-bottom: 2.5%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-selection-ejected {
+        margin-right: 0;
+        margin-left: 0;
+        padding-top: 5%;
+        padding-bottom: 2.5%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-cart {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        padding-top: 25%;
+        height: 0;
+        width: 89%;
+    }
+
+    .game-selection-label {
+        color: white;
+        font-size: 3.5vw;
+        text-align: center;
+        font-weight: bold;
+        font-family: 'pixel',Lato,LatoExtended,sans-serif;
+        line-height: 1.2;
+        margin-top: 16px;
+        width: 100%;
+        -webkit-font-smoothing: none;
     }
 }

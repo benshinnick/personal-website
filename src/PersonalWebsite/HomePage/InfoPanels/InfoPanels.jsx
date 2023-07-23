@@ -39,7 +39,7 @@ export default class InfoPanels extends React.Component {
                             <hr></hr>
                                 <div className='info-text' id='intro-text'>
                                 {/* I WILL ADD A ONE SENTENCE<br></br>INTRODUCTION HERE LATER */}
-                                WELCOME TO MY PERSONAL PAGE!<br></br>EXPLORE AND TAKE A LOOK AROUND!
+                                WELCOME TO MY PERSONAL PAGE! <br></br>EXPLORE AND TAKE A LOOK AROUND!
                                 </div>
                             <hr></hr>
                         </div>
