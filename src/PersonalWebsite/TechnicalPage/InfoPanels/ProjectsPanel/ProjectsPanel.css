@@ -144,7 +144,7 @@
 .project-info-content .github-container {
     width: 56px;
     background-color: black;
-    padding: 0;
+    padding: 0 4px;
     right: 0;
 }
 

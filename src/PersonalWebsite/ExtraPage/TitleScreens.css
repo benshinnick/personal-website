@@ -286,11 +286,11 @@
     
     #minesweeper-title-banner {
         background-image: url(./Sprites/minesweeper-title-banner.png);
-        padding-top: 40vw;
+        padding-top: 42vw;
         margin-top: -3.5vw;
         margin-bottom: -36vw;
-        width: 110%;
-        margin-left: -5%;
+        width: 137%;
+        margin-left: -18.5%;
     }
     
     .settings-button {

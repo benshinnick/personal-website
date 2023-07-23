@@ -8,18 +8,20 @@ var selectedGame = 'none'
 
 export default class TechnicalPage extends React.Component {
     componentDidMount() {
-        vt.VanillaTilt.init(document.querySelector("#snake-game-selection"), {
-            max: 14,
-            speed: 8
-        });
-        vt.VanillaTilt.init(document.querySelector("#tetra-mix-game-selection"), {
-            max: 14,
-            speed: 8
-        });
-        vt.VanillaTilt.init(document.querySelector("#minesweeper-game-selection"), {
-            max: 14,
-            speed: 8
-        });
+        if(window.innerWidth >= 850) {
+            vt.VanillaTilt.init(document.querySelector("#snake-game-selection"), {
+                max: 14,
+                speed: 8
+            });
+            vt.VanillaTilt.init(document.querySelector("#tetra-mix-game-selection"), {
+                max: 14,
+                speed: 8
+            });
+            vt.VanillaTilt.init(document.querySelector("#minesweeper-game-selection"), {
+                max: 14,
+                speed: 8
+            });
+        }
         this.loadPasswordScreen()
     }
 
