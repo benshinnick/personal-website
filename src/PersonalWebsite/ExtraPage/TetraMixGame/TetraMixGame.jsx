@@ -6,9 +6,16 @@ export default class TetraMixGame extends React.Component {
         console.log('TETRA MIX GAME LOADED');
     }
 
+    exitGame() {
+        this.props.unmountMe();
+    }
+
     render() {
         return (
-            <canvas id='tetra-mix-game-canvas'/>
+            <div id='tetra-mix-game-container' className='game-background'>
+                <div id='game-close-button' onClick={() => {this.exitGame()}}>EXIT</div>
+                <canvas id='tetra-mix-game-canvas'/>
+            </div>
         );
     }
 }

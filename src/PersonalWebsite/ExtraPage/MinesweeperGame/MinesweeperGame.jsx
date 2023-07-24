@@ -6,9 +6,16 @@ export default class MinesweeperGame extends React.Component {
         console.log('MINESWEEPER GAME LOADED');
     }
 
+    exitGame() {
+        this.props.unmountMe();
+    }
+
     render() {
         return (
-            <canvas id='minesweeper-game-canvas'/>
+            <div id='minesweeper-game-container' className='game-background'>
+                <div id='game-close-button' onClick={() => {this.exitGame()}}>EXIT</div>
+                <canvas id='minesweeper-game-canvas'/>
+            </div>
         );
     }
 }

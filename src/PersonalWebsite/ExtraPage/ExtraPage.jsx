@@ -12,6 +12,15 @@ var selectedGame = 'none';
 var gameCanvas = null;
 
 export default class TechnicalPage extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleGameUnmount = this.handleGameUnmount.bind(this);
+    }
+    handleGameUnmount(){
+        console.log('Handle Game Unmount')
+        gameCanvas.render(<></>)
+    }
+
     componentDidMount() {
         if(window.innerWidth >= 850) {
             vt.VanillaTilt.init(document.querySelector("#snake-game-selection"), {
@@ -154,11 +163,10 @@ export default class TechnicalPage extends React.Component {
 
     loadGame(game) {
         const mainContent = document.getElementById("game-container")
-        mainContent.style.display = 'block';
         if(gameCanvas === null) gameCanvas = createRoot(mainContent)
-        if(game === 'snake') gameCanvas.render(<SnakeGame/>)
-        if(game === 'tetra-mix') gameCanvas.render(<TetraMixGame/>)
-        if(game === 'minesweeper') gameCanvas.render(<MinesweeperGame/>)
+        if(game === 'snake') gameCanvas.render(<SnakeGame unmountMe={this.handleGameUnmount} />)
+        if(game === 'tetra-mix') gameCanvas.render(<TetraMixGame unmountMe={this.handleGameUnmount} />)
+        if(game === 'minesweeper') gameCanvas.render(<MinesweeperGame unmountMe={this.handleGameUnmount} />)
     }
 
     passwordSubmitButtonOnClick() {
