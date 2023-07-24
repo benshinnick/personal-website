@@ -116,16 +116,17 @@
     border: 1px solid black;
     z-index: 10;
     animation-fill-mode: forwards;
+    top: 100vh;
 }
 
 @keyframes tile-slide-in {
-    from { top: 100vh; }
-    to { top: 0px; }
+    from { transform: translateY(0); }
+    to { transform: translateY(-100vh); }
 }
 
 @keyframes tile-slide-out {
-    from { top: 0px; }
-    to { top: 100vh; }
+    from { transform: translateY(-100vh); }
+    to { transform: translateY(0); }
 }
 
 @keyframes nav-appear {
