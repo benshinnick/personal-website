@@ -6,7 +6,7 @@ import MinesweeperGame from './MinesweeperGame/MinesweeperGame';
 import './ExtraPage.css';
 import './PasswordScreen.css';
 import './TitleScreens.css';
-import * as vt from './vanilla-tilt.js';
+// import * as vt from './vanilla-tilt.js';
 
 var selectedGame = 'none';
 var gameCanvas = null;
@@ -22,20 +22,20 @@ export default class TechnicalPage extends React.Component {
     }
 
     componentDidMount() {
-        if(window.innerWidth >= 850) {
-            vt.VanillaTilt.init(document.querySelector("#snake-game-selection"), {
-                max: 14,
-                speed: 8
-            });
-            vt.VanillaTilt.init(document.querySelector("#tetra-mix-game-selection"), {
-                max: 14,
-                speed: 8
-            });
-            vt.VanillaTilt.init(document.querySelector("#minesweeper-game-selection"), {
-                max: 14,
-                speed: 8
-            });
-        }
+        // if(window.innerWidth >= 850) {
+        //     vt.VanillaTilt.init(document.querySelector("#snake-game-selection"), {
+        //         max: 14,
+        //         speed: 8
+        //     });
+        //     vt.VanillaTilt.init(document.querySelector("#tetra-mix-game-selection"), {
+        //         max: 14,
+        //         speed: 8
+        //     });
+        //     vt.VanillaTilt.init(document.querySelector("#minesweeper-game-selection"), {
+        //         max: 14,
+        //         speed: 8
+        //     });
+        // }
         this.loadPasswordScreen()
     }
 
@@ -163,7 +163,7 @@ export default class TechnicalPage extends React.Component {
 
     loadGame(game) {
         const mainContent = document.getElementById("game-container")
-        if(gameCanvas === null) gameCanvas = createRoot(mainContent)
+        if(gameCanvas == null) gameCanvas = createRoot(mainContent)
         if(game === 'snake') gameCanvas.render(<SnakeGame unmountMe={this.handleGameUnmount} />)
         if(game === 'tetra-mix') gameCanvas.render(<TetraMixGame unmountMe={this.handleGameUnmount} />)
         if(game === 'minesweeper') gameCanvas.render(<MinesweeperGame unmountMe={this.handleGameUnmount} />)

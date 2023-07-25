@@ -52,9 +52,8 @@
     margin-right: auto;
     padding-bottom: 0.6vw;
     -webkit-font-smoothing: none;
+    padding-left: 0.6vw;
     letter-spacing: 0.1vw;
-    /* background-color: red; */
-    /* border-top: 0.4vw solid white; */
     margin-top: 2vw;
 }
 
@@ -67,7 +66,7 @@
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 0.2vw;
-    padding-left: 0.3vw;
+    padding-left: 0.6vw;
     border-bottom: 0.4vw solid transparent;
     -webkit-font-smoothing: none;
     letter-spacing: 0.2vw;

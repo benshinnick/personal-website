@@ -1,0 +1,17 @@
+#snake-game-container {
+    width: calc(100vw - 32px); 
+    height: calc(75vw - 32px); /* height:width ratio = 9/16 = .5625  */
+    max-height: calc(90vh - 32px);
+    max-width: calc(133vh - 32px); /* 16/9 = 1.778 */
+    margin: auto;
+    position: absolute;
+    top: 38px; bottom:0; /* vertical center */
+    left:0;right:0; /* horizontal center */
+}
+
+#snake-game-canvas {
+    background-color: black;
+    border: 3px solid white;
+    width: 100%;
+    height: 100%;
+}

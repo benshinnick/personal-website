@@ -8,30 +8,6 @@
     z-index: 16;
 }
 
-#game-close-button {
-    background-color: rgba(0, 0, 0, 0.8);
-    width: fit-content;
-    float: right;
-    margin: 1vw;
-    margin-right: 5vw;
-    padding: 0.8vw;
-    padding-left: 1.2vw;
-    padding-bottom: 0.5vw;
-    color: white;
-    border: solid max(0.3vw, 2px) white;
-    font-size: max(3vw, 20px);
-    text-align: center;
-    font-weight: bold;
-    font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    -webkit-font-smoothing: none;
-    user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
-    cursor: pointer;
-}
-
 .extra-page {
     position: relative;
     z-index: 2;
@@ -90,7 +66,7 @@
 }
 
 #game-selection-container {
-    margin-top: 2.5vw;
+    margin-top: 3vw;
     z-index: 12;
     width: 85%;
     max-width: 1250px; 
@@ -230,6 +206,32 @@
     background-image: url(./Sprites/cart-bottom-border.png);
 }
 
+#game-close-button {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: fit-content;
+    height: fit-content;
+    bottom: calc(100% - 3px);
+    right: -6px;
+    color: rgb(255, 255, 255);
+    border: solid 3px white;
+    border-left: double 9px white;
+    padding: 7px;
+    padding-left: 12px;
+    padding-bottom: 5px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    -webkit-font-smoothing: none;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+}
+
 @keyframes insert-cart {
     from { background-position: center top; opacity: 0; }
     to { background-position: center bottom; opacity: 1; }
@@ -326,7 +328,12 @@
     }
 
     #game-selection-container {
-        width: 90%;
+        margin-top: 5vw;
+        border-top: 0.5vw solid white;
+        border-bottom:  0.5vw solid white;
+        padding-bottom: 3vw;
+        padding-top: 8px;
+        width: 100%;
     }
     
     .game-selection {
@@ -375,8 +382,11 @@
 
 @media only screen and (max-width: 575px)  {
 
+    .game-cart {
+        padding-top: 17vw;
+    }
+
     #game-selection-container {
-        width: 90%;
         flex-direction: column;
         align-items: center;
     }
@@ -385,13 +395,12 @@
         margin-left: 0;
         padding-top: 5%;
         padding-bottom: 2.5%;
-        margin-bottom: 4vw;
+        margin-bottom: 8px;
         width: 100vw;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border-top: 1px solid transparent;
-        border-bottom: 1px solid transparent;
+        border-top: 0.5vw solid transparent;
     }
 
     .game-selection-ejected {
@@ -399,13 +408,12 @@
         margin-left: 0;
         padding-top: 5%;
         padding-bottom: 2.5%;
-        margin-bottom: 4vw;
+        margin-bottom: 8px;
         width: 100vw;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border-top: 1px solid transparent;
-        border-bottom: 1px solid transparent;
+        border-top: 2px solid transparent;
     }
     
     .game-selection-label {
@@ -415,22 +423,12 @@
         font-weight: bold;
         font-family: 'pixel',Lato,LatoExtended,sans-serif;
         line-height: 1.2;
-        margin-top: 0;
+        margin-top: 8px;
         width: 80vw;
         -webkit-font-smoothing: none;
     }
 
-    #snake-game-selection {
-        border-color: rgba(255, 106, 106, 0.3);
-        background-color: rgba(255, 106, 106, 0.05);
-    }
-
-    #snake-game-selection.game-selection-ejected {
-        border-color: rgba(143, 143, 143, 0.3);
-        background-color: rgba(143, 143, 143, 0.05);
-    }
-
-    #tetra-mix-game-selection {
+    /* #tetra-mix-game-selection {
         border-color: rgba(106, 109, 255, 0.3);
         background-color: rgba(106, 109, 255, 0.05);
     }
@@ -448,5 +446,5 @@
     #minesweeper-game-selection.game-selection-ejected {
         border-color: rgba(143, 143, 143, 0.3);
         background-color: rgba(143, 143, 143, 0.05);
-    }
+    } */
 }
