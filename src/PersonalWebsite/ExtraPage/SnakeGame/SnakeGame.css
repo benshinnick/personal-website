@@ -1,17 +1,24 @@
 #snake-game-container {
-    width: calc(100vw - 32px); 
-    height: calc(75vw - 32px); /* height:width ratio = 9/16 = .5625  */
+    width: calc(90vw - 32px); 
+    height: calc(74.65vw - 32px); /* height:width ratio = 9/16 = .5625  */
     max-height: calc(90vh - 32px);
-    max-width: calc(133vh - 32px); /* 16/9 = 1.778 */
+    max-width: calc(108.505vh - 32px); /* 16/9 = 1.778 */
     margin: auto;
     position: absolute;
-    top: 38px; bottom:0; /* vertical center */
+    top: 0; bottom:0; /* vertical center */
     left:0;right:0; /* horizontal center */
 }
 
+#snake-game-container #game-close-button {
+    color: white;
+    border: 4px solid white;
+    bottom: calc(100% + 6px);
+    right: 0px;
+}
+
 #snake-game-canvas {
-    background-color: black;
-    border: 3px solid white;
+    background-color: transparent;
     width: 100%;
     height: 100%;
+    image-rendering: pixelated;
 }
