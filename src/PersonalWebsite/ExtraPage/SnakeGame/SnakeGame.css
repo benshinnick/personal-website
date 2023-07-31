@@ -1,11 +1,11 @@
 #snake-game-container {
-    width: calc(90vw - 32px); 
-    height: calc(74.65vw - 32px); /* height:width ratio = 9/16 = .5625  */
-    max-height: calc(90vh - 32px);
-    max-width: calc(108.505vh - 32px); /* 16/9 = 1.778 */
+    width: calc(85vw - 32px); 
+    height: calc(69.186vw - 32px); /* height:width ratio = 9/16 = .5625  */
+    max-height: calc(85vh - 32px);
+    max-width: calc(104.432vh - 32px); /* 16/9 = 1.778 */
     margin: auto;
     position: absolute;
-    top: 0; bottom:0; /* vertical center */
+    top: -32px; bottom:0; /* vertical center */
     left:0;right:0; /* horizontal center */
 }
 
