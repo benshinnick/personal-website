@@ -1,17 +1,17 @@
 #minesweeper-game-container {
-    width: calc(100vw - 32px); 
-    height: calc(75vw - 32px);
-    max-height: calc(90vh - 32px);
-    max-width: calc(133vh - 32px);
+    width: calc(90vw - 32px); 
+    height: calc(84.2554vw - 32px);
+    max-height: calc(85vh - 32px);
+    max-width: calc(90.795vh - 32px);
     margin: auto;
     position: absolute;
-    top: 38px; bottom:0;
+    top: -32px; bottom:0;
     left:0;right:0;
 }
 
 #minesweeper-game-canvas {
-    background-color: black;
-    border: 3px solid white;
+    background-color: transparent;
     width: 100%;
     height: 100%;
+    image-rendering: pixelated;
 }
