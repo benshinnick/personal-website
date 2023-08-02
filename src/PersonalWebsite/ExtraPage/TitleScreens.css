@@ -23,10 +23,10 @@
 #minesweeper-title-banner {
     background-image: url(./Sprites/minesweeper-title-banner.png);
     padding-top: 25vw;
-    margin-top: -2vw;
+    margin-top: -2.1vw;
     margin-bottom: -28vw;
-    width: 110%;
-    margin-left: -5%;
+    width: 111%;
+    margin-left: -5.5%;
 }
 
 .tetra-mix-title-screen .game-icon-conatainer {
@@ -38,7 +38,7 @@
 }
 
 .minesweeper-title-screen .game-title {
-    margin-top: 13.6vw;
+    margin-top: 13.75vw;
 }
 
 .game-title {
@@ -52,7 +52,7 @@
     margin-right: auto;
     padding-bottom: 0.6vw;
     -webkit-font-smoothing: none;
-    padding-left: 0.6vw;
+    padding-left: 0.5vw;
     letter-spacing: 0.1vw;
     margin-top: 2vw;
 }
@@ -66,7 +66,7 @@
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 0.2vw;
-    padding-left: 0.6vw;
+    padding-left: 0.5vw;
     border-bottom: 0.4vw solid transparent;
     -webkit-font-smoothing: none;
     letter-spacing: 0.2vw;
@@ -126,12 +126,14 @@
 }
 
 .settings-button .icon-tooltip {
-    margin-left: -2.25vw;
-    margin-top: -4.9vw;
-    line-height: 1vw;
+    margin-left: -2vw;
+    margin-top: -4.5vw;
+    /* line-height: 1vw; */
     visibility: visible;
     color: white;
     font-size: 1.4vw;
+    transform-origin: center;
+    text-anchor: middle;
     text-align: center;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
@@ -151,7 +153,6 @@
     width: 6.2%;
     height: 0;
     float: right;
-
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -168,8 +169,8 @@
 }
 
 .high-scores-button .icon-tooltip {
-    margin-left: -1.9vw;
-    margin-top: -6.1vw;
+    margin-left: -1.7vw;
+    margin-top: -5.85vw;
     line-height: 1vw;
     visibility: visible;
     color: white;
@@ -202,10 +203,10 @@
     
     #minesweeper-title-banner {
         padding-top: 500px;
-        margin-top: -30px;
+        margin-top: -29px;
         margin-bottom: -450px;
-        width: 110%;
-        margin-left: -5%;
+        width: 111%;
+        margin-left: -5.5%;
     }
     
     .tetra-mix-title-screen .game-icon-conatainer {
@@ -217,7 +218,7 @@
     }
     
     .minesweeper-title-screen .game-title {
-        margin-top: 110px;
+        margin-top: 109px;
     }
     
     .game-title {
@@ -247,7 +248,7 @@
     
     .settings-button .icon-tooltip {
         margin-left: -30px;
-        margin-top: -80px;
+        margin-top: -75px;
         font-size: 20px;
         line-height: 10px;
         padding: 5px;
@@ -259,7 +260,7 @@
     }
     
     .high-scores-button .icon-tooltip {
-        margin-left: -24px;
+        margin-left: -25px;
         margin-top: -100px;
         font-size: 20px;
         line-height: 10px;
@@ -293,8 +294,9 @@
         padding-top: 42vw;
         margin-top: -3.5vw;
         margin-bottom: -36vw;
-        width: 137%;
-        margin-left: -18.5%;
+        padding-top: 48vw;
+        width: 115%;
+        margin-left: -7.5%;
     }
     
     .settings-button {
@@ -323,6 +325,10 @@
     }
     
     .minesweeper-title-screen .game-icon-conatainer {
-        margin-top: -0.1vw;
+        margin-top: 1.5vw;
+    }
+
+    .minesweeper-title-screen .game-title {
+        margin-top: 6vw;
     }
 }

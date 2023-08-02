@@ -16,12 +16,15 @@ export default class TechnicalPage extends React.Component {
         super(props)
         this.handleGameUnmount = this.handleGameUnmount.bind(this);
     }
+
     handleGameUnmount(){
         console.log('Handle Game Unmount')
         gameCanvas.render(<></>)
     }
 
     componentDidMount() {
+        window.addEventListener('resize', this.handleResize)
+
         // if(window.innerWidth >= 850) {
         //     vt.VanillaTilt.init(document.querySelector("#snake-game-selection"), {
         //         max: 14,
@@ -37,6 +40,17 @@ export default class TechnicalPage extends React.Component {
         //     });
         // }
         this.loadPasswordScreen()
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize)
+    }
+
+    handleResize = () => {
+        if(window.innerWidth <= 400)
+            document.getElementById('name-home-button').textContent = "B_E_N"
+        else
+            document.getElementById('name-home-button').textContent = "BEN SHINNICK"
     }
 
     clearComputerScreen() {
