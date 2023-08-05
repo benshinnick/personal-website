@@ -1,92 +1,132 @@
 import React from 'react';
 import './SnakeGame.css';
+import * as sprites from './SpriteImageSources.js';
 
-const GAME_SCREEN_WIDTH_PX = 129;
-const GAME_SCREEN_HEIGHT_PX = 105;
+var GAME_STARTED = false;
+var IS_VERTICAL_SCREEN = null;
+var GAME_SCREEN_WIDTH_PX;
+var GAME_SCREEN_HEIGHT_PX;
+var SNAKE_ROWS;
+var SNAKE_COLS;
 
 var exitButtonHovered = false;
-var restartButtonHovered = false;
-
-// 129 x 105
-var baseImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIEAAABpBAMAAADvmV2MAAAAAXNSR0IArs4c6QAAABJQTFRFAAAAAAAAgAAAgICA/wAA////2e6U+wAAAAF0Uk5TAEDm2GYAAAHDSURBVFjD7dlRrpswEIVhv2QBf9OzgJsduKwgUhbAke7sfyt9MCRcCg3gq9IHj0SEjPJpPBgYkpTeRsyjnw69/366mFnEZEj9BoGwgnBYZUcXFMLhMJsESwiEJSx0QZQ9NgtBICKeQhnYKoQFWIU6moPi6yxKHbYK89B0qE+XqAr3Kb7o/DUWDqtPLlMa56VwxMJnBCD0QCaQUTnQJwvZloQRxpbjj0/b3MXn424JW0hgKDnIETJh4bXg83EXj5dQ1id9MmXklUMspmHDVBBgxFgH61WHtVKA+Pmsg3jlUHUu6FNUxiyHA9Enf++a3B/6llk0oQlNaEITThC08nDYLqw8Q+TNgpeTYIcQyynsEJbLu1vQvHb7hXnLcUBwrSDp/FlUC9Xnom49KCLGbYtw7XLX0XUTATRuU+F6WxYyOV9zznkieBCs57Vq8+v2sSyUYCIISZKQ0HBR2tzWBHLHQg7jm9l74drlUorlOkyEH7dD50KE69ZDeZ+pFYjjgsrLtn1cKMuhIAcFVQrjnapCEOcLw4o8V9DgnCngwlQIQ/vxb+/V9f1DdQ9T30fV93KtK25CE5rQhP9LqP+dtvL/i0i/AXNAtwyjWgJ2AAAAAElFTkSuQmCC';
-// 24 x 9
-var exitButtonImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAJAgMAAABVkwRVAAAAAXNSR0IArs4c6QAAAAlQTFRFAAAAAAAA////g93P0gAAAAF0Uk5TAEDm2GYAAAA0SURBVAjXY9BaBQQrGJaGAkEUw9SV07KywhimTp0WGQmkVmaCKRhvWhaIAqkMYwBpW7UMADOOGi+Dzp5CAAAAAElFTkSuQmCC';
-// 24 x 8
-var exitButtonHoverImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAIAgMAAACez9fwAAAAAXNSR0IArs4c6QAAAAxQTFRFAAAAAAAA/wAA////0ZO6SAAAAAF0Uk5TAEDm2GYAAAAvSURBVAjXY9BaBQQrGJaGAkEUw9SV07KywhimTp0WGQmkVmaCKRhvWhaQ+g8C3wCWeBnpKsgGYQAAAABJRU5ErkJggg==';
-// 37 x 8
-var restartButtonImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAIAgMAAAADwt54AAAAAXNSR0IArs4c6QAAAAlQTFRFAAAAAAAA////g93P0gAAAAF0Uk5TAEDm2GYAAABCSURBVAjXY9BaBQUMDEtDISCsgWHa0pVZWVFR05YCmZFTp0amzkydCmKuzIzMgjCXTg2LTJ01FSK6EqpgKtSE0AYAsrEmKFM3mlMAAAAASUVORK5CYII=';
-// 37 x 7
-var restartButtonHoverImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAHAgMAAADylGytAAAAAXNSR0IArs4c6QAAAAlQTFRFAAAAAAAAALHg3reUQQAAAAF0Uk5TAEDm2GYAAAA9SURBVAjXY9BaBQUMDEtDISCsgWHa0pVZWVFR05YCmZFTp0amzkydCmKuzIzMgjCXTg2LTJ01FSK6EqIAACMbImsR3sysAAAAAElFTkSuQmCC'; 
+var restartButtonHovered = false; 
 
 var gameCanvas;
 var gameCanvasContext;
 
 export default class SnakeGame extends React.Component {
     componentDidMount() {
-        console.log('SNAKE GAME LOADED');
+        this.handleResize();
+        window.addEventListener('resize', this.handleResize);
         document.getElementById('main-content').style.overflowY = 'hidden';
         document.getElementById('main-content').style.height = '100vh';
 
-        gameCanvas = document.getElementById('snake-game-canvas');
-        gameCanvas.width = GAME_SCREEN_WIDTH_PX;
-        gameCanvas.height = GAME_SCREEN_HEIGHT_PX;
-        gameCanvasContext = gameCanvas.getContext("2d");
+        gameCanvas.addEventListener("mousemove", (evt) => {
+            this.handleMouseGameCanvasHover(evt)
+        }, false);
+        gameCanvas.addEventListener("click", (evt) => {
+            this.handleMouseGameCanvasClick(evt)
+        }, false);
+        gameCanvas.addEventListener("mouseleave", () => {
+            this.handleMouseGameCanvasLeave()
+        }, false);
+    }
 
-        gameCanvas.addEventListener("mousemove", (evt) => { this.handleMouseGameCanvasHover(evt) }, false);
-        gameCanvas.addEventListener("click", (evt) => { this.handleMouseGameCanvasClick(evt) }, false);
+    handleResize = () => {
+        if(!GAME_STARTED) {
+            const isVerticalScreen = window.innerHeight > window.innerWidth * 1.35;
+            if(IS_VERTICAL_SCREEN === isVerticalScreen) return;
+            IS_VERTICAL_SCREEN = isVerticalScreen;
 
-        this.drawImageOnGameCanvas(baseImage, 0, 0);
+            var containerClass;
+            var baseImage;
+            if(IS_VERTICAL_SCREEN) {
+                [GAME_SCREEN_WIDTH_PX, GAME_SCREEN_HEIGHT_PX] = [87, 142];
+                [SNAKE_ROWS, SNAKE_COLS] = [20, 14];
+                containerClass = 'snake-game-container-vertical';
+                baseImage = sprites.baseImageVertical;
+            }
+            else {
+                [GAME_SCREEN_WIDTH_PX, GAME_SCREEN_HEIGHT_PX] = [129, 105];
+                [SNAKE_ROWS, SNAKE_COLS] = [14, 21];
+                containerClass = 'snake-game-container-horizontal';
+                baseImage = sprites.baseImageHorizontal;
+            }
+            document.getElementById('snake-game-container').className = containerClass;
+            gameCanvas = document.getElementById('snake-game-canvas');
+            gameCanvas.width = GAME_SCREEN_WIDTH_PX;
+            gameCanvas.height = GAME_SCREEN_HEIGHT_PX;
+            gameCanvasContext = gameCanvas.getContext("2d");
+
+            this.drawImageOnGameCanvas(baseImage, 0, 0);
+        }
     }
 
     componentWillUnmount() {
+        IS_VERTICAL_SCREEN = null;
+        window.removeEventListener('resize', this.handleResize);
         document.getElementById('main-content').style.overflowY = '';
         document.getElementById('main-content').style.height = '';
     }
 
     handleMouseGameCanvasHover(event) {
         var mousePos = getMousePos(gameCanvas, event);
-        if (mousePos.x > 66 && mousePos.x < 104 && mousePos.y < 8) {
-            if(exitButtonHovered) this.resetExitButton();
-            if(!restartButtonHovered) this.handleRestartButtonHover();
+        const restartButtonWidth = 37;
+        const restartButtonX = (IS_VERTICAL_SCREEN) ? 25 : 67;
+        const exitButtonX = (IS_VERTICAL_SCREEN) ? 63 : 105;
+        if (mousePos.x >= restartButtonX && mousePos.x < restartButtonX + restartButtonWidth && mousePos.y < 8) {
+            if(exitButtonHovered) this.resetExitButton(exitButtonX);
+            if(!restartButtonHovered) this.handleRestartButtonHover(restartButtonX);
         }
-        else if (mousePos.x > 104 && mousePos.y < 8) {
-            if(restartButtonHovered) this.resetRestartButton();
-            if(!exitButtonHovered) this.handleExitButtonHover();
+        else if (mousePos.x >= exitButtonX && mousePos.y < 8) {
+            if(restartButtonHovered) this.resetRestartButton(restartButtonX);
+            if(!exitButtonHovered) this.handleExitButtonHover(exitButtonX);
         }
         else {
-            if(exitButtonHovered) this.resetExitButton();
-            if(restartButtonHovered) this.resetRestartButton();
+            if(exitButtonHovered) this.resetExitButton(exitButtonX);
+            if(restartButtonHovered) this.resetRestartButton(restartButtonX);
         }
     }
 
-    handleRestartButtonHover() {
-        gameCanvasContext.clearRect(67, 0, 37, 2);
-        this.drawImageOnGameCanvas(restartButtonHoverImage, 67, 1);
+    handleRestartButtonHover(restartButtonX) {
+        gameCanvasContext.clearRect(restartButtonX, 0, 37, 2);
+        this.drawImageOnGameCanvas(sprites.restartButtonHoverImage, restartButtonX, 1);
         restartButtonHovered = true;
     }
 
-    resetRestartButton() {
-        gameCanvasContext.clearRect(67, 0, 37, 2);
-        this.drawImageOnGameCanvas(restartButtonImage, 67, 0);
+    resetRestartButton(restartButtonX) {
+        gameCanvasContext.clearRect(restartButtonX, 0, 37, 2);
+        this.drawImageOnGameCanvas(sprites.restartButtonImage, restartButtonX, 0);
         restartButtonHovered = false;
     }
 
-    handleExitButtonHover() {
-        gameCanvasContext.clearRect(105, 0, 24, 2);
-        this.drawImageOnGameCanvas(exitButtonHoverImage, 105, 1);
+    handleExitButtonHover(exitButtonX) {
+        gameCanvasContext.clearRect(exitButtonX, 0, 24, 2);
+        this.drawImageOnGameCanvas(sprites.exitButtonHoverImage, exitButtonX, 1);
         exitButtonHovered = true;
     }
 
-    resetExitButton() {
-        gameCanvasContext.clearRect(105, 0, 24, 2);
-        this.drawImageOnGameCanvas(exitButtonImage, 105, 0);
+    resetExitButton(exitButtonX) {
+        gameCanvasContext.clearRect(exitButtonX, 0, 24, 2);
+        this.drawImageOnGameCanvas(sprites.exitButtonImage, exitButtonX, 0);
         exitButtonHovered = false;
     }
 
     handleMouseGameCanvasClick(event) {
         var mousePos = getMousePos(gameCanvas, event);
-        if (mousePos.x > 66 && mousePos.x < 104 && mousePos.y < 8) this.restartGame();
-        if (mousePos.x > 104 && mousePos.y < 8) this.exitGame();
+        const restartButtonWidth = 37;
+        const restartButtonX = (IS_VERTICAL_SCREEN) ? 25 : 67;
+        const exitButtonX = (IS_VERTICAL_SCREEN) ? 63 : 105;
+        if (mousePos.x >= restartButtonX && mousePos.x < restartButtonX + restartButtonWidth && mousePos.y < 8) this.restartGame();
+        if (mousePos.x >= exitButtonX && mousePos.y < 8) this.exitGame();
+    }
+
+    handleMouseGameCanvasLeave() {
+        const restartButtonX = (IS_VERTICAL_SCREEN) ? 25 : 67;
+        const exitButtonX = (IS_VERTICAL_SCREEN) ? 63 : 105;
+        if(exitButtonHovered) this.resetExitButton(exitButtonX);
+        if(restartButtonHovered) this.resetRestartButton(restartButtonX);
     }
 
     restartGame() {
