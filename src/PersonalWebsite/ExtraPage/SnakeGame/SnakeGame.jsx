@@ -2,6 +2,11 @@ import React from 'react';
 import './SnakeGame.css';
 import * as sprites from './SpriteImageSources.js';
 
+const UP_KEY_CODES = [38, 87];
+const RIGHT_KEY_CODES = [39, 68];
+const DOWN_KEY_CODES = [40, 83];
+const LEFT_KEY_CODES = [37, 65];
+
 var GAME_STARTED = false;
 var IS_VERTICAL_SCREEN = null;
 var GAME_SCREEN_WIDTH_PX;
@@ -31,6 +36,7 @@ export default class SnakeGame extends React.Component {
         gameCanvas.addEventListener("mouseleave", () => {
             this.handleMouseGameCanvasLeave()
         }, false);
+        window.addEventListener('keydown', this.handleKeyDown);
     }
 
     handleResize = () => {
@@ -66,6 +72,7 @@ export default class SnakeGame extends React.Component {
     componentWillUnmount() {
         IS_VERTICAL_SCREEN = null;
         window.removeEventListener('resize', this.handleResize);
+        window.removeEventListener('keydown', this.handleKeyDown);
         document.getElementById('main-content').style.overflowY = '';
         document.getElementById('main-content').style.height = '';
     }
@@ -135,6 +142,30 @@ export default class SnakeGame extends React.Component {
 
     exitGame() {
         this.props.unmountMe();
+    }
+
+    handleKeyDown = (event) => {
+        var code = event.keyCode;
+        if(UP_KEY_CODES.includes(code)) this.handleUpMove();
+        else if(RIGHT_KEY_CODES.includes(code)) this.handleRightMove();
+        else if(DOWN_KEY_CODES.includes(code)) this.handleDownMove();
+        else if(LEFT_KEY_CODES.includes(code)) this.handleLeftMove();
+    }
+
+    handleUpMove() {
+        console.log('Up Event Detected');
+    }
+
+    handleRightMove() {
+        console.log('Right Event Detected');
+    }
+
+    handleDownMove() {
+        console.log('Down Event Detected');
+    }
+
+    handleLeftMove() {
+        console.log('Left Event Detected');
     }
 
     drawImageOnGameCanvas(imageSrc, x, y) {
