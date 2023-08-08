@@ -1,4 +1,4 @@
-export class Food {
+export default class Food {
     constructor(startingPosition) {
         this.position = startingPosition;
     }

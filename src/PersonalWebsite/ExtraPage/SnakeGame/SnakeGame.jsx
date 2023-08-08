@@ -1,11 +1,16 @@
 import React from 'react';
 import './SnakeGame.css';
 import * as sprites from './SpriteImageSources.js';
+import Snake from './Snake.js';
+import Food from './Food.js';
 
 const UP_KEY_CODES = [38, 87];
 const RIGHT_KEY_CODES = [39, 68];
 const DOWN_KEY_CODES = [40, 83];
 const LEFT_KEY_CODES = [37, 65];
+
+var snake = null;
+var food = null;
 
 var GAME_STARTED = false;
 var IS_VERTICAL_SCREEN = null;
@@ -23,9 +28,11 @@ var gameCanvasContext;
 export default class SnakeGame extends React.Component {
     componentDidMount() {
         this.handleResize();
-        window.addEventListener('resize', this.handleResize);
         document.getElementById('main-content').style.overflowY = 'hidden';
         document.getElementById('main-content').style.height = '100vh';
+
+        window.addEventListener('resize', this.handleResize);
+        window.addEventListener('keydown', this.handleKeyDown);
 
         gameCanvas.addEventListener("mousemove", (evt) => {
             this.handleMouseGameCanvasHover(evt)
@@ -36,7 +43,6 @@ export default class SnakeGame extends React.Component {
         gameCanvas.addEventListener("mouseleave", () => {
             this.handleMouseGameCanvasLeave()
         }, false);
-        window.addEventListener('keydown', this.handleKeyDown);
     }
 
     handleResize = () => {
@@ -70,6 +76,11 @@ export default class SnakeGame extends React.Component {
     }
 
     componentWillUnmount() {
+        snake = null;
+        food = null;
+        GAME_STARTED = false;
+        exitButtonHovered = false;
+        restartButtonHovered = false; 
         IS_VERTICAL_SCREEN = null;
         window.removeEventListener('resize', this.handleResize);
         window.removeEventListener('keydown', this.handleKeyDown);
@@ -140,6 +151,39 @@ export default class SnakeGame extends React.Component {
         console.log("Restart Game Button Clicked");
     }
 
+    startGame() {
+        var initialBody;
+        var initialDirection = [0, 1];
+        var initialFoodPosition = [14, 10];
+        if(IS_VERTICAL_SCREEN) {
+            gameCanvasContext.fillRect(2, 20, 83, 120);
+            initialBody = [[14, 3], [14, 4], [14, 5]];
+            initialDirection = [0, 1];
+            initialFoodPosition = [14, 10];
+        }
+        else {
+            gameCanvasContext.fillRect(2, 20, 124, 83);
+            initialBody = [[6, 1], [6, 2], [6, 3]];
+            initialDirection = [0, 1];
+            initialFoodPosition = [6, 15];
+        }
+        this.drawInitialSprites(initialBody, initialFoodPosition);
+        snake = new Snake(initialBody, initialDirection);
+        food = new Food(initialFoodPosition);
+        GAME_STARTED = true;
+    }
+
+    drawInitialSprites(initialBody, initialFoodPosition) {
+        var headPos = getGameGridPos(initialBody[2]);
+        this.drawImageOnGameCanvas(sprites.headRightImage, headPos.x, headPos.y);
+        var bodyPos = getGameGridPos(initialBody[1]);
+        this.drawImageOnGameCanvas(sprites.body1Image, bodyPos.x, bodyPos.y);
+        var tailPos = getGameGridPos(initialBody[0]);
+        this.drawImageOnGameCanvas(sprites.tailRightImage, tailPos.x, tailPos.y);
+        var foodPos = getGameGridPos(initialFoodPosition);
+        this.drawImageOnGameCanvas(sprites.foodImage, foodPos.x, foodPos.y)
+    }
+
     exitGame() {
         this.props.unmountMe();
     }
@@ -153,18 +197,22 @@ export default class SnakeGame extends React.Component {
     }
 
     handleUpMove() {
+        if(!GAME_STARTED) this.startGame();
         console.log('Up Event Detected');
     }
 
     handleRightMove() {
+        if(!GAME_STARTED) this.startGame();
         console.log('Right Event Detected');
     }
 
     handleDownMove() {
+        if(!GAME_STARTED) this.startGame();
         console.log('Down Event Detected');
     }
 
     handleLeftMove() {
+        if(!GAME_STARTED) this.startGame();
         console.log('Left Event Detected');
     }
 
@@ -185,6 +233,13 @@ export default class SnakeGame extends React.Component {
             </div>
         );
     }
+}
+
+function getGameGridPos(position) {
+    return {
+        x: 2 + (6 * position[1]),
+        y: 20 + (6 * position[0])
+    };
 }
 
 // getting mouse x and y on canvas

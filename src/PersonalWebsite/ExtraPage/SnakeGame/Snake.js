@@ -1,9 +1,15 @@
-export class Snake {
-    constructor(length, tail, startingPosition, startingDirection) {
-        this.length = length; // size of the snake
-        this.tail = tail; // array of tail locations
-        this.currentPosition = startingPosition;
+export default class Snake {
+    constructor(body, startingDirection) {
+        this.body = body;
         this.direction = startingDirection;
+    }
+
+    getTailImage() {
+
+    }
+
+    getPreviousBodyImage() {
+        
     }
 
     update() {
