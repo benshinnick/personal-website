@@ -9,6 +9,8 @@ const RIGHT_KEY_CODES = [39, 68];
 const DOWN_KEY_CODES = [40, 83];
 const LEFT_KEY_CODES = [37, 65];
 
+var score = 0;
+var turn = 0;
 var snake = null;
 var food = null;
 
@@ -82,6 +84,8 @@ export default class SnakeGame extends React.Component {
         exitButtonHovered = false;
         restartButtonHovered = false; 
         IS_VERTICAL_SCREEN = null;
+        turn = 0;
+        score = 0;
         window.removeEventListener('resize', this.handleResize);
         window.removeEventListener('keydown', this.handleKeyDown);
         document.getElementById('main-content').style.overflowY = '';
@@ -154,7 +158,7 @@ export default class SnakeGame extends React.Component {
     startGame() {
         var initialBody;
         var initialDirection = [0, 1];
-        var initialFoodPosition = [14, 10];
+        var initialFoodPosition;
         if(IS_VERTICAL_SCREEN) {
             gameCanvasContext.fillRect(2, 20, 83, 120);
             initialBody = [[14, 3], [14, 4], [14, 5]];
@@ -167,20 +171,50 @@ export default class SnakeGame extends React.Component {
             initialDirection = [0, 1];
             initialFoodPosition = [6, 15];
         }
-        this.drawInitialSprites(initialBody, initialFoodPosition);
-        snake = new Snake(initialBody, initialDirection);
-        food = new Food(initialFoodPosition);
+        snake = new Snake(initialBody, initialDirection, SNAKE_ROWS, SNAKE_COLS);
+        food = new Food(initialFoodPosition, SNAKE_ROWS, SNAKE_COLS);
+        this.drawInitialSprites();
         GAME_STARTED = true;
+
+        setInterval(() => { this.handleGameUpdate() }, 175);
     }
 
-    drawInitialSprites(initialBody, initialFoodPosition) {
-        var headPos = getGameGridPos(initialBody[2]);
-        this.drawImageOnGameCanvas(sprites.headRightImage, headPos.x, headPos.y);
-        var bodyPos = getGameGridPos(initialBody[1]);
-        this.drawImageOnGameCanvas(sprites.body1Image, bodyPos.x, bodyPos.y);
-        var tailPos = getGameGridPos(initialBody[0]);
-        this.drawImageOnGameCanvas(sprites.tailRightImage, tailPos.x, tailPos.y);
-        var foodPos = getGameGridPos(initialFoodPosition);
+    handleGameUpdate() {
+        turn += 1;
+        const foodEaten = this.wasFoodEaten();
+        if(!foodEaten) this.clearSnakeGridPosition(snake.getTailPosition());
+        snake.update(foodEaten);
+
+        if(!foodEaten) {
+            const tailGridPos = getGameGridPos(snake.getTailPosition());
+            this.drawImageOnGameCanvas(snake.getBodyImage(0), tailGridPos.x, tailGridPos.y);
+        }
+        else this.handleFoodEaten();
+        const beforeHeadGridPos = getGameGridPos(snake.getBeforeHeadPosition());
+        this.drawImageOnGameCanvas(snake.getBodyImage(snake.getLength() - 2), beforeHeadGridPos.x, beforeHeadGridPos.y);
+        const headGridPos = getGameGridPos(snake.getHeadPosition());
+        this.drawImageOnGameCanvas(snake.getBodyImage(snake.getLength() - 1), headGridPos.x, headGridPos.y);
+    }
+
+    handleFoodEaten() {
+        score += 1;
+        console.log(turn, score);
+        food.handleEaten(snake.body);
+        const foodGridPos = getGameGridPos(food.position);
+        this.drawImageOnGameCanvas(sprites.foodImage, foodGridPos.x, foodGridPos.y)
+    }
+
+    wasFoodEaten() {
+        const directedPos = snake.getDirectedPosition();
+        return directedPos[0] === food.position[0] && directedPos[1] === food.position[1];
+    }
+
+    drawInitialSprites() {
+        for(var i = 0; i < snake.getLength(); i++) {
+            const gridPos = getGameGridPos(snake.body[i]);
+            this.drawImageOnGameCanvas(snake.getBodyImage(i), gridPos.x, gridPos.y);
+        }
+        const foodPos = getGameGridPos(food.position);
         this.drawImageOnGameCanvas(sprites.foodImage, foodPos.x, foodPos.y)
     }
 
@@ -198,22 +232,27 @@ export default class SnakeGame extends React.Component {
 
     handleUpMove() {
         if(!GAME_STARTED) this.startGame();
-        console.log('Up Event Detected');
+        snake.setDirection([-1, 0]);
     }
 
     handleRightMove() {
         if(!GAME_STARTED) this.startGame();
-        console.log('Right Event Detected');
+        snake.setDirection([0, 1]);
     }
 
     handleDownMove() {
         if(!GAME_STARTED) this.startGame();
-        console.log('Down Event Detected');
+        snake.setDirection([1, 0]);
     }
 
     handleLeftMove() {
         if(!GAME_STARTED) this.startGame();
-        console.log('Left Event Detected');
+        snake.setDirection([0, -1]);
+    }
+
+    clearSnakeGridPosition(position) {
+        var gridPos = getGameGridPos(position);
+        gameCanvasContext.fillRect(gridPos.x, gridPos.y, 5, 5);
     }
 
     drawImageOnGameCanvas(imageSrc, x, y) {
