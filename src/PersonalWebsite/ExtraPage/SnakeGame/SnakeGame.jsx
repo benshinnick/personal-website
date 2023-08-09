@@ -26,6 +26,7 @@ var restartButtonHovered = false;
 
 var gameCanvas;
 var gameCanvasContext;
+var gameInterval = -1;
 
 export default class SnakeGame extends React.Component {
     componentDidMount() {
@@ -60,12 +61,14 @@ export default class SnakeGame extends React.Component {
                 [SNAKE_ROWS, SNAKE_COLS] = [20, 14];
                 containerClass = 'snake-game-container-vertical';
                 baseImage = sprites.baseImageVertical;
+                if(restartButtonHovered) baseImage = sprites.baseImageVerticalRestartHover;
             }
             else {
                 [GAME_SCREEN_WIDTH_PX, GAME_SCREEN_HEIGHT_PX] = [129, 105];
                 [SNAKE_ROWS, SNAKE_COLS] = [14, 21];
                 containerClass = 'snake-game-container-horizontal';
                 baseImage = sprites.baseImageHorizontal;
+                if(restartButtonHovered) baseImage = sprites.baseImageHorizontalRestartHover;
             }
             document.getElementById('snake-game-container').className = containerClass;
             gameCanvas = document.getElementById('snake-game-canvas');
@@ -78,14 +81,7 @@ export default class SnakeGame extends React.Component {
     }
 
     componentWillUnmount() {
-        snake = null;
-        food = null;
-        GAME_STARTED = false;
-        exitButtonHovered = false;
-        restartButtonHovered = false; 
-        IS_VERTICAL_SCREEN = null;
-        turn = 0;
-        score = 0;
+        this.resetGameVariables();
         window.removeEventListener('resize', this.handleResize);
         window.removeEventListener('keydown', this.handleKeyDown);
         document.getElementById('main-content').style.overflowY = '';
@@ -152,7 +148,11 @@ export default class SnakeGame extends React.Component {
     }
 
     restartGame() {
-        console.log("Restart Game Button Clicked");
+        if(GAME_STARTED) {
+            this.resetGameVariables();
+            restartButtonHovered = true;
+            this.handleResize();
+        }
     }
 
     startGame() {
@@ -176,7 +176,7 @@ export default class SnakeGame extends React.Component {
         this.drawInitialSprites();
         GAME_STARTED = true;
 
-        window.myInterval = setInterval(() => { this.handleGameUpdate() }, 125);
+        gameInterval = setInterval(() => { this.handleGameUpdate() }, 125);
     }
 
     handleGameUpdate() {
@@ -184,12 +184,19 @@ export default class SnakeGame extends React.Component {
         const isGameOver = this.isGameOver();
         if(isGameOver) {
             console.log('GAME OVER');
-            window.clearInterval(window.myInterval);
+            if(gameInterval !== -1) {
+                window.clearInterval(gameInterval);
+                gameInterval = -1;
+            }
             snake.toggleLastDrawnBodyType();
             for(var i = snake.getLength() - 1; i >= 0; i--) {
                 const gridPos = getGameGridPos(snake.body[i]);
                 this.drawImageOnGameCanvas(snake.getDeadBodyImage(i), gridPos.x, gridPos.y);
             }
+            setTimeout(() => {
+                if(IS_VERTICAL_SCREEN) this.drawImageOnGameCanvas(sprites.gameOverScreenVerticalImage, 2, 20);
+                else this.drawImageOnGameCanvas(sprites.gameOverScreenHorizontalImage, 2, 20);
+            }, 25);
             return;
         }
         const foodEaten = this.wasFoodEaten();
@@ -279,6 +286,21 @@ export default class SnakeGame extends React.Component {
         img.onload = function(){
             gameCanvasContext.drawImage(img,x,y);
         };
+    }
+
+    resetGameVariables() {
+        if(gameInterval !== -1) {
+            window.clearInterval(gameInterval);
+            gameInterval = -1;
+        }
+        GAME_STARTED = false;
+        snake = null;
+        food = null;
+        exitButtonHovered = false;
+        restartButtonHovered = false; 
+        IS_VERTICAL_SCREEN = null;
+        turn = 0;
+        score = 0;
     }
 
     render() {
