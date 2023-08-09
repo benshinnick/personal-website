@@ -110,6 +110,60 @@ export default class Snake {
         return null;
     }
 
+    getDeadBodyImage(bodyIndex) {
+        // tail case
+        if(bodyIndex === 0) {
+            const [tailRow, tailCol] = this.body[bodyIndex];
+            const [afterTailRow, afterTailCol] = this.body[bodyIndex+1]; 
+            if (afterTailRow > tailRow) return sprites.tailDownDeadImage;
+            if (afterTailRow < tailRow) return sprites.tailUpDeadImage;
+            if (afterTailCol > tailCol) return sprites.tailRightDeadImage;
+            if (afterTailCol < tailCol) return sprites.tailLeftDeadImage;
+        }
+        // head case
+        else if(bodyIndex === (this.getLength() - 1)) {
+            const [headRow, headCol] = this.body[bodyIndex];
+            const [beforeHeadRow, beforeHeadCol] = this.body[bodyIndex - 1];
+            if (beforeHeadRow > headRow) return sprites.headUpDeadImage;
+            if (beforeHeadRow < headRow) return sprites.headDownDeadImage;
+            if (beforeHeadCol > headCol) return sprites.headLeftDeadImage;
+            if (beforeHeadCol < headCol) return sprites.headRightDeadImage;
+        }
+        // middle body case
+        else { // body / corner case
+            const [prevBodyRow, prevBodyCol] = this.body[bodyIndex - 1];
+            const [bodyRow, bodyCol] = this.body[bodyIndex];
+            const [nextBodyRow, nextBodyCol] = this.body[bodyIndex + 1];
+            if (prevBodyRow === nextBodyRow || prevBodyCol === nextBodyCol) {
+                lastDrawnBodyType = (lastDrawnBodyType === 2) ? 1 : 2;
+                if (lastDrawnBodyType === 1) return sprites.body1DeadImage;
+                if (lastDrawnBodyType === 2) return sprites.body2DeadImage;
+            }
+            lastDrawnCornerType = (lastDrawnCornerType === 2) ? 1 : 2;
+            if(prevBodyRow > bodyRow && prevBodyCol === bodyCol) {
+                if(bodyRow === nextBodyRow && bodyCol < nextBodyCol) return sprites.rightDownCornerDeadImage;
+                if(bodyRow === nextBodyRow && bodyCol > nextBodyCol) return sprites.leftDownCornerDeadImage;
+            }
+            if(prevBodyRow < bodyRow && prevBodyCol === bodyCol) {
+                if(bodyRow === nextBodyRow && bodyCol < nextBodyCol) return sprites.rightUpCornerDeadImage;
+                if(bodyRow === nextBodyRow && bodyCol > nextBodyCol) return sprites.leftUpCornerDeadImage;
+            }
+            if(prevBodyRow === bodyRow && prevBodyCol > bodyCol) {
+                if(bodyRow < nextBodyRow && bodyCol === nextBodyCol) return sprites.rightDownCornerDeadImage;
+                if(bodyRow > nextBodyRow && bodyCol === nextBodyCol) return sprites.rightUpCornerDeadImage;
+            }
+            if(prevBodyRow === bodyRow && prevBodyCol < bodyCol) {
+                if(bodyRow < nextBodyRow && bodyCol === nextBodyCol) return sprites.leftDownCornerDeadImage;
+                if(bodyRow > nextBodyRow && bodyCol === nextBodyCol) return sprites.leftUpCornerDeadImage;
+            }
+        }
+        return null;
+    }
+
+    toggleLastDrawnBodyType() {
+        lastDrawnBodyType = (lastDrawnBodyType === 2) ? 1 : 2;
+    }
+
     // can't do 180 turn
     isDirectionAllowed(direction) {
         const directedPos = addvector(this.getHeadPosition(), direction);

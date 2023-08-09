@@ -176,11 +176,22 @@ export default class SnakeGame extends React.Component {
         this.drawInitialSprites();
         GAME_STARTED = true;
 
-        setInterval(() => { this.handleGameUpdate() }, 125);
+        window.myInterval = setInterval(() => { this.handleGameUpdate() }, 125);
     }
 
     handleGameUpdate() {
         turn += 1;
+        const isGameOver = this.isGameOver();
+        if(isGameOver) {
+            console.log('GAME OVER');
+            window.clearInterval(window.myInterval);
+            snake.toggleLastDrawnBodyType();
+            for(var i = snake.getLength() - 1; i >= 0; i--) {
+                const gridPos = getGameGridPos(snake.body[i]);
+                this.drawImageOnGameCanvas(snake.getDeadBodyImage(i), gridPos.x, gridPos.y);
+            }
+            return;
+        }
         const foodEaten = this.wasFoodEaten();
         if(!foodEaten) this.clearSnakeGridPosition(snake.getTailPosition());
         snake.update(foodEaten);
@@ -202,6 +213,13 @@ export default class SnakeGame extends React.Component {
         food.handleEaten(snake.body);
         const foodGridPos = getGameGridPos(food.position);
         this.drawImageOnGameCanvas(sprites.foodImage, foodGridPos.x, foodGridPos.y)
+    }
+
+    isGameOver() {
+        const directedPos = snake.getDirectedPosition();
+        if(directedPos[0] < 0 || directedPos[1] < 0) return true;
+        if(directedPos[0] >= SNAKE_ROWS || directedPos[1] >= SNAKE_COLS) return true;
+        return snake.body.some(a => directedPos.every((v, i) => v === a[i]));
     }
 
     wasFoodEaten() {
