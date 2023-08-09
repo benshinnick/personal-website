@@ -176,7 +176,7 @@ export default class SnakeGame extends React.Component {
         this.drawInitialSprites();
         GAME_STARTED = true;
 
-        setInterval(() => { this.handleGameUpdate() }, 175);
+        setInterval(() => { this.handleGameUpdate() }, 125);
     }
 
     handleGameUpdate() {
