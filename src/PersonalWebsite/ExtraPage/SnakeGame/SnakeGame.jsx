@@ -9,8 +9,11 @@ const RIGHT_KEY_CODES = [39, 68];
 const DOWN_KEY_CODES = [40, 83];
 const LEFT_KEY_CODES = [37, 65];
 
+const VERTICAL_PROGRESS_SNAKE_BODY_TYPES = ['tail', 'one', 'two', 'one', 'head'];
+const HORIZONTAL_PROGRESS_SNAKE_BODY_TYPES = ['tail', 'one', 'two', 'one', 'two', 'one', 'two', 'one', 'head'];
+
 var score = 0;
-var turn = 0;
+var progressCounter = 0;
 var snake = null;
 var food = null;
 
@@ -180,23 +183,9 @@ export default class SnakeGame extends React.Component {
     }
 
     handleGameUpdate() {
-        turn += 1;
         const isGameOver = this.isGameOver();
         if(isGameOver) {
-            console.log('GAME OVER');
-            if(gameInterval !== -1) {
-                window.clearInterval(gameInterval);
-                gameInterval = -1;
-            }
-            snake.toggleLastDrawnBodyType();
-            for(var i = snake.getLength() - 1; i >= 0; i--) {
-                const gridPos = getGameGridPos(snake.body[i]);
-                this.drawImageOnGameCanvas(snake.getDeadBodyImage(i), gridPos.x, gridPos.y);
-            }
-            setTimeout(() => {
-                if(IS_VERTICAL_SCREEN) this.drawImageOnGameCanvas(sprites.gameOverScreenVerticalImage, 2, 20);
-                else this.drawImageOnGameCanvas(sprites.gameOverScreenHorizontalImage, 2, 20);
-            }, 25);
+            this.handleGameOver();
             return;
         }
         const foodEaten = this.wasFoodEaten();
@@ -216,10 +205,68 @@ export default class SnakeGame extends React.Component {
 
     handleFoodEaten() {
         score += 1;
-        console.log(turn, score);
+        
+        var scoreText = score.toString();
+        // pad with beginning zeros
+        for(let i = 0; i <= 3 - scoreText.length; i++) scoreText = "0" + scoreText;
+
+        // update score text
+        var numeralDrawPosition = (IS_VERTICAL_SCREEN) ? [10, 79] : [10, 107];
+        for(let i = scoreText.length - 1; i >= 0; i--) {
+            var numberImage;
+            if (scoreText.charAt(i) === '1') numberImage = sprites.oneNumberImage;
+            else if (scoreText.charAt(i) === '2') numberImage = sprites.twoNumberImage;
+            else if (scoreText.charAt(i) === '3') numberImage = sprites.threeNumberImage;
+            else if (scoreText.charAt(i) === '4') numberImage = sprites.fourNumberImage;
+            else if (scoreText.charAt(i) === '5') numberImage = sprites.fiveNumberImage;
+            else if (scoreText.charAt(i) === '6') numberImage = sprites.sixNumberImage;
+            else if (scoreText.charAt(i) === '7') numberImage = sprites.sevenNumberImage;
+            else if (scoreText.charAt(i) === '8') numberImage = sprites.eightNumberImage;
+            else if (scoreText.charAt(i) === '9') numberImage = sprites.nineNumberImage;
+            else numberImage = sprites.zeroNumberImage;
+
+            this.drawImageOnGameCanvas(numberImage, numeralDrawPosition[1], numeralDrawPosition[0]);
+            if(scoreText.charAt(i) === '1') numeralDrawPosition[1] -= 4;
+            else numeralDrawPosition[1] = numeralDrawPosition[1] -= 5;
+        }
+
+        // update progress snake
+        if ((IS_VERTICAL_SCREEN && score % 5 === 0) || (!IS_VERTICAL_SCREEN && score % 3 === 0)) {
+            var progressBodyTypes = (IS_VERTICAL_SCREEN) ? VERTICAL_PROGRESS_SNAKE_BODY_TYPES : HORIZONTAL_PROGRESS_SNAKE_BODY_TYPES;
+            const progressSnakeDrawPosition = (IS_VERTICAL_SCREEN) ? [10, 29] : [10, 30];
+            const index = progressCounter % progressBodyTypes.length;
+            const level = Math.floor(progressCounter / progressBodyTypes.length);
+            progressCounter += 1;
+            if (level > 4) progressCounter = 0;
+            const progressBodyType = progressBodyTypes[index];
+            var progressSpriteImage;
+            if(progressBodyType === 'tail') progressSpriteImage = sprites.progressTailImages[level];
+            else if(progressBodyType === 'one') progressSpriteImage = sprites.progressBody1Images[level];
+            else if(progressBodyType === 'two') progressSpriteImage = sprites.progressBody2Images[level];
+            else progressSpriteImage = sprites.progressHeadImages[level];
+            this.drawImageOnGameCanvas(progressSpriteImage, progressSnakeDrawPosition[1] + (6 * index), progressSnakeDrawPosition[0])
+        }
+
         food.handleEaten(snake.body);
         const foodGridPos = getGameGridPos(food.position);
         this.drawImageOnGameCanvas(sprites.foodImage, foodGridPos.x, foodGridPos.y)
+    }
+
+    handleGameOver() {
+        console.log('GAME OVER');
+        if(gameInterval !== -1) {
+            window.clearInterval(gameInterval);
+            gameInterval = -1;
+        }
+        snake.toggleLastDrawnBodyType();
+        for(let i = snake.getLength() - 1; i >= 0; i--) {
+            const gridPos = getGameGridPos(snake.body[i]);
+            this.drawImageOnGameCanvas(snake.getDeadBodyImage(i), gridPos.x, gridPos.y);
+        }
+        setTimeout(() => {
+            if(IS_VERTICAL_SCREEN) this.drawImageOnGameCanvas(sprites.gameOverScreenVerticalImage, 2, 20);
+            else this.drawImageOnGameCanvas(sprites.gameOverScreenHorizontalImage, 2, 20);
+        }, 25);
     }
 
     isGameOver() {
@@ -299,8 +346,8 @@ export default class SnakeGame extends React.Component {
         exitButtonHovered = false;
         restartButtonHovered = false; 
         IS_VERTICAL_SCREEN = null;
-        turn = 0;
         score = 0;
+        progressCounter = 0;
     }
 
     render() {
