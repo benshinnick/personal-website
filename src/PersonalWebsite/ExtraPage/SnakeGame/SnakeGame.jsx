@@ -1,8 +1,10 @@
 import React from 'react';
 import './SnakeGame.css';
+import './swiped-events.js';
 import * as sprites from './SpriteImageSources.js';
 import Snake from './Snake.js';
 import Food from './Food.js';
+
 
 const UP_KEY_CODES = [38, 87];
 const RIGHT_KEY_CODES = [39, 68];
@@ -51,6 +53,19 @@ export default class SnakeGame extends React.Component {
         gameCanvas.addEventListener("mouseleave", () => {
             this.handleMouseGameCanvasLeave()
         }, false);
+
+        document.addEventListener('swiped-left', (evt) =>  {
+            this.handleLeftMove();
+        });
+        document.addEventListener('swiped-right', (evt) =>  {
+            this.handleRightMove();
+        });
+        document.addEventListener('swiped-up', (evt) => {
+            this.handleUpMove();
+        });
+        document.addEventListener('swiped-down', (evt) =>  {
+            this.handleDownMove();
+        });
     }
 
     handleResize = () => {
@@ -89,6 +104,18 @@ export default class SnakeGame extends React.Component {
         this.resetGameVariables();
         window.removeEventListener('resize', this.handleResize);
         window.removeEventListener('keydown', this.handleKeyDown);
+        document.removeEventListener('swiped-left', (evt) =>  {
+            this.handleLeftMove();
+        });
+        document.removeEventListener('swiped-right', (evt) =>  {
+            this.handleRightMove();
+        });
+        document.removeEventListener('swiped-up', (evt) => {
+            this.handleUpMove();
+        });
+        document.removeEventListener('swiped-down', (evt) =>  {
+            this.handleDownMove();
+        });
         document.getElementById('main-content').style.overflowY = '';
         document.getElementById('main-content').style.height = '';
     }
