@@ -11,9 +11,11 @@ export default class Food {
 
     handleEaten(unavailablePositions) {
         var positionUnavailable = true;
+        let foodPosition;
         while(positionUnavailable) {
-            var foodPosition = this.gridPositions[Math.floor(Math.random() * (this.gridPositions.length - 1))];
-            positionUnavailable = unavailablePositions.some(a => foodPosition.every((v, i) => v === a[i]));
+            const possibleFoodPosition = this.gridPositions[Math.floor(Math.random() * (this.gridPositions.length - 1))];
+            positionUnavailable = unavailablePositions.some(a => possibleFoodPosition.every((v, i) => v === a[i]));
+            foodPosition = possibleFoodPosition;
         }
         this.position = foodPosition;
     }

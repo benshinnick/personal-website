@@ -9,9 +9,11 @@ const RIGHT_KEY_CODES = [39, 68];
 const DOWN_KEY_CODES = [40, 83];
 const LEFT_KEY_CODES = [37, 65];
 
+const LEVEL_COLORS = ['#2fe2ff', '#56ffa1', '#ffc37d', '#ff94ee', '#ff4a4a'];
 const VERTICAL_PROGRESS_SNAKE_BODY_TYPES = ['tail', 'one', 'two', 'one', 'head'];
 const HORIZONTAL_PROGRESS_SNAKE_BODY_TYPES = ['tail', 'one', 'two', 'one', 'two', 'one', 'two', 'one', 'head'];
 
+var levelsCompleted = 0;
 var score = 0;
 var progressCounter = 0;
 var snake = null;
@@ -60,7 +62,7 @@ export default class SnakeGame extends React.Component {
             var containerClass;
             var baseImage;
             if(IS_VERTICAL_SCREEN) {
-                [GAME_SCREEN_WIDTH_PX, GAME_SCREEN_HEIGHT_PX] = [87, 142];
+                [GAME_SCREEN_WIDTH_PX, GAME_SCREEN_HEIGHT_PX] = [87, 143];
                 [SNAKE_ROWS, SNAKE_COLS] = [20, 14];
                 containerClass = 'snake-game-container-vertical';
                 baseImage = sprites.baseImageVertical;
@@ -163,7 +165,7 @@ export default class SnakeGame extends React.Component {
         var initialDirection = [0, 1];
         var initialFoodPosition;
         if(IS_VERTICAL_SCREEN) {
-            gameCanvasContext.fillRect(2, 20, 83, 120);
+            gameCanvasContext.fillRect(2, 22, 83, 120);
             initialBody = [[14, 3], [14, 4], [14, 5]];
             initialDirection = [0, 1];
             initialFoodPosition = [14, 10];
@@ -211,7 +213,7 @@ export default class SnakeGame extends React.Component {
         for(let i = 0; i <= 3 - scoreText.length; i++) scoreText = "0" + scoreText;
 
         // update score text
-        var numeralDrawPosition = (IS_VERTICAL_SCREEN) ? [10, 79] : [10, 107];
+        var numeralDrawPosition = (IS_VERTICAL_SCREEN) ? [10, 79] : [10, 121];
         for(let i = scoreText.length - 1; i >= 0; i--) {
             var numberImage;
             if (scoreText.charAt(i) === '1') numberImage = sprites.oneNumberImage;
@@ -231,25 +233,62 @@ export default class SnakeGame extends React.Component {
         }
 
         // update progress snake
-        if ((IS_VERTICAL_SCREEN && score % 5 === 0) || (!IS_VERTICAL_SCREEN && score % 3 === 0)) {
-            var progressBodyTypes = (IS_VERTICAL_SCREEN) ? VERTICAL_PROGRESS_SNAKE_BODY_TYPES : HORIZONTAL_PROGRESS_SNAKE_BODY_TYPES;
-            const progressSnakeDrawPosition = (IS_VERTICAL_SCREEN) ? [10, 29] : [10, 30];
-            const index = progressCounter % progressBodyTypes.length;
-            const level = Math.floor(progressCounter / progressBodyTypes.length);
-            progressCounter += 1;
-            if (level > 4) progressCounter = 0;
-            const progressBodyType = progressBodyTypes[index];
-            var progressSpriteImage;
-            if(progressBodyType === 'tail') progressSpriteImage = sprites.progressTailImages[level];
-            else if(progressBodyType === 'one') progressSpriteImage = sprites.progressBody1Images[level];
-            else if(progressBodyType === 'two') progressSpriteImage = sprites.progressBody2Images[level];
-            else progressSpriteImage = sprites.progressHeadImages[level];
-            this.drawImageOnGameCanvas(progressSpriteImage, progressSnakeDrawPosition[1] + (6 * index), progressSnakeDrawPosition[0])
+        var progressBodyTypes = (IS_VERTICAL_SCREEN) ? VERTICAL_PROGRESS_SNAKE_BODY_TYPES : HORIZONTAL_PROGRESS_SNAKE_BODY_TYPES;
+        const progressSnakeDrawPosition = (IS_VERTICAL_SCREEN) ? [10, 29] : [10, 30];
+        const index = progressCounter % progressBodyTypes.length;
+        var level = Math.floor(progressCounter / progressBodyTypes.length);
+        if(this.isLevelComplete(index)) this.handleLevelComplete(level);
+        progressCounter += 1;
+        if (level > 4) {
+            this.handleLevelSetComplete();
+            level = 0;
         }
+        const progressBodyType = progressBodyTypes[index];
+        var progressSpriteImage;
+        if(progressBodyType === 'tail') progressSpriteImage = sprites.progressTailImages[level];
+        else if(progressBodyType === 'one') progressSpriteImage = sprites.progressBody1Images[level];
+        else if(progressBodyType === 'two') progressSpriteImage = sprites.progressBody2Images[level];
+        else progressSpriteImage = sprites.progressHeadImages[level];
+        this.drawImageOnGameCanvas(progressSpriteImage, progressSnakeDrawPosition[1] + (6 * index), progressSnakeDrawPosition[0]);
 
         food.handleEaten(snake.body);
         const foodGridPos = getGameGridPos(food.position);
         this.drawImageOnGameCanvas(sprites.foodImage, foodGridPos.x, foodGridPos.y)
+    }
+
+    isLevelComplete(index) {
+        return (IS_VERTICAL_SCREEN && index === 4) || (!IS_VERTICAL_SCREEN && index === 8);
+    }
+
+    handleLevelComplete(level) {
+        const numLevels = LEVEL_COLORS.length;
+        if (IS_VERTICAL_SCREEN) {
+            gameCanvasContext.fillStyle = LEVEL_COLORS[level];
+            const xOffset = ((levelsCompleted - Math.floor(levelsCompleted / 5)) * 2) + (Math.floor(levelsCompleted/5) * 4)
+            const width = (level === (numLevels - 1)) ? 4 : 2;
+            gameCanvasContext.fillRect(1 + xOffset, 17, width, 1);
+        }
+        else {
+            if(progressCounter > 0 && level === 0)
+                for(let i = 0; i < numLevels; i++)
+                    gameCanvasContext.fillRect(89 + (i * 3), 9, 2, 3);
+            gameCanvasContext.fillStyle = LEVEL_COLORS[level];
+            gameCanvasContext.fillRect(89 + (level * 3), 9, 2, 3);
+        }
+        gameCanvasContext.fillStyle = "black";
+        levelsCompleted += 1;
+    }
+
+    handleLevelSetComplete() {
+        const numLevels = LEVEL_COLORS.length;
+        const levelSetsCompleted = levelsCompleted / numLevels;
+        gameCanvasContext.fillStyle = LEVEL_COLORS[levelSetsCompleted - 1];
+        if(levelSetsCompleted === 1) gameCanvasContext.fillRect(89, 13, 7, 1);
+        if(levelSetsCompleted === 2) gameCanvasContext.fillRect(96, 13, 7, 1);
+        if(levelSetsCompleted === 3) gameCanvasContext.fillRect(89, 15, 7, 1);
+        if(levelSetsCompleted === 4) gameCanvasContext.fillRect(96, 15, 7, 1);
+        gameCanvasContext.fillStyle = "black";
+        progressCounter = 1;
     }
 
     handleGameOver() {
@@ -264,7 +303,7 @@ export default class SnakeGame extends React.Component {
             this.drawImageOnGameCanvas(snake.getDeadBodyImage(i), gridPos.x, gridPos.y);
         }
         setTimeout(() => {
-            if(IS_VERTICAL_SCREEN) this.drawImageOnGameCanvas(sprites.gameOverScreenVerticalImage, 2, 20);
+            if(IS_VERTICAL_SCREEN) this.drawImageOnGameCanvas(sprites.gameOverScreenVerticalImage, 2, 22);
             else this.drawImageOnGameCanvas(sprites.gameOverScreenHorizontalImage, 2, 20);
         }, 25);
     }
@@ -346,6 +385,7 @@ export default class SnakeGame extends React.Component {
         exitButtonHovered = false;
         restartButtonHovered = false; 
         IS_VERTICAL_SCREEN = null;
+        levelsCompleted = 0;
         score = 0;
         progressCounter = 0;
     }
@@ -362,9 +402,10 @@ export default class SnakeGame extends React.Component {
 }
 
 function getGameGridPos(position) {
+    const yOffset = (IS_VERTICAL_SCREEN) ? 22 : 20;
     return {
         x: 2 + (6 * position[1]),
-        y: 20 + (6 * position[0])
+        y: yOffset + (6 * position[0])
     };
 }
 

@@ -6,19 +6,19 @@
 }
 
 .snake-game-container-vertical {
-    /* 87 x 142 */
-    width: calc(90vw - 32px); 
-    height: calc(146.897vw - 32px);
-    max-height: calc(90vh - 32px);
-    max-width: calc(55.141vh - 32px);
+    /* 87 x 143 */
+    width: calc(95vw - 16px); 
+    height: calc(156.149vw - 16px);
+    max-height: calc(95vh - 16px);
+    max-width: calc(57.797vh - 16px);
 }
 
 .snake-game-container-horizontal {
     /* 129 x 105 */
-    width: calc(85vw - 32px); 
-    height: calc(69.186vw - 32px);
-    max-height: calc(85vh - 32px);
-    max-width: calc(104.432vh - 32px);
+    width: calc(85vw - 16px); 
+    height: calc(69.186vw - 16px);
+    max-height: calc(85vh - 16px);
+    max-width: calc(104.432vh - 16px);
 }
 
 #snake-game-canvas {
