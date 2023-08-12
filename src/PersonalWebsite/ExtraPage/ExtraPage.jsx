@@ -18,13 +18,14 @@ export default class TechnicalPage extends React.Component {
     }
 
     handleGameUnmount(){
-        console.log('Handle Game Unmount')
         gameCanvas.render(<></>)
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.handleResize)
-        this.loadPasswordScreen()
+        window.addEventListener('resize', this.handleResize);
+        // this.loadPasswordScreen()
+        selectedGame = 'none-start';
+        this.handleGameSelection('snake');
     }
 
     componentWillUnmount() {
@@ -59,8 +60,11 @@ export default class TechnicalPage extends React.Component {
 
     handleGameSelection(game) {
         // clear timeouts
-        var id = setTimeout(function() {}, 0)
-        while (id--) clearTimeout(id)
+        if(selectedGame !== 'none-start') {
+            var id = setTimeout(function() {}, 0)
+            while (id--) clearTimeout(id)
+        }
+        else selectedGame = 'none';
         // insert cart and load screen;
         document.getElementById('inserted-game-cart').style.animation = '';
         if(selectedGame === game) {

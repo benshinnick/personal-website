@@ -18,7 +18,7 @@
     padding-left: 12px;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     -webkit-font-smoothing: none;
-    font-size: 18pt;
+    font-size: 24px;
     background-color: transparent;
     outline: none;
     border: 0;
@@ -36,7 +36,7 @@
     padding-left: 12px;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     -webkit-font-smoothing: none;
-    font-size: 18pt;
+    font-size: 24px;
     background-color: transparent;
     outline: none;
     border: 0;
@@ -76,7 +76,7 @@
     padding-left: 12px;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     -webkit-font-smoothing: none;
-    font-size: 18pt;
+    font-size: 24px;
     background-color: transparent;
     outline: none;
     border: 0;
@@ -94,7 +94,7 @@
     padding-left: 12px;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     -webkit-font-smoothing: none;
-    font-size: 18pt;
+    font-size: 24px;
     background-color: transparent;
     outline: none;
     border: 0;
@@ -134,24 +134,24 @@
     to { opacity: 1; }
 }
 
-@media (max-width: 675px) {
+@media (max-width: 725px) {
     .navbar-wrapper-home .links-wrapper button {
-        font-size: 15pt;
+        font-size: 22px;
     }
 
     .navbar-wrapper-home #name-home-button {
-        font-size: 15pt;
+        font-size: 22px;
     }
     .navbar-wrapper-home {
         width: 85vw;
     }
 
     .navbar-wrapper-cloud .links-wrapper button {
-        font-size: 15pt;
+        font-size: 22px;
     }
 
     .navbar-wrapper-cloud #name-home-button {
-        font-size: 15pt;
+        font-size: 22px;
     }
     .navbar-wrapper-cloud {
         width: 85vw;
@@ -161,22 +161,22 @@
 
 @media (max-width: 575px) {
     .navbar-wrapper-home .links-wrapper button {
-        font-size: 13pt;
+        font-size: 18px;
     }
 
     .navbar-wrapper-home #name-home-button {
-        font-size: 13pt;
+        font-size: 18px;
     }
     .navbar-wrapper-home {
         width: 90vw;
     }
     
     .navbar-wrapper-cloud .links-wrapper button {
-        font-size: 13pt;
+        font-size: 18px;
     }
 
     .navbar-wrapper-cloud #name-home-button {
-        font-size: 13pt;
+        font-size: 18px;
     }
     .navbar-wrapper-cloud {
         width: 90vw;
@@ -185,22 +185,22 @@
 
 @media (max-width: 520px) {
     .navbar-wrapper-home .links-wrapper button {
-        font-size: 13pt;
+        font-size: 17px;
     }
 
     .navbar-wrapper-home #name-home-button {
-        font-size: 13pt;
+        font-size: 17px;
     }
     .navbar-wrapper-home {
         width: 95vw;
     }
 
     .navbar-wrapper-cloud .links-wrapper button {
-        font-size: 13pt;
+        font-size: 17px;
     }
 
     .navbar-wrapper-cloud #name-home-button {
-        font-size: 13pt;
+        font-size: 17px;
     }
     .navbar-wrapper-cloud {
         width: 95vw;
@@ -244,20 +244,20 @@
 
 @media (max-width: 400px) {
     .navbar-wrapper-home .links-wrapper button {
-        font-size: 14pt;
+        font-size: 17px;
     }
 
     .navbar-wrapper-home #name-home-button {
-        font-size: 14pt;
+        font-size: 17px;
         padding-left: 4px;
     }
 
     .navbar-wrapper-cloud .links-wrapper button {
-        font-size: 14pt;
+        font-size: 17px;
     }
 
     .navbar-wrapper-cloud #name-home-button {
-        font-size: 14pt;
+        font-size: 17px;
         padding-left: 4px;
     }
 }
