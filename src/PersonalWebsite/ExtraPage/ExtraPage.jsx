@@ -24,21 +24,6 @@ export default class TechnicalPage extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.handleResize)
-
-        // if(window.innerWidth >= 850) {
-        //     vt.VanillaTilt.init(document.querySelector("#snake-game-selection"), {
-        //         max: 14,
-        //         speed: 8
-        //     });
-        //     vt.VanillaTilt.init(document.querySelector("#tetra-mix-game-selection"), {
-        //         max: 14,
-        //         speed: 8
-        //     });
-        //     vt.VanillaTilt.init(document.querySelector("#minesweeper-game-selection"), {
-        //         max: 14,
-        //         speed: 8
-        //     });
-        // }
         this.loadPasswordScreen()
     }
 
@@ -55,6 +40,85 @@ export default class TechnicalPage extends React.Component {
 
     clearComputerScreen() {
         document.getElementById('computer-screen').innerHTML = '';
+    }
+
+    loadGame(game) {
+        const mainContent = document.getElementById("game-container")
+        if(gameCanvas == null) gameCanvas = createRoot(mainContent)
+        if(game === 'snake') gameCanvas.render(<SnakeGame unmountMe={this.handleGameUnmount} />)
+        if(game === 'tetra-mix') gameCanvas.render(<TetraMixGame unmountMe={this.handleGameUnmount} />)
+        if(game === 'minesweeper') gameCanvas.render(<MinesweeperGame unmountMe={this.handleGameUnmount} />)
+    }
+
+    passwordSubmitButtonOnClick() {
+        document.getElementById("password-input").style.animation = "horizontal-shaking linear 150ms"
+        setTimeout(() => {
+            document.getElementById("password-input").style.animation = ""
+        }, 150);
+    }
+
+    handleGameSelection(game) {
+        // clear timeouts
+        var id = setTimeout(function() {}, 0)
+        while (id--) clearTimeout(id)
+        // insert cart and load screen;
+        document.getElementById('inserted-game-cart').style.animation = '';
+        if(selectedGame === game) {
+            this.loadPasswordScreen()
+            document.getElementById(`${game}-game-selection`).className = 'game-selection'
+            document.getElementById(`${game}-label`).innerHTML = game.toUpperCase().replace('-',' ')
+            selectedGame = 'none'
+            document.getElementById('inserted-game-cart').style.animation = 'eject-cart forwards ease-in-out 650ms'
+            return
+        }
+        this.loadGameTitleScreen(game)
+
+        document.getElementById('inserted-game-cart').className = ''
+        if(selectedGame === 'none') {
+            document.getElementById(`${game}-game-selection`).className = 'game-selection-ejected'
+            document.getElementById(`${game}-label`).innerHTML = 'EJECT'
+            selectedGame = game
+        }
+        else {
+            document.getElementById(`${selectedGame}-game-selection`).className = 'game-selection'
+            document.getElementById(`${selectedGame}-label`).innerHTML = selectedGame.toUpperCase().replace('-',' ')
+            document.getElementById(`${game}-game-selection`).className = 'game-selection-ejected'
+            document.getElementById(`${game}-label`).innerHTML = 'EJECT'
+            selectedGame = game
+        }
+        setTimeout(() => {
+            document.getElementById('inserted-game-cart').className = `${game}-game-cart`
+            document.getElementById('inserted-game-cart').style.animation = 'insert-cart forwards ease-in-out 650ms'
+        }, 1)
+    }
+
+    render() {
+        return (
+            <main className='extra-page'>
+                <div className='fill'>
+                <div id='nav-bar-background'></div>
+                    <div id='computer-layout' className='sprite'>
+                        <div id='inserted-game-cart'></div>
+                        <div id='computer-screen'></div>
+                        <div id='bottom-border'></div>
+                    </div>
+                    <div id='game-selection-container'>
+                        <div className='game-selection' id='snake-game-selection' onClick={() => this.handleGameSelection('snake')}>
+                            <div id='snake-game-cart' className='sprite game-cart snake-game-cart'></div>
+                            <div id='snake-label' className='game-selection-label'>SNAKE</div>
+                        </div>
+                        <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.handleGameSelection('tetra-mix')}>
+                            <div id='tetra-mix-game-cart' className='sprite game-cart tetra-mix-game-cart'></div>
+                            <div id='tetra-mix-label' className='game-selection-label'>TETRA MIX</div>
+                        </div>
+                        <div className='game-selection' id='minesweeper-game-selection' onClick={() => this.handleGameSelection('minesweeper')}>
+                            <div id='minesweeper-game-cart' className='sprite game-cart minesweeper-game-cart'></div>
+                            <div id='minesweeper-label' className='game-selection-label'>MINESWEEPER</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        );
     }
 
     loadPasswordScreen() {
@@ -156,102 +220,17 @@ export default class TechnicalPage extends React.Component {
 
         var settingsButton = document.createElement('div')
         settingsButton.className = 'settings-button'
-        var settingsButtonTooltip = document.createElement('div')
-        settingsButtonTooltip.className = 'icon-tooltip'
-        settingsButtonTooltip.innerHTML = "settings"
-        settingsButton.appendChild(settingsButtonTooltip)
+        settingsButton.setAttribute("title", "Settings");
         iconContainer.appendChild(settingsButton)
 
         var highScoresButton = document.createElement('div')
         highScoresButton.className = 'high-scores-button'
-        var highScoresButtonTooltip = document.createElement('div')
-        highScoresButtonTooltip.className = 'icon-tooltip'
-        highScoresButtonTooltip.innerHTML = "high<br></br>scores"
-        highScoresButton.appendChild(highScoresButtonTooltip)
+        highScoresButton.setAttribute("title", "High Scores");
         iconContainer.appendChild(highScoresButton)
 
         gameTitleScreenContainer.appendChild(iconContainer)
 
         document.getElementById('computer-screen').appendChild(gameTitleScreenContainer)
-    }
-
-    loadGame(game) {
-        const mainContent = document.getElementById("game-container")
-        if(gameCanvas == null) gameCanvas = createRoot(mainContent)
-        if(game === 'snake') gameCanvas.render(<SnakeGame unmountMe={this.handleGameUnmount} />)
-        if(game === 'tetra-mix') gameCanvas.render(<TetraMixGame unmountMe={this.handleGameUnmount} />)
-        if(game === 'minesweeper') gameCanvas.render(<MinesweeperGame unmountMe={this.handleGameUnmount} />)
-    }
-
-    passwordSubmitButtonOnClick() {
-        document.getElementById("password-input").style.animation = "horizontal-shaking linear 150ms"
-        setTimeout(() => {
-            document.getElementById("password-input").style.animation = ""
-        }, 150);
-    }
-
-    handleGameSelection(game) {
-        // clear timeouts
-        var id = setTimeout(function() {}, 0)
-        while (id--) clearTimeout(id)
-        // insert cart and load screen;
-        document.getElementById('inserted-game-cart').style.animation = '';
-        if(selectedGame === game) {
-            this.loadPasswordScreen()
-            document.getElementById(`${game}-game-selection`).className = 'game-selection'
-            document.getElementById(`${game}-label`).innerHTML = game.toUpperCase().replace('-',' ')
-            selectedGame = 'none'
-            document.getElementById('inserted-game-cart').style.animation = 'eject-cart forwards ease-in-out 650ms'
-            return
-        }
-        this.loadGameTitleScreen(game)
-
-        document.getElementById('inserted-game-cart').className = ''
-        if(selectedGame === 'none') {
-            document.getElementById(`${game}-game-selection`).className = 'game-selection-ejected'
-            document.getElementById(`${game}-label`).innerHTML = 'EJECT'
-            selectedGame = game
-        }
-        else {
-            document.getElementById(`${selectedGame}-game-selection`).className = 'game-selection'
-            document.getElementById(`${selectedGame}-label`).innerHTML = selectedGame.toUpperCase().replace('-',' ')
-            document.getElementById(`${game}-game-selection`).className = 'game-selection-ejected'
-            document.getElementById(`${game}-label`).innerHTML = 'EJECT'
-            selectedGame = game
-        }
-        setTimeout(() => {
-            document.getElementById('inserted-game-cart').className = `${game}-game-cart`
-            document.getElementById('inserted-game-cart').style.animation = 'insert-cart forwards ease-in-out 650ms'
-        }, 1)
-    }
-
-    render() {
-        return (
-            <main className='extra-page'>
-                <div className='fill'>
-                <div id='nav-bar-background'></div>
-                    <div id='computer-layout' className='sprite'>
-                        <div id='inserted-game-cart'></div>
-                        <div id='computer-screen'></div>
-                        <div id='bottom-border'></div>
-                    </div>
-                    <div id='game-selection-container'>
-                        <div className='game-selection' id='snake-game-selection' onClick={() => this.handleGameSelection('snake')}>
-                            <div id='snake-game-cart' className='sprite game-cart snake-game-cart'></div>
-                            <div id='snake-label' className='game-selection-label'>SNAKE</div>
-                        </div>
-                        <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.handleGameSelection('tetra-mix')}>
-                            <div id='tetra-mix-game-cart' className='sprite game-cart tetra-mix-game-cart'></div>
-                            <div id='tetra-mix-label' className='game-selection-label'>TETRA MIX</div>
-                        </div>
-                        <div className='game-selection' id='minesweeper-game-selection' onClick={() => this.handleGameSelection('minesweeper')}>
-                            <div id='minesweeper-game-cart' className='sprite game-cart minesweeper-game-cart'></div>
-                            <div id='minesweeper-label' className='game-selection-label'>MINESWEEPER</div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        );
     }
 }
 

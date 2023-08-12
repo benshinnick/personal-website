@@ -339,7 +339,8 @@ export default class SnakeGame extends React.Component {
         const directedPos = snake.getDirectedPosition();
         if(directedPos[0] < 0 || directedPos[1] < 0) return true;
         if(directedPos[0] >= SNAKE_ROWS || directedPos[1] >= SNAKE_COLS) return true;
-        return snake.body.some(a => directedPos.every((v, i) => v === a[i]));
+        const [, ...body] = snake.body;
+        return body.some(a => directedPos.every((v, i) => v === a[i]));
     }
 
     wasFoodEaten() {

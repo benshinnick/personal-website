@@ -121,32 +121,19 @@
 }
 
 .settings-button:hover {
-    background-image: url(./Sprites/settings-icon-hover.png);
     cursor: pointer;
 }
 
-.settings-button .icon-tooltip {
-    margin-left: -2vw;
-    margin-top: -4.5vw;
-    /* line-height: 1vw; */
-    visibility: visible;
-    color: white;
-    font-size: 1.4vw;
-    transform-origin: center;
-    text-anchor: middle;
-    text-align: center;
-    font-weight: bold;
-    font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    padding-bottom: 0.6vw;
-    -webkit-font-smoothing: none;
-    padding: 0.3vw;
-    position: absolute;
-    z-index: 1;
-    visibility: hidden;
+.snake-title-screen .game-icon-conatainer .settings-button:hover {
+    background-image: url(./Sprites/snake-settings-icon-hover.png);
 }
 
-.settings-button:hover .icon-tooltip {
-    visibility: visible;
+.tetra-mix-title-screen .game-icon-conatainer .settings-button:hover {
+    background-image: url(./Sprites/tetra-mix-settings-icon-hover.png);
+}
+
+.minesweeper-title-screen .game-icon-conatainer .settings-button:hover {
+    background-image: url(./Sprites/minesweeper-settings-icon-hover.png);
 }
 
 .high-scores-button {
@@ -166,28 +153,6 @@
 .high-scores-button:hover {
     background-image: url(./Sprites/high-scores-icon-hover.png);
     cursor: pointer;
-}
-
-.high-scores-button .icon-tooltip {
-    margin-left: -1.7vw;
-    margin-top: -5.85vw;
-    line-height: 1vw;
-    visibility: visible;
-    color: white;
-    font-size: 1.4vw;
-    line-height: 0.8vw;
-    text-align: center;
-    font-weight: bold;
-    font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    -webkit-font-smoothing: none;
-    padding: 0.3vw;
-    position: absolute;
-    z-index: 1;
-    visibility: hidden;
-}
-
-.high-scores-button:hover .icon-tooltip {
-    visibility: visible;
 }
 
 @media only screen and (min-width: 1400px)  {
