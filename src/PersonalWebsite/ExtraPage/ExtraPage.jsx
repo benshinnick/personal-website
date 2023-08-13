@@ -23,9 +23,9 @@ export default class TechnicalPage extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.handleResize);
-        // this.loadPasswordScreen()
         selectedGame = 'none-start';
         this.handleGameSelection('snake');
+        window.scrollTo(0, 0);
     }
 
     componentWillUnmount() {

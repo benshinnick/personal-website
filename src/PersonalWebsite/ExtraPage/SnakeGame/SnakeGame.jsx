@@ -4,6 +4,7 @@ import './swiped-events.js';
 import * as sprites from './SpriteImageSources.js';
 import Snake from './Snake.js';
 import Food from './Food.js';
+import * as ch from '../CookieHelper.js';
 
 
 const UP_KEY_CODES = [38, 87];
@@ -242,17 +243,7 @@ export default class SnakeGame extends React.Component {
         // update score text
         var numeralDrawPosition = (IS_VERTICAL_SCREEN) ? [10, 79] : [10, 121];
         for(let i = scoreText.length - 1; i >= 0; i--) {
-            var numberImage;
-            if (scoreText.charAt(i) === '1') numberImage = sprites.oneNumberImage;
-            else if (scoreText.charAt(i) === '2') numberImage = sprites.twoNumberImage;
-            else if (scoreText.charAt(i) === '3') numberImage = sprites.threeNumberImage;
-            else if (scoreText.charAt(i) === '4') numberImage = sprites.fourNumberImage;
-            else if (scoreText.charAt(i) === '5') numberImage = sprites.fiveNumberImage;
-            else if (scoreText.charAt(i) === '6') numberImage = sprites.sixNumberImage;
-            else if (scoreText.charAt(i) === '7') numberImage = sprites.sevenNumberImage;
-            else if (scoreText.charAt(i) === '8') numberImage = sprites.eightNumberImage;
-            else if (scoreText.charAt(i) === '9') numberImage = sprites.nineNumberImage;
-            else numberImage = sprites.zeroNumberImage;
+            var numberImage = sprites.numberImages[parseInt(scoreText[i])]
 
             this.drawImageOnGameCanvas(numberImage, numeralDrawPosition[1], numeralDrawPosition[0]);
             if(scoreText.charAt(i) === '1') numeralDrawPosition[1] -= 4;
@@ -330,9 +321,39 @@ export default class SnakeGame extends React.Component {
             this.drawImageOnGameCanvas(snake.getDeadBodyImage(i), gridPos.x, gridPos.y);
         }
         setTimeout(() => {
+            ch.updateGameHighScore('snake', score);
+            const highScores = ch.getHighScores('snake');
+
+            this.drawGameOverScreen(highScores);
+        }, 25);
+    }
+
+    drawGameOverScreen(highScores) {
+        var highScoreToDisplay = highScores[0];
+        var numeralDrawPosition;
+        if(score === highScores[0] && highScores.length > 1) {
+            if(IS_VERTICAL_SCREEN) this.drawImageOnGameCanvas(sprites.gameOverScreenVerticalNewHighScoreImage, 2, 22);
+            else this.drawImageOnGameCanvas(sprites.gameOverScreenHorizontalNewHighScoreImage, 2, 20);
+            if(IS_VERTICAL_SCREEN) numeralDrawPosition = [56, 89];
+            else numeralDrawPosition = [77, 72];
+            highScoreToDisplay = highScores[1];
+        }
+        else {
             if(IS_VERTICAL_SCREEN) this.drawImageOnGameCanvas(sprites.gameOverScreenVerticalImage, 2, 22);
             else this.drawImageOnGameCanvas(sprites.gameOverScreenHorizontalImage, 2, 20);
-        }, 25);
+            if(IS_VERTICAL_SCREEN) numeralDrawPosition = [59, 78];
+            else numeralDrawPosition = [80, 61];
+        }
+
+        setTimeout(() => {
+            var scoreText = highScoreToDisplay.toString();
+            for(let i = 0; i < scoreText.length; i++) {
+                var numberImage = sprites.noBackgroundNumberImages[parseInt(scoreText[i])]
+                this.drawImageOnGameCanvas(numberImage, numeralDrawPosition[0], numeralDrawPosition[1]);
+                if(scoreText.charAt(i) === '1') numeralDrawPosition[0] += 4;
+                else numeralDrawPosition[0] = numeralDrawPosition[0] += 5;
+            }
+        }, 10);
     }
 
     isGameOver() {

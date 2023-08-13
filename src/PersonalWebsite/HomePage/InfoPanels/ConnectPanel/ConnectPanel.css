@@ -257,7 +257,7 @@ a span {
     }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
     .connect-panel #connect-info #connect-text {
         font-size: 22px;
     }
