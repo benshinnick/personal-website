@@ -100,24 +100,26 @@ export default class TechnicalPage extends React.Component {
         return (
             <main className='extra-page'>
                 <div className='fill'>
-                <div id='nav-bar-background'></div>
-                    <div id='computer-layout' className='sprite'>
-                        <div id='inserted-game-cart'></div>
-                        <div id='computer-screen'></div>
-                        <div id='bottom-border'></div>
-                    </div>
-                    <div id='game-selection-container'>
-                        <div className='game-selection' id='snake-game-selection' onClick={() => this.handleGameSelection('snake')}>
-                            <div id='snake-game-cart' className='sprite game-cart snake-game-cart'></div>
-                            <div id='snake-label' className='game-selection-label'>SNAKE</div>
+                    <div id='nav-bar-background'></div>
+                    <div id='extra-page-content'>
+                        <div id='computer-layout' className='sprite'>
+                            <div id='inserted-game-cart'></div>
+                            <div id='computer-screen'></div>
+                            <div id='bottom-border'></div>
                         </div>
-                        <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.handleGameSelection('tetra-mix')}>
-                            <div id='tetra-mix-game-cart' className='sprite game-cart tetra-mix-game-cart'></div>
-                            <div id='tetra-mix-label' className='game-selection-label'>TETRA MIX</div>
-                        </div>
-                        <div className='game-selection' id='minesweeper-game-selection' onClick={() => this.handleGameSelection('minesweeper')}>
-                            <div id='minesweeper-game-cart' className='sprite game-cart minesweeper-game-cart'></div>
-                            <div id='minesweeper-label' className='game-selection-label'>MINESWEEPER</div>
+                        <div id='game-selection-container'>
+                            <div className='game-selection' id='snake-game-selection' onClick={() => this.handleGameSelection('snake')}>
+                                <div id='snake-game-cart' className='sprite game-cart snake-game-cart'></div>
+                                <div id='snake-label' className='game-selection-label'>SNAKE</div>
+                            </div>
+                            <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.handleGameSelection('tetra-mix')}>
+                                <div id='tetra-mix-game-cart' className='sprite game-cart tetra-mix-game-cart'></div>
+                                <div id='tetra-mix-label' className='game-selection-label'>TETRA MIX</div>
+                            </div>
+                            <div className='game-selection' id='minesweeper-game-selection' onClick={() => this.handleGameSelection('minesweeper')}>
+                                <div id='minesweeper-game-cart' className='sprite game-cart minesweeper-game-cart'></div>
+                                <div id='minesweeper-label' className='game-selection-label'>MINESWEEPER</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,16 +227,50 @@ export default class TechnicalPage extends React.Component {
         var settingsButton = document.createElement('div')
         settingsButton.className = 'settings-button'
         settingsButton.setAttribute("title", "Settings");
+        settingsButton.addEventListener('click', () => { this.loadSettingsScreen(game) })
         iconContainer.appendChild(settingsButton)
 
         var highScoresButton = document.createElement('div')
         highScoresButton.className = 'high-scores-button'
         highScoresButton.setAttribute("title", "High Scores");
+        highScoresButton.addEventListener('click', () => { this.loadHighScoresScreen(game) })
         iconContainer.appendChild(highScoresButton)
 
         gameTitleScreenContainer.appendChild(iconContainer)
 
         document.getElementById('computer-screen').appendChild(gameTitleScreenContainer)
+    }
+
+    loadSettingsScreen(game) {
+        console.log(`${game} Settings Screen Loading`)
+
+        var settingsScreenContainer = document.createElement('div')
+        settingsScreenContainer.className = `computer-screen-container ${game}-settings-screen`
+    }
+
+    loadHighScoresScreen(game) {
+        this.clearComputerScreen();
+
+        console.log(`${game} High Scores Screen Loading`)
+
+        var highScoresContainer = document.createElement('div')
+        highScoresContainer.className = `computer-screen-container ${game}-settings-screen`
+        
+        var menuBanner = document.createElement('div')
+        menuBanner.className = 'menu-banner'
+        menuBanner.id = `${game}-menu-banner`
+        highScoresContainer.appendChild(menuBanner)
+
+        var highScoresTextContainer = document.createElement('div')
+
+        var highScoresTitle = document.createElement('div')
+        highScoresTitle.innerHTML = 'High Scores:'
+        highScoresTitle.id = `high-scores-title`
+
+
+        highScoresContainer.appendChild(highScoresTextContainer)
+
+        document.getElementById('computer-screen').appendChild(highScoresContainer)
     }
 }
 
