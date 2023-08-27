@@ -6,7 +6,7 @@ import MinesweeperGame from './MinesweeperGame/MinesweeperGame';
 import './ExtraPage.css';
 import './PasswordScreen.css';
 import './TitleScreens.css';
-// import * as vt from './vanilla-tilt.js';
+import * as ch from './CookieHelper.js';
 
 var selectedGame = 'none';
 var gameCanvas = null;
@@ -254,7 +254,7 @@ export default class TechnicalPage extends React.Component {
         console.log(`${game} High Scores Screen Loading`)
 
         var highScoresContainer = document.createElement('div')
-        highScoresContainer.className = `computer-screen-container ${game}-settings-screen`
+        highScoresContainer.className = `computer-screen-container settings-screen`
         
         var menuBanner = document.createElement('div')
         menuBanner.className = 'menu-banner'
@@ -265,8 +265,37 @@ export default class TechnicalPage extends React.Component {
 
         var highScoresTitle = document.createElement('div')
         highScoresTitle.innerHTML = 'High Scores:'
-        highScoresTitle.id = `high-scores-title`
+        highScoresTitle.id = `high-scores-title`;
+        highScoresTextContainer.appendChild(highScoresTitle)
 
+        var highScoresText = document.createElement('div')
+        const highScores = ch.getHighScores(game)
+        for(let i = 0; i < highScores.length; i++) {
+            var scoreText = highScores[i].toString();
+            // pad with beginning zeros
+            for(let j = 0; j <= 3 - scoreText.length; j++) scoreText = "0" + scoreText;
+            let color = "white";
+            if(i === 0) color = "#fff159";
+            if(i === 1) color = "#C0C0C0";
+            if(i === 2) color = "#CD7F32";
+            let textSections = [`${i+1}:`, scoreText, 'Points']
+            for(let i = 0; i < textSections.length; i++) {
+                var highScoreSection = document.createElement('div')
+                highScoreSection.innerHTML = textSections[i]
+                if(i === 0) highScoreSection.style = `color: ${color}`
+                highScoresText.appendChild(highScoreSection)
+            }
+        }
+
+        highScoresText.id = `high-scores-text`;
+        highScoresTextContainer.appendChild(highScoresText)
+
+        var backButton = document.createElement('div')
+        backButton.id = `${game}-menu-back-button`
+        backButton.className = 'menu-back-button'
+        backButton.innerHTML = 'Back To Title'
+        backButton.addEventListener('click', () => { this.loadGameTitleScreen(game) })
+        highScoresTextContainer.appendChild(backButton)
 
         highScoresContainer.appendChild(highScoresTextContainer)
 

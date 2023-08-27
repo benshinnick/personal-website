@@ -42,12 +42,17 @@ export function updateGameHighScore(game, score) {
     if(highScores.length > 5) {
         highScores = highScores.slice(0, 5);
     }
+    else {
+        while (highScores.length < 5) {
+            highScores.push(0)
+        }
+    }
     createCookie(`${game}HighScores`, JSON.stringify(highScores), 300);
 }
 
 export function getHighScores(game) {
     let highScores = readCookie(`${game}HighScores`);
-    if(highScores === null) highScores = [];
+    if(highScores === null) highScores = [0, 0, 0, 0, 0];
     else highScores = JSON.parse(highScores);
     return highScores;
 }

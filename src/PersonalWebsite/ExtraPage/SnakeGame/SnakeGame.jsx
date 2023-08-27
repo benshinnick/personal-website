@@ -331,7 +331,7 @@ export default class SnakeGame extends React.Component {
     drawGameOverScreen(highScores) {
         var highScoreToDisplay = highScores[0];
         var numeralDrawPosition;
-        if(score === highScores[0] && highScores.length > 1) {
+        if(score === highScores[0] && highScores[1] > 0) {
             if(IS_VERTICAL_SCREEN) this.drawImageOnGameCanvas(sprites.gameOverScreenVerticalNewHighScoreImage, 2, 22);
             else this.drawImageOnGameCanvas(sprites.gameOverScreenHorizontalNewHighScoreImage, 2, 20);
             if(IS_VERTICAL_SCREEN) numeralDrawPosition = [56, 89];
