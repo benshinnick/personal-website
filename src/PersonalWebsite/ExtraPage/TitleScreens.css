@@ -38,7 +38,7 @@
     background-image: url(./Sprites/tetra-mix-title-banner.png);
     padding-top: 25vw;
     margin-top: 2vw;
-    margin-bottom: -28vw;
+    margin-bottom: -29vw;
 }
 
 #minesweeper-title-banner {
@@ -51,7 +51,7 @@
 }
 
 .tetra-mix-title-screen .game-icon-conatainer {
-    margin-top: 8.6vw;
+    margin-top: 9.6vw;
 }
 
 .minesweeper-title-screen .game-icon-conatainer {
@@ -229,7 +229,7 @@
     margin-top: 0.25vw;
     color: white;
     width: 95%;
-    margin-left: 0.5vw;
+    margin-left: 0.8vw;
     border: 0.35vw solid white;
 
     border-width: 0.35vw 0 0.35vw 0;
