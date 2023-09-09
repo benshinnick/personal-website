@@ -56,3 +56,8 @@ export function getHighScores(game) {
     else highScores = JSON.parse(highScores);
     return highScores;
 }
+
+export function setSettingDefaults() {
+    if(readCookie('snake-speed') == null) createCookie("snake-speed", "medium", 300);
+    if(readCookie('snake-fruit') == null) createCookie("snake-fruit", "1", 300);
+}

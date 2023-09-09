@@ -22,6 +22,7 @@ export default class TechnicalPage extends React.Component {
     }
 
     componentDidMount() {
+        ch.setSettingDefaults()
         window.addEventListener('resize', this.handleResize);
         selectedGame = 'none-start';
         this.handleGameSelection('snake');
@@ -242,23 +243,94 @@ export default class TechnicalPage extends React.Component {
     }
 
     loadSettingsScreen(game) {
-        console.log(`${game} Settings Screen Loading`)
+        this.clearComputerScreen();
 
         var settingsScreenContainer = document.createElement('div')
-        settingsScreenContainer.className = `computer-screen-container ${game}-settings-screen`
+        settingsScreenContainer.className = `computer-screen-container settings-screen`
+
+        var settingsControlsContainer = document.createElement('div')
+        settingsControlsContainer.id = 'settings-controls-container'
+
+        let settingTitles = []
+        let settingOptions = []
+        let settingColors = []
+        if (game === 'snake') {
+            settingTitles = ['speed', 'fruit']
+            settingOptions = [
+                ['slow', 'medium', 'fast'],
+                ['1', '2', '3', '4', '5']
+            ]
+            settingColors = [
+                '#2fe2ff',
+                '#ff4a4a'
+            ]
+        }
+
+        for (let i = 0; i < settingTitles.length; i++) {
+            var settingContainer = document.createElement('div')
+            settingContainer.className = 'setting-container'
+            settingContainer.style.borderColor = settingColors[i]
+
+            let selectedSetting = ch.readCookie(`${game}-${settingTitles[i]}`)
+            var settingsTitle = document.createElement('div')
+            settingsTitle.className = 'settings-title-banner'
+            let titleText = settingTitles[i].replace('-', ' ').toUpperCase()
+            settingsTitle.innerHTML = titleText
+            settingContainer.appendChild(settingsTitle)
+
+            var settingOptionsContainer = document.createElement('div')
+            settingOptionsContainer.className = 'settings-options-container'
+            settingOptionsContainer.style.borderColor = settingColors[i]
+
+            let settingOptionElements = []
+            for (let j = 0; j < settingOptions[i].length; j++) {
+                let settingsOption = document.createElement('div')
+                if (selectedSetting === settingOptions[i][j])
+                    settingsOption.className = 'settings-option selected'
+                else
+                    settingsOption.className = 'settings-option'
+                settingsOption.addEventListener('click', () => {
+                    settingOptionElements.forEach((settingOptionElement) => {
+                        settingOptionElement.className = 'settings-option'
+                    })
+                    settingsOption.className = 'settings-option selected'
+                    ch.createCookie(`${game}-${settingTitles[i]}`, settingOptions[i][j], 300)
+                })
+                settingsOption.innerHTML = settingOptions[i][j].replace('-', ' ').toUpperCase()
+                settingOptionsContainer.appendChild(settingsOption)
+                settingOptionElements.push(settingsOption)
+            }
+
+            settingContainer.appendChild(settingOptionsContainer)
+            settingsControlsContainer.appendChild(settingContainer)
+        }
+
+        var backButton = document.createElement('div')
+        backButton.id = `${game}-menu-back-button`
+        backButton.className = 'menu-back-button'
+        backButton.innerHTML = 'BACK TO TITLE'
+        backButton.addEventListener('click', () => { this.loadGameTitleScreen(game) })
+        settingsControlsContainer.appendChild(backButton)
+
+        settingsScreenContainer.appendChild(settingsControlsContainer)
+
+        var menuBanner = document.createElement('div')
+        menuBanner.className = 'menu-banner'
+        menuBanner.id = `${game}-settings-banner`
+        settingsScreenContainer.appendChild(menuBanner)
+
+        document.getElementById('computer-screen').appendChild(settingsScreenContainer)
     }
 
     loadHighScoresScreen(game) {
         this.clearComputerScreen();
-
-        console.log(`${game} High Scores Screen Loading`)
 
         var highScoresContainer = document.createElement('div')
         highScoresContainer.className = `computer-screen-container settings-screen`
         
         var menuBanner = document.createElement('div')
         menuBanner.className = 'menu-banner'
-        menuBanner.id = `${game}-menu-banner`
+        menuBanner.id = `${game}-high-scores-banner`
         highScoresContainer.appendChild(menuBanner)
 
         var highScoresTextContainer = document.createElement('div')

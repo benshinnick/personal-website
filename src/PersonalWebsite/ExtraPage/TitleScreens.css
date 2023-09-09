@@ -14,8 +14,6 @@
 }
 
 .menu-banner {
-    margin-top: -2.5%;
-    margin-left: -4%;
     width: 50%;
     background-size: contain;
     background-repeat: no-repeat;
@@ -26,8 +24,24 @@
     object-fit: contain;
 }
 
-#snake-menu-banner {
-    background-image: url(./Sprites/snake-menu-banner.png);
+#settings-controls-container {
+    margin-top: -3%;
+    margin-left: 0;
+    width: 58%;
+    margin-left: -2.5%;
+}
+
+#snake-settings-banner {
+    background-image: url(./Sprites/snake-settings-banner.png);
+    width: 45%;
+    margin-top: -2.5%;
+    margin-left: 4%;
+}
+
+#snake-high-scores-banner {
+    background-image: url(./Sprites/snake-high-scores-banner.png);
+    margin-top: -2.5%;
+    margin-left: -4%;
 }
 
 #snake-title-banner {
@@ -235,6 +249,15 @@
     border-width: 0.35vw 0 0.35vw 0;
 }
 
+#settings-controls-container .menu-back-button {
+    width: 94%;
+    font-size: 2.25vw;
+    border-width: 0.35vw 0 0.35vw 0;
+    margin-top: 5.5vw;
+    padding-left: 0.2vw;
+    margin-left: 0.25vw;
+}
+
 #snake-menu-back-button:hover {
     color: #eb4242;
     border-color: #eb4242;
@@ -251,6 +274,64 @@
     color: #47e667;
     border-color: #47e667;
     cursor: pointer;
+}
+
+.setting-container {
+    width: 95%;
+    margin-bottom: 1vw;
+}
+
+.settings-title-banner {
+    color: white;
+    font-size: 2.25vw;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    padding-bottom: 0;
+    -webkit-font-smoothing: none;
+    padding-left: 0.7vw;
+    letter-spacing: 0.1vw;
+    padding-top: 0.4vw;
+    margin-bottom: 0.25vw;
+    margin-top: 0.5vw;
+    width: 100%;
+}
+
+.settings-options-container {
+    display: flex;
+    width: 100%;
+    border: 0.4vw solid white;
+    padding-bottom: 0.4vw;
+    padding-top: 0;
+    border-width: 0.4vw 0.4vw 0 0.4vw;
+    /* margin-bottom: 1vw; */
+}
+
+.settings-option {
+    color: white;
+    font-size: 1.4vw;
+    text-align: center;
+    width: fit-content;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-font-smoothing: none;
+    padding-left: 0.5vw;
+    letter-spacing: 0.1vw;
+    border: 0.2vw solid transparent;
+    border-width: 0 0.25vw 0.25vw 0.25vw;
+    padding-right: 0.2vw;
+    padding-top: 0.35vw;
+}
+
+.settings-option:hover {
+    cursor: pointer;
+}
+
+
+.settings-options-container .selected {
+    border-color: currentColor;
 }
 
 @media only screen and (min-width: 1400px)  {
@@ -463,7 +544,7 @@
     
     .menu-back-button {
         font-size: 4.5vw;
-        width: 95%;
+        width: 98%;
         padding-top: 0.8vw;
         padding-bottom: 0.5vw;
         -webkit-font-smoothing: none;
