@@ -16,11 +16,14 @@ const LEVEL_COLORS = ['#2fe2ff', '#56ffa1', '#ffc37d', '#ff94ee', '#ff4a4a'];
 const VERTICAL_PROGRESS_SNAKE_BODY_TYPES = ['tail', 'one', 'two', 'one', 'head'];
 const HORIZONTAL_PROGRESS_SNAKE_BODY_TYPES = ['tail', 'one', 'two', 'one', 'two', 'one', 'two', 'one', 'head'];
 
+var GAME_SPEED = 125
+
 var levelsCompleted = 0;
 var score = 0;
 var progressCounter = 0;
 var snake = null;
 var food = null;
+var lastFoodEatenIdx = 0;
 
 var GAME_STARTED = false;
 var IS_VERTICAL_SCREEN = null;
@@ -77,12 +80,14 @@ export default class SnakeGame extends React.Component {
 
             var containerClass;
             var baseImage;
+            var initialFoodPositions;
             if(IS_VERTICAL_SCREEN) {
                 [GAME_SCREEN_WIDTH_PX, GAME_SCREEN_HEIGHT_PX] = [87, 143];
                 [SNAKE_ROWS, SNAKE_COLS] = [20, 14];
                 containerClass = 'snake-game-container-vertical';
                 baseImage = sprites.baseImageVertical;
                 if(restartButtonHovered) baseImage = sprites.baseImageVerticalRestartHover;
+                initialFoodPositions = [[14, 10], [1, 1], [1, 12], [18, 1], [18, 12]];
             }
             else {
                 [GAME_SCREEN_WIDTH_PX, GAME_SCREEN_HEIGHT_PX] = [129, 105];
@@ -90,6 +95,7 @@ export default class SnakeGame extends React.Component {
                 containerClass = 'snake-game-container-horizontal';
                 baseImage = sprites.baseImageHorizontal;
                 if(restartButtonHovered) baseImage = sprites.baseImageHorizontalRestartHover;
+                initialFoodPositions = [[6, 15], [2, 2], [2, 18], [12, 2], [12, 18]];
             }
             document.getElementById('snake-game-container').className = containerClass;
             gameCanvas = document.getElementById('snake-game-canvas');
@@ -98,6 +104,13 @@ export default class SnakeGame extends React.Component {
             gameCanvasContext = gameCanvas.getContext("2d");
 
             this.drawImageOnGameCanvas(baseImage, 0, 0);
+            setTimeout(() => {
+                const fruit_count_setting = ch.readCookie('snake-fruit')
+                for(let i = 0; i < fruit_count_setting; i++) {
+                    let pos = getGameGridPos(initialFoodPositions[i])
+                    this.drawImageOnGameCanvas(sprites.foodStartImage, pos.x, pos.y)
+                }
+            }, 25);
         }
     }
 
@@ -191,25 +204,34 @@ export default class SnakeGame extends React.Component {
     startGame() {
         var initialBody;
         var initialDirection = [0, 1];
-        var initialFoodPosition;
+        var initialFoodPositions;
         if(IS_VERTICAL_SCREEN) {
             gameCanvasContext.fillRect(2, 22, 83, 120);
             initialBody = [[14, 3], [14, 4], [14, 5]];
             initialDirection = [0, 1];
-            initialFoodPosition = [14, 10];
+            initialFoodPositions = [[14, 10], [1, 1], [1, 12], [18, 1], [18, 12]];
         }
         else {
             gameCanvasContext.fillRect(2, 20, 124, 83);
             initialBody = [[6, 1], [6, 2], [6, 3]];
             initialDirection = [0, 1];
-            initialFoodPosition = [6, 15];
+            initialFoodPositions = [[6, 15], [2, 2], [2, 18], [12, 2], [12, 18]];
         }
         snake = new Snake(initialBody, initialDirection, SNAKE_ROWS, SNAKE_COLS);
-        food = new Food(initialFoodPosition, SNAKE_ROWS, SNAKE_COLS);
+        const fruit_count_setting = ch.readCookie('snake-fruit');
+        food = [];
+        for(let i = 0; i < fruit_count_setting; i++) {
+            food.push(new Food(initialFoodPositions[i], SNAKE_ROWS, SNAKE_COLS))
+        }
         this.drawInitialSprites();
         GAME_STARTED = true;
 
-        gameInterval = setInterval(() => { this.handleGameUpdate() }, 125);
+        const speed_setting = ch.readCookie('snake-speed')
+        if(speed_setting === 'slow') GAME_SPEED = 160
+        if(speed_setting === 'medium') GAME_SPEED = 130
+        if(speed_setting === 'fast') GAME_SPEED = 100
+
+        gameInterval = setInterval(() => { this.handleGameUpdate() }, GAME_SPEED);
     }
 
     handleGameUpdate() {
@@ -269,8 +291,12 @@ export default class SnakeGame extends React.Component {
         else progressSpriteImage = sprites.progressHeadImages[level];
         this.drawImageOnGameCanvas(progressSpriteImage, progressSnakeDrawPosition[1] + (6 * index), progressSnakeDrawPosition[0]);
 
-        food.handleEaten(snake.body);
-        const foodGridPos = getGameGridPos(food.position);
+        const unavailablePositions = JSON.parse(JSON.stringify(snake.body))
+        for(let i = 0; i < food.length; i++) {
+            if(i !== lastFoodEatenIdx) unavailablePositions.push(food[i].position)
+        }
+        food[lastFoodEatenIdx].handleEaten(unavailablePositions);
+        const foodGridPos = getGameGridPos(food[lastFoodEatenIdx].position);
         this.drawImageOnGameCanvas(sprites.foodImage, foodGridPos.x, foodGridPos.y)
     }
 
@@ -366,16 +392,24 @@ export default class SnakeGame extends React.Component {
 
     wasFoodEaten() {
         const directedPos = snake.getDirectedPosition();
-        return directedPos[0] === food.position[0] && directedPos[1] === food.position[1];
+        for(let i = 0; i < food.length; i++) {
+            if (directedPos[0] === food[i].position[0] && directedPos[1] === food[i].position[1]) {
+                lastFoodEatenIdx = i
+                return true
+            }
+        }        
+        return false
     }
 
     drawInitialSprites() {
-        for(var i = 0; i < snake.getLength(); i++) {
+        for(let i = 0; i < snake.getLength(); i++) {
             const gridPos = getGameGridPos(snake.body[i]);
             this.drawImageOnGameCanvas(snake.getBodyImage(i), gridPos.x, gridPos.y);
         }
-        const foodPos = getGameGridPos(food.position);
-        this.drawImageOnGameCanvas(sprites.foodImage, foodPos.x, foodPos.y)
+        for(let i = 0; i < food.length; i ++) {
+            const foodPos = getGameGridPos(food[i].position);
+            this.drawImageOnGameCanvas(sprites.foodImage, foodPos.x, foodPos.y)
+        }
     }
 
     exitGame() {

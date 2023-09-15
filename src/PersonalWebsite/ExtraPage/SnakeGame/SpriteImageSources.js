@@ -67,6 +67,7 @@ export var tailUpDeadImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
 
 // food
 export var foodImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAACZJREFUCJldyKEBACAABCHe/Xc+k0UiQxUbGFb14lnkc/6Asy+GC02LCgXj0wHRAAAAAElFTkSuQmCC';
+export var foodStartImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAACpJREFUCJldybEBwCAMwDDB5f48LAwtHmWYamJiMKsa5du699d+AXYPhANBWg2Ask0t9gAAAABJRU5ErkJggg=='
 
 // number sprites - all 6 x 5 size
 export var numberImages = [
