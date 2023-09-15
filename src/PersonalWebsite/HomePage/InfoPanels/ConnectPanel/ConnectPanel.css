@@ -11,7 +11,7 @@
 .connect-panel #link-icons {
     display: flex;
     position: relative;
-    width: calc(20vw + 24px);
+    width: 50%;
     height: 72px;
     z-index: 1;
     justify-content: space-evenly;
@@ -102,7 +102,7 @@
     justify-content: space-evenly;
     right: 0;
     top: -1px;
-    width: calc(20vw - 12px);
+    width: 50%;
     height: 72px;
     background-color: transparent;
     image-rendering: pixelated;
@@ -154,7 +154,7 @@
 .connect-panel #connect-info #connect-text {
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
     text-align: center;
-    font-size: 17pt;
+    font-size: 22px;
     width: 100%;
     overflow: hidden;
     background-clip: text;
@@ -163,7 +163,7 @@
     white-space: pre;
     height: 55px;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
     
     background-size: 200% 100%;
     transition:  background-position 0.5s linear, margin-top 0.5s linear;
@@ -179,8 +179,8 @@ _::-webkit-full-page-media, _:future, :root #connect-text {
     position: absolute;
     bottom: 13px;
 
-    left: calc((100% - 195.5px) / 2);
-    width: 195px;
+    left: 10;
+    width: 80%;
     height: 1mm;
     background-color: white;
     transform-origin: center;
@@ -194,7 +194,7 @@ _::-webkit-full-page-media, _:future, :root #connect-text {
 }
 
 .connect-panel #connect-info .white-text {
-    margin-top: 22px;
+    margin-top: 23px;
     background: linear-gradient(to left, black 50%, white 50%);
     background-position: left bottom;
 }
@@ -215,18 +215,18 @@ a span {
     top: -10px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1350px) {
     .connect-panel #connect-info #connect-text {
-        font-size: 16pt;
+        font-size: 22px;
     }
 
     #home-connect-panel .connect-panel #connect-info #underline {
-        left: calc((100% - 180.5px) / 2);
-        width: 180px;
+        left: 10%;
+        width: 80%;
     }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1175px) {
     .connect-panel #connect-info #connect-text {
         font-size: 17pt;
     }
@@ -239,47 +239,40 @@ a span {
         width: calc(15vw - 12px);
     }
 
+    .connect-panel #connect-info #connect-text {
+        font-size: 17pt;
+    }
+
+    .connect-panel #link-icons {
+        width: 60%;
+    }
+
+    .connect-panel #connect-info {
+        width: 40%;
+    }
+
     #home-connect-panel .connect-panel #connect-info #underline {
-        left: calc((100% - 90.5px) / 2);
-        width: 90px;
+        left: 25%;
+        width: 50%;
     }
 }
 
 @media (max-width: 1000px) {
     .connect-panel #connect-info #connect-text {
-        font-size: 17pt;
+        font-size: 22px;
     }
 
     .connect-panel #link-icons {
-        width: calc(35vw + 18px);
+        width: 70%;
     }
 
     .connect-panel #connect-info {
-        width: calc(15vw - 4px);
+        width: 30%;
     }
 
     #home-connect-panel .connect-panel #connect-info #underline {
-        left: calc((100% - 90.5px) / 2);
-        width: 90px;
-    }
-}
-
-@media (max-width: 800px) {
-    .connect-panel #connect-info #connect-text {
-        font-size: 17pt;
-    }
-
-    .connect-panel #link-icons {
-        width: calc(35vw + 48px);
-    }
-
-    .connect-panel #connect-info {
-        width: calc(20vw - 12px);
-    }
-
-    #home-connect-panel .connect-panel #connect-info #underline {
-        left: calc((100% - 90.5px) / 2);
-        width: 90px;
+        left: 15%;
+        width: 70%;
     }
 }
 

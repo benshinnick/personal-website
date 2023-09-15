@@ -1,0 +1,29 @@
+#snake-game-container {
+    margin: auto;
+    position: absolute;
+    top: -32px; bottom:0;
+    left:0;right:0;
+}
+
+.snake-game-container-vertical {
+    /* 87 x 143 */
+    width: calc(95vw - 16px); 
+    height: calc(156.149vw - 16px);
+    max-height: calc(95vh - 16px);
+    max-width: calc(57.797vh - 16px);
+}
+
+.snake-game-container-horizontal {
+    /* 129 x 105 */
+    width: calc(85vw - 16px); 
+    height: calc(69.186vw - 16px);
+    max-height: calc(85vh - 16px);
+    max-width: calc(104.432vh - 16px);
+}
+
+#snake-game-canvas {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+}

@@ -1,12 +1,49 @@
 .title-banner {
-    width: 100%;
+    width: 110%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
     flex-shrink: 0;
-    padding-top: 8.6vw;
+    padding-top: 9.35vw;
+    margin-left: -5%;
+    margin-top: -1vw;
     height: 0;
     object-fit: contain;
+}
+
+.settings-screen {
+    display: flex;
+}
+
+.menu-banner {
+    width: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    flex-shrink: 0;
+    padding-top: 58%;
+    height: 0;
+    object-fit: contain;
+}
+
+#settings-controls-container {
+    margin-top: -3%;
+    margin-left: 0;
+    width: 58%;
+    margin-left: -2.5%;
+}
+
+#snake-settings-banner {
+    background-image: url(./Sprites/snake-settings-banner.png);
+    width: 45%;
+    margin-top: -2.5%;
+    margin-left: 4%;
+}
+
+#snake-high-scores-banner {
+    background-image: url(./Sprites/snake-high-scores-banner.png);
+    margin-top: -2.5%;
+    margin-left: -4%;
 }
 
 #snake-title-banner {
@@ -15,59 +52,64 @@
 
 #tetra-mix-title-banner {
     background-image: url(./Sprites/tetra-mix-title-banner.png);
+    width: 105%;
+    margin-left: -2.5%;
     padding-top: 25vw;
-    margin-top: 2vw;
-    margin-bottom: -28vw;
+    margin-top: 1.5vw;
+    margin-bottom: -29vw;
 }
 
 #minesweeper-title-banner {
     background-image: url(./Sprites/minesweeper-title-banner.png);
     padding-top: 25vw;
-    margin-top: -2vw;
+    margin-top: -2.1vw;
     margin-bottom: -28vw;
-    width: 110%;
-    margin-left: -5%;
+    width: 111%;
+    margin-left: -5.5%;
 }
 
 .tetra-mix-title-screen .game-icon-conatainer {
-    margin-top: 7.6vw;
+    margin-top: 7.5vw;
 }
 
 .minesweeper-title-screen .game-icon-conatainer {
-    margin-top: 0;
+    margin-top: -2.9vw;
 }
 
 .minesweeper-title-screen .game-title {
-    margin-top: 13.6vw;
+    margin-top: 14.75vw;
 }
 
 .game-title {
     color: white;
-    font-size: 3.5vw;
+    font-size: 4.5vw;
     text-align: center;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    width: 100%;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom: 0.6vw;
     -webkit-font-smoothing: none;
+    padding-left: 0.6vw;
     letter-spacing: 0.1vw;
-    /* background-color: red; */
-    /* border-top: 0.4vw solid white; */
-    margin-top: 2vw;
+    margin-top: 2.5vw;
 }
 
 .game-play-button {
-    font-size: 3.5vw;
+    font-size: 4.5vw;
     text-align: center;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    width: 33.3%;
-    margin-left: 33.3%;
-    margin-right: 33.3%;
-    padding-bottom: 0.6vw;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0.2vw;
+    border-bottom: 0.4vw solid transparent;
     -webkit-font-smoothing: none;
+    padding-left: 0.6vw;
     letter-spacing: 0.2vw;
-    margin-top: 1vw;
+    margin-top: 0.5vw;
 }
 
 #snake-play-button {
@@ -75,7 +117,7 @@
 }
 
 #snake-play-button:hover {
-    color: #eb3131;
+    border-color: #eb4242;
     cursor: pointer;
 }
 
@@ -84,26 +126,37 @@
 }
 
 #tetra-mix-play-button:hover {
-    color: #615fed;
+    border-color: #615fed;
     cursor: pointer;
 }
 
 #minesweeper-play-button {
-    color: #5cf07a;
+    color: #47e667;
 }
 
 #minesweeper-play-button:hover {
-    color: #47e667;
+    border-color: #47e667;
     cursor: pointer;
 }
 
+.tetra-mix-title-screen .game-title {
+    margin-left: 8.25vw;
+    margin-top: 1.75vw;
+}
+
+.tetra-mix-title-screen .game-play-button {
+    margin-left: 14vw;
+    margin-top: 0.5vw;
+}
+
 .game-icon-conatainer {
-    width: 100%;
-    margin-top: -2vw;
+    width: 92.5%;
+    margin-left: 3.75%;
+    margin-top: -4.10vw;
 }
 
 .settings-button {
-    width: 6.2%;
+    width: 7.5%;
     height: 0;
     float: left;
 
@@ -111,49 +164,37 @@
     background-repeat: no-repeat;
     background-position: center top;
     flex-shrink: 0;
-    padding-top: 2.5vw;
+    padding-top: 4vw;
     height: 0;
     object-fit: contain;
     background-image: url(./Sprites/settings-icon.png);
 }
 
 .settings-button:hover {
-    background-image: url(./Sprites/settings-icon-hover.png);
     cursor: pointer;
 }
 
-.settings-button .icon-tooltip {
-    margin-left: -2.25vw;
-    margin-top: -4.9vw;
-    line-height: 1vw;
-    visibility: visible;
-    color: white;
-    font-size: 1.4vw;
-    text-align: center;
-    font-weight: bold;
-    font-family: 'pixel',Lato,LatoExtended,sans-serif;
-    padding-bottom: 0.6vw;
-    -webkit-font-smoothing: none;
-    padding: 0.3vw;
-    position: absolute;
-    z-index: 1;
-    visibility: hidden;
+.snake-title-screen .game-icon-conatainer .settings-button:hover {
+    background-image: url(./Sprites/snake-settings-icon-hover.png);
 }
 
-.settings-button:hover .icon-tooltip {
-    visibility: visible;
+.tetra-mix-title-screen .game-icon-conatainer .settings-button:hover {
+    background-image: url(./Sprites/tetra-mix-settings-icon-hover.png);
+}
+
+.minesweeper-title-screen .game-icon-conatainer .settings-button:hover {
+    background-image: url(./Sprites/minesweeper-settings-icon-hover.png);
 }
 
 .high-scores-button {
-    width: 6.2%;
+    width: 7.5%;
     height: 0;
     float: right;
-
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
     flex-shrink: 0;
-    padding-top: 2.5vw;
+    padding-top: 4vw;
     height: 0;
     object-fit: contain;
     background-image: url(./Sprites/high-scores-icon.png);
@@ -164,26 +205,147 @@
     cursor: pointer;
 }
 
-.high-scores-button .icon-tooltip {
-    margin-left: -1.9vw;
-    margin-top: -6.1vw;
-    line-height: 1vw;
-    visibility: visible;
+#high-scores-title {
     color: white;
-    font-size: 1.4vw;
-    line-height: 0.8vw;
+    font-size: 2.85vw;
+    text-align: center;
+    width: 105%;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0.3vw;
+    -webkit-font-smoothing: none;
+    padding-left: 0.5vw;
+    letter-spacing: 0.1vw;
+    margin-top: -5%;
+    margin-bottom: 0.5vw;
+}
+
+#high-scores-text {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+}
+
+#high-scores-text > * {
+    display: inline-block;
+    color: white;
+    font-size: 2.25vw;
+    text-align: left;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0.6vw;
+    -webkit-font-smoothing: none;
+    padding-left: 1vw;
+    letter-spacing: 0.1vw;
+    margin-top: 0;
+}
+
+.menu-back-button {
+    font-size: 2.5vw;
+    text-align: center;
+    width: fit-content;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    padding-right: 0.2vw;
+    padding-left: 0.4vw;
+    padding-top: 0.4vw;
+    padding-bottom: 0.2vw;
+    -webkit-font-smoothing: none;
+    margin-top: 0.25vw;
+    color: white;
+    width: 95%;
+    margin-left: 0.8vw;
+    border: 0.35vw solid white;
+
+    border-width: 0.35vw 0 0.35vw 0;
+}
+
+#settings-controls-container .menu-back-button {
+    width: 94%;
+    font-size: 2.25vw;
+    border-width: 0.35vw 0 0.35vw 0;
+    margin-top: 5.5vw;
+    padding-left: 0.2vw;
+    margin-left: 0.25vw;
+}
+
+#snake-menu-back-button:hover {
+    color: #eb4242;
+    border-color: #eb4242;
+    cursor: pointer;
+}
+
+#tetra-mix-menu-back-button:hover {
+    color: #615fed; 
+    border-color: #615fed;
+    cursor: pointer;
+}
+
+#minesweeper-menu-back-button:hover {
+    color: #47e667;
+    border-color: #47e667;
+    cursor: pointer;
+}
+
+.setting-container {
+    width: 95%;
+    margin-bottom: 1vw;
+}
+
+.settings-title-banner {
+    color: white;
+    font-size: 2.25vw;
     text-align: center;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    padding-bottom: 0;
     -webkit-font-smoothing: none;
-    padding: 0.3vw;
-    position: absolute;
-    z-index: 1;
-    visibility: hidden;
+    padding-left: 0.7vw;
+    letter-spacing: 0.1vw;
+    padding-top: 0.4vw;
+    margin-bottom: 0.25vw;
+    margin-top: 0.5vw;
+    width: 100%;
 }
 
-.high-scores-button:hover .icon-tooltip {
-    visibility: visible;
+.settings-options-container {
+    display: flex;
+    width: 100%;
+    border: 0.4vw solid white;
+    padding-bottom: 0.4vw;
+    padding-top: 0;
+    border-width: 0.4vw 0.4vw 0 0.4vw;
+}
+
+.settings-option {
+    color: white;
+    font-size: 1.4vw;
+    text-align: center;
+    width: fit-content;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-font-smoothing: none;
+    padding-left: 0.5vw;
+    letter-spacing: 0.1vw;
+    border: 0.2vw solid transparent;
+    border-width: 0 0.25vw 0.25vw 0.25vw;
+    padding-right: 0.2vw;
+    padding-top: 0.35vw;
+}
+
+.settings-option:hover {
+    cursor: pointer;
+}
+
+
+.settings-options-container .selected {
+    border-color: currentColor;
 }
 
 @media only screen and (min-width: 1400px)  {
@@ -193,95 +355,203 @@
 
     #tetra-mix-title-banner {
         padding-top: 300px;
-        margin-top: 28px;
+        margin-top: 15px;
         margin-bottom: -350px;
+    }
+
+    #snake-title-banner {
+        margin-top: -10px;
     }
     
     #minesweeper-title-banner {
         padding-top: 500px;
-        margin-top: -30px;
+        margin-top: -29px;
         margin-bottom: -450px;
-        width: 110%;
-        margin-left: -5%;
+        width: 111%;
+        margin-left: -5.5%;
+    }
+
+    .tetra-mix-title-screen .game-title {
+        margin-left: 115px;
+        margin-top: 30px;
+    }
+    
+    .tetra-mix-title-screen .game-play-button {
+        margin-left:  200px;
+        margin-top: 5px;
     }
     
     .tetra-mix-title-screen .game-icon-conatainer {
-        margin-top: 127px;
+        margin-top: 94px;
     }
     
     .minesweeper-title-screen .game-icon-conatainer {
-        margin-top: 0;
+        margin-top: -42px;
     }
     
     .minesweeper-title-screen .game-title {
-        margin-top: 110px;
+        margin-top: 115px;
     }
     
     .game-title {
-        font-size: 55px;
+        font-size: 62px;
+        height: 62px;
         padding-bottom: 10px;
         letter-spacing: 2px;
-        margin-top: 25px;
+        margin-top: 35px;
     }
     
     .game-play-button {
-        font-size: 55px;
-        width: 33.3%;
-        margin-left: 33.3%;
-        margin-right: 33.3%;
-        padding-bottom: 10px;
+        font-size: 62px;
+        height: 62px;
+        padding-bottom: 4px;
+        border-bottom: 6px solid transparent;
         letter-spacing: 2px;
         margin-top: 0px;
     }
     
     .game-icon-conatainer {
-        width: 100%;
-        margin-top: -20px;
+        width: 95%;
+        margin-left: 2.5%;
+        margin-top: -56px;
     }
     
     .settings-button {
-        width: 6.2%;
+        width: 7.5%;
         padding-top: 50px;
     }
     
-    .settings-button .icon-tooltip {
-        margin-left: -30px;
-        margin-top: -80px;
-        font-size: 20px;
-        line-height: 10px;
-        padding: 5px;
-    }
-    
     .high-scores-button {
-        width: 6.2%;
+        width: 7.5%;
         padding-top: 50px;
     }
     
     .high-scores-button .icon-tooltip {
-        margin-left: -24px;
+        margin-left: -25px;
         margin-top: -100px;
         font-size: 20px;
         line-height: 10px;
         padding: 5px;
     }
+
+    #high-scores-title {
+        font-size: 40px;
+        width: 105%;
+        padding-bottom: 10px;
+        -webkit-font-smoothing: none;
+        padding-left: 5px;
+        letter-spacing: 1px;
+        margin-top: -5%;
+        margin-bottom: 5px;
+    }
+    
+    #high-scores-text {
+        display: grid;
+        grid-template-columns: 1fr 2fr 2fr;
+    }
+    
+    #high-scores-text > * {
+        font-size: 32px;
+        padding-bottom: 6px;
+        padding-left: 10px;
+        letter-spacing: 1px;
+    }
+    
+    .menu-back-button {
+        font-size: 35px;
+        width: 90%;
+        padding-bottom: 5px;
+        -webkit-font-smoothing: none;
+        padding-left: 10px;
+        padding-right: 0px;
+        letter-spacing: 1px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        margin-left: 15px;
+        border: 4px solid white;
+        padding-top: 6px;
+        border-width: 4px 0 4px 0;
+    }
+
+    #settings-controls-container .menu-back-button {
+        width: 94%;
+        font-size: 32px;
+        border-width: 4px 0 4px 0;
+        margin-top: 80px;
+        padding-left: 0px;
+        margin-left: 5px;
+    }
+
+    .settings-title-banner {
+        color: white;
+        font-size: 32px;
+        text-align: center;
+        font-weight: bold;
+        font-family: 'pixel',Lato,LatoExtended,sans-serif;
+        padding-bottom: 0;
+        -webkit-font-smoothing: none;
+        padding-left: 4px;
+        letter-spacing: 1px;
+        padding-top: 4px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        width: 100%;
+    }
+    
+    .settings-options-container {
+        display: flex;
+        width: 100%;
+        border: 5px solid white;
+        padding-bottom: 8px;
+        padding-top: 0;
+        border-width: 5px 5px 0 5px;
+        /* margin-bottom: 1vw; */
+    }
+    
+    .settings-option {
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        width: fit-content;
+        font-weight: bold;
+        font-family: 'pixel',Lato,LatoExtended,sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+        -webkit-font-smoothing: none;
+        padding-left: 8px;
+        letter-spacing: 1px;
+        border: 4px solid transparent;
+        border-width: 0 4px 4px 4px;
+        padding-right: 5px;
+        padding-top: 4px;
+    }
+
+    .setting-container {
+        width: 95%;
+        margin-bottom: 10px;
+    }
 }
 
 @media only screen and (max-width: 850px)  {
     .title-banner {
-        width: 100%;
-        padding-top: 15vw;
+        margin-left: -5%;
+        width: 110%;
+        padding-top: 18vw;
     }
 
     .game-title {
-        margin-top: 3vw;
-        font-size: 6vw;
+        margin-top: 2.25vw;
+        font-size: 7.75vw;
     }
     
     .game-play-button {
-        font-size: 6vw;
+        margin-top: 1vw;
+        font-size: 7.5vw;
+        border-bottom: 0.7vw solid transparent;
     }
 
     #tetra-mix-title-banner {
+        margin-top: 3vw;
         padding-top: 45vw;
         margin-bottom: -51vw;
     }
@@ -291,36 +561,141 @@
         padding-top: 42vw;
         margin-top: -3.5vw;
         margin-bottom: -36vw;
-        width: 137%;
-        margin-left: -18.5%;
+        padding-top: 48vw;
+        width: 115%;
+        margin-left: -7.5%;
     }
     
     .settings-button {
+        width: 7.5%;
         padding-top: 5vw;
     }
 
     .high-scores-button {
+        width: 7.5%;
         padding-top: 5vw;
     }
 
-    .high-scores-button .icon-tooltip {
-        margin-left: -3vw;
-        margin-top: -10vw;
-        font-size: 2.5vw;
-        line-height: 1.2vw;
-    }
-
-    .settings-button .icon-tooltip {
-        margin-left: -3.6vw;
-        margin-top: -8.5vw;
-        font-size: 2.5vw;
+    .snake-title-screen .game-icon-conatainer {
+        margin-top: -7.25vw;
     }
 
     .tetra-mix-title-screen .game-icon-conatainer {
-        margin-top: 17vw;
+        margin-top: 12.5vw;
     }
     
     .minesweeper-title-screen .game-icon-conatainer {
-        margin-top: -0.1vw;
+        margin-top: -3.5vw;
+    }
+
+    .minesweeper-title-screen .game-title {
+        margin-top: 7vw;
+    }
+
+    .tetra-mix-title-screen .game-title {
+        margin-left: 13.5vw;
+        margin-top: 2.5vw;
+    }
+
+    .tetra-mix-title-screen .game-play-button {
+        margin-left: 24vw;
+        margin-top: 1vw;
+    }
+
+    #high-scores-title {
+        font-size: 5vw;
+        width: 105%;
+        padding-bottom: 1vw;
+        -webkit-font-smoothing: none;
+        padding-left: 0.5vw;
+        letter-spacing: 0.1vw;
+        margin-top: -5%;
+        margin-bottom: 0.5vw;
+    }
+    
+    #high-scores-text {
+        display: grid;
+        grid-template-columns: 1fr 2fr 2fr;
+    }
+    
+    #high-scores-text > * {
+        font-size: 4vw;
+        padding-bottom: 0.6vw;
+        padding-left: 0.6vw;
+        letter-spacing: 0.1vw;
+    }
+    
+    .menu-back-button {
+        font-size: 4.5vw;
+        width: 98%;
+        padding-top: 0.8vw;
+        padding-bottom: 0.5vw;
+        -webkit-font-smoothing: none;
+        padding-left: 0.5vw;
+        padding-right: 0px;
+        letter-spacing: 0.1vw;
+        margin-top: 1vw;
+        margin-bottom:0.5vw;
+        margin-left: 0.8vw;
+        border: 0.7vw solid white;
+    
+        border-width: 0.7vw 0 0.7vw 0;
+    }
+
+    .setting-container {
+        width: 95%;
+        margin-bottom: 1vw;
+    }
+    
+    .settings-title-banner {
+        color: white;
+        font-size: 4vw;
+        text-align: center;
+        font-weight: bold;
+        font-family: 'pixel',Lato,LatoExtended,sans-serif;
+        padding-bottom: 0;
+        -webkit-font-smoothing: none;
+        padding-left: 1vw;
+        letter-spacing: 0.2vw;
+        padding-top: 0.8vw;
+        margin-bottom: 0.6vw;
+        margin-top: 0.5vw;
+        width: 100%;
+    }
+    
+    .settings-options-container {
+        display: flex;
+        width: 100%;
+        border: 0.7vw solid white;
+        padding-bottom: 0.7vw;
+        padding-top: 0;
+        border-width: 0.7vw 0.7vw 0 0.7vw;
+    }
+    
+    .settings-option {
+        color: white;
+        font-size: 2.5vw;
+        text-align: center;
+        width: fit-content;
+        font-weight: bold;
+        font-family: 'pixel',Lato,LatoExtended,sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+        -webkit-font-smoothing: none;
+        padding-left: 1vw;
+        letter-spacing: 0.1vw;
+        border: 0.5vw solid transparent;
+        border-width: 0 0.5vw 0.5vw 0.5vw;
+        padding-right: 0.5vw;
+        padding-top: 0.7vw;
+    }
+
+    #settings-controls-container .menu-back-button {
+        width: 94%;
+        font-size: 3.5vw;
+        border-width: 0.6vw 0 0.6vw 0;
+        margin-top: 9.5vw;
+        padding-left: 0.2vw;
+        margin-left: 0.25vw;
     }
 }

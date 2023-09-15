@@ -82,7 +82,7 @@
     background-image: url(./StarSprites/star-4.png);
 }
 
-@media (max-width: 1165px) {
+@media (max-width: 1250px) {
     #star-5 {
         /* border: 1px solid gray; */
         left: calc(20vw - 30px);
