@@ -250,6 +250,10 @@ export default class TechnicalPage extends React.Component {
 
         var settingsControlsContainer = document.createElement('div')
         settingsControlsContainer.id = 'settings-controls-container'
+        var settingsHeader = document.createElement('div')
+        settingsHeader.className = 'settings-header'
+        settingsHeader.innerHTML = 'Settings'
+        settingsControlsContainer.appendChild(settingsHeader)
 
         let settingTitles = []
         let settingOptions = []
@@ -264,6 +268,11 @@ export default class TechnicalPage extends React.Component {
                 '#2fe2ff',
                 '#ff4a4a'
             ]
+        }
+        if (game === 'minesweeper') {
+            settingTitles = ['size', 'time-limit']
+            settingOptions = [['easy', 'medium', 'hard'], ['120', '240', '999']]
+            settingColors = ['#47e667', '#65a9ee']
         }
 
         for (let i = 0; i < settingTitles.length; i++) {

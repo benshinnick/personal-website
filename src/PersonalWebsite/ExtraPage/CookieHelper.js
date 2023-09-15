@@ -60,4 +60,6 @@ export function getHighScores(game) {
 export function setSettingDefaults() {
     if(readCookie('snake-speed') == null) createCookie("snake-speed", "medium", 300);
     if(readCookie('snake-fruit') == null) createCookie("snake-fruit", "1", 300);
+    if(readCookie('minesweeper-size') == null) createCookie("minesweeper-size", "medium", 300);
+    if(readCookie('minesweeper-time-limit') == null) createCookie("minesweeper-time-limit", "999", 300);
 }
