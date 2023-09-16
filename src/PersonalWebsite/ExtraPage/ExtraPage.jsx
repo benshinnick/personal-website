@@ -343,6 +343,8 @@ export default class TechnicalPage extends React.Component {
         highScoresContainer.appendChild(menuBanner)
 
         var highScoresTextContainer = document.createElement('div')
+        highScoresTextContainer.id = `${game}-high-scores-text-container`
+        highScoresTextContainer.className = 'high-scores-text-container'
 
         var highScoresTitle = document.createElement('div')
         highScoresTitle.innerHTML = 'High Scores:'

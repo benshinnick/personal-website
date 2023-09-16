@@ -64,6 +64,12 @@
     margin-right: -3.5%;
 }
 
+#minesweeper-high-scores-text-container {
+    width: 55%;
+    margin-right: -5%;
+    margin-left: -3%;
+}
+
 #snake-title-banner {
     background-image: url(./Sprites/snake-title-banner.png);
 }
@@ -474,17 +480,10 @@
         width: 7.5%;
         padding-top: 50px;
     }
-    
-    .high-scores-button .icon-tooltip {
-        margin-left: -25px;
-        margin-top: -100px;
-        font-size: 20px;
-        line-height: 10px;
-        padding: 5px;
-    }
 
     #high-scores-title {
         font-size: 40px;
+        height: 40px;
         width: 105%;
         padding-bottom: 10px;
         -webkit-font-smoothing: none;
@@ -501,6 +500,7 @@
     
     #high-scores-text > * {
         font-size: 32px;
+        height: 32px;
         padding-bottom: 6px;
         padding-left: 10px;
         letter-spacing: 1px;
@@ -508,6 +508,7 @@
     
     .menu-back-button {
         font-size: 35px;
+        height: 35px;
         width: 90%;
         padding-bottom: 5px;
         -webkit-font-smoothing: none;
@@ -526,20 +527,21 @@
     #settings-controls-container .menu-back-button {
         width: 94%;
         font-size: 32px;
+        height: 32px;
         border-width: 4px 0 4px 0;
         margin-top: 30px;
         padding-left: 0px;
         margin-left: 5px;
     }
 
-    .high-scores-text-container #minesweeper-menu-back-button {
-        width: 100%;
-        margin-left: 0;
+    .high-scores-text-container #minesweeper-menu-back-button.menu-back-button {
+        margin-left: 4%;
     }
 
     .settings-title-banner {
         color: white;
         font-size: 32px;
+        height: 32px;
         text-align: center;
         font-weight: bold;
         font-family: 'pixel',Lato,LatoExtended,sans-serif;
@@ -556,6 +558,7 @@
     .settings-header {
         color: white;
         font-size: 32px;
+        height: 32px;
         text-align: center;
         font-weight: bold;
         font-family: 'pixel',Lato,LatoExtended,sans-serif;
@@ -636,11 +639,13 @@
     .game-title {
         margin-top: 2.25vw;
         font-size: 7.75vw;
+        height: 7.75vw;
     }
     
     .game-play-button {
         margin-top: 1vw;
         font-size: 7.5vw;
+        height: 7.5vw;
         border-bottom: 0.7vw solid transparent;
     }
 
@@ -698,6 +703,7 @@
 
     #high-scores-title {
         font-size: 5vw;
+        height: 5vw;
         width: 105%;
         padding-bottom: 1vw;
         -webkit-font-smoothing: none;
@@ -714,6 +720,7 @@
     
     #high-scores-text > * {
         font-size: 4vw;
+        height: 4vw;
         padding-bottom: 0.6vw;
         padding-left: 0.6vw;
         letter-spacing: 0.1vw;
@@ -721,6 +728,7 @@
     
     .menu-back-button {
         font-size: 4.5vw;
+        height: 4.5vw;
         width: 98%;
         padding-top: 0.8vw;
         padding-bottom: 0.5vw;
@@ -744,6 +752,7 @@
     .settings-title-banner {
         color: white;
         font-size: 4vw;
+        height: 4vw;
         text-align: center;
         font-weight: bold;
         font-family: 'pixel',Lato,LatoExtended,sans-serif;
@@ -769,6 +778,7 @@
     .settings-option {
         color: white;
         font-size: 2.5vw;
+        height: 2.5vw;
         text-align: center;
         width: fit-content;
         font-weight: bold;
@@ -787,6 +797,7 @@
     #settings-controls-container .menu-back-button {
         width: 95%;
         font-size: 3.5vw;
+        height: 3.5vw;
         border-width: 0.6vw 0 0.6vw 0;
         margin-top: 6vw;
         padding-left: 0.2vw;
@@ -796,6 +807,13 @@
 
     .settings-header {
         font-size: 3.5vw;
+        height: 3.5vw;
         border-width: 0.6vw;
+    }
+
+    #minesweeper-high-scores-text-container {
+        width: 65%;
+        margin-right: -6%;
+        margin-left: -2%;
     }
 }
