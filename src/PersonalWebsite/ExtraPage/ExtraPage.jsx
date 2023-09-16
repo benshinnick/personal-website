@@ -343,6 +343,7 @@ export default class TechnicalPage extends React.Component {
         highScoresContainer.appendChild(menuBanner)
 
         var highScoresTextContainer = document.createElement('div')
+        highScoresTextContainer.className = 'high-scores-text-container'
 
         var highScoresTitle = document.createElement('div')
         highScoresTitle.innerHTML = 'High Scores:'
@@ -359,7 +360,9 @@ export default class TechnicalPage extends React.Component {
             if(i === 0) color = "#fff159";
             if(i === 1) color = "#C0C0C0";
             if(i === 2) color = "#CD7F32";
-            let textSections = [`${i+1}:`, scoreText, 'Points']
+            let textSections = []
+            if (game === 'snake') textSections = [`${i+1}:`, scoreText, 'Points']
+            if (game === 'minesweeper') textSections = [`${i+1}:`, scoreText, 'Seconds']
             for(let i = 0; i < textSections.length; i++) {
                 var highScoreSection = document.createElement('div')
                 highScoreSection.innerHTML = textSections[i]
