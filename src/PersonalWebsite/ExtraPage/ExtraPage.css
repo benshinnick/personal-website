@@ -146,14 +146,25 @@
 
 #tetra-mix-game-selection.game-selection #tetra-mix-game-cart {
     background-image: url(./Sprites/tetra-mix-game-cart.png);
+    filter: brightness(50%); /* until game completed */
 }
 
 #tetra-mix-game-selection.game-selection-ejected #tetra-mix-game-cart {
     background-image: url(./Sprites/eject-game-cart.png);
+    filter: brightness(50%); /* until game completed */
+}
+
+#tetra-mix-game-selection.game-selection #tetra-mix-label {
+    filter: brightness(50%); /* until game completed */
+}
+
+#tetra-mix-game-selection.game-selection-ejected #tetra-mix-label {
+    filter: brightness(50%); /* until game completed */
 }
 
 #tetra-mix-game-selection.game-selection:hover #tetra-mix-label {
     color: #76a4e9;
+    filter: brightness(50%); /* until game completed */
 }
 
 #tetra-mix-game-selection.game-selection-ejected:hover #tetra-mix-label {

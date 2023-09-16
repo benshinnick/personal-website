@@ -113,13 +113,13 @@ export default class TechnicalPage extends React.Component {
                                 <div id='snake-game-cart' className='sprite game-cart snake-game-cart'></div>
                                 <div id='snake-label' className='game-selection-label'>SNAKE</div>
                             </div>
-                            <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.handleGameSelection('tetra-mix')}>
-                                <div id='tetra-mix-game-cart' className='sprite game-cart tetra-mix-game-cart'></div>
-                                <div id='tetra-mix-label' className='game-selection-label'>TETRA MIX</div>
-                            </div>
                             <div className='game-selection' id='minesweeper-game-selection' onClick={() => this.handleGameSelection('minesweeper')}>
                                 <div id='minesweeper-game-cart' className='sprite game-cart minesweeper-game-cart'></div>
                                 <div id='minesweeper-label' className='game-selection-label'>MINESWEEPER</div>
+                            </div>
+                            <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.handleGameSelection('tetra-mix')}>
+                                <div id='tetra-mix-game-cart' className='sprite game-cart tetra-mix-game-cart'></div>
+                                <div id='tetra-mix-label' className='game-selection-label'>TETRA MIX</div>
                             </div>
                         </div>
                     </div>
@@ -343,7 +343,6 @@ export default class TechnicalPage extends React.Component {
         highScoresContainer.appendChild(menuBanner)
 
         var highScoresTextContainer = document.createElement('div')
-        highScoresTextContainer.className = 'high-scores-text-container'
 
         var highScoresTitle = document.createElement('div')
         highScoresTitle.innerHTML = 'High Scores:'
