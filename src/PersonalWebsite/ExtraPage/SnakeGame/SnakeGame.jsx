@@ -103,14 +103,13 @@ export default class SnakeGame extends React.Component {
             gameCanvas.height = GAME_SCREEN_HEIGHT_PX;
             gameCanvasContext = gameCanvas.getContext("2d");
 
-            this.drawImageOnGameCanvas(baseImage, 0, 0);
-            setTimeout(() => {
+            this.drawImageOnGameCanvas(baseImage, 0, 0).then(() => {
                 const fruit_count_setting = ch.readCookie('snake-fruit')
                 for(let i = 0; i < fruit_count_setting; i++) {
                     let pos = getGameGridPos(initialFoodPositions[i])
                     this.drawImageOnGameCanvas(sprites.foodStartImage, pos.x, pos.y)
                 }
-            }, 25);
+            })
         }
     }
 
@@ -342,16 +341,18 @@ export default class SnakeGame extends React.Component {
             gameInterval = -1;
         }
         snake.toggleLastDrawnBodyType();
+        const acheivedScore = score
         for(let i = snake.getLength() - 1; i >= 0; i--) {
             const gridPos = getGameGridPos(snake.body[i]);
-            this.drawImageOnGameCanvas(snake.getDeadBodyImage(i), gridPos.x, gridPos.y);
-        }
-        setTimeout(() => {
-            ch.updateGameHighScore('snake', score);
-            const highScores = ch.getHighScores('snake');
-
-            this.drawGameOverScreen(highScores);
-        }, 25);
+            if (i !== 0)
+                this.drawImageOnGameCanvas(snake.getDeadBodyImage(i), gridPos.x, gridPos.y);
+            else
+                this.drawImageOnGameCanvas(snake.getDeadBodyImage(i), gridPos.x, gridPos.y).then(() => {
+                    ch.updateGameHighScore('snake', acheivedScore);
+                    const highScores = ch.getHighScores('snake');
+                    this.drawGameOverScreen(highScores);
+                })
+            }
     }
 
     drawGameOverScreen(highScores) {
@@ -450,11 +451,14 @@ export default class SnakeGame extends React.Component {
     }
 
     drawImageOnGameCanvas(imageSrc, x, y) {
-        var img = new Image();
-        img.src = imageSrc;
-        img.onload = function(){
-            gameCanvasContext.drawImage(img,x,y);
-        };
+        return new Promise(function(resolve, reject) {
+            var img = new Image();
+            img.src = imageSrc;
+            img.onload = function(){
+                gameCanvasContext.drawImage(img,x,y);
+                resolve();
+            };
+        })
     }
 
     resetGameVariables() {

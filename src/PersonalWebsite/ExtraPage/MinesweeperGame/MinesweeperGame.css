@@ -1,12 +1,58 @@
 #minesweeper-game-container {
-    width: calc(90vw - 32px); 
-    height: calc(84.2554vw - 32px);
-    max-height: calc(85vh - 32px);
-    max-width: calc(90.795vh - 32px);
     margin: auto;
     position: absolute;
-    top: -32px; bottom:0;
-    left:0;right:0;
+    top: -16px;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+.minesweeper-game-container-horizontal-large {
+    /* 202 x 177 */
+    width: calc(85vw - 16px); 
+    height: calc(74.802vw - 16px);
+    max-height: calc(85vh - 16px);
+    max-width: calc(97.006vh - 16px);
+}
+
+.minesweeper-game-container-horizontal-medium {
+    /* 175 x 159 */
+    width: calc(85vw - 16px); 
+    height: calc(77.229vw - 16px);
+    max-height: calc(85vh - 16px);
+    max-width: calc(93.553vh - 16px);
+}
+
+.minesweeper-game-container-horizontal-small {
+    /* 121 x 150 */
+    width: calc(85vw - 16px); 
+    height: calc(105.372vw - 16px);
+    max-height: calc(85vh - 16px);
+    max-width: calc(68.566vh - 16px);
+}
+
+.minesweeper-game-container-vertical-large {
+    /* 148 x 231 */
+    width: calc(95vw - 16px); 
+    height: calc(148.277vw - 16px);
+    max-height: calc(95vh - 16px);
+    max-width: calc(60.866vh - 16px);
+}
+
+.minesweeper-game-container-vertical-medium {
+    /* 130 x 186 */
+    width: calc(95vw - 16px); 
+    height: calc(135.923vw - 16px);
+    max-height: calc(95vh - 16px);
+    max-width: calc(66.398vh - 16px);
+}
+
+.minesweeper-game-container-vertical-small {
+    /* 121 x 150 */
+    width: calc(95vw - 16px); 
+    height: calc(117.769vw - 16px);
+    max-height: calc(95vh - 16px);
+    max-width: calc(76.633vh - 16px);
 }
 
 #minesweeper-game-canvas {
