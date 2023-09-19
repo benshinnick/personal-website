@@ -15,12 +15,18 @@ var MINESWEEPER_GRID_COLS;
 var gameCanvas;
 var gameCanvasContext;
 
+var selectMode = 'shovel';
+var lastTileHovered = null;
 var exitButtonHovered = false;
 var restartButtonHovered = false;
+var selectModeButtonHovered = false;
 
+const SHOVEL_SELECT_MODE = 'shovel';
+const FLAG_SELECT_MODE = 'flag';
 const CONTROL_BUTTON_HEIGHT = 10;
 const EXIT_BUTTON_WIDTH = 22;
 const RESTART_BUTTON_WIDTH = 40;
+const SELECT_MODE_BUTTON_WIDTH = 33;
 
 export default class MinesweeperGame extends React.Component {
 
@@ -121,16 +127,43 @@ export default class MinesweeperGame extends React.Component {
         const exitButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH;
         const restartButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH - RESTART_BUTTON_WIDTH - 3;
         if (mousePos.x >= exitButtonX && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) {
+            if(selectModeButtonHovered) this.resetSelectModeButton();
             if(restartButtonHovered) this.resetRestartButton(restartButtonX);
             if(!exitButtonHovered) this.handleExitButtonHover(exitButtonX);
         }
         else if (mousePos.x >= restartButtonX && mousePos.x < restartButtonX + RESTART_BUTTON_WIDTH && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) {
+            if(selectModeButtonHovered) this.resetSelectModeButton();
             if(exitButtonHovered) this.resetExitButton(exitButtonX);
             if(!restartButtonHovered) this.handleRestartButtonHover(restartButtonX);
+        }
+        else if (mousePos.x <= SELECT_MODE_BUTTON_WIDTH && mousePos.y <= CONTROL_BUTTON_HEIGHT) {
+            if(exitButtonHovered) this.resetExitButton(exitButtonX);
+            if(restartButtonHovered) this.resetRestartButton(restartButtonX);
+            if(!selectModeButtonHovered) this.handleSelectModeButtonHover();
         }
         else {
             if(exitButtonHovered) this.resetExitButton(exitButtonX);
             if(restartButtonHovered) this.resetRestartButton(restartButtonX);
+            if(selectModeButtonHovered) this.resetSelectModeButton();
+        }
+        if(this.isGameGridHover(mousePos)) {
+            const gridPos = getGameGridPosFromMousePos(mousePos);
+            if(lastTileHovered === null) {
+                this.drawImageOnGameCanvas(sprites.tileShovelHover, gridPos.x, gridPos.y);
+                lastTileHovered = gridPos;
+            }
+            if(gridPos.x === lastTileHovered.x && gridPos.y === lastTileHovered.y) return;
+
+            this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
+            if (selectMode === SHOVEL_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileShovelHover, gridPos.x, gridPos.y);
+            if (selectMode === FLAG_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileFlagHover, gridPos.x, gridPos.y);
+            lastTileHovered = gridPos;
+        }
+        else {
+            if (lastTileHovered !== null) {
+                this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
+                lastTileHovered = null;
+            }
         }
     }
 
@@ -158,13 +191,36 @@ export default class MinesweeperGame extends React.Component {
         exitButtonHovered = false;
     }
 
+    handleSelectModeButtonHover() {
+        let selectModeButtonImage = '';
+        if(selectMode === SHOVEL_SELECT_MODE) selectModeButtonImage = sprites.shovelModeButton;
+        if(selectMode === FLAG_SELECT_MODE) selectModeButtonImage = sprites.flagModeButton;
+        gameCanvasContext.clearRect(0, 0, SELECT_MODE_BUTTON_WIDTH, 1);
+        this.drawImageOnGameCanvas(selectModeButtonImage, 0, 1);
+        selectModeButtonHovered = true;
+    }
+
+    resetSelectModeButton() {
+        let selectModeButtonImage = '';
+        if(selectMode === SHOVEL_SELECT_MODE) selectModeButtonImage = sprites.shovelModeButton;
+        if(selectMode === FLAG_SELECT_MODE) selectModeButtonImage = sprites.flagModeButton;
+        gameCanvasContext.clearRect(0, CONTROL_BUTTON_HEIGHT - 1, SELECT_MODE_BUTTON_WIDTH, 1);
+        this.drawImageOnGameCanvas(selectModeButtonImage, 0, 0);
+        selectModeButtonHovered = false;
+    }
+
+    isGameGridHover(mousePos) {
+        return ((mousePos.x >= 2 && mousePos.x < (GAME_SCREEN_WIDTH_PX - 2)) && (mousePos.y >= 31 && mousePos.y < (GAME_SCREEN_HEIGHT_PX -2)))
+    }
+
     handleMouseGameCanvasClick(event) {
         var mousePos = getMousePos(gameCanvas, event);
         const exitButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH;
         const restartButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH - RESTART_BUTTON_WIDTH - 3;
 
         if (mousePos.x >= exitButtonX && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.exitGame();
-        if (mousePos.x >= restartButtonX && mousePos.x < restartButtonX + RESTART_BUTTON_WIDTH && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.restartGame();
+        else if (mousePos.x >= restartButtonX && mousePos.x < restartButtonX + RESTART_BUTTON_WIDTH && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.restartGame();
+        else if (mousePos.x <= SELECT_MODE_BUTTON_WIDTH && mousePos.y <= CONTROL_BUTTON_HEIGHT) this.handleSelectModeButtonClick();
     }
 
     handleMouseGameCanvasLeave() {
@@ -172,6 +228,16 @@ export default class MinesweeperGame extends React.Component {
         const restartButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH - RESTART_BUTTON_WIDTH - 3;
         if(exitButtonHovered) this.resetExitButton(exitButtonX);
         if(restartButtonHovered) this.resetRestartButton(restartButtonX);
+        if(selectModeButtonHovered) this.resetSelectModeButton();
+        if (lastTileHovered !== null) {
+            this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
+            lastTileHovered = null;
+        }
+    }
+
+    handleSelectModeButtonClick() {
+        selectMode = (selectMode === SHOVEL_SELECT_MODE) ? FLAG_SELECT_MODE : SHOVEL_SELECT_MODE;
+        this.handleSelectModeButtonHover();
     }
 
     drawImageOnGameCanvas(imageSrc, x, y) {
@@ -187,9 +253,12 @@ export default class MinesweeperGame extends React.Component {
 
     resetGameVariables() {
         GAME_STARTED = false;
+        selectMode = SHOVEL_SELECT_MODE;
         exitButtonHovered = false;
-        restartButtonHovered = false; 
+        restartButtonHovered = false;
+        selectModeButtonHovered = false;
         IS_VERTICAL_SCREEN = null;
+        var lastTileHovered = null;
     }
 
     render() {
@@ -208,6 +277,13 @@ function getGameGridPos(position) {
         x: 2 + (9 * position[1]),
         y: 31 + (9 * position[0])
     };
+}
+
+function getGameGridPosFromMousePos(mousePos) {
+    return {
+        x: 2 + (9 * Math.floor((mousePos.x - 2) / 9)),
+        y: 31 + (9 * Math.floor((mousePos.y - 31) / 9))
+    }
 }
 
 // getting mouse x and y on canvas
