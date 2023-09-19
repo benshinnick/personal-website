@@ -149,7 +149,8 @@ export default class MinesweeperGame extends React.Component {
         if(this.isGameGridHover(mousePos)) {
             const gridPos = getGameGridPosFromMousePos(mousePos);
             if(lastTileHovered === null) {
-                this.drawImageOnGameCanvas(sprites.tileShovelHover, gridPos.x, gridPos.y);
+                if (selectMode === SHOVEL_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileShovelHover, gridPos.x, gridPos.y);
+                if (selectMode === FLAG_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileFlagHover, gridPos.x, gridPos.y);
                 lastTileHovered = gridPos;
             }
             if(gridPos.x === lastTileHovered.x && gridPos.y === lastTileHovered.y) return;
