@@ -1,5 +1,6 @@
 import React from 'react';
 import './MinesweeperGame.css';
+import MinesweeperBoard from './MinesweeperBoard';
 import * as sprites from './SpriteImageSources.js';
 import * as ch from '../CookieHelper.js';
 
@@ -12,6 +13,7 @@ var GAME_SCREEN_HEIGHT_PX;
 var MINESWEEPER_GRID_ROWS;
 var MINESWEEPER_GRID_COLS;
 
+var gameBoard = null;
 var gameCanvas;
 var gameCanvasContext;
 
@@ -27,6 +29,7 @@ const CONTROL_BUTTON_HEIGHT = 10;
 const EXIT_BUTTON_WIDTH = 22;
 const RESTART_BUTTON_WIDTH = 40;
 const SELECT_MODE_BUTTON_WIDTH = 33;
+const TILE_LENGTH = 9;
 
 export default class MinesweeperGame extends React.Component {
 
@@ -82,7 +85,7 @@ export default class MinesweeperGame extends React.Component {
                 }
                 else if (GAME_SIZE === 'medium') {
                     [GAME_SCREEN_WIDTH_PX, GAME_SCREEN_HEIGHT_PX] = [175, 159];
-                    [MINESWEEPER_GRID_ROWS, MINESWEEPER_GRID_COLS] = [14, 17];
+                    [MINESWEEPER_GRID_ROWS, MINESWEEPER_GRID_COLS] = [14, 19];
                     baseImage = sprites.baseScreenHorizontalMedium;
                 }
                 else if (GAME_SIZE === 'small') {
@@ -147,7 +150,15 @@ export default class MinesweeperGame extends React.Component {
             if(selectModeButtonHovered) this.resetSelectModeButton();
         }
         if(this.isGameGridHover(mousePos)) {
+            const boardPos = getGameBoardPosFromMousePos(mousePos);
             const gridPos = getGameGridPosFromMousePos(mousePos);
+            if (gameBoard !== null && gameBoard.isCellRevealed(boardPos[0], boardPos[1])) {
+                if(lastTileHovered !== null) {
+                    this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
+                    lastTileHovered = null;
+                }
+                return;
+            }
             if(lastTileHovered === null) {
                 if (selectMode === SHOVEL_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileShovelHover, gridPos.x, gridPos.y);
                 if (selectMode === FLAG_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileFlagHover, gridPos.x, gridPos.y);
@@ -222,6 +233,36 @@ export default class MinesweeperGame extends React.Component {
         if (mousePos.x >= exitButtonX && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.exitGame();
         else if (mousePos.x >= restartButtonX && mousePos.x < restartButtonX + RESTART_BUTTON_WIDTH && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.restartGame();
         else if (mousePos.x <= SELECT_MODE_BUTTON_WIDTH && mousePos.y <= CONTROL_BUTTON_HEIGHT) this.handleSelectModeButtonClick();
+
+        if (this.isGameGridHover(mousePos)) this.handleGridMouseClick(mousePos);
+    }
+
+    handleGridMouseClick(mousePos) {
+        const boardPos = getGameBoardPosFromMousePos(mousePos);
+
+        if(gameBoard === null) gameBoard = new MinesweeperBoard(MINESWEEPER_GRID_ROWS, MINESWEEPER_GRID_COLS, boardPos);
+        gameBoard.selectCell(boardPos);
+        const revealedCells = gameBoard.lastRevealedCells;
+        for(let i = 0; i < revealedCells.length; i++) {
+            const row = revealedCells[i].row;
+            const column = revealedCells[i].column;
+            const neighboringMines = revealedCells[i].cell.neighboringMines;
+            const gridPos = getGameGridPos([row, column]);
+            if (neighboringMines === 0) {
+                const backgroundImage = (row + column) % 2 === 0 ? sprites.backgroundTile1 : sprites.backgroundTile2;
+                this.drawImageOnGameCanvas(backgroundImage, gridPos.x, gridPos.y);
+            }
+            if (neighboringMines === 1) this.drawImageOnGameCanvas(sprites.oneTile, gridPos.x, gridPos.y);
+            if (neighboringMines === 2) this.drawImageOnGameCanvas(sprites.twoTile, gridPos.x, gridPos.y);
+            if (neighboringMines === 3) this.drawImageOnGameCanvas(sprites.threeTile, gridPos.x, gridPos.y);
+            if (neighboringMines === 4) this.drawImageOnGameCanvas(sprites.fourTile, gridPos.x, gridPos.y);
+            if (neighboringMines === 5) this.drawImageOnGameCanvas(sprites.fiveTile, gridPos.x, gridPos.y);
+            if (neighboringMines === 6) this.drawImageOnGameCanvas(sprites.sixTile, gridPos.x, gridPos.y);
+            if (neighboringMines === 7) this.drawImageOnGameCanvas(sprites.sevenTile, gridPos.x, gridPos.y);
+            if (neighboringMines === 8) this.drawImageOnGameCanvas(sprites.eightTile, gridPos.x, gridPos.y);
+        }
+
+        lastTileHovered = null;
     }
 
     handleMouseGameCanvasLeave() {
@@ -254,12 +295,13 @@ export default class MinesweeperGame extends React.Component {
 
     resetGameVariables() {
         GAME_STARTED = false;
+        gameBoard = null;
         selectMode = SHOVEL_SELECT_MODE;
         exitButtonHovered = false;
         restartButtonHovered = false;
         selectModeButtonHovered = false;
         IS_VERTICAL_SCREEN = null;
-        var lastTileHovered = null;
+        lastTileHovered = null;
     }
 
     render() {
@@ -275,16 +317,23 @@ export default class MinesweeperGame extends React.Component {
 
 function getGameGridPos(position) {
     return {
-        x: 2 + (9 * position[1]),
-        y: 31 + (9 * position[0])
+        x: 2 + (TILE_LENGTH * position[1]),
+        y: 31 + (TILE_LENGTH * position[0])
     };
 }
 
 function getGameGridPosFromMousePos(mousePos) {
     return {
-        x: 2 + (9 * Math.floor((mousePos.x - 2) / 9)),
-        y: 31 + (9 * Math.floor((mousePos.y - 31) / 9))
+        x: 2 + (TILE_LENGTH * Math.floor((mousePos.x - 2) / TILE_LENGTH)),
+        y: 31 + (TILE_LENGTH * Math.floor((mousePos.y - 31) / TILE_LENGTH))
     }
+}
+
+function getGameBoardPosFromMousePos(mousePos) {
+    return [
+            Math.floor((mousePos.y - 31) / TILE_LENGTH),
+            Math.floor((mousePos.x - 2) / TILE_LENGTH)
+    ]
 }
 
 // getting mouse x and y on canvas
