@@ -36,8 +36,8 @@ export default class MinesweeperBoard {
     }
 
     placeMines(firstSelection) {
-        const totalMines = Math.floor((this.rows * this.columns) / 5); // Adjust the ratio as needed
-    
+        const totalMines = Math.floor((this.rows * this.columns) /8); // Adjust the ratio as needed
+
         // Create an array of all cell positions
         const allPositions = [];
         for (let i = 0; i < this.rows; i++) {
