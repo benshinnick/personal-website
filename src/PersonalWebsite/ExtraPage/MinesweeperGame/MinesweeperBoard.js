@@ -115,6 +115,11 @@ export default class MinesweeperBoard {
         }
     }
 
+    flagCell(position) {
+        const [row, col] = position;
+        this.grid[row][col].isFlagged = true;
+    }
+
     selectCell(position) {
         this.lastRevealedCells = [];
         const [row, col] = position;
@@ -175,7 +180,15 @@ export default class MinesweeperBoard {
         }
     }
 
+    getCell(row, col) {
+        return {row: row, column: col, cell: this.grid[row][col]};
+    }
+
     isCellRevealed(row, column) {
         return this.grid[row][column].isRevealed;
+    }
+
+    isCellFlagged(row, column) {
+        return this.grid[row][column].isFlagged;
     }
 }
