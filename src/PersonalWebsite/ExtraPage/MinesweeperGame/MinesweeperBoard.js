@@ -146,8 +146,7 @@ export default class MinesweeperBoard {
             } else {
                 // Handle logic for revealing neighboring cells
                 if (selectedCell.neighboringMines === 0) {
-                    // If the selected cell has no neighboring mines, recursively reveal its neighbors
-                    this.revealNeighbors(row, col);
+                    this.revealRecursive(row, col);
                 }
                 else {
                     selectedCell.isRevealed = true;
@@ -159,11 +158,6 @@ export default class MinesweeperBoard {
 
     handleGameOver() {
         this.game_over = true;
-    }
-
-    revealNeighbors(row, col) {
-        // Start the recursion from the selected cell
-        this.revealRecursive(row, col);
     }
 
     // Helper function to recursively reveal neighbors
@@ -179,6 +173,7 @@ export default class MinesweeperBoard {
 
         // Reveal the cell
         this.grid[r][c].isRevealed = true;
+        this.grid[r][c].isFlagged = false;
         this.lastRevealedCells.push({row: r, column: c, cell: this.grid[r][c]});
 
         // If the cell has no neighboring mines, recursively reveal its neighbors

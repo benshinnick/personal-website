@@ -347,7 +347,9 @@ export default class MinesweeperGame extends React.Component {
             const row = mineCells[i].row;
             const column = mineCells[i].column;
             const gridPos = getGameGridPos([row, column]);
-            this.drawImageOnGameCanvas(sprites.mineTile, gridPos.x, gridPos.y);
+            if(mineCells[i].cell.isRevealed) this.drawImageOnGameCanvas(sprites.revealedMineTile, gridPos.x, gridPos.y);
+            else if(mineCells[i].cell.isFlagged) this.drawImageOnGameCanvas(sprites.flaggedMineTile, gridPos.x, gridPos.y);
+            else this.drawImageOnGameCanvas(sprites.mineTile, gridPos.x, gridPos.y);
         }
     }
 
