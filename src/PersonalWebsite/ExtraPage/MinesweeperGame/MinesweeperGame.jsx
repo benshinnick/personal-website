@@ -315,6 +315,7 @@ export default class MinesweeperGame extends React.Component {
 
     handleMouseGameCanvasUp() {
         if(gameBoard.isGameOver()) {
+            this.drawGameOverBanner();
             this.drawMineCellsOnGrid(gameBoard.getAllMineCells());
         }
 
@@ -370,6 +371,17 @@ export default class MinesweeperGame extends React.Component {
         if (neighboringMines === 6) this.drawImageOnGameCanvas(sprites.sixTile, gridPos.x, gridPos.y);
         if (neighboringMines === 7) this.drawImageOnGameCanvas(sprites.sevenTile, gridPos.x, gridPos.y);
         if (neighboringMines === 8) this.drawImageOnGameCanvas(sprites.eightTile, gridPos.x, gridPos.y);
+    }
+
+    drawGameOverBanner() {
+        let gameOverBannerImage = '';
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameOverBannerImage = sprites.gameOverBannerHorizontalLarge;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameOverBannerImage = sprites.gameOverBannerHorizontalMedium;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameOverBannerImage = sprites.gameOverBannerHorizontalSmall;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameOverBannerImage = sprites.gameOverBannerVerticalLarge;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameOverBannerImage = sprites.gameOverBannerVerticalMedium;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameOverBannerImage = sprites.gameOverBannerVerticalSmall;
+        this.drawImageOnGameCanvas(gameOverBannerImage, 2, 15);
     }
 
     handleMouseRightClick(event) {
