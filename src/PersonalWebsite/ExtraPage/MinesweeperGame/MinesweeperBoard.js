@@ -17,6 +17,7 @@ export default class MinesweeperBoard {
         this.grid = [];
         this.lastRevealedCells = [];
         this.board_generated = false;
+        this.game_over = false;
 
         // Initialize the grid with empty cells
         for (let i = 0; i < this.rows; i++) {
@@ -157,9 +158,7 @@ export default class MinesweeperBoard {
     }
 
     handleGameOver() {
-        console.log("GAME OVER")
-        // You can implement the logic to end the game, reveal all mines, etc.
-        // For example, you can set a game over flag and reveal all cells.
+        this.game_over = true;
     }
 
     revealNeighbors(row, col) {
@@ -200,6 +199,20 @@ export default class MinesweeperBoard {
 
     clearLastRevealedCells() {
         this.lastRevealedCells = [];
+    }
+
+    getAllMineCells() {
+        const mineCells = [];
+        // Initialize the grid with empty cells
+        for (let r = 0; r < this.rows; r++)
+            for (let c = 0; c < this.columns; c++)
+                if(this.grid[r][c].isMine)
+                    mineCells.push({row: r, column: c, cell: this.grid[r][c]});
+        return mineCells;
+    }
+
+    isGameOver() {
+        return this.game_over;
     }
 
     isBoardGenerated() {
