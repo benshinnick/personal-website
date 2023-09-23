@@ -19,6 +19,7 @@ var gameCanvasContext;
 
 var selectMode = 'shovel';
 var flaggedTilePosition = null;
+var unflaggedTilePosition = null;
 var tilesRevealed = false;
 var lastTileHovered = null;
 var exitButtonHovered = false;
@@ -131,6 +132,7 @@ export default class MinesweeperGame extends React.Component {
 
             gameCanvasContext.clearRect(0, 0, GAME_SCREEN_WIDTH_PX, CONTROL_BUTTON_HEIGHT + 1);
             this.drawImageOnGameCanvas(baseImage, 0, 0);
+            gameBoard = new MinesweeperBoard(MINESWEEPER_GRID_ROWS, MINESWEEPER_GRID_COLS);
         }
     }
 
@@ -166,19 +168,21 @@ export default class MinesweeperGame extends React.Component {
     }
 
     handleGameGridHover(mousePos) {
+        if(gameBoard.getLastRevealedCells().length > 0) return;
+        if(flaggedTilePosition !== null || unflaggedTilePosition !== null) return;
         const boardPos = getGameBoardPosFromMousePos(mousePos);
         const gridPos = getGameGridPosFromMousePos(mousePos);
         if(lastTileHovered !== null && gridPos.x === lastTileHovered.x && gridPos.y === lastTileHovered.y) return;
         if(lastTileHovered !== null) {
-            if(gameBoard === null) this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
+            if(!gameBoard.isBoardGenerated()) this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
             else this.clearLastHoveredTileOfHoverEffect();
         }
-        if (gameBoard !== null && gameBoard.isCellFlagged(boardPos[0], boardPos[1])) {
+        if (gameBoard.isCellFlagged(boardPos[0], boardPos[1])) {
             lastTileHovered = null;
             return;
         }
         
-        if(gameBoard === null) {
+        if(!gameBoard.isBoardGenerated()) {
             if (selectMode === SHOVEL_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileShovelHover, gridPos.x, gridPos.y);
             if (selectMode === FLAG_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileFlagHover, gridPos.x, gridPos.y);
         }
@@ -198,7 +202,7 @@ export default class MinesweeperGame extends React.Component {
     clearLastHoveredTileOfHoverEffect() {
         if(lastTileHovered !== null) {
             const lastHoveredTileBoardPos = getGameBoardPosFromMousePos(lastTileHovered);
-            if (gameBoard !== null && gameBoard.isCellRevealed(lastHoveredTileBoardPos[0], lastHoveredTileBoardPos[1]))
+            if (gameBoard.isCellRevealed(lastHoveredTileBoardPos[0], lastHoveredTileBoardPos[1]))
                 this.drawRevealedCellOnGrid(gameBoard.getCell(lastHoveredTileBoardPos[0], lastHoveredTileBoardPos[1]));
             else this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
             lastTileHovered = null;
@@ -262,16 +266,16 @@ export default class MinesweeperGame extends React.Component {
         else if (mousePos.x <= SELECT_MODE_BUTTON_WIDTH && mousePos.y <= CONTROL_BUTTON_HEIGHT) this.handleSelectModeButtonClick();
 
         if (this.isGameGridHover(mousePos)) {
-            const boardPos = getGameBoardPosFromMousePos(mousePos)
+            const boardPos = getGameBoardPosFromMousePos(mousePos);
             if(selectMode === SHOVEL_SELECT_MODE) this.handleGridMouseDownUncover(boardPos);
             if(selectMode === FLAG_SELECT_MODE) this.handleGridMouseDownFlag(boardPos);
         }
     }
 
     handleGridMouseDownUncover(boardPos) {
-        if(gameBoard === null) gameBoard = new MinesweeperBoard(MINESWEEPER_GRID_ROWS, MINESWEEPER_GRID_COLS, boardPos);
+        if(!gameBoard.isBoardGenerated()) gameBoard.generateBoard(boardPos);
         gameBoard.selectCell(boardPos);
-        const revealedCells = gameBoard.lastRevealedCells;
+        const revealedCells = gameBoard.getLastRevealedCells();
         if (revealedCells.length > 0) {
             const gridPos = getGameGridPos([boardPos[0], boardPos[1]]);
             this.drawImageOnGameCanvas(sprites.shovelTilePressed, gridPos.x, gridPos.y);
@@ -281,26 +285,42 @@ export default class MinesweeperGame extends React.Component {
     }
 
     handleGridMouseDownFlag(boardPos) {
-        if(gameBoard === null) return;
-        gameBoard.flagCell([boardPos[0], boardPos[1]]);
-        const gridPos = getGameGridPos([boardPos[0], boardPos[1]]);
-        this.drawImageOnGameCanvas(sprites.flagTilePressed, gridPos.x, gridPos.y);
-        flaggedTilePosition = gridPos;
-        lastTileHovered = null;
+        if(gameBoard.isCellFlagged(boardPos[0], boardPos[1])) {
+            gameBoard.unflagCell(boardPos);
+            const gridPos = getGameGridPos(boardPos);
+            this.drawImageOnGameCanvas(sprites.tile, gridPos.x, gridPos.y);
+            unflaggedTilePosition = gridPos;
+            lastTileHovered = null;
+            return;
+        }
+        if(!gameBoard.isCellRevealed(boardPos[0], boardPos[1])) {
+            gameBoard.flagCell(boardPos);
+            const gridPos = getGameGridPos(boardPos);
+            this.drawImageOnGameCanvas(sprites.flagTile, gridPos.x, gridPos.y);
+            flaggedTilePosition = gridPos;
+            lastTileHovered = null;
+            return;
+        }
     }
 
     handleMouseGameCanvasUp() {
         if(flaggedTilePosition !== null) {
             this.drawImageOnGameCanvas(sprites.flagTile, flaggedTilePosition.x, flaggedTilePosition.y);
             flaggedTilePosition = null;
+            return;
+        }
+        if(unflaggedTilePosition !== null) {
+            this.drawImageOnGameCanvas(sprites.tile, unflaggedTilePosition.x, unflaggedTilePosition.y);
+            unflaggedTilePosition = null;
+            return;
         }
         if (!tilesRevealed) return;
 
-        const revealedCells = gameBoard.lastRevealedCells;
-
+        const revealedCells = gameBoard.getLastRevealedCells();
         for(let i = 0; i < revealedCells.length; i++) {
             this.drawRevealedCellOnGrid(revealedCells[i]);
         }
+        gameBoard.clearLastRevealedCells();
 
         if (selectMode === SHOVEL_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileShovelHoverRevealedCell, lastTileHovered.x, lastTileHovered.y);
         if (selectMode === FLAG_SELECT_MODE) this.drawImageOnGameCanvas(sprites.tileFlagHoverRevealedCell, lastTileHovered.x, lastTileHovered.y);
@@ -343,9 +363,22 @@ export default class MinesweeperGame extends React.Component {
         if(restartButtonHovered) this.resetRestartButton(restartButtonX);
         if(selectModeButtonHovered) this.resetSelectModeButton();
         if (lastTileHovered !== null) {
-            if(gameBoard === null) this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
+            if(!gameBoard.isBoardGenerated()) this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
             else this.clearLastHoveredTileOfHoverEffect();
         }
+        if(flaggedTilePosition !== null) {
+            this.drawImageOnGameCanvas(sprites.flagTile, flaggedTilePosition.x, flaggedTilePosition.y);
+            flaggedTilePosition = null;
+        }
+        if(unflaggedTilePosition !== null) {
+            this.drawImageOnGameCanvas(sprites.tile, unflaggedTilePosition.x, unflaggedTilePosition.y);
+            unflaggedTilePosition = null;
+        }
+        const revealedCells = gameBoard.getLastRevealedCells();
+        for(let i = 0; i < revealedCells.length; i++) {
+            this.drawRevealedCellOnGrid(revealedCells[i]);
+        }
+        gameBoard.clearLastRevealedCells();
     }
 
     handleSelectModeButtonClick() {
@@ -375,6 +408,7 @@ export default class MinesweeperGame extends React.Component {
         IS_VERTICAL_SCREEN = null;
         lastTileHovered = null;
         flaggedTilePosition = null;
+        unflaggedTilePosition = null;
     }
 
     render() {

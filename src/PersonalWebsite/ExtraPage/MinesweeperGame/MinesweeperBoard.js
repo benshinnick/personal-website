@@ -6,15 +6,18 @@ const DIRECTIONS = [
 ];
 
 export default class MinesweeperBoard {
-    constructor(rows, columns, firstSelection) {
+
+    constructor(rows, columns) {
         this.rows = rows;
         this.columns = columns;
-        this.grid = [];
-        this.lastRevealedCells = [];
-        this.generateBoard(firstSelection);
+        this.resetGame();
     }
 
-    generateBoard(firstSelection) {
+    resetGame() {
+        this.grid = [];
+        this.lastRevealedCells = [];
+        this.board_generated = false;
+
         // Initialize the grid with empty cells
         for (let i = 0; i < this.rows; i++) {
             this.grid[i] = [];
@@ -27,12 +30,16 @@ export default class MinesweeperBoard {
                 };
             }
         }
+    }
 
+    generateBoard(firstSelection) {
         // Randomly place mines on the grid
         this.placeMines(firstSelection);
 
         // Calculate the number of neighboring mines for each cell
         this.calculateNeighboringMines();
+
+        this.board_generated = true;
     }
 
     placeMines(firstSelection) {
@@ -120,6 +127,11 @@ export default class MinesweeperBoard {
         this.grid[row][col].isFlagged = true;
     }
 
+    unflagCell(position) {
+        const [row, col] = position;
+        this.grid[row][col].isFlagged = false;
+    }
+
     selectCell(position) {
         this.lastRevealedCells = [];
         const [row, col] = position;
@@ -144,14 +156,12 @@ export default class MinesweeperBoard {
         }
     }
 
-    // Add a function to handle game over logic here
     handleGameOver() {
         console.log("GAME OVER")
         // You can implement the logic to end the game, reveal all mines, etc.
         // For example, you can set a game over flag and reveal all cells.
     }
 
-    // Add the revealNeighbors function to your MinesweeperBoard class
     revealNeighbors(row, col) {
         // Start the recursion from the selected cell
         this.revealRecursive(row, col);
@@ -182,6 +192,18 @@ export default class MinesweeperBoard {
 
     getCell(row, col) {
         return {row: row, column: col, cell: this.grid[row][col]};
+    }
+
+    getLastRevealedCells() {
+        return this.lastRevealedCells;
+    }
+
+    clearLastRevealedCells() {
+        this.lastRevealedCells = [];
+    }
+
+    isBoardGenerated() {
+        return this.board_generated;
     }
 
     isCellRevealed(row, column) {
