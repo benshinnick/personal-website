@@ -18,6 +18,7 @@ export default class MinesweeperBoard {
         this.lastRevealedCells = [];
         this.board_generated = false;
         this.game_over = false;
+        this.flagsLeft = this.getMinesForBoardSize();
 
         // Initialize the grid with empty cells
         for (let i = 0; i < this.rows; i++) {
@@ -44,7 +45,7 @@ export default class MinesweeperBoard {
     }
 
     placeMines(firstSelection) {
-        const totalMines = Math.floor((this.rows * this.columns) /8); // Adjust the ratio as needed
+        const totalMines = this.getMinesForBoardSize();
 
         // Create an array of all cell positions
         const allPositions = [];
@@ -124,13 +125,17 @@ export default class MinesweeperBoard {
     }
 
     flagCell(position) {
-        const [row, col] = position;
-        this.grid[row][col].isFlagged = true;
+        if(this.flagsLeft > 0) {
+            const [row, col] = position;
+            this.grid[row][col].isFlagged = true;
+            this.flagsLeft -= 1;
+        }
     }
 
     unflagCell(position) {
         const [row, col] = position;
         this.grid[row][col].isFlagged = false;
+        this.flagsLeft += 1;
     }
 
     selectCell(position) {
@@ -173,7 +178,7 @@ export default class MinesweeperBoard {
 
         // Reveal the cell
         this.grid[r][c].isRevealed = true;
-        this.grid[r][c].isFlagged = false;
+        if(this.grid[r][c].isFlagged) this.unflagCell([r, c]);
         this.lastRevealedCells.push({row: r, column: c, cell: this.grid[r][c]});
 
         // If the cell has no neighboring mines, recursively reveal its neighbors
@@ -182,6 +187,14 @@ export default class MinesweeperBoard {
                 this.revealRecursive(r + dr, c + dc);
             }
         }
+    }
+
+    getMinesForBoardSize() {
+        return Math.floor((this.rows * this.columns) /8); // Adjust the ratio as needed
+    }
+
+    getFlagsLeft() {
+        return this.flagsLeft;
     }
 
     getCell(row, col) {

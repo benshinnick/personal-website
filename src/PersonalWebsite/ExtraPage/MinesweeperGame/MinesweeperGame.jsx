@@ -25,6 +25,9 @@ var lastTileHovered = null;
 var exitButtonHovered = false;
 var restartButtonHovered = false;
 var selectModeButtonHovered = false;
+var gameSummaryDisplayed = false;
+var timerInterval = null;
+var timeCounter = 0;
 
 const SHOVEL_SELECT_MODE = 'shovel';
 const FLAG_SELECT_MODE = 'flag';
@@ -77,8 +80,10 @@ export default class MinesweeperGame extends React.Component {
     }
 
     restartGame() {
-        this.resetGameVariables();
-        this.handleResize();
+        if(GAME_STARTED || (gameBoard.getFlagsLeft() !== gameBoard.getMinesForBoardSize())) {
+            this.resetGameVariables();
+            this.handleResize();
+        }
     }
 
     handleResize = () => {
@@ -132,8 +137,10 @@ export default class MinesweeperGame extends React.Component {
             gameCanvasContext = gameCanvas.getContext("2d");
 
             gameCanvasContext.clearRect(0, 0, GAME_SCREEN_WIDTH_PX, CONTROL_BUTTON_HEIGHT + 1);
-            this.drawImageOnGameCanvas(baseImage, 0, 0);
             gameBoard = new MinesweeperBoard(MINESWEEPER_GRID_ROWS, MINESWEEPER_GRID_COLS);
+            this.drawImageOnGameCanvas(baseImage, 0, 0).then(() => {
+                this.updateFlagCounter(gameBoard.getFlagsLeft());
+            });
         }
     }
 
@@ -212,6 +219,264 @@ export default class MinesweeperGame extends React.Component {
         }
     }
 
+    handleMouseGameCanvasDown(event) {
+        if(event.button === 2) return; // right click
+        var mousePos = getMousePos(gameCanvas, event);
+        const exitButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH;
+        const restartButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH - RESTART_BUTTON_WIDTH - 3;
+
+        if (mousePos.x >= exitButtonX && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.exitGame();
+        else if (mousePos.x >= restartButtonX && mousePos.x < restartButtonX + RESTART_BUTTON_WIDTH && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.restartGame();
+        else if (mousePos.x <= SELECT_MODE_BUTTON_WIDTH && mousePos.y <= CONTROL_BUTTON_HEIGHT) this.handleSelectModeButtonClick();
+
+        if (this.isGameGridHover(mousePos) && !gameBoard.isGameOver()) {
+            const boardPos = getGameBoardPosFromMousePos(mousePos);
+            if(selectMode === SHOVEL_SELECT_MODE) this.handleGridMouseDownUncover(boardPos);
+            if(selectMode === FLAG_SELECT_MODE) this.handleGridMouseDownFlag(boardPos);
+        }
+    }
+
+    handleGridMouseDownUncover(boardPos) {
+        if(!gameBoard.isBoardGenerated()) {
+            gameBoard.generateBoard(boardPos);
+            GAME_STARTED = true;
+            timerInterval = setInterval(() => {
+                timeCounter += 1;
+                this.updateTimeCounter(timeCounter);
+            }, 1000);
+        }
+        gameBoard.selectCell(boardPos);
+        const gridPos = getGameGridPos([boardPos[0], boardPos[1]]);
+        if(gameBoard.isGameOver()) {
+            this.drawImageOnGameCanvas(sprites.shovelTilePressed, gridPos.x, gridPos.y);
+            lastTileHovered = null;
+            return;
+        }
+        const revealedCells = gameBoard.getLastRevealedCells();
+        if (revealedCells.length > 0) {
+            this.drawImageOnGameCanvas(sprites.shovelTilePressed, gridPos.x, gridPos.y);
+            tilesRevealed = true;
+        }
+    }
+
+    handleGridMouseDownFlag(boardPos) {
+        if(gameBoard.isCellFlagged(boardPos[0], boardPos[1])) {
+            gameBoard.unflagCell(boardPos);
+            const gridPos = getGameGridPos(boardPos);
+            this.drawImageOnGameCanvas(sprites.tile, gridPos.x, gridPos.y);
+            this.updateFlagCounter(gameBoard.getFlagsLeft());
+            unflaggedTilePosition = gridPos;
+            lastTileHovered = null;
+            return;
+        }
+        if(!gameBoard.isCellRevealed(boardPos[0], boardPos[1]) && gameBoard.getFlagsLeft() > 0) {
+            gameBoard.flagCell(boardPos);
+            const gridPos = getGameGridPos(boardPos);
+            this.drawImageOnGameCanvas(sprites.flagTile, gridPos.x, gridPos.y);
+            this.updateFlagCounter(gameBoard.getFlagsLeft());
+            flaggedTilePosition = gridPos;
+            lastTileHovered = null;
+            return;
+        }
+    }
+
+    handleMouseGameCanvasUp() {
+        if(gameBoard.isGameOver() && !gameSummaryDisplayed) this.handleGameOver();
+
+        if(flaggedTilePosition !== null) {
+            this.drawImageOnGameCanvas(sprites.flagTile, flaggedTilePosition.x, flaggedTilePosition.y);
+            flaggedTilePosition = null;
+            return;
+        }
+        if(unflaggedTilePosition !== null) {
+            this.drawImageOnGameCanvas(sprites.tile, unflaggedTilePosition.x, unflaggedTilePosition.y);
+            unflaggedTilePosition = null;
+            return;
+        }
+        if (!tilesRevealed) return;
+
+        const revealedCells = gameBoard.getLastRevealedCells();
+        for(let i = 0; i < revealedCells.length; i++) {
+            this.drawRevealedCellOnGrid(revealedCells[i]);
+        }
+        gameBoard.clearLastRevealedCells();
+        this.updateFlagCounter(gameBoard.getFlagsLeft());
+
+        if (selectMode === SHOVEL_SELECT_MODE && lastTileHovered !== null) this.drawImageOnGameCanvas(sprites.tileShovelHoverRevealedCell, lastTileHovered.x, lastTileHovered.y);
+        if (selectMode === FLAG_SELECT_MODE && lastTileHovered !== null) this.drawImageOnGameCanvas(sprites.tileFlagHoverRevealedCell, lastTileHovered.x, lastTileHovered.y);
+
+        tilesRevealed = false;
+    }
+
+    handleMouseRightClick(event) {
+        if(gameBoard.isGameOver()) return;
+        const mousePos = getMousePos(gameCanvas, event);
+        if (this.isGameGridHover(mousePos)) {
+            const boardPos = getGameBoardPosFromMousePos(mousePos)
+            if(selectMode === FLAG_SELECT_MODE) this.handleGridMouseDownUncover(boardPos);
+            if(selectMode === SHOVEL_SELECT_MODE) this.handleGridMouseDownFlag(boardPos);
+        }
+    }
+
+    handleMouseGameCanvasLeave() {
+        const exitButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH;
+        const restartButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH - RESTART_BUTTON_WIDTH - 3;
+        if(exitButtonHovered) this.resetExitButton(exitButtonX);
+        if(restartButtonHovered) this.resetRestartButton(restartButtonX);
+        if(selectModeButtonHovered) this.resetSelectModeButton();
+        if (lastTileHovered !== null) {
+            if(!gameBoard.isBoardGenerated()) this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
+            else this.clearLastHoveredTileOfHoverEffect();
+        }
+        if(flaggedTilePosition !== null) {
+            this.drawImageOnGameCanvas(sprites.flagTile, flaggedTilePosition.x, flaggedTilePosition.y);
+            flaggedTilePosition = null;
+        }
+        if(unflaggedTilePosition !== null) {
+            this.drawImageOnGameCanvas(sprites.tile, unflaggedTilePosition.x, unflaggedTilePosition.y);
+            unflaggedTilePosition = null;
+        }
+        const revealedCells = gameBoard.getLastRevealedCells();
+        for(let i = 0; i < revealedCells.length; i++) {
+            this.drawRevealedCellOnGrid(revealedCells[i]);
+        }
+        gameBoard.clearLastRevealedCells();
+    }
+
+    handleGameOver() {
+        clearInterval(timerInterval);
+        this.drawGameOverBanner();
+        this.drawGameOverTimeCounter(timeCounter);
+        this.drawGameOverFlagCounter(gameBoard.getFlagsLeft());
+        this.drawMineCellsOnGrid(gameBoard.getAllMineCells());
+        gameSummaryDisplayed = true;
+    }
+
+    handleSelectModeButtonClick() {
+        selectMode = (selectMode === SHOVEL_SELECT_MODE) ? FLAG_SELECT_MODE : SHOVEL_SELECT_MODE;
+        this.handleSelectModeButtonHover();
+    }
+
+    drawMineCellsOnGrid(mineCells) {
+        for(let i = 0; i < mineCells.length; i++) {
+            const row = mineCells[i].row;
+            const column = mineCells[i].column;
+            const gridPos = getGameGridPos([row, column]);
+            if(mineCells[i].cell.isRevealed) this.drawImageOnGameCanvas(sprites.revealedMineTile, gridPos.x, gridPos.y);
+            else if(mineCells[i].cell.isFlagged) this.drawImageOnGameCanvas(sprites.flaggedMineTile, gridPos.x, gridPos.y);
+            else this.drawImageOnGameCanvas(sprites.mineTile, gridPos.x, gridPos.y);
+        }
+    }
+
+    drawRevealedCellOnGrid(revealedCell) {
+        const row = revealedCell.row;
+        const column = revealedCell.column;
+        const neighboringMines = revealedCell.cell.neighboringMines;
+        const gridPos = getGameGridPos([row, column]);
+        if (neighboringMines === 0) {
+            const backgroundImage = (row + column) % 2 === 0 ? sprites.backgroundTile1 : sprites.backgroundTile2;
+            this.drawImageOnGameCanvas(backgroundImage, gridPos.x, gridPos.y);
+        }
+        if (neighboringMines === 1) this.drawImageOnGameCanvas(sprites.oneTile, gridPos.x, gridPos.y);
+        if (neighboringMines === 2) this.drawImageOnGameCanvas(sprites.twoTile, gridPos.x, gridPos.y);
+        if (neighboringMines === 3) this.drawImageOnGameCanvas(sprites.threeTile, gridPos.x, gridPos.y);
+        if (neighboringMines === 4) this.drawImageOnGameCanvas(sprites.fourTile, gridPos.x, gridPos.y);
+        if (neighboringMines === 5) this.drawImageOnGameCanvas(sprites.fiveTile, gridPos.x, gridPos.y);
+        if (neighboringMines === 6) this.drawImageOnGameCanvas(sprites.sixTile, gridPos.x, gridPos.y);
+        if (neighboringMines === 7) this.drawImageOnGameCanvas(sprites.sevenTile, gridPos.x, gridPos.y);
+        if (neighboringMines === 8) this.drawImageOnGameCanvas(sprites.eightTile, gridPos.x, gridPos.y);
+    }
+
+    drawGameOverBanner() {
+        let gameOverBannerImage = '';
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameOverBannerImage = sprites.gameOverBannerHorizontalLarge;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameOverBannerImage = sprites.gameOverBannerHorizontalMedium;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameOverBannerImage = sprites.gameOverBannerHorizontalSmall;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameOverBannerImage = sprites.gameOverBannerVerticalLarge;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameOverBannerImage = sprites.gameOverBannerVerticalMedium;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameOverBannerImage = sprites.gameOverBannerVerticalSmall;
+        this.drawImageOnGameCanvas(gameOverBannerImage, 2, 15);
+    }
+
+    async updateFlagCounter(count) {        
+        let countText = count.toString();
+        let numeralDrawPosition = [GAME_SCREEN_WIDTH_PX - 43, 17]; // [x, y]
+        if(countText.length === 1) numeralDrawPosition = [GAME_SCREEN_WIDTH_PX - 41, 17];
+        if(countText === '9') {
+            gameCanvasContext.fillStyle = '#ffdcdc';
+            gameCanvasContext.fillRect(GAME_SCREEN_WIDTH_PX - 44, 17, 13, 5);
+        }
+        for (let i = 0; i < countText.length; i++) {
+            let value = parseInt(countText[i]);
+            let numberImage = sprites.flagNumerals[value];
+            await this.drawImageOnGameCanvas(numberImage, numeralDrawPosition[0], numeralDrawPosition[1]);
+            if (countText.charAt(i) === '1') numeralDrawPosition[0] += 4;
+            else numeralDrawPosition[0] = numeralDrawPosition[0] += 5;
+        }
+    }
+
+    async updateTimeCounter(count) {
+        let lastCountText = (count - 1).toString();
+        let countText = count.toString();
+        // pad with beginning zeros
+        if(lastCountText.length !== 3) for(let i = 0; i <= 3 - lastCountText.length; i++) lastCountText = "0" + lastCountText;
+        if(countText.length !== 3) for(let i = 0; i <= 3 - countText.length; i++) countText = "0" + countText;
+        let numeralDrawPosition = [GAME_SCREEN_WIDTH_PX - 19, 17]; // [x, y]
+        for (let i = 0; i < countText.length; i++) {
+            let lastValue = parseInt(lastCountText[i]);
+            let value = parseInt(countText[i]);
+            if(lastValue === value) {
+                if (countText.charAt(i) === '1') numeralDrawPosition[0] += 4;
+                else numeralDrawPosition[0] = numeralDrawPosition[0] += 5;
+                continue;
+            }
+            let numberImage = sprites.timeNumerals[value];
+            await this.drawImageOnGameCanvas(numberImage, numeralDrawPosition[0], numeralDrawPosition[1]);
+            if (countText.charAt(i) === '1') numeralDrawPosition[0] += 4;
+            else numeralDrawPosition[0] = numeralDrawPosition[0] += 5;
+        }
+    }
+
+    drawGameOverFlagCounter(count) {
+        this.drawImageOnGameCanvas(sprites.gameOverScoreBackground, GAME_SCREEN_WIDTH_PX - 47, 15).then(() => {
+            let countText = count.toString();
+            let numeralDrawPosition = [GAME_SCREEN_WIDTH_PX - 43, 17]; // [x, y]
+            if(countText.length === 1) numeralDrawPosition = [GAME_SCREEN_WIDTH_PX - 41, 17];
+            for (let i = 0; i < countText.length; i++) {
+                let value = parseInt(countText[i]);
+                this.drawImageOnGameCanvas(sprites.gameOverNumerals[value], numeralDrawPosition[0], numeralDrawPosition[1]);
+                if (countText.charAt(i) === '1') numeralDrawPosition[0] += 4;
+                else numeralDrawPosition[0] = numeralDrawPosition[0] += 5;
+            }
+        });
+    }
+
+    drawGameOverTimeCounter(count) {
+        this.drawImageOnGameCanvas(sprites.gameOverScoreBackground, GAME_SCREEN_WIDTH_PX - 20, 15).then(() => {
+            let countText = count.toString();
+            // pad with beginning zeros
+            if(countText.length !== 3) for(let i = 0; i <= 3 - countText.length; i++) countText = "0" + countText;
+            let numeralDrawPosition = [GAME_SCREEN_WIDTH_PX - 19, 17]; // [x, y]
+            for (let i = 0; i < countText.length; i++) {
+                let value = parseInt(countText[i]);
+                this.drawImageOnGameCanvas(sprites.gameOverNumerals[value], numeralDrawPosition[0], numeralDrawPosition[1]);
+                if (countText.charAt(i) === '1') numeralDrawPosition[0] += 4;
+                else numeralDrawPosition[0] = numeralDrawPosition[0] += 5;
+            }
+        });
+    }
+
+    drawImageOnGameCanvas(imageSrc, x, y) {
+        return new Promise(function(resolve, reject) {
+            var img = new Image();
+            img.src = imageSrc;
+            img.onload = function(){
+                gameCanvasContext.drawImage(img,x,y);
+                resolve();
+            };
+        })
+    }
+
     handleRestartButtonHover(restartButtonX) {
         gameCanvasContext.clearRect(restartButtonX, 0, RESTART_BUTTON_WIDTH, 1);
         this.drawImageOnGameCanvas(sprites.restartButton, restartButtonX, 1);
@@ -258,184 +523,8 @@ export default class MinesweeperGame extends React.Component {
         return ((mousePos.x >= 2 && mousePos.x < (GAME_SCREEN_WIDTH_PX - 2)) && (mousePos.y >= 31 && mousePos.y < (GAME_SCREEN_HEIGHT_PX -2)))
     }
 
-    handleMouseGameCanvasDown(event) {
-        if(event.button === 2) return; // right click
-        var mousePos = getMousePos(gameCanvas, event);
-        const exitButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH;
-        const restartButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH - RESTART_BUTTON_WIDTH - 3;
-
-        if (mousePos.x >= exitButtonX && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.exitGame();
-        else if (mousePos.x >= restartButtonX && mousePos.x < restartButtonX + RESTART_BUTTON_WIDTH && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.restartGame();
-        else if (mousePos.x <= SELECT_MODE_BUTTON_WIDTH && mousePos.y <= CONTROL_BUTTON_HEIGHT) this.handleSelectModeButtonClick();
-
-        if (this.isGameGridHover(mousePos) && !gameBoard.isGameOver()) {
-            const boardPos = getGameBoardPosFromMousePos(mousePos);
-            if(selectMode === SHOVEL_SELECT_MODE) this.handleGridMouseDownUncover(boardPos);
-            if(selectMode === FLAG_SELECT_MODE) this.handleGridMouseDownFlag(boardPos);
-        }
-    }
-
-    handleGridMouseDownUncover(boardPos) {
-        if(!gameBoard.isBoardGenerated()) {
-            gameBoard.generateBoard(boardPos);
-            GAME_STARTED = true;
-        }
-        gameBoard.selectCell(boardPos);
-        const gridPos = getGameGridPos([boardPos[0], boardPos[1]]);
-        if(gameBoard.isGameOver()) {
-            this.drawImageOnGameCanvas(sprites.shovelTilePressed, gridPos.x, gridPos.y);
-            lastTileHovered = null;
-            return;
-        }
-        const revealedCells = gameBoard.getLastRevealedCells();
-        if (revealedCells.length > 0) {
-            this.drawImageOnGameCanvas(sprites.shovelTilePressed, gridPos.x, gridPos.y);
-            tilesRevealed = true;
-        }
-    }
-
-    handleGridMouseDownFlag(boardPos) {
-        if(gameBoard.isCellFlagged(boardPos[0], boardPos[1])) {
-            gameBoard.unflagCell(boardPos);
-            const gridPos = getGameGridPos(boardPos);
-            this.drawImageOnGameCanvas(sprites.tile, gridPos.x, gridPos.y);
-            unflaggedTilePosition = gridPos;
-            lastTileHovered = null;
-            return;
-        }
-        if(!gameBoard.isCellRevealed(boardPos[0], boardPos[1])) {
-            gameBoard.flagCell(boardPos);
-            const gridPos = getGameGridPos(boardPos);
-            this.drawImageOnGameCanvas(sprites.flagTile, gridPos.x, gridPos.y);
-            flaggedTilePosition = gridPos;
-            lastTileHovered = null;
-            return;
-        }
-    }
-
-    handleMouseGameCanvasUp() {
-        if(gameBoard.isGameOver()) {
-            this.drawGameOverBanner();
-            this.drawMineCellsOnGrid(gameBoard.getAllMineCells());
-        }
-
-        if(flaggedTilePosition !== null) {
-            this.drawImageOnGameCanvas(sprites.flagTile, flaggedTilePosition.x, flaggedTilePosition.y);
-            flaggedTilePosition = null;
-            return;
-        }
-        if(unflaggedTilePosition !== null) {
-            this.drawImageOnGameCanvas(sprites.tile, unflaggedTilePosition.x, unflaggedTilePosition.y);
-            unflaggedTilePosition = null;
-            return;
-        }
-        if (!tilesRevealed) return;
-
-        const revealedCells = gameBoard.getLastRevealedCells();
-        for(let i = 0; i < revealedCells.length; i++) {
-            this.drawRevealedCellOnGrid(revealedCells[i]);
-        }
-        gameBoard.clearLastRevealedCells();
-
-        if (selectMode === SHOVEL_SELECT_MODE && lastTileHovered !== null) this.drawImageOnGameCanvas(sprites.tileShovelHoverRevealedCell, lastTileHovered.x, lastTileHovered.y);
-        if (selectMode === FLAG_SELECT_MODE && lastTileHovered !== null) this.drawImageOnGameCanvas(sprites.tileFlagHoverRevealedCell, lastTileHovered.x, lastTileHovered.y);
-
-        tilesRevealed = false;
-    }
-
-    drawMineCellsOnGrid(mineCells) {
-        for(let i = 0; i < mineCells.length; i++) {
-            const row = mineCells[i].row;
-            const column = mineCells[i].column;
-            const gridPos = getGameGridPos([row, column]);
-            if(mineCells[i].cell.isRevealed) this.drawImageOnGameCanvas(sprites.revealedMineTile, gridPos.x, gridPos.y);
-            else if(mineCells[i].cell.isFlagged) this.drawImageOnGameCanvas(sprites.flaggedMineTile, gridPos.x, gridPos.y);
-            else this.drawImageOnGameCanvas(sprites.mineTile, gridPos.x, gridPos.y);
-        }
-    }
-
-    drawRevealedCellOnGrid(revealedCell) {
-        const row = revealedCell.row;
-        const column = revealedCell.column;
-        const neighboringMines = revealedCell.cell.neighboringMines;
-        const gridPos = getGameGridPos([row, column]);
-        if (neighboringMines === 0) {
-            const backgroundImage = (row + column) % 2 === 0 ? sprites.backgroundTile1 : sprites.backgroundTile2;
-            this.drawImageOnGameCanvas(backgroundImage, gridPos.x, gridPos.y);
-        }
-        if (neighboringMines === 1) this.drawImageOnGameCanvas(sprites.oneTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 2) this.drawImageOnGameCanvas(sprites.twoTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 3) this.drawImageOnGameCanvas(sprites.threeTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 4) this.drawImageOnGameCanvas(sprites.fourTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 5) this.drawImageOnGameCanvas(sprites.fiveTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 6) this.drawImageOnGameCanvas(sprites.sixTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 7) this.drawImageOnGameCanvas(sprites.sevenTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 8) this.drawImageOnGameCanvas(sprites.eightTile, gridPos.x, gridPos.y);
-    }
-
-    drawGameOverBanner() {
-        let gameOverBannerImage = '';
-        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameOverBannerImage = sprites.gameOverBannerHorizontalLarge;
-        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameOverBannerImage = sprites.gameOverBannerHorizontalMedium;
-        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameOverBannerImage = sprites.gameOverBannerHorizontalSmall;
-        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameOverBannerImage = sprites.gameOverBannerVerticalLarge;
-        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameOverBannerImage = sprites.gameOverBannerVerticalMedium;
-        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameOverBannerImage = sprites.gameOverBannerVerticalSmall;
-        this.drawImageOnGameCanvas(gameOverBannerImage, 2, 15);
-    }
-
-    handleMouseRightClick(event) {
-        if(gameBoard.isGameOver()) return;
-        const mousePos = getMousePos(gameCanvas, event);
-        if (this.isGameGridHover(mousePos)) {
-            const boardPos = getGameBoardPosFromMousePos(mousePos)
-            if(selectMode === FLAG_SELECT_MODE) this.handleGridMouseDownUncover(boardPos);
-            if(selectMode === SHOVEL_SELECT_MODE) this.handleGridMouseDownFlag(boardPos);
-        }
-    }
-
-    handleMouseGameCanvasLeave() {
-        const exitButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH;
-        const restartButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH - RESTART_BUTTON_WIDTH - 3;
-        if(exitButtonHovered) this.resetExitButton(exitButtonX);
-        if(restartButtonHovered) this.resetRestartButton(restartButtonX);
-        if(selectModeButtonHovered) this.resetSelectModeButton();
-        if (lastTileHovered !== null) {
-            if(!gameBoard.isBoardGenerated()) this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
-            else this.clearLastHoveredTileOfHoverEffect();
-        }
-        if(flaggedTilePosition !== null) {
-            this.drawImageOnGameCanvas(sprites.flagTile, flaggedTilePosition.x, flaggedTilePosition.y);
-            flaggedTilePosition = null;
-        }
-        if(unflaggedTilePosition !== null) {
-            this.drawImageOnGameCanvas(sprites.tile, unflaggedTilePosition.x, unflaggedTilePosition.y);
-            unflaggedTilePosition = null;
-        }
-        const revealedCells = gameBoard.getLastRevealedCells();
-        for(let i = 0; i < revealedCells.length; i++) {
-            this.drawRevealedCellOnGrid(revealedCells[i]);
-        }
-        gameBoard.clearLastRevealedCells();
-    }
-
-    handleSelectModeButtonClick() {
-        selectMode = (selectMode === SHOVEL_SELECT_MODE) ? FLAG_SELECT_MODE : SHOVEL_SELECT_MODE;
-        this.handleSelectModeButtonHover();
-    }
-
-    drawImageOnGameCanvas(imageSrc, x, y) {
-        return new Promise(function(resolve, reject) {
-            var img = new Image();
-            img.src = imageSrc;
-            img.onload = function(){
-                gameCanvasContext.drawImage(img,x,y);
-                resolve();
-            };
-        })
-    }
-
     resetGameVariables() {
+        clearInterval(timerInterval);
         GAME_STARTED = false;
         gameBoard = null;
         selectMode = SHOVEL_SELECT_MODE;
@@ -447,6 +536,9 @@ export default class MinesweeperGame extends React.Component {
         lastTileHovered = null;
         flaggedTilePosition = null;
         unflaggedTilePosition = null;
+        timerInterval = null;
+        gameSummaryDisplayed = false;
+        timeCounter = 0;
     }
 
     render() {
