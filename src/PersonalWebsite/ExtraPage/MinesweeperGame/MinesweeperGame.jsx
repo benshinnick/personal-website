@@ -169,7 +169,7 @@ export default class MinesweeperGame extends React.Component {
             if(restartButtonHovered) this.resetRestartButton(restartButtonX);
             if(selectModeButtonHovered) this.resetSelectModeButton();
         }
-        if(!gameBoard.isGameOver()) {
+        if(!gameSummaryDisplayed) {
             if(this.isGameGridHover(mousePos))
                 this.handleGameGridHover(mousePos);
             else if (lastTileHovered !== null)
@@ -229,7 +229,7 @@ export default class MinesweeperGame extends React.Component {
         else if (mousePos.x >= restartButtonX && mousePos.x < restartButtonX + RESTART_BUTTON_WIDTH && mousePos.y < CONTROL_BUTTON_HEIGHT + 1) this.restartGame();
         else if (mousePos.x <= SELECT_MODE_BUTTON_WIDTH && mousePos.y <= CONTROL_BUTTON_HEIGHT) this.handleSelectModeButtonClick();
 
-        if (this.isGameGridHover(mousePos) && !gameBoard.isGameOver()) {
+        if (this.isGameGridHover(mousePos) && !gameSummaryDisplayed) {
             const boardPos = getGameBoardPosFromMousePos(mousePos);
             if(selectMode === SHOVEL_SELECT_MODE) this.handleGridMouseDownUncover(boardPos);
             if(selectMode === FLAG_SELECT_MODE) this.handleGridMouseDownFlag(boardPos);
@@ -241,13 +241,14 @@ export default class MinesweeperGame extends React.Component {
             gameBoard.generateBoard(boardPos);
             GAME_STARTED = true;
             timerInterval = setInterval(() => {
+                if (timeCounter >= 999) return;
                 timeCounter += 1;
                 this.updateTimeCounter(timeCounter);
             }, 1000);
         }
         gameBoard.selectCell(boardPos);
         const gridPos = getGameGridPos([boardPos[0], boardPos[1]]);
-        if(gameBoard.isGameOver()) {
+        if(gameBoard.gameSummaryDisplayed) {
             this.drawImageOnGameCanvas(sprites.shovelTilePressed, gridPos.x, gridPos.y);
             lastTileHovered = null;
             return;
@@ -264,7 +265,7 @@ export default class MinesweeperGame extends React.Component {
             gameBoard.unflagCell(boardPos);
             const gridPos = getGameGridPos(boardPos);
             this.drawImageOnGameCanvas(sprites.tile, gridPos.x, gridPos.y);
-            this.updateFlagCounter(gameBoard.getFlagsLeft());
+            if(!gameSummaryDisplayed) this.updateFlagCounter(gameBoard.getFlagsLeft());
             unflaggedTilePosition = gridPos;
             lastTileHovered = null;
             return;
@@ -273,7 +274,7 @@ export default class MinesweeperGame extends React.Component {
             gameBoard.flagCell(boardPos);
             const gridPos = getGameGridPos(boardPos);
             this.drawImageOnGameCanvas(sprites.flagTile, gridPos.x, gridPos.y);
-            this.updateFlagCounter(gameBoard.getFlagsLeft());
+            if(!gameSummaryDisplayed) this.updateFlagCounter(gameBoard.getFlagsLeft());
             flaggedTilePosition = gridPos;
             lastTileHovered = null;
             return;
@@ -282,13 +283,14 @@ export default class MinesweeperGame extends React.Component {
 
     handleMouseGameCanvasUp() {
         if(gameBoard.isGameOver() && !gameSummaryDisplayed) this.handleGameOver();
+        if(gameBoard.isGameWon() && !gameSummaryDisplayed) this.handleGameWon();
 
-        if(flaggedTilePosition !== null) {
+        if(flaggedTilePosition !== null && !gameSummaryDisplayed) {
             this.drawImageOnGameCanvas(sprites.flagTile, flaggedTilePosition.x, flaggedTilePosition.y);
             flaggedTilePosition = null;
             return;
         }
-        if(unflaggedTilePosition !== null) {
+        if(unflaggedTilePosition !== null && !gameSummaryDisplayed) {
             this.drawImageOnGameCanvas(sprites.tile, unflaggedTilePosition.x, unflaggedTilePosition.y);
             unflaggedTilePosition = null;
             return;
@@ -300,7 +302,7 @@ export default class MinesweeperGame extends React.Component {
             this.drawRevealedCellOnGrid(revealedCells[i]);
         }
         gameBoard.clearLastRevealedCells();
-        this.updateFlagCounter(gameBoard.getFlagsLeft());
+        if(!gameSummaryDisplayed) this.updateFlagCounter(gameBoard.getFlagsLeft());
 
         if (selectMode === SHOVEL_SELECT_MODE && lastTileHovered !== null) this.drawImageOnGameCanvas(sprites.tileShovelHoverRevealedCell, lastTileHovered.x, lastTileHovered.y);
         if (selectMode === FLAG_SELECT_MODE && lastTileHovered !== null) this.drawImageOnGameCanvas(sprites.tileFlagHoverRevealedCell, lastTileHovered.x, lastTileHovered.y);
@@ -309,7 +311,7 @@ export default class MinesweeperGame extends React.Component {
     }
 
     handleMouseRightClick(event) {
-        if(gameBoard.isGameOver()) return;
+        if(gameSummaryDisplayed) return;
         const mousePos = getMousePos(gameCanvas, event);
         if (this.isGameGridHover(mousePos)) {
             const boardPos = getGameBoardPosFromMousePos(mousePos)
@@ -319,11 +321,17 @@ export default class MinesweeperGame extends React.Component {
     }
 
     handleMouseGameCanvasLeave() {
+        if(gameBoard.isGameOver() && !gameSummaryDisplayed) this.handleGameOver();
+        if(gameBoard.isGameWon() && !gameSummaryDisplayed) this.handleGameWon();
+
         const exitButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH;
         const restartButtonX = GAME_SCREEN_WIDTH_PX - EXIT_BUTTON_WIDTH - RESTART_BUTTON_WIDTH - 3;
         if(exitButtonHovered) this.resetExitButton(exitButtonX);
         if(restartButtonHovered) this.resetRestartButton(restartButtonX);
         if(selectModeButtonHovered) this.resetSelectModeButton();
+
+        if(gameSummaryDisplayed) return;
+
         if (lastTileHovered !== null) {
             if(!gameBoard.isBoardGenerated()) this.drawImageOnGameCanvas(sprites.tile, lastTileHovered.x, lastTileHovered.y);
             else this.clearLastHoveredTileOfHoverEffect();
@@ -349,7 +357,20 @@ export default class MinesweeperGame extends React.Component {
         this.drawGameOverTimeCounter(timeCounter);
         this.drawGameOverFlagCounter(gameBoard.getFlagsLeft());
         this.drawMineCellsOnGrid(gameBoard.getAllMineCells());
+        this.drawGameOverOutline();
         gameSummaryDisplayed = true;
+        lastTileHovered = null;
+    }
+
+    handleGameWon() {
+        clearInterval(timerInterval);
+        this.drawGameWonBanner();
+        this.drawGameOverTimeCounter(timeCounter);
+        this.drawGameOverFlagCounter(gameBoard.getFlagsLeft());
+        this.drawGameWonMineCellsOnGrid(gameBoard.getAllMineCells());
+        this.drawGameWonOutline();
+        gameSummaryDisplayed = true;
+        lastTileHovered = null;
     }
 
     handleSelectModeButtonClick() {
@@ -368,6 +389,15 @@ export default class MinesweeperGame extends React.Component {
         }
     }
 
+    drawGameWonMineCellsOnGrid(mineCells) {
+        for(let i = 0; i < mineCells.length; i++) {
+            const row = mineCells[i].row;
+            const column = mineCells[i].column;
+            const gridPos = getGameGridPos([row, column]);
+            this.drawImageOnGameCanvas(sprites.gameWonMineTile, gridPos.x, gridPos.y);
+        }
+    }
+
     drawRevealedCellOnGrid(revealedCell) {
         const row = revealedCell.row;
         const column = revealedCell.column;
@@ -377,14 +407,14 @@ export default class MinesweeperGame extends React.Component {
             const backgroundImage = (row + column) % 2 === 0 ? sprites.backgroundTile1 : sprites.backgroundTile2;
             this.drawImageOnGameCanvas(backgroundImage, gridPos.x, gridPos.y);
         }
-        if (neighboringMines === 1) this.drawImageOnGameCanvas(sprites.oneTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 2) this.drawImageOnGameCanvas(sprites.twoTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 3) this.drawImageOnGameCanvas(sprites.threeTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 4) this.drawImageOnGameCanvas(sprites.fourTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 5) this.drawImageOnGameCanvas(sprites.fiveTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 6) this.drawImageOnGameCanvas(sprites.sixTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 7) this.drawImageOnGameCanvas(sprites.sevenTile, gridPos.x, gridPos.y);
-        if (neighboringMines === 8) this.drawImageOnGameCanvas(sprites.eightTile, gridPos.x, gridPos.y);
+        else if (neighboringMines === 1) this.drawImageOnGameCanvas(sprites.oneTile, gridPos.x, gridPos.y);
+        else if (neighboringMines === 2) this.drawImageOnGameCanvas(sprites.twoTile, gridPos.x, gridPos.y);
+        else if (neighboringMines === 3) this.drawImageOnGameCanvas(sprites.threeTile, gridPos.x, gridPos.y);
+        else if (neighboringMines === 4) this.drawImageOnGameCanvas(sprites.fourTile, gridPos.x, gridPos.y);
+        else if (neighboringMines === 5) this.drawImageOnGameCanvas(sprites.fiveTile, gridPos.x, gridPos.y);
+        else if (neighboringMines === 6) this.drawImageOnGameCanvas(sprites.sixTile, gridPos.x, gridPos.y);
+        else if (neighboringMines === 7) this.drawImageOnGameCanvas(sprites.sevenTile, gridPos.x, gridPos.y);
+        else if (neighboringMines === 8) this.drawImageOnGameCanvas(sprites.eightTile, gridPos.x, gridPos.y);
     }
 
     drawGameOverBanner() {
@@ -396,6 +426,39 @@ export default class MinesweeperGame extends React.Component {
         if(IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameOverBannerImage = sprites.gameOverBannerVerticalMedium;
         if(IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameOverBannerImage = sprites.gameOverBannerVerticalSmall;
         this.drawImageOnGameCanvas(gameOverBannerImage, 2, 15);
+    }
+
+    drawGameWonBanner() {
+        let gameWonBannerImage = '';
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameWonBannerImage = sprites.gameWonBannerHorizontalLarge;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameWonBannerImage = sprites.gameWonBannerHorizontalMedium;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameWonBannerImage = sprites.gameWonBannerHorizontalSmall;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameWonBannerImage = sprites.gameWonBannerVerticalLarge;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameWonBannerImage = sprites.gameWonBannerVerticalMedium;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameWonBannerImage = sprites.gameWonBannerVerticalSmall;
+        this.drawImageOnGameCanvas(gameWonBannerImage, 2, 15);
+    }
+
+    drawGameWonOutline() {
+        let gameWonOutlineImage = '';
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameWonOutlineImage = sprites.gameWonOutlineHorizontalLarge;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameWonOutlineImage = sprites.gameWonOutlineHorizontalMedium;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameWonOutlineImage = sprites.gameWonOutlineHorizontalSmall;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameWonOutlineImage = sprites.gameWonOutlineVerticalLarge;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameWonOutlineImage = sprites.gameWonOutlineVerticalMedium;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameWonOutlineImage = sprites.gameWonOutlineVerticalSmall;
+        this.drawImageOnGameCanvas(gameWonOutlineImage, 0, 13);
+    }
+
+    drawGameOverOutline() {
+        let gameOverOutlineImage = '';
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameOverOutlineImage = sprites.gameOverOutlineHorizontalLarge;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameOverOutlineImage = sprites.gameOverOutlineHorizontalMedium;
+        if(!IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameOverOutlineImage = sprites.gameOverOutlineHorizontalSmall;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'large') gameOverOutlineImage = sprites.gameOverOutlineVerticalLarge;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'medium') gameOverOutlineImage = sprites.gameOverOutlineVerticalMedium;
+        if(IS_VERTICAL_SCREEN && GAME_SIZE === 'small') gameOverOutlineImage = sprites.gameOverOutlineVerticalSmall;
+        this.drawImageOnGameCanvas(gameOverOutlineImage, 0, 13);
     }
 
     async updateFlagCounter(count) {        

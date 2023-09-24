@@ -190,7 +190,7 @@ export default class MinesweeperBoard {
     }
 
     getMinesForBoardSize() {
-        return Math.floor((this.rows * this.columns) /8); // Adjust the ratio as needed
+        return Math.floor((this.rows * this.columns) / 8); // Adjust the ratio as needed
     }
 
     getFlagsLeft() {
@@ -217,6 +217,18 @@ export default class MinesweeperBoard {
                 if(this.grid[r][c].isMine)
                     mineCells.push({row: r, column: c, cell: this.grid[r][c]});
         return mineCells;
+    }
+
+    isGameWon() {
+        for (let r = 0; r < this.rows; r++) {
+            for (let c = 0; c < this.columns; c++) {
+                if(this.grid[r][c].isMine && !this.grid[r][c].isFlagged)
+                    return false;
+                if(!this.grid[r][c].isMine && !this.grid[r][c].isRevealed)
+                    return false;
+            }
+        }
+        return true;
     }
 
     isGameOver() {
