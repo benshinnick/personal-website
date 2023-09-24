@@ -6,6 +6,7 @@ import * as ch from '../CookieHelper.js';
 
 var GAME_STARTED = false;
 var GAME_SIZE = null;
+var GAME_DIFFICULTY = null;
 var IS_VERTICAL_SCREEN = null;
 
 var GAME_SCREEN_WIDTH_PX;
@@ -40,7 +41,8 @@ const TILE_LENGTH = 9;
 export default class MinesweeperGame extends React.Component {
 
     componentDidMount() {
-        GAME_SIZE = ch.readCookie('minesweeper-size')
+        GAME_SIZE = ch.readCookie('minesweeper-size');
+        GAME_DIFFICULTY = ch.readCookie('minesweeper-difficulty');
         this.handleResize();
         document.getElementById('main-content').style.overflowY = 'hidden';
         document.getElementById('main-content').style.height = '100vh';
@@ -137,7 +139,7 @@ export default class MinesweeperGame extends React.Component {
             gameCanvasContext = gameCanvas.getContext("2d");
 
             gameCanvasContext.clearRect(0, 0, GAME_SCREEN_WIDTH_PX, CONTROL_BUTTON_HEIGHT + 1);
-            gameBoard = new MinesweeperBoard(MINESWEEPER_GRID_ROWS, MINESWEEPER_GRID_COLS);
+            gameBoard = new MinesweeperBoard(MINESWEEPER_GRID_ROWS, MINESWEEPER_GRID_COLS, GAME_DIFFICULTY);
             this.drawImageOnGameCanvas(baseImage, 0, 0).then(() => {
                 this.updateFlagCounter(gameBoard.getFlagsLeft());
             });
@@ -169,7 +171,7 @@ export default class MinesweeperGame extends React.Component {
             if(restartButtonHovered) this.resetRestartButton(restartButtonX);
             if(selectModeButtonHovered) this.resetSelectModeButton();
         }
-        if(!gameSummaryDisplayed) {
+        if(!gameSummaryDisplayed && !tilesRevealed) {
             if(this.isGameGridHover(mousePos))
                 this.handleGameGridHover(mousePos);
             else if (lastTileHovered !== null)
@@ -237,6 +239,8 @@ export default class MinesweeperGame extends React.Component {
     }
 
     handleGridMouseDownUncover(boardPos) {
+        const boardCell = gameBoard.getCell(boardPos[0], boardPos[1]);
+        if(boardCell.cell.isFlagged) return;
         if(!gameBoard.isBoardGenerated()) {
             gameBoard.generateBoard(boardPos);
             GAME_STARTED = true;
@@ -246,18 +250,13 @@ export default class MinesweeperGame extends React.Component {
                 this.updateTimeCounter(timeCounter);
             }, 1000);
         }
-        gameBoard.selectCell(boardPos);
         const gridPos = getGameGridPos([boardPos[0], boardPos[1]]);
-        if(gameBoard.gameSummaryDisplayed) {
+        if(!boardCell.cell.isRevealed) {
             this.drawImageOnGameCanvas(sprites.shovelTilePressed, gridPos.x, gridPos.y);
-            lastTileHovered = null;
-            return;
         }
+        gameBoard.selectCell(boardPos);
         const revealedCells = gameBoard.getLastRevealedCells();
-        if (revealedCells.length > 0) {
-            this.drawImageOnGameCanvas(sprites.shovelTilePressed, gridPos.x, gridPos.y);
-            tilesRevealed = true;
-        }
+        if (revealedCells.length > 0) tilesRevealed = true;
     }
 
     handleGridMouseDownFlag(boardPos) {
@@ -352,6 +351,7 @@ export default class MinesweeperGame extends React.Component {
     }
 
     handleGameOver() {
+        lastTileHovered = null;
         clearInterval(timerInterval);
         this.drawGameOverBanner();
         this.drawGameOverTimeCounter(timeCounter);
@@ -359,10 +359,10 @@ export default class MinesweeperGame extends React.Component {
         this.drawMineCellsOnGrid(gameBoard.getAllMineCells());
         this.drawGameOverOutline();
         gameSummaryDisplayed = true;
-        lastTileHovered = null;
     }
 
     handleGameWon() {
+        lastTileHovered = null;
         clearInterval(timerInterval);
         this.drawGameWonBanner();
         this.drawGameOverTimeCounter(timeCounter);
@@ -370,7 +370,6 @@ export default class MinesweeperGame extends React.Component {
         this.drawGameWonMineCellsOnGrid(gameBoard.getAllMineCells());
         this.drawGameWonOutline();
         gameSummaryDisplayed = true;
-        lastTileHovered = null;
     }
 
     handleSelectModeButtonClick() {
@@ -399,6 +398,7 @@ export default class MinesweeperGame extends React.Component {
     }
 
     drawRevealedCellOnGrid(revealedCell) {
+        if (revealedCell.cell.isMine) return;
         const row = revealedCell.row;
         const column = revealedCell.column;
         const neighboringMines = revealedCell.cell.neighboringMines;

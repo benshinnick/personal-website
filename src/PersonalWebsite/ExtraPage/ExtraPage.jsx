@@ -270,8 +270,8 @@ export default class TechnicalPage extends React.Component {
             ]
         }
         if (game === 'minesweeper') {
-            settingTitles = ['size', 'time-limit']
-            settingOptions = [['small', 'medium', 'large'], ['120', '240', '999']]
+            settingTitles = ['size', 'difficulty']
+            settingOptions = [['small', 'medium', 'large'], ['easy', 'medium', 'hard']]
             settingColors = ['#47e667', '#65a9ee']
         }
 

@@ -7,9 +7,10 @@ const DIRECTIONS = [
 
 export default class MinesweeperBoard {
 
-    constructor(rows, columns) {
+    constructor(rows, columns, difficulty) {
         this.rows = rows;
         this.columns = columns;
+        this.difficulty = difficulty;
         this.resetGame();
     }
 
@@ -146,6 +147,7 @@ export default class MinesweeperBoard {
         if (!selectedCell.isRevealed && !selectedCell.isFlagged) {
             if (selectedCell.isMine) {
                 selectedCell.isRevealed = true;
+                this.lastRevealedCells.push({row: row, column: col, cell: this.grid[row][col]});
                 // Handle game over logic (e.g., show all mines, end game)
                 this.handleGameOver();
             } else {
@@ -155,7 +157,7 @@ export default class MinesweeperBoard {
                 }
                 else {
                     selectedCell.isRevealed = true;
-                    this.lastRevealedCells.push({row: row, column: col, cell: this.grid[row][col]})
+                    this.lastRevealedCells.push({row: row, column: col, cell: this.grid[row][col]});
                 }
             }
         }
@@ -190,7 +192,11 @@ export default class MinesweeperBoard {
     }
 
     getMinesForBoardSize() {
-        return Math.floor((this.rows * this.columns) / 8); // Adjust the ratio as needed
+        let ratio = 10;
+        if(this.difficulty === 'easy') ratio = 12;
+        if(this.difficulty === 'medium') ratio = 9;
+        if(this.difficulty === 'hard') ratio = 7;
+        return Math.floor((this.rows * this.columns) / ratio); // Adjust the ratio as needed
     }
 
     getFlagsLeft() {
