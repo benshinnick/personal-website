@@ -201,6 +201,11 @@ export default class SnakeGame extends React.Component {
     }
 
     startGame() {
+        const restartButtonX = (IS_VERTICAL_SCREEN) ? 25 : 67;
+        const exitButtonX = (IS_VERTICAL_SCREEN) ? 63 : 105;
+        if(exitButtonHovered) this.resetExitButton(exitButtonX);
+        if(restartButtonHovered) this.resetRestartButton(restartButtonX);
+
         var initialBody;
         var initialDirection = [0, 1];
         var initialFoodPositions;
