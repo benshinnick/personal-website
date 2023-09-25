@@ -57,7 +57,36 @@ export function getHighScores(game) {
     return highScores;
 }
 
+export function getMinesweeperHighScores() {
+    let highScores = readCookie('minesweeperHighScores');
+    if(highScores === null) highScores = [
+            [
+                [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+                [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+                [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+            ],
+            [
+                [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+                [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+                [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+            ],
+            [
+                [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+                [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+                [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+            ]
+        ];
+    else highScores = JSON.parse(highScores);
+    return highScores;
+}
+
+export function updateMinesweeperHighScores(updatedHighScores) {
+    createCookie('minesweeperHighScores', JSON.stringify(updatedHighScores), 300);
+}
+
 export function setSettingDefaults() {
     if(readCookie('snake-speed') == null) createCookie("snake-speed", "medium", 300);
     if(readCookie('snake-fruit') == null) createCookie("snake-fruit", "1", 300);
+    if(readCookie('minesweeper-size') == null) createCookie("minesweeper-size", "medium", 300);
+    if(readCookie('minesweeper-difficulty') == null) createCookie("minesweeper-difficulty", "medium", 300);
 }

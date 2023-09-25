@@ -10,6 +10,7 @@ import * as ch from './CookieHelper.js';
 
 var selectedGame = 'none';
 var gameCanvas = null;
+const minesweeperHighScoresSelectedSettings = ['medium', 'medium'];
 
 export default class TechnicalPage extends React.Component {
     constructor(props) {
@@ -113,13 +114,13 @@ export default class TechnicalPage extends React.Component {
                                 <div id='snake-game-cart' className='sprite game-cart snake-game-cart'></div>
                                 <div id='snake-label' className='game-selection-label'>SNAKE</div>
                             </div>
-                            <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.handleGameSelection('tetra-mix')}>
-                                <div id='tetra-mix-game-cart' className='sprite game-cart tetra-mix-game-cart'></div>
-                                <div id='tetra-mix-label' className='game-selection-label'>TETRA MIX</div>
-                            </div>
                             <div className='game-selection' id='minesweeper-game-selection' onClick={() => this.handleGameSelection('minesweeper')}>
                                 <div id='minesweeper-game-cart' className='sprite game-cart minesweeper-game-cart'></div>
                                 <div id='minesweeper-label' className='game-selection-label'>MINESWEEPER</div>
+                            </div>
+                            <div className='game-selection' id='tetra-mix-game-selection' onClick={() => this.handleGameSelection('tetra-mix')}>
+                                <div id='tetra-mix-game-cart' className='sprite game-cart tetra-mix-game-cart'></div>
+                                <div id='tetra-mix-label' className='game-selection-label'>TETRA MIX</div>
                             </div>
                         </div>
                     </div>
@@ -250,6 +251,10 @@ export default class TechnicalPage extends React.Component {
 
         var settingsControlsContainer = document.createElement('div')
         settingsControlsContainer.id = 'settings-controls-container'
+        var settingsHeader = document.createElement('div')
+        settingsHeader.className = 'settings-header'
+        settingsHeader.innerHTML = 'Settings'
+        settingsControlsContainer.appendChild(settingsHeader)
 
         let settingTitles = []
         let settingOptions = []
@@ -264,6 +269,11 @@ export default class TechnicalPage extends React.Component {
                 '#2fe2ff',
                 '#ff4a4a'
             ]
+        }
+        if (game === 'minesweeper') {
+            settingTitles = ['size', 'difficulty']
+            settingOptions = [['small', 'medium', 'large'], ['easy', 'medium', 'hard']]
+            settingColors = ['#47e667', '#65a9ee']
         }
 
         for (let i = 0; i < settingTitles.length; i++) {
@@ -331,19 +341,67 @@ export default class TechnicalPage extends React.Component {
         var menuBanner = document.createElement('div')
         menuBanner.className = 'menu-banner'
         menuBanner.id = `${game}-high-scores-banner`
+
+        if(game === 'minesweeper') {
+            const settings = ['size', 'difficulty'];
+            const settingOptions = [['small', 'medium', 'large'], ['easy', 'medium', 'hard']]
+            minesweeperHighScoresSelectedSettings[0] = ch.readCookie('minesweeper-size');
+            minesweeperHighScoresSelectedSettings[1] = ch.readCookie('minesweeper-difficulty');
+            
+            let highScoresControlsContainer = document.createElement('div');
+            highScoresControlsContainer.className = 'high-scores-controls-container';
+            highScoresControlsContainer.id = `${game}-high-scores-controls-container`;
+            for(let i = 0; i < settings.length; i++) {
+                let settingsContainer = document.createElement('div');
+                settingsContainer.className = 'high-scores-setting-container';
+                settingsContainer.id = `${settings[i]}-high-scores-setting-container`;
+                let settingsTitle = document.createElement('div');
+                settingsTitle.className = 'high-scores-settings-title';
+                settingsTitle.id = `${settings[i]}-high-scores-settings-title`;
+                settingsTitle.innerHTML = settings[i].toUpperCase();
+                settingsContainer.appendChild(settingsTitle);
+                for(let j = 0; j < settingOptions[i].length; j++) {
+                    let settingOption = document.createElement('div');
+                    settingOption.className = 'high-scores-setting-option';
+                    if(settingOptions[i][j] === minesweeperHighScoresSelectedSettings[i])
+                        settingOption.id = `selected-${settings[i]}-high-scores-setting-option`;
+                    settingOption.innerHTML = settingOptions[i][j].toUpperCase();
+                    settingOption.addEventListener("click", () => {
+                        document.getElementById(`selected-${settings[i]}-high-scores-setting-option`).id = '';
+                        settingOption.id = `selected-${settings[i]}-high-scores-setting-option`;
+                        minesweeperHighScoresSelectedSettings[i] = settingOptions[i][j];
+                        document.getElementById(`${game}-high-scores-text-container`).remove();
+                        highScoresContainer.appendChild(this.getMinesweeperHighScoresTextContainer(minesweeperHighScoresSelectedSettings[0], minesweeperHighScoresSelectedSettings[1]));
+                    })
+                    settingsContainer.appendChild(settingOption);
+                }
+                highScoresControlsContainer.appendChild(settingsContainer);
+            }
+            menuBanner.appendChild(highScoresControlsContainer);
+        }
+
         highScoresContainer.appendChild(menuBanner)
 
-        var highScoresTextContainer = document.createElement('div')
+        if(game !== 'minesweeper') highScoresContainer.appendChild(this.getDefaultHighScoresTextContainer(game))
+        else highScoresContainer.appendChild(this.getMinesweeperHighScoresTextContainer(ch.readCookie('minesweeper-size'), ch.readCookie('minesweeper-difficulty')));
 
-        var highScoresTitle = document.createElement('div')
+        document.getElementById('computer-screen').appendChild(highScoresContainer)
+    }
+
+    getDefaultHighScoresTextContainer(game) {
+        let highScoresTextContainer = document.createElement('div')
+        highScoresTextContainer.id = `${game}-high-scores-text-container`
+        highScoresTextContainer.className = 'high-scores-text-container'
+    
+        let highScoresTitle = document.createElement('div')
         highScoresTitle.innerHTML = 'High Scores:'
         highScoresTitle.id = `high-scores-title`;
         highScoresTextContainer.appendChild(highScoresTitle)
-
-        var highScoresText = document.createElement('div')
+    
+        let highScoresText = document.createElement('div')
         const highScores = ch.getHighScores(game)
         for(let i = 0; i < highScores.length; i++) {
-            var scoreText = highScores[i].toString();
+            let scoreText = highScores[i].toString();
             // pad with beginning zeros
             for(let j = 0; j <= 3 - scoreText.length; j++) scoreText = "0" + scoreText;
             let color = "white";
@@ -352,26 +410,74 @@ export default class TechnicalPage extends React.Component {
             if(i === 2) color = "#CD7F32";
             let textSections = [`${i+1}:`, scoreText, 'Points']
             for(let i = 0; i < textSections.length; i++) {
-                var highScoreSection = document.createElement('div')
+                let highScoreSection = document.createElement('div')
                 highScoreSection.innerHTML = textSections[i]
                 if(i === 0) highScoreSection.style = `color: ${color}`
                 highScoresText.appendChild(highScoreSection)
             }
         }
-
+    
         highScoresText.id = `high-scores-text`;
         highScoresTextContainer.appendChild(highScoresText)
-
-        var backButton = document.createElement('div')
+    
+        let backButton = document.createElement('div')
         backButton.id = `${game}-menu-back-button`
         backButton.className = 'menu-back-button'
         backButton.innerHTML = 'Back To Title'
         backButton.addEventListener('click', () => { this.loadGameTitleScreen(game) })
-        highScoresTextContainer.appendChild(backButton)
+        highScoresTextContainer.appendChild(backButton);
+        return highScoresTextContainer;
+    }
 
-        highScoresContainer.appendChild(highScoresTextContainer)
+    getMinesweeperHighScoresTextContainer(size, difficulty) {
+        const allHighScores = ch.getMinesweeperHighScores();
+        let sizeIdx = 0;
+        if(size === 'small') sizeIdx = 0; if(size === 'medium') sizeIdx = 1; if(size === 'large') sizeIdx = 2;
+        let difficultyIdx = 0;
+        if(difficulty === 'easy') difficultyIdx = 0; if(difficulty === 'medium') difficultyIdx = 1; if(difficulty === 'hard') difficultyIdx = 2;
+        const highScores = allHighScores[sizeIdx][difficultyIdx];
 
-        document.getElementById('computer-screen').appendChild(highScoresContainer)
+        const game = 'minesweeper';
+        let highScoresTextContainer = document.createElement('div')
+        highScoresTextContainer.id = `${game}-high-scores-text-container`
+        highScoresTextContainer.className = 'high-scores-text-container'
+    
+        let highScoresTitle = document.createElement('div')
+        highScoresTitle.innerHTML = 'High Scores:'
+        highScoresTitle.id = `high-scores-title`;
+        highScoresTextContainer.appendChild(highScoresTitle)
+    
+        let highScoresText = document.createElement('div')
+        for(let i = 0; i < highScores.length; i++) {
+            let percentText = highScores[i][0].toString();
+            let timeText = highScores[i][1].toString();
+            // pad with beginning zeros
+            if(timeText.length < 3) for(let j = 0; j <= 3 - timeText.length; j++) timeText = "0" + timeText;
+            if(percentText.length < 2) for(let j = 0; j <= 2 - percentText.length; j++) percentText = "0" + percentText;
+            let color = "white";
+            if(i === 0) color = "#fff159";
+            if(i === 1) color = "#C0C0C0";
+            if(i === 2) color = "#CD7F32";
+            let textSections = []
+            textSections = [`${i+1}:`, percentText + '%', timeText + 's']
+            for(let i = 0; i < textSections.length; i++) {
+                let highScoreSection = document.createElement('div')
+                highScoreSection.innerHTML = textSections[i]
+                if(i === 0) highScoreSection.style = `color: ${color}`
+                highScoresText.appendChild(highScoreSection)
+            }
+        }
+    
+        highScoresText.id = `high-scores-text`;
+        highScoresTextContainer.appendChild(highScoresText)
+    
+        let backButton = document.createElement('div')
+        backButton.id = `${game}-menu-back-button`
+        backButton.className = 'menu-back-button'
+        backButton.innerHTML = 'Back To Title'
+        backButton.addEventListener('click', () => { this.loadGameTitleScreen(game) })
+        highScoresTextContainer.appendChild(backButton);
+        return highScoresTextContainer;
     }
 }
 
