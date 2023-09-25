@@ -358,6 +358,7 @@ export default class MinesweeperGame extends React.Component {
         this.drawGameOverFlagCounter(gameBoard.getFlagsLeft());
         this.drawMineCellsOnGrid(gameBoard.getAllMineCells());
         this.drawGameOverOutline();
+        this.updateHighScores();
         gameSummaryDisplayed = true;
     }
 
@@ -369,6 +370,7 @@ export default class MinesweeperGame extends React.Component {
         this.drawGameOverFlagCounter(gameBoard.getFlagsLeft());
         this.drawGameWonMineCellsOnGrid(gameBoard.getAllMineCells());
         this.drawGameWonOutline();
+        this.updateHighScores();
         gameSummaryDisplayed = true;
     }
 
@@ -613,7 +615,29 @@ export default class MinesweeperGame extends React.Component {
             </div>
         );
     }
+
+    updateHighScores() {
+        const allHighScores = ch.getMinesweeperHighScores();
+        let sizeIdx = 0;
+        if(GAME_SIZE === 'small') sizeIdx = 0; if(GAME_SIZE === 'medium') sizeIdx = 1; if(GAME_SIZE === 'large') sizeIdx = 2;
+        let difficultyIdx = 0;
+        if(GAME_DIFFICULTY === 'easy') difficultyIdx = 0; if(GAME_DIFFICULTY === 'medium') difficultyIdx = 1; if(GAME_DIFFICULTY === 'hard') difficultyIdx = 2;
+        let highScores = allHighScores[sizeIdx][difficultyIdx];
+        highScores.push([gameBoard.getPercentBoardCompleted(), timeCounter]);
+
+        highScores.sort(function(a, b) { 
+            return cmp(a[0],b[0]) || cmp(b[1], a[1])
+        });
+        if(highScores.length > 5) {
+            highScores = highScores.slice(0, 5);
+        }
+        allHighScores[sizeIdx][difficultyIdx] = highScores;
+
+        ch.updateMinesweeperHighScores(allHighScores);
+    }
 }
+
+function cmp(a, b) {return (a < b) - (a > b)};
 
 function getGameGridPos(position) {
     return {

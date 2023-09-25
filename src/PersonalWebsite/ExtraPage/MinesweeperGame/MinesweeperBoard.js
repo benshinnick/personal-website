@@ -225,6 +225,19 @@ export default class MinesweeperBoard {
         return mineCells;
     }
 
+    getPercentBoardCompleted() {
+        let cellsCompleted = 0;
+        for (let r = 0; r < this.rows; r++) {
+            for (let c = 0; c < this.columns; c++) {
+                if(this.grid[r][c].isMine && this.grid[r][c].isFlagged)
+                    cellsCompleted += 1;
+                if(!this.grid[r][c].isMine && this.grid[r][c].isRevealed)
+                    cellsCompleted += 1;
+            }
+        }
+        return Math.round((cellsCompleted / (this.rows * this.columns)) * 100);
+    }
+
     isGameWon() {
         for (let r = 0; r < this.rows; r++) {
             for (let c = 0; c < this.columns; c++) {

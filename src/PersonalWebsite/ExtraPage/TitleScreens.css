@@ -398,9 +398,75 @@
     cursor: pointer;
 }
 
-
 .settings-options-container .selected {
     border-color: currentColor;
+}
+
+.high-scores-setting-container {
+    background-color: black;
+    border: 0.25vw solid white;
+}
+
+#size-high-scores-setting-container {
+    border-color: #47e667;
+}
+
+#difficulty-high-scores-setting-container {
+    border-color: #65a9ee; 
+}
+
+.high-scores-controls-container {
+    margin-top: -96%;
+    margin-left: 5.5%;
+    width: fit-content;
+}
+
+.high-scores-setting-container {
+    margin-bottom: 1vw;
+}
+
+.high-scores-settings-title {
+    border-bottom: 0.25vw solid white;
+}
+
+#size-high-scores-settings-title {
+    border-color: #47e667;
+}
+
+#difficulty-high-scores-settings-title {
+    border-color: #65a9ee; 
+}
+
+.high-scores-setting-option {
+    border: 0.25vw solid transparent;
+    margin: 0.25vw;
+    width: fit-content;
+}
+
+.high-scores-setting-option:hover {
+    cursor: pointer;
+}
+
+#selected-size-high-scores-setting-option {
+    border-color: white;
+}
+
+#selected-difficulty-high-scores-setting-option {
+    border-color: white;
+}
+
+.high-scores-setting-container > * {
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'pixel',Lato,LatoExtended,sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-font-smoothing: none;
+    padding-left: 0.5vw;
+    letter-spacing: 0.1vw;
+    padding-right: 0.2vw;
 }
 
 @media only screen and (min-width: 1400px)  {
@@ -604,6 +670,46 @@
     .setting-container {
         width: 95%;
         margin-bottom: 10px;
+    }
+
+    .high-scores-setting-container {
+        background-color: black;
+        border: 4px solid white;
+    }
+    
+    .high-scores-controls-container {
+        margin-top: -97%;
+        margin-left: 5.5%;
+        width: fit-content;
+    }
+    
+    .high-scores-setting-container {
+        margin-bottom: 12px;
+    }
+    
+    .high-scores-settings-title {
+        border-bottom: 3px solid white;
+    }
+    
+    .high-scores-setting-option {
+        border: 3px solid transparent;
+        margin: 4px;
+        width: fit-content;
+    }
+    
+    .high-scores-setting-container > * {
+        color: white;
+        font-size: 22px;
+        height: 22px;
+        text-align: center;
+        font-weight: bold;
+        font-family: 'pixel',Lato,LatoExtended,sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+        -webkit-font-smoothing: none;
+        padding-left: 5px;
+        letter-spacing: 1px;
+        padding-right: 2px;
     }
 }
 
@@ -815,5 +921,44 @@
         width: 65%;
         margin-right: -6%;
         margin-left: -2%;
+    }
+
+    .high-scores-setting-container {
+        background-color: black;
+        border: 0.6vw solid white;
+    }
+    
+    .high-scores-controls-container {
+        margin-top: -111%;
+        margin-left: 4.5%;
+        width: fit-content;
+    }
+    
+    .high-scores-setting-container {
+        margin-bottom: 1vw;
+    }
+    
+    .high-scores-settings-title {
+        border-bottom: 0.6vw solid white;
+    }
+    
+    .high-scores-setting-option {
+        border: 0.5vw solid transparent;
+        margin: 0.6vw;
+        width: fit-content;
+    }
+    
+    .high-scores-setting-container > * {
+        color: white;
+        font-size: 2.75vw;
+        text-align: center;
+        font-weight: bold;
+        font-family: 'pixel',Lato,LatoExtended,sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+        -webkit-font-smoothing: none;
+        padding-left: 0.5vw;
+        letter-spacing: 0.1vw;
+        padding-right: 0.2vw;
     }
 }
