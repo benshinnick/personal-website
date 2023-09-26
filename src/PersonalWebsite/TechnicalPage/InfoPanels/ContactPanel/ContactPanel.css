@@ -109,6 +109,12 @@
     -webkit-font-smoothing: none;
 }
 
+_::-webkit-full-page-media, _:future, :root #contact-panel-content #email-line #email-text {
+    font-size: 17pt;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
 #contact-panel-content #email-line .email-icons {
     display: inline-block;
     font-family: 'icons',Lato,LatoExtended,sans-serif;
@@ -119,6 +125,10 @@
 
 @media (max-width: 650px) {
     #contact-panel-content #email-line #email-text {
+        font-size: 14pt;
+    }
+
+    _::-webkit-full-page-media, _:future, :root #contact-panel-content #email-line #email-text {
         font-size: 14pt;
     }
 }

@@ -26,6 +26,11 @@
 }
 
 _::-webkit-full-page-media, _:future, :root #greeting-text {
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+_::-webkit-full-page-media, _:future, :root #greeting-text {
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -98,6 +103,11 @@ hr {
     margin-right: 7.5%;
     color: black;
     -webkit-font-smoothing: none;
+}
+
+_::-webkit-full-page-media, _:future, :root .info-text {
+    line-height: 1.1;
+    letter-spacing: 0px;
 }
 
 _::-webkit-full-page-media, _:future, :root .info-text {

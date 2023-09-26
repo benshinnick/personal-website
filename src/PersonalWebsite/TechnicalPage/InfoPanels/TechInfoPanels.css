@@ -26,6 +26,12 @@
     z-index: 2;
 }
 
+_::-webkit-full-page-media, _:future, :root .title {
+    font-size: 24px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
 .title:hover {
     cursor: pointer;
     color: rgb(31, 33, 180);
@@ -49,7 +55,7 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
 }
 
 .info-panel-content #panel-text {
-    font-size: 20px;
+    font-size: 19px;
     text-align: left;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
@@ -58,6 +64,12 @@ _::-webkit-full-page-media, _:future, :root #greeting-text {
     padding-left: 5%;
     padding-right: 5%;
     -webkit-font-smoothing: none;
+}
+
+_::-webkit-full-page-media, _:future, :root .info-panel-content #panel-text {
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: -1px;
 }
 
 .tech-info-panel {

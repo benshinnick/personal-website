@@ -38,13 +38,13 @@ export default class ExperiencePanel extends React.Component {
         let container = document.getElementById('exp-info-section')
         if(type === 'uwf') {
             title = 'University of West Florida'
-            description = 'Concentation in Software Engineering. More about my time at UWF and what I did. More text to fill space. I would like 3-5 sentences here explaining stuff. Maybe timelines or other stuff?'
+            description = '3.99 GPA. Concentation in Software Engineering. College Algebra/Calculus I and II lab leader and tutor for two years. Filmed football practices and scrimiges using drones for one year.'
             container.style.backgroundColor = 'rgba(21, 144, 206, 0.075)'
             container.style.borderColor = 'rgba(21, 144, 206, 0.75)'
         }
         if(type === 'ihmc') {
             title = 'Institute for Human and Machine Cognition'
-            description = 'More about my time at IHMC and what I did, I have a lot to say, but just want placeholder text here now. I will do other stuff later.'
+            description = 'Working on web visualization tools, data analysis, and simulations for the DARPA ASIST project and joint activity graph tools.'
             container.style.backgroundColor = 'rgba(0, 0, 0, 0.05)'
             container.style.borderColor = 'rgb(0, 0, 0)'
         }
