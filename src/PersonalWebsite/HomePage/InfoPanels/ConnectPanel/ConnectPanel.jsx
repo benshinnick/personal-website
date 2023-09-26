@@ -64,7 +64,7 @@ export default class ConnectPanel extends React.Component {
                     <a id='linked-in-icon' className='icon'
                         onMouseOver={this.changeConnectInfoToLinkedIn}
                         onMouseLeave={this.changeConnectInfoToDefault}
-                        href='https://www.linkedin.com/'>
+                        href='https://www.linkedin.com/in/benshinnick'>
                         <span>Personal LinkedIn Page</span>
                     </a>
                     <a id='email-icon' className='icon'

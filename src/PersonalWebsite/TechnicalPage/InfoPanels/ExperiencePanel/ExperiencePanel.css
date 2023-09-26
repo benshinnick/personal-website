@@ -45,9 +45,15 @@
     -webkit-font-smoothing: none;
 }
 
+_::-webkit-full-page-media, _:future, :root #title-text {
+    font-size: 24px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
 #description-container {
     margin: 8px;
-    font-size: 18px;
+    font-size: 19px;
     text-align: left;
     font-weight: bold;
     font-family: 'pixel',Lato,LatoExtended,sans-serif;
@@ -55,6 +61,12 @@
     letter-spacing: 0.2px;
     z-index: 1;
     -webkit-font-smoothing: none;
+}
+
+_::-webkit-full-page-media, _:future, :root #description-container {
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -1px;
 }
 
 #experience-panel-content #divider {
@@ -125,6 +137,12 @@
     border-bottom: 3px solid #e3e3e3;
 }
 
+_::-webkit-full-page-media, _:future, :root .exp-title {
+    font-size: 19px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
 .exp-subtitle {
     display: inline-block;
     font-size: 16px;
@@ -138,6 +156,12 @@
     width: 100%;
     line-height: 1.3;
     color: rgb(45, 45, 45);
+}
+
+_::-webkit-full-page-media, _:future, :root .exp-title {
+    font-size: 17px;
+    line-height: 1.1;
+    letter-spacing: -1px;
 }
 
 #uwf-logo {
@@ -186,8 +210,16 @@
         font-size: 12pt;
     }
 
+    _::-webkit-full-page-media, _:future, :root .exp-title {
+        font-size: 13pt;
+    }
+
     .exp-summary .exp-subtitle {
         font-size: 12pt;
+    }
+
+    _::-webkit-full-page-media, _:future, :root .exp-subtitle {
+        font-size: 13pt;
     }
 
     .title-card-filler {
@@ -231,8 +263,16 @@
         font-size: 12pt;
     }
 
+    _::-webkit-full-page-media, _:future, :root .exp-title {
+        font-size: 13pt;
+    }
+
     .exp-summary .exp-subtitle {
         font-size: 12pt;
+    }
+
+    _::-webkit-full-page-media, _:future, :root .exp-subtitle {
+        font-size: 13pt;
     }
 
     .title-card-filler {
@@ -294,9 +334,17 @@
         font-size: 11pt;
     }
 
+    _::-webkit-full-page-media, _:future, :root .exp-title {
+        font-size: 12pt;
+    }
+
     .exp-summary .exp-subtitle {
         font-size: 11pt;
         padding-bottom: 2px;
+    }
+
+    _::-webkit-full-page-media, _:future, :root .exp-subtitle {
+        font-size: 12pt;
     }
 }
 
@@ -306,9 +354,17 @@
         font-size: 10pt;
     }
 
+    _::-webkit-full-page-media, _:future, :root .exp-title {
+        font-size: 11pt;
+    }
+
     .exp-summary .exp-subtitle {
         font-size: 10pt;
         padding-bottom: 4px;
+    }
+
+    _::-webkit-full-page-media, _:future, :root .exp-subtitle {
+        font-size: 11pt;
     }
 }
 
@@ -318,9 +374,17 @@
         font-size: 9pt;
     }
 
+    _::-webkit-full-page-media, _:future, :root .exp-title {
+        font-size: 10pt;
+    }
+
     .exp-summary .exp-subtitle {
         font-size: 9pt;
         padding-bottom: 7px;
+    }
+
+    _::-webkit-full-page-media, _:future, :root .exp-subtitle {
+        font-size: 10pt;
     }
 }
 

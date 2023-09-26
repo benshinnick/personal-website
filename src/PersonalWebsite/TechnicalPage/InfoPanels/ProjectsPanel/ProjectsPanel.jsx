@@ -41,7 +41,7 @@ export default class ProjectsPanel extends React.Component {
         if(type === 'algo-contest') {
             headerText.textContent = 'Algorithm Contest'
             var linkContainer = document.createElement('div')
-            linkContainer.textContent = 'Check Out The Deployed Site '
+            linkContainer.textContent = 'Check Out The Site '
             linkContainer.className = 'link-container'
             var deployedSiteLink = document.createElement('a')
             deployedSiteLink.className = 'link'
@@ -50,23 +50,22 @@ export default class ProjectsPanel extends React.Component {
             linkContainer.appendChild(deployedSiteLink)
             descriptionContainer.appendChild(linkContainer)
 
-            descriptionText.textContent = 'Web Application built with React for visualizing sorting and pathfinding algorithms competing agianst each other in real time.'
-            githubLinkIcon.href = 'https://github.com/benshinnick'
+            descriptionText.textContent = 'React Web Application for visualizing sorting and pathfinding algorithms competing agianst each other in real time.'
+            githubLinkIcon.href = 'https://github.com/benshinnick/algorithm-contest'
         }
         else if(type === 'huddle') {
             headerText.textContent = 'Huddle (Twitter Clone)'
-            descriptionText.textContent = 'A twitter clone written entirely in Java/JavaFX using WebSockets. It was created as a group project where I worked on everything from designing the Client/Server communication to styling the various different pages of the app.'
-            githubLinkIcon.href = 'https://github.com/benshinnick'
+            descriptionText.textContent = 'A simple twitter clone written entirely in Java/JavaFX using WebSockets.'
+            githubLinkIcon.href = 'https://github.com/CEN-3032-2022/huddle'
         }
         else if(type === 'miscellaneous') {
             // list of [project_title, github_link, language]
             var projects = [
-                ['Restaurant Recommender', 'https://github.com/benshinnick', 'Kotlin'],
-                ['Traveling Salesperson Genetic Algorithm Solution', 'https://github.com/benshinnick', 'C++'],
-                ['Longest Common Subsequence Solver', 'https://github.com/benshinnick', 'C++'],
-                ['FSA Drawer And Checker', 'https://github.com/benshinnick', 'Python'],
-                ['Semantic Checker And Code Generator', 'https://github.com/benshinnick', 'C'],
-                ['Internet Tic-Tac-Toe', 'https://github.com/benshinnick', 'Java']
+                ['Restaurant Recommender', 'https://github.com/benshinnick/restaurant-recommender', 'Kotlin'],
+                ['Traveling Salesperson GA Solution', 'https://github.com/benshinnick/traveling-salesperson-genetic-algorithm-solution', 'C++'],
+                ['Longest Common Subsequence Solver', 'https://github.com/benshinnick/longest-common-subsequence-solver', 'C++'],
+                ['FSA Drawer And Checker', 'https://github.com/benshinnick/fsa-drawer-and-checker', 'Python'],
+                ['Semantic Checker And Code Generator', 'https://github.com/benshinnick/semantic-checker-and-code-generator', 'C']
             ]
             // var projectContainer = document.createElement('div')
             for(let i = 0; i < projects.length; ++i) {
@@ -79,6 +78,7 @@ export default class ProjectsPanel extends React.Component {
                 title.href = projects[i][1]
                 var description = document.createElement('div')
                 description.className = 'misc-project-text'
+                description.style.paddingLeft='10px';
                 description.textContent = '(' + projects[i][2] + ')'
 
                 container.appendChild(title)
@@ -91,7 +91,7 @@ export default class ProjectsPanel extends React.Component {
         }
         else if(type === 'personal-website') {
             headerText.textContent = 'Personal Site'
-            descriptionText.textContent = 'You\'re looking at it! I\'ve had the idea for this site for a while, but only recently got around to making it. This website was a lot of work and I\'m really proud of the result.'
+            descriptionText.textContent = 'You\'re looking at it! I designed all the sprites except the buildings. All credit should go to Dmitry Petyakin for those. The huddle penguin and miscellaneous computer are also borrowed, but should be free use.'
             githubLinkIcon.href = 'https://github.com/benshinnick'
         }
         githubContainer.appendChild(githubLinkIcon)

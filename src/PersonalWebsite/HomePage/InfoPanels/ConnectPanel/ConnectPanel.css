@@ -169,6 +169,11 @@
     transition:  background-position 0.5s linear, margin-top 0.5s linear;
 }
 
+_::-webkit-full-page-media, _:future, :root .connect-panel #connect-info #connect-text {
+    line-height: 1.1;
+    letter-spacing: 0px;
+}
+
 _::-webkit-full-page-media, _:future, :root #connect-text {
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: grayscale;
